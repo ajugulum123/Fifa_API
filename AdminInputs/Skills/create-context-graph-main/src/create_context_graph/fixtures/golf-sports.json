@@ -1,0 +1,2229 @@
+{
+  "domain": "golf-sports",
+  "entities": {
+    "Person": [
+      {
+        "name": "Sarah Chen",
+        "email": "sarah.chen@riveroaksgolf.com",
+        "role": "Golf Course Superintendent",
+        "description": "Experienced turf management professional with 12 years in golf course maintenance and agronomy"
+      },
+      {
+        "name": "Marcus Williams",
+        "email": "mwilliams@pgatour.org",
+        "role": "Tournament Director",
+        "description": "PGA Tour tournament operations specialist overseeing professional golf events and player coordination"
+      },
+      {
+        "name": "Elena Rodriguez",
+        "email": "elena.rodriguez@handicap.usga.org",
+        "role": "Handicap Administrator",
+        "description": "USGA certified handicap system administrator specializing in player rating and course evaluation"
+      },
+      {
+        "name": "James Mitchell",
+        "email": "j.mitchell@golfanalytics.com",
+        "role": "Performance Analyst",
+        "description": "Data scientist focused on golf performance metrics and statistical analysis for player improvement"
+      },
+      {
+        "name": "Priya Patel",
+        "email": "priya.patel@clubmanagement.com",
+        "role": "Club General Manager",
+        "description": "Golf club operations manager with expertise in member services and facility management"
+      }
+    ],
+    "Organization": [
+      {
+        "name": "Augusta National Golf Club",
+        "description": "Prestigious private golf club famous for hosting The Masters Tournament annually",
+        "industry": "Golf and Country Clubs"
+      },
+      {
+        "name": "PGA Tour",
+        "description": "Professional golf organization that organizes most of the week-to-week men's professional golf tournaments",
+        "industry": "Professional Sports"
+      },
+      {
+        "name": "United States Golf Association",
+        "description": "National governing body for golf in the United States, responsible for handicapping and rules",
+        "industry": "Sports Governance"
+      },
+      {
+        "name": "Titleist",
+        "description": "Leading manufacturer of golf equipment including golf balls, clubs, and accessories",
+        "industry": "Sporting Goods Manufacturing"
+      },
+      {
+        "name": "Golf Course Superintendents Association",
+        "description": "Professional organization supporting golf course maintenance and turf management professionals",
+        "industry": "Professional Associations"
+      }
+    ],
+    "Location": [
+      {
+        "name": "Pebble Beach Golf Links",
+        "address": "1700 17-Mile Dr, Pebble Beach, CA 93953",
+        "latitude": 36.5694,
+        "longitude": -121.9508
+      },
+      {
+        "name": "St. Andrews Old Course",
+        "address": "Pilmour House, St Andrews KY16 9SF, Scotland",
+        "latitude": 56.3486,
+        "longitude": -2.8244
+      },
+      {
+        "name": "TPC Sawgrass",
+        "address": "110 Championship Way, Ponte Vedra Beach, FL 32082",
+        "latitude": 30.1975,
+        "longitude": -81.3944
+      },
+      {
+        "name": "Royal Melbourne Golf Club",
+        "address": "Cheltenham Rd, Black Rock VIC 3193, Australia",
+        "latitude": -37.9697,
+        "longitude": 145.0158
+      },
+      {
+        "name": "Shinnecock Hills Golf Club",
+        "address": "200 Tuckahoe Rd, Southampton, NY 11968",
+        "latitude": 40.8897,
+        "longitude": -72.4658
+      }
+    ],
+    "Event": [
+      {
+        "name": "Club Championship Final Round",
+        "date": "2024-07-15T08:00:00Z",
+        "description": "Annual club championship determining the club's top golfer across all flight divisions"
+      },
+      {
+        "name": "Junior Golf Development Clinic",
+        "date": "2024-06-22T10:00:00Z",
+        "description": "Weekend instructional clinic for junior golfers ages 8-16 focusing on fundamentals"
+      },
+      {
+        "name": "Charity Golf Tournament",
+        "date": "2024-08-10T07:30:00Z",
+        "description": "Annual fundraising tournament benefiting local youth sports programs"
+      },
+      {
+        "name": "Senior Member-Guest Tournament",
+        "date": "2024-09-05T09:00:00Z",
+        "description": "Two-day tournament for senior members and their guests with prizes and dinner"
+      },
+      {
+        "name": "Women's League Championship",
+        "date": "2024-07-28T08:30:00Z",
+        "description": "Season-ending championship for the women's weekly league competition"
+      }
+    ],
+    "Object": [
+      {
+        "name": "Golf Cart Fleet Management System",
+        "description": "Digital tracking system for monitoring golf cart usage, maintenance schedules, and battery levels"
+      },
+      {
+        "name": "Irrigation Control Panel",
+        "description": "Automated sprinkler system controller managing water distribution across 18 holes and practice areas"
+      },
+      {
+        "name": "Pro Shop Point of Sale System",
+        "description": "Retail management system for golf equipment sales, lesson bookings, and member account management"
+      },
+      {
+        "name": "Course Condition Monitoring Tools",
+        "description": "Digital tools and sensors for tracking turf health, soil moisture, and weather conditions"
+      },
+      {
+        "name": "Tee Time Booking Platform",
+        "description": "Online reservation system allowing members and guests to book tee times and manage preferences"
+      }
+    ],
+    "Course": [
+      {
+        "course_id": "PB001",
+        "name": "Pebble Beach Golf Links",
+        "par": 72,
+        "yardage": 6828,
+        "course_rating": 75.5,
+        "slope_rating": 144,
+        "course_type": "links",
+        "location": "Pebble Beach, California"
+      },
+      {
+        "course_id": "SA002",
+        "name": "St. Andrews Old Course",
+        "par": 72,
+        "yardage": 7297,
+        "course_rating": 76.8,
+        "slope_rating": 132,
+        "course_type": "links",
+        "location": "St. Andrews, Scotland"
+      },
+      {
+        "course_id": "TPC003",
+        "name": "TPC Sawgrass Stadium Course",
+        "par": 72,
+        "yardage": 7245,
+        "course_rating": 76.3,
+        "slope_rating": 155,
+        "course_type": "resort",
+        "location": "Ponte Vedra Beach, Florida"
+      },
+      {
+        "course_id": "RM004",
+        "name": "Royal Melbourne West",
+        "par": 72,
+        "yardage": 6946,
+        "course_rating": 75.1,
+        "slope_rating": 139,
+        "course_type": "private",
+        "location": "Melbourne, Australia"
+      },
+      {
+        "course_id": "SH005",
+        "name": "Shinnecock Hills Golf Club",
+        "par": 70,
+        "yardage": 7445,
+        "course_rating": 77.2,
+        "slope_rating": 142,
+        "course_type": "private",
+        "location": "Southampton, New York"
+      },
+      {
+        "course_id": "RO006",
+        "name": "River Oaks Country Club",
+        "par": 71,
+        "yardage": 6421,
+        "course_rating": 72.8,
+        "slope_rating": 128,
+        "course_type": "private",
+        "location": "Houston, Texas"
+      },
+      {
+        "course_id": "MP007",
+        "name": "Mountain Pines Municipal",
+        "par": 72,
+        "yardage": 6285,
+        "course_rating": 71.2,
+        "slope_rating": 125,
+        "course_type": "municipal",
+        "location": "Denver, Colorado"
+      },
+      {
+        "course_id": "LV008",
+        "name": "Lake View Golf Resort",
+        "par": 72,
+        "yardage": 6654,
+        "course_rating": 73.5,
+        "slope_rating": 135,
+        "course_type": "resort",
+        "location": "Orlando, Florida"
+      },
+      {
+        "course_id": "WC009",
+        "name": "Westfield Commons Golf Course",
+        "par": 71,
+        "yardage": 6102,
+        "course_rating": 69.8,
+        "slope_rating": 118,
+        "course_type": "public",
+        "location": "Phoenix, Arizona"
+      },
+      {
+        "course_id": "GH010",
+        "name": "Golden Hills Parkland Course",
+        "par": 72,
+        "yardage": 6789,
+        "course_rating": 74.1,
+        "slope_rating": 131,
+        "course_type": "parkland",
+        "location": "Sacramento, California"
+      }
+    ],
+    "Player": [
+      {
+        "player_id": "PL001",
+        "name": "Tiger Woods",
+        "player_type": "professional",
+        "home_course": "Medalist Golf Club",
+        "country": "United States",
+        "ranking": 1
+      },
+      {
+        "player_id": "PL002",
+        "name": "Rory McIlroy",
+        "player_type": "professional",
+        "home_course": "Royal Portrush",
+        "country": "Northern Ireland",
+        "ranking": 3
+      },
+      {
+        "player_id": "PL003",
+        "name": "Sakura Yamazaki",
+        "player_type": "amateur",
+        "home_course": "Tokyo Country Club",
+        "country": "Japan",
+        "ranking": 15
+      },
+      {
+        "player_id": "PL004",
+        "name": "Carlos Rodriguez",
+        "player_type": "professional",
+        "home_course": "Club de Campo Villa",
+        "country": "Spain",
+        "ranking": 22
+      },
+      {
+        "player_id": "PL005",
+        "name": "Emma Thompson",
+        "player_type": "junior",
+        "home_course": "Pinehurst Country Club",
+        "country": "United States",
+        "ranking": 8
+      },
+      {
+        "player_id": "PL006",
+        "name": "Ahmed Hassan",
+        "player_type": "amateur",
+        "home_course": "Emirates Golf Club",
+        "country": "United Arab Emirates",
+        "ranking": 42
+      },
+      {
+        "player_id": "PL007",
+        "name": "Margaret O'Sullivan",
+        "player_type": "senior",
+        "home_course": "Royal County Down",
+        "country": "Ireland",
+        "ranking": 5
+      },
+      {
+        "player_id": "PL008",
+        "name": "David Kim",
+        "player_type": "professional",
+        "home_course": "Harbour Town Golf Links",
+        "country": "South Korea",
+        "ranking": 18
+      },
+      {
+        "player_id": "PL009",
+        "name": "Isabella Silva",
+        "player_type": "junior",
+        "home_course": "S\u00e3o Paulo Golf Club",
+        "country": "Brazil",
+        "ranking": 12
+      },
+      {
+        "player_id": "PL010",
+        "name": "Robert Anderson",
+        "player_type": "senior",
+        "home_course": "Whistling Straits",
+        "country": "United States",
+        "ranking": 7
+      }
+    ],
+    "Round": [
+      {
+        "round_id": "RD001",
+        "date": "2024-07-15T08:30:00Z",
+        "total_score": 72,
+        "score_to_par": 0,
+        "putts": 28,
+        "fairways_hit": 10,
+        "greens_in_regulation": 12,
+        "weather_conditions": "clear",
+        "name": "Round 1"
+      },
+      {
+        "round_id": "RD002",
+        "date": "2024-07-14T09:15:00Z",
+        "total_score": 68,
+        "score_to_par": -4,
+        "putts": 25,
+        "fairways_hit": 12,
+        "greens_in_regulation": 15,
+        "weather_conditions": "cloudy",
+        "name": "Round 2"
+      },
+      {
+        "round_id": "RD003",
+        "date": "2024-07-13T07:45:00Z",
+        "total_score": 76,
+        "score_to_par": 4,
+        "putts": 32,
+        "fairways_hit": 8,
+        "greens_in_regulation": 9,
+        "weather_conditions": "windy",
+        "name": "Round 3"
+      },
+      {
+        "round_id": "RD004",
+        "date": "2024-07-12T10:00:00Z",
+        "total_score": 71,
+        "score_to_par": -1,
+        "putts": 29,
+        "fairways_hit": 9,
+        "greens_in_regulation": 13,
+        "weather_conditions": "clear",
+        "name": "Round 4"
+      },
+      {
+        "round_id": "RD005",
+        "date": "2024-07-11T08:00:00Z",
+        "total_score": 79,
+        "score_to_par": 7,
+        "putts": 35,
+        "fairways_hit": 6,
+        "greens_in_regulation": 7,
+        "weather_conditions": "rainy",
+        "name": "Round 5"
+      },
+      {
+        "round_id": "RD006",
+        "date": "2024-07-10T09:30:00Z",
+        "total_score": 70,
+        "score_to_par": -2,
+        "putts": 27,
+        "fairways_hit": 11,
+        "greens_in_regulation": 14,
+        "weather_conditions": "clear",
+        "name": "Round 6"
+      },
+      {
+        "round_id": "RD007",
+        "date": "2024-07-09T07:15:00Z",
+        "total_score": 74,
+        "score_to_par": 2,
+        "putts": 30,
+        "fairways_hit": 9,
+        "greens_in_regulation": 11,
+        "weather_conditions": "mixed",
+        "name": "Round 7"
+      },
+      {
+        "round_id": "RD008",
+        "date": "2024-07-08T08:45:00Z",
+        "total_score": 67,
+        "score_to_par": -5,
+        "putts": 24,
+        "fairways_hit": 13,
+        "greens_in_regulation": 16,
+        "weather_conditions": "cloudy",
+        "name": "Round 8"
+      }
+    ],
+    "Tournament": [
+      {
+        "tournament_id": "T001",
+        "name": "The Masters Tournament",
+        "tournament_type": "major",
+        "start_date": "2024-04-11",
+        "end_date": "2024-04-14",
+        "purse": 20000000.0,
+        "field_size": 96
+      },
+      {
+        "tournament_id": "T002",
+        "name": "PGA Championship",
+        "tournament_type": "major",
+        "start_date": "2024-05-16",
+        "end_date": "2024-05-19",
+        "purse": 18000000.0,
+        "field_size": 156
+      },
+      {
+        "tournament_id": "T003",
+        "name": "Bay Area Classic",
+        "tournament_type": "tour_event",
+        "start_date": "2024-06-20",
+        "end_date": "2024-06-23",
+        "purse": 8500000.0,
+        "field_size": 144
+      },
+      {
+        "tournament_id": "T004",
+        "name": "Children's Hospital Charity Open",
+        "tournament_type": "charity",
+        "start_date": "2024-08-15",
+        "end_date": "2024-08-16",
+        "purse": 500000.0,
+        "field_size": 80
+      },
+      {
+        "tournament_id": "T005",
+        "name": "Riverview Country Club Championship",
+        "tournament_type": "club_championship",
+        "start_date": "2024-07-27",
+        "end_date": "2024-07-28",
+        "purse": 25000.0,
+        "field_size": 64
+      },
+      {
+        "tournament_id": "T006",
+        "name": "U.S. Amateur Championship",
+        "tournament_type": "amateur",
+        "start_date": "2024-08-12",
+        "end_date": "2024-08-18",
+        "purse": 0.0,
+        "field_size": 312
+      },
+      {
+        "tournament_id": "T007",
+        "name": "Corporate Invitational",
+        "tournament_type": "invitational",
+        "start_date": "2024-09-05",
+        "end_date": "2024-09-06",
+        "purse": 750000.0,
+        "field_size": 72
+      },
+      {
+        "tournament_id": "T008",
+        "name": "Phoenix Desert Classic",
+        "tournament_type": "tour_event",
+        "start_date": "2024-03-14",
+        "end_date": "2024-03-17",
+        "purse": 9200000.0,
+        "field_size": 132
+      }
+    ],
+    "Handicap": [
+      {
+        "handicap_id": "HC001",
+        "handicap_index": 8.4,
+        "effective_date": "2024-07-01",
+        "low_index": 7.2,
+        "trend": "improving",
+        "rounds_counted": 18,
+        "name": "Handicap 1"
+      },
+      {
+        "handicap_id": "HC002",
+        "handicap_index": 15.7,
+        "effective_date": "2024-07-01",
+        "low_index": 14.9,
+        "trend": "stable",
+        "rounds_counted": 20,
+        "name": "Handicap 2"
+      },
+      {
+        "handicap_id": "HC003",
+        "handicap_index": 3.1,
+        "effective_date": "2024-06-15",
+        "low_index": 2.8,
+        "trend": "declining",
+        "rounds_counted": 15,
+        "name": "Handicap 3"
+      },
+      {
+        "handicap_id": "HC004",
+        "handicap_index": 22.3,
+        "effective_date": "2024-07-01",
+        "low_index": 21.1,
+        "trend": "improving",
+        "rounds_counted": 12,
+        "name": "Handicap 4"
+      },
+      {
+        "handicap_id": "HC005",
+        "handicap_index": 11.9,
+        "effective_date": "2024-06-30",
+        "low_index": 10.5,
+        "trend": "stable",
+        "rounds_counted": 16,
+        "name": "Handicap 5"
+      },
+      {
+        "handicap_id": "HC006",
+        "handicap_index": 6.8,
+        "effective_date": "2024-07-01",
+        "low_index": 5.9,
+        "trend": "declining",
+        "rounds_counted": 19,
+        "name": "Handicap 6"
+      },
+      {
+        "handicap_id": "HC007",
+        "handicap_index": 18.5,
+        "effective_date": "2024-06-25",
+        "low_index": 17.2,
+        "trend": "improving",
+        "rounds_counted": 14,
+        "name": "Handicap 7"
+      },
+      {
+        "handicap_id": "HC008",
+        "handicap_index": 1.2,
+        "effective_date": "2024-07-01",
+        "low_index": 0.8,
+        "trend": "stable",
+        "rounds_counted": 20,
+        "name": "Handicap 8"
+      },
+      {
+        "handicap_id": "HC009",
+        "handicap_index": 26.4,
+        "effective_date": "2024-06-20",
+        "low_index": 25.1,
+        "trend": "improving",
+        "rounds_counted": 11,
+        "name": "Handicap 9"
+      },
+      {
+        "handicap_id": "HC010",
+        "handicap_index": 13.2,
+        "effective_date": "2024-07-01",
+        "low_index": 12.4,
+        "trend": "stable",
+        "rounds_counted": 17,
+        "name": "Handicap 10"
+      }
+    ],
+    "Hole": [
+      {
+        "hole_id": "H001",
+        "hole_number": 1,
+        "par": 4,
+        "yardage": 425,
+        "handicap_stroke": 10,
+        "description": "Straight-away par 4 with fairway bunkers on both sides and elevated green",
+        "name": "Hole 1"
+      },
+      {
+        "hole_id": "H002",
+        "hole_number": 2,
+        "par": 3,
+        "yardage": 175,
+        "handicap_stroke": 16,
+        "description": "Scenic par 3 over water with pin placement determining difficulty",
+        "name": "Hole 2"
+      },
+      {
+        "hole_id": "H003",
+        "hole_number": 3,
+        "par": 5,
+        "yardage": 535,
+        "handicap_stroke": 4,
+        "description": "Dogleg left par 5 with risk-reward second shot over creek to green",
+        "name": "Hole 3"
+      },
+      {
+        "hole_id": "H004",
+        "hole_number": 4,
+        "par": 4,
+        "yardage": 390,
+        "handicap_stroke": 12,
+        "description": "Short par 4 with narrow landing area and well-defended green",
+        "name": "Hole 4"
+      },
+      {
+        "hole_id": "H005",
+        "hole_number": 5,
+        "par": 4,
+        "yardage": 465,
+        "handicap_stroke": 2,
+        "description": "Long par 4 requiring precise tee shot to avoid fairway bunkers",
+        "name": "Hole 5"
+      },
+      {
+        "hole_id": "H006",
+        "hole_number": 6,
+        "par": 3,
+        "yardage": 195,
+        "handicap_stroke": 14,
+        "description": "Challenging par 3 with large green and deep bunkers front and back",
+        "name": "Hole 6"
+      },
+      {
+        "hole_id": "H007",
+        "hole_number": 7,
+        "par": 4,
+        "yardage": 410,
+        "handicap_stroke": 8,
+        "description": "Slight dogleg right with tree trouble on right side and sloped green",
+        "name": "Hole 7"
+      },
+      {
+        "hole_id": "H008",
+        "hole_number": 8,
+        "par": 5,
+        "yardage": 575,
+        "handicap_stroke": 6,
+        "description": "Three-shot par 5 with water hazard crossing fairway twice",
+        "name": "Hole 8"
+      },
+      {
+        "hole_id": "H009",
+        "hole_number": 9,
+        "par": 4,
+        "yardage": 445,
+        "handicap_stroke": 1,
+        "description": "Signature finishing hole with uphill approach to multi-tiered green",
+        "name": "Hole 9"
+      },
+      {
+        "hole_id": "H010",
+        "hole_number": 17,
+        "par": 3,
+        "yardage": 137,
+        "handicap_stroke": 18,
+        "description": "Island green par 3 surrounded by water, requiring precise club selection",
+        "name": "Hole 10"
+      }
+    ]
+  },
+  "relationships": [
+    {
+      "type": "WORKS_FOR",
+      "source_label": "Person",
+      "source_name": "Sarah Chen",
+      "target_label": "Organization",
+      "target_name": "Golf Course Superintendents Association"
+    },
+    {
+      "type": "WORKS_FOR",
+      "source_label": "Person",
+      "source_name": "Sarah Chen",
+      "target_label": "Organization",
+      "target_name": "Titleist"
+    },
+    {
+      "type": "WORKS_FOR",
+      "source_label": "Person",
+      "source_name": "Marcus Williams",
+      "target_label": "Organization",
+      "target_name": "PGA Tour"
+    },
+    {
+      "type": "WORKS_FOR",
+      "source_label": "Person",
+      "source_name": "Elena Rodriguez",
+      "target_label": "Organization",
+      "target_name": "Titleist"
+    },
+    {
+      "type": "WORKS_FOR",
+      "source_label": "Person",
+      "source_name": "Elena Rodriguez",
+      "target_label": "Organization",
+      "target_name": "Golf Course Superintendents Association"
+    },
+    {
+      "type": "WORKS_FOR",
+      "source_label": "Person",
+      "source_name": "James Mitchell",
+      "target_label": "Organization",
+      "target_name": "Titleist"
+    },
+    {
+      "type": "WORKS_FOR",
+      "source_label": "Person",
+      "source_name": "Priya Patel",
+      "target_label": "Organization",
+      "target_name": "United States Golf Association"
+    },
+    {
+      "type": "WORKS_FOR",
+      "source_label": "Person",
+      "source_name": "Priya Patel",
+      "target_label": "Organization",
+      "target_name": "Titleist"
+    },
+    {
+      "type": "WORKS_FOR",
+      "source_label": "Person",
+      "source_name": "Priya Patel",
+      "target_label": "Organization",
+      "target_name": "PGA Tour"
+    },
+    {
+      "type": "LOCATED_AT",
+      "source_label": "Organization",
+      "source_name": "Augusta National Golf Club",
+      "target_label": "Location",
+      "target_name": "St. Andrews Old Course"
+    },
+    {
+      "type": "LOCATED_AT",
+      "source_label": "Organization",
+      "source_name": "Augusta National Golf Club",
+      "target_label": "Location",
+      "target_name": "Pebble Beach Golf Links"
+    },
+    {
+      "type": "LOCATED_AT",
+      "source_label": "Organization",
+      "source_name": "PGA Tour",
+      "target_label": "Location",
+      "target_name": "Royal Melbourne Golf Club"
+    },
+    {
+      "type": "LOCATED_AT",
+      "source_label": "Organization",
+      "source_name": "United States Golf Association",
+      "target_label": "Location",
+      "target_name": "Pebble Beach Golf Links"
+    },
+    {
+      "type": "LOCATED_AT",
+      "source_label": "Organization",
+      "source_name": "United States Golf Association",
+      "target_label": "Location",
+      "target_name": "St. Andrews Old Course"
+    },
+    {
+      "type": "LOCATED_AT",
+      "source_label": "Organization",
+      "source_name": "Titleist",
+      "target_label": "Location",
+      "target_name": "St. Andrews Old Course"
+    },
+    {
+      "type": "LOCATED_AT",
+      "source_label": "Organization",
+      "source_name": "Titleist",
+      "target_label": "Location",
+      "target_name": "Shinnecock Hills Golf Club"
+    },
+    {
+      "type": "LOCATED_AT",
+      "source_label": "Organization",
+      "source_name": "Golf Course Superintendents Association",
+      "target_label": "Location",
+      "target_name": "Shinnecock Hills Golf Club"
+    },
+    {
+      "type": "LOCATED_AT",
+      "source_label": "Organization",
+      "source_name": "Golf Course Superintendents Association",
+      "target_label": "Location",
+      "target_name": "St. Andrews Old Course"
+    },
+    {
+      "type": "PARTICIPATED_IN",
+      "source_label": "Person",
+      "source_name": "Sarah Chen",
+      "target_label": "Event",
+      "target_name": "Charity Golf Tournament"
+    },
+    {
+      "type": "PARTICIPATED_IN",
+      "source_label": "Person",
+      "source_name": "Marcus Williams",
+      "target_label": "Event",
+      "target_name": "Senior Member-Guest Tournament"
+    },
+    {
+      "type": "PARTICIPATED_IN",
+      "source_label": "Person",
+      "source_name": "Marcus Williams",
+      "target_label": "Event",
+      "target_name": "Women's League Championship"
+    },
+    {
+      "type": "PARTICIPATED_IN",
+      "source_label": "Person",
+      "source_name": "Elena Rodriguez",
+      "target_label": "Event",
+      "target_name": "Women's League Championship"
+    },
+    {
+      "type": "PARTICIPATED_IN",
+      "source_label": "Person",
+      "source_name": "James Mitchell",
+      "target_label": "Event",
+      "target_name": "Charity Golf Tournament"
+    },
+    {
+      "type": "PARTICIPATED_IN",
+      "source_label": "Person",
+      "source_name": "Priya Patel",
+      "target_label": "Event",
+      "target_name": "Junior Golf Development Clinic"
+    },
+    {
+      "type": "PARTICIPATED_IN",
+      "source_label": "Person",
+      "source_name": "Priya Patel",
+      "target_label": "Event",
+      "target_name": "Women's League Championship"
+    },
+    {
+      "type": "PLAYED_AT",
+      "source_label": "Round",
+      "source_name": "Round 1",
+      "target_label": "Course",
+      "target_name": "Golden Hills Parkland Course"
+    },
+    {
+      "type": "PLAYED_AT",
+      "source_label": "Round",
+      "source_name": "Round 1",
+      "target_label": "Course",
+      "target_name": "Pebble Beach Golf Links"
+    },
+    {
+      "type": "PLAYED_AT",
+      "source_label": "Round",
+      "source_name": "Round 1",
+      "target_label": "Course",
+      "target_name": "Lake View Golf Resort"
+    },
+    {
+      "type": "PLAYED_AT",
+      "source_label": "Round",
+      "source_name": "Round 2",
+      "target_label": "Course",
+      "target_name": "TPC Sawgrass Stadium Course"
+    },
+    {
+      "type": "PLAYED_AT",
+      "source_label": "Round",
+      "source_name": "Round 3",
+      "target_label": "Course",
+      "target_name": "Royal Melbourne West"
+    },
+    {
+      "type": "PLAYED_AT",
+      "source_label": "Round",
+      "source_name": "Round 3",
+      "target_label": "Course",
+      "target_name": "Mountain Pines Municipal"
+    },
+    {
+      "type": "PLAYED_AT",
+      "source_label": "Round",
+      "source_name": "Round 4",
+      "target_label": "Course",
+      "target_name": "St. Andrews Old Course"
+    },
+    {
+      "type": "PLAYED_AT",
+      "source_label": "Round",
+      "source_name": "Round 5",
+      "target_label": "Course",
+      "target_name": "Westfield Commons Golf Course"
+    },
+    {
+      "type": "PLAYED_AT",
+      "source_label": "Round",
+      "source_name": "Round 5",
+      "target_label": "Course",
+      "target_name": "TPC Sawgrass Stadium Course"
+    },
+    {
+      "type": "PLAYED_AT",
+      "source_label": "Round",
+      "source_name": "Round 5",
+      "target_label": "Course",
+      "target_name": "Lake View Golf Resort"
+    },
+    {
+      "type": "PLAYED_AT",
+      "source_label": "Round",
+      "source_name": "Round 6",
+      "target_label": "Course",
+      "target_name": "Lake View Golf Resort"
+    },
+    {
+      "type": "PLAYED_AT",
+      "source_label": "Round",
+      "source_name": "Round 6",
+      "target_label": "Course",
+      "target_name": "TPC Sawgrass Stadium Course"
+    },
+    {
+      "type": "PLAYED_AT",
+      "source_label": "Round",
+      "source_name": "Round 6",
+      "target_label": "Course",
+      "target_name": "St. Andrews Old Course"
+    },
+    {
+      "type": "PLAYED_AT",
+      "source_label": "Round",
+      "source_name": "Round 7",
+      "target_label": "Course",
+      "target_name": "Royal Melbourne West"
+    },
+    {
+      "type": "PLAYED_AT",
+      "source_label": "Round",
+      "source_name": "Round 7",
+      "target_label": "Course",
+      "target_name": "Shinnecock Hills Golf Club"
+    },
+    {
+      "type": "PLAYED_AT",
+      "source_label": "Round",
+      "source_name": "Round 7",
+      "target_label": "Course",
+      "target_name": "Westfield Commons Golf Course"
+    },
+    {
+      "type": "PLAYED_AT",
+      "source_label": "Round",
+      "source_name": "Round 8",
+      "target_label": "Course",
+      "target_name": "TPC Sawgrass Stadium Course"
+    },
+    {
+      "type": "SCORED",
+      "source_label": "Player",
+      "source_name": "Tiger Woods",
+      "target_label": "Round",
+      "target_name": "Round 6"
+    },
+    {
+      "type": "SCORED",
+      "source_label": "Player",
+      "source_name": "Tiger Woods",
+      "target_label": "Round",
+      "target_name": "Round 3"
+    },
+    {
+      "type": "SCORED",
+      "source_label": "Player",
+      "source_name": "Tiger Woods",
+      "target_label": "Round",
+      "target_name": "Round 4"
+    },
+    {
+      "type": "SCORED",
+      "source_label": "Player",
+      "source_name": "Rory McIlroy",
+      "target_label": "Round",
+      "target_name": "Round 3"
+    },
+    {
+      "type": "SCORED",
+      "source_label": "Player",
+      "source_name": "Rory McIlroy",
+      "target_label": "Round",
+      "target_name": "Round 2"
+    },
+    {
+      "type": "SCORED",
+      "source_label": "Player",
+      "source_name": "Rory McIlroy",
+      "target_label": "Round",
+      "target_name": "Round 5"
+    },
+    {
+      "type": "SCORED",
+      "source_label": "Player",
+      "source_name": "Sakura Yamazaki",
+      "target_label": "Round",
+      "target_name": "Round 5"
+    },
+    {
+      "type": "SCORED",
+      "source_label": "Player",
+      "source_name": "Sakura Yamazaki",
+      "target_label": "Round",
+      "target_name": "Round 4"
+    },
+    {
+      "type": "SCORED",
+      "source_label": "Player",
+      "source_name": "Carlos Rodriguez",
+      "target_label": "Round",
+      "target_name": "Round 4"
+    },
+    {
+      "type": "SCORED",
+      "source_label": "Player",
+      "source_name": "Carlos Rodriguez",
+      "target_label": "Round",
+      "target_name": "Round 2"
+    },
+    {
+      "type": "SCORED",
+      "source_label": "Player",
+      "source_name": "Carlos Rodriguez",
+      "target_label": "Round",
+      "target_name": "Round 8"
+    },
+    {
+      "type": "SCORED",
+      "source_label": "Player",
+      "source_name": "Emma Thompson",
+      "target_label": "Round",
+      "target_name": "Round 2"
+    },
+    {
+      "type": "SCORED",
+      "source_label": "Player",
+      "source_name": "Emma Thompson",
+      "target_label": "Round",
+      "target_name": "Round 6"
+    },
+    {
+      "type": "SCORED",
+      "source_label": "Player",
+      "source_name": "Emma Thompson",
+      "target_label": "Round",
+      "target_name": "Round 4"
+    },
+    {
+      "type": "SCORED",
+      "source_label": "Player",
+      "source_name": "Ahmed Hassan",
+      "target_label": "Round",
+      "target_name": "Round 7"
+    },
+    {
+      "type": "SCORED",
+      "source_label": "Player",
+      "source_name": "Ahmed Hassan",
+      "target_label": "Round",
+      "target_name": "Round 8"
+    },
+    {
+      "type": "SCORED",
+      "source_label": "Player",
+      "source_name": "Margaret O'Sullivan",
+      "target_label": "Round",
+      "target_name": "Round 8"
+    },
+    {
+      "type": "SCORED",
+      "source_label": "Player",
+      "source_name": "Margaret O'Sullivan",
+      "target_label": "Round",
+      "target_name": "Round 2"
+    },
+    {
+      "type": "SCORED",
+      "source_label": "Player",
+      "source_name": "Margaret O'Sullivan",
+      "target_label": "Round",
+      "target_name": "Round 3"
+    },
+    {
+      "type": "SCORED",
+      "source_label": "Player",
+      "source_name": "David Kim",
+      "target_label": "Round",
+      "target_name": "Round 7"
+    },
+    {
+      "type": "SCORED",
+      "source_label": "Player",
+      "source_name": "David Kim",
+      "target_label": "Round",
+      "target_name": "Round 1"
+    },
+    {
+      "type": "SCORED",
+      "source_label": "Player",
+      "source_name": "David Kim",
+      "target_label": "Round",
+      "target_name": "Round 2"
+    },
+    {
+      "type": "SCORED",
+      "source_label": "Player",
+      "source_name": "Isabella Silva",
+      "target_label": "Round",
+      "target_name": "Round 7"
+    },
+    {
+      "type": "SCORED",
+      "source_label": "Player",
+      "source_name": "Isabella Silva",
+      "target_label": "Round",
+      "target_name": "Round 8"
+    },
+    {
+      "type": "SCORED",
+      "source_label": "Player",
+      "source_name": "Robert Anderson",
+      "target_label": "Round",
+      "target_name": "Round 8"
+    },
+    {
+      "type": "COMPETED_IN",
+      "source_label": "Player",
+      "source_name": "Tiger Woods",
+      "target_label": "Tournament",
+      "target_name": "Phoenix Desert Classic"
+    },
+    {
+      "type": "COMPETED_IN",
+      "source_label": "Player",
+      "source_name": "Tiger Woods",
+      "target_label": "Tournament",
+      "target_name": "Corporate Invitational"
+    },
+    {
+      "type": "COMPETED_IN",
+      "source_label": "Player",
+      "source_name": "Rory McIlroy",
+      "target_label": "Tournament",
+      "target_name": "U.S. Amateur Championship"
+    },
+    {
+      "type": "COMPETED_IN",
+      "source_label": "Player",
+      "source_name": "Rory McIlroy",
+      "target_label": "Tournament",
+      "target_name": "Children's Hospital Charity Open"
+    },
+    {
+      "type": "COMPETED_IN",
+      "source_label": "Player",
+      "source_name": "Rory McIlroy",
+      "target_label": "Tournament",
+      "target_name": "Corporate Invitational"
+    },
+    {
+      "type": "COMPETED_IN",
+      "source_label": "Player",
+      "source_name": "Sakura Yamazaki",
+      "target_label": "Tournament",
+      "target_name": "Children's Hospital Charity Open"
+    },
+    {
+      "type": "COMPETED_IN",
+      "source_label": "Player",
+      "source_name": "Sakura Yamazaki",
+      "target_label": "Tournament",
+      "target_name": "PGA Championship"
+    },
+    {
+      "type": "COMPETED_IN",
+      "source_label": "Player",
+      "source_name": "Sakura Yamazaki",
+      "target_label": "Tournament",
+      "target_name": "Riverview Country Club Championship"
+    },
+    {
+      "type": "COMPETED_IN",
+      "source_label": "Player",
+      "source_name": "Carlos Rodriguez",
+      "target_label": "Tournament",
+      "target_name": "Corporate Invitational"
+    },
+    {
+      "type": "COMPETED_IN",
+      "source_label": "Player",
+      "source_name": "Carlos Rodriguez",
+      "target_label": "Tournament",
+      "target_name": "U.S. Amateur Championship"
+    },
+    {
+      "type": "COMPETED_IN",
+      "source_label": "Player",
+      "source_name": "Carlos Rodriguez",
+      "target_label": "Tournament",
+      "target_name": "Phoenix Desert Classic"
+    },
+    {
+      "type": "COMPETED_IN",
+      "source_label": "Player",
+      "source_name": "Emma Thompson",
+      "target_label": "Tournament",
+      "target_name": "PGA Championship"
+    },
+    {
+      "type": "COMPETED_IN",
+      "source_label": "Player",
+      "source_name": "Emma Thompson",
+      "target_label": "Tournament",
+      "target_name": "Corporate Invitational"
+    },
+    {
+      "type": "COMPETED_IN",
+      "source_label": "Player",
+      "source_name": "Ahmed Hassan",
+      "target_label": "Tournament",
+      "target_name": "PGA Championship"
+    },
+    {
+      "type": "COMPETED_IN",
+      "source_label": "Player",
+      "source_name": "Margaret O'Sullivan",
+      "target_label": "Tournament",
+      "target_name": "Riverview Country Club Championship"
+    },
+    {
+      "type": "COMPETED_IN",
+      "source_label": "Player",
+      "source_name": "Margaret O'Sullivan",
+      "target_label": "Tournament",
+      "target_name": "Bay Area Classic"
+    },
+    {
+      "type": "COMPETED_IN",
+      "source_label": "Player",
+      "source_name": "David Kim",
+      "target_label": "Tournament",
+      "target_name": "Riverview Country Club Championship"
+    },
+    {
+      "type": "COMPETED_IN",
+      "source_label": "Player",
+      "source_name": "David Kim",
+      "target_label": "Tournament",
+      "target_name": "Phoenix Desert Classic"
+    },
+    {
+      "type": "COMPETED_IN",
+      "source_label": "Player",
+      "source_name": "David Kim",
+      "target_label": "Tournament",
+      "target_name": "Corporate Invitational"
+    },
+    {
+      "type": "COMPETED_IN",
+      "source_label": "Player",
+      "source_name": "Isabella Silva",
+      "target_label": "Tournament",
+      "target_name": "U.S. Amateur Championship"
+    },
+    {
+      "type": "COMPETED_IN",
+      "source_label": "Player",
+      "source_name": "Robert Anderson",
+      "target_label": "Tournament",
+      "target_name": "The Masters Tournament"
+    },
+    {
+      "type": "COMPETED_IN",
+      "source_label": "Player",
+      "source_name": "Robert Anderson",
+      "target_label": "Tournament",
+      "target_name": "Phoenix Desert Classic"
+    },
+    {
+      "type": "COMPETED_IN",
+      "source_label": "Player",
+      "source_name": "Robert Anderson",
+      "target_label": "Tournament",
+      "target_name": "PGA Championship"
+    },
+    {
+      "type": "RANKED",
+      "source_label": "Player",
+      "source_name": "Tiger Woods",
+      "target_label": "Tournament",
+      "target_name": "Bay Area Classic"
+    },
+    {
+      "type": "RANKED",
+      "source_label": "Player",
+      "source_name": "Rory McIlroy",
+      "target_label": "Tournament",
+      "target_name": "Children's Hospital Charity Open"
+    },
+    {
+      "type": "RANKED",
+      "source_label": "Player",
+      "source_name": "Rory McIlroy",
+      "target_label": "Tournament",
+      "target_name": "Bay Area Classic"
+    },
+    {
+      "type": "RANKED",
+      "source_label": "Player",
+      "source_name": "Rory McIlroy",
+      "target_label": "Tournament",
+      "target_name": "Corporate Invitational"
+    },
+    {
+      "type": "RANKED",
+      "source_label": "Player",
+      "source_name": "Sakura Yamazaki",
+      "target_label": "Tournament",
+      "target_name": "Corporate Invitational"
+    },
+    {
+      "type": "RANKED",
+      "source_label": "Player",
+      "source_name": "Sakura Yamazaki",
+      "target_label": "Tournament",
+      "target_name": "The Masters Tournament"
+    },
+    {
+      "type": "RANKED",
+      "source_label": "Player",
+      "source_name": "Sakura Yamazaki",
+      "target_label": "Tournament",
+      "target_name": "U.S. Amateur Championship"
+    },
+    {
+      "type": "RANKED",
+      "source_label": "Player",
+      "source_name": "Carlos Rodriguez",
+      "target_label": "Tournament",
+      "target_name": "Corporate Invitational"
+    },
+    {
+      "type": "RANKED",
+      "source_label": "Player",
+      "source_name": "Carlos Rodriguez",
+      "target_label": "Tournament",
+      "target_name": "Children's Hospital Charity Open"
+    },
+    {
+      "type": "RANKED",
+      "source_label": "Player",
+      "source_name": "Carlos Rodriguez",
+      "target_label": "Tournament",
+      "target_name": "U.S. Amateur Championship"
+    },
+    {
+      "type": "RANKED",
+      "source_label": "Player",
+      "source_name": "Emma Thompson",
+      "target_label": "Tournament",
+      "target_name": "Children's Hospital Charity Open"
+    },
+    {
+      "type": "RANKED",
+      "source_label": "Player",
+      "source_name": "Emma Thompson",
+      "target_label": "Tournament",
+      "target_name": "Bay Area Classic"
+    },
+    {
+      "type": "RANKED",
+      "source_label": "Player",
+      "source_name": "Emma Thompson",
+      "target_label": "Tournament",
+      "target_name": "Riverview Country Club Championship"
+    },
+    {
+      "type": "RANKED",
+      "source_label": "Player",
+      "source_name": "Ahmed Hassan",
+      "target_label": "Tournament",
+      "target_name": "Phoenix Desert Classic"
+    },
+    {
+      "type": "RANKED",
+      "source_label": "Player",
+      "source_name": "Ahmed Hassan",
+      "target_label": "Tournament",
+      "target_name": "U.S. Amateur Championship"
+    },
+    {
+      "type": "RANKED",
+      "source_label": "Player",
+      "source_name": "Margaret O'Sullivan",
+      "target_label": "Tournament",
+      "target_name": "Corporate Invitational"
+    },
+    {
+      "type": "RANKED",
+      "source_label": "Player",
+      "source_name": "Margaret O'Sullivan",
+      "target_label": "Tournament",
+      "target_name": "U.S. Amateur Championship"
+    },
+    {
+      "type": "RANKED",
+      "source_label": "Player",
+      "source_name": "Margaret O'Sullivan",
+      "target_label": "Tournament",
+      "target_name": "Phoenix Desert Classic"
+    },
+    {
+      "type": "RANKED",
+      "source_label": "Player",
+      "source_name": "David Kim",
+      "target_label": "Tournament",
+      "target_name": "PGA Championship"
+    },
+    {
+      "type": "RANKED",
+      "source_label": "Player",
+      "source_name": "Isabella Silva",
+      "target_label": "Tournament",
+      "target_name": "Phoenix Desert Classic"
+    },
+    {
+      "type": "RANKED",
+      "source_label": "Player",
+      "source_name": "Isabella Silva",
+      "target_label": "Tournament",
+      "target_name": "PGA Championship"
+    },
+    {
+      "type": "RANKED",
+      "source_label": "Player",
+      "source_name": "Isabella Silva",
+      "target_label": "Tournament",
+      "target_name": "Riverview Country Club Championship"
+    },
+    {
+      "type": "RANKED",
+      "source_label": "Player",
+      "source_name": "Robert Anderson",
+      "target_label": "Tournament",
+      "target_name": "Bay Area Classic"
+    },
+    {
+      "type": "HOSTS",
+      "source_label": "Course",
+      "source_name": "Pebble Beach Golf Links",
+      "target_label": "Tournament",
+      "target_name": "Riverview Country Club Championship"
+    },
+    {
+      "type": "HOSTS",
+      "source_label": "Course",
+      "source_name": "Pebble Beach Golf Links",
+      "target_label": "Tournament",
+      "target_name": "Phoenix Desert Classic"
+    },
+    {
+      "type": "HOSTS",
+      "source_label": "Course",
+      "source_name": "St. Andrews Old Course",
+      "target_label": "Tournament",
+      "target_name": "Riverview Country Club Championship"
+    },
+    {
+      "type": "HOSTS",
+      "source_label": "Course",
+      "source_name": "TPC Sawgrass Stadium Course",
+      "target_label": "Tournament",
+      "target_name": "Corporate Invitational"
+    },
+    {
+      "type": "HOSTS",
+      "source_label": "Course",
+      "source_name": "TPC Sawgrass Stadium Course",
+      "target_label": "Tournament",
+      "target_name": "Children's Hospital Charity Open"
+    },
+    {
+      "type": "HOSTS",
+      "source_label": "Course",
+      "source_name": "Royal Melbourne West",
+      "target_label": "Tournament",
+      "target_name": "PGA Championship"
+    },
+    {
+      "type": "HOSTS",
+      "source_label": "Course",
+      "source_name": "Royal Melbourne West",
+      "target_label": "Tournament",
+      "target_name": "Phoenix Desert Classic"
+    },
+    {
+      "type": "HOSTS",
+      "source_label": "Course",
+      "source_name": "Shinnecock Hills Golf Club",
+      "target_label": "Tournament",
+      "target_name": "Phoenix Desert Classic"
+    },
+    {
+      "type": "HOSTS",
+      "source_label": "Course",
+      "source_name": "Shinnecock Hills Golf Club",
+      "target_label": "Tournament",
+      "target_name": "Corporate Invitational"
+    },
+    {
+      "type": "HOSTS",
+      "source_label": "Course",
+      "source_name": "River Oaks Country Club",
+      "target_label": "Tournament",
+      "target_name": "Children's Hospital Charity Open"
+    },
+    {
+      "type": "HOSTS",
+      "source_label": "Course",
+      "source_name": "River Oaks Country Club",
+      "target_label": "Tournament",
+      "target_name": "U.S. Amateur Championship"
+    },
+    {
+      "type": "HOSTS",
+      "source_label": "Course",
+      "source_name": "Mountain Pines Municipal",
+      "target_label": "Tournament",
+      "target_name": "PGA Championship"
+    },
+    {
+      "type": "HOSTS",
+      "source_label": "Course",
+      "source_name": "Lake View Golf Resort",
+      "target_label": "Tournament",
+      "target_name": "Children's Hospital Charity Open"
+    },
+    {
+      "type": "HOSTS",
+      "source_label": "Course",
+      "source_name": "Lake View Golf Resort",
+      "target_label": "Tournament",
+      "target_name": "U.S. Amateur Championship"
+    },
+    {
+      "type": "HOSTS",
+      "source_label": "Course",
+      "source_name": "Lake View Golf Resort",
+      "target_label": "Tournament",
+      "target_name": "Bay Area Classic"
+    },
+    {
+      "type": "HOSTS",
+      "source_label": "Course",
+      "source_name": "Westfield Commons Golf Course",
+      "target_label": "Tournament",
+      "target_name": "PGA Championship"
+    },
+    {
+      "type": "HOSTS",
+      "source_label": "Course",
+      "source_name": "Westfield Commons Golf Course",
+      "target_label": "Tournament",
+      "target_name": "Children's Hospital Charity Open"
+    },
+    {
+      "type": "HOSTS",
+      "source_label": "Course",
+      "source_name": "Westfield Commons Golf Course",
+      "target_label": "Tournament",
+      "target_name": "U.S. Amateur Championship"
+    },
+    {
+      "type": "HOSTS",
+      "source_label": "Course",
+      "source_name": "Golden Hills Parkland Course",
+      "target_label": "Tournament",
+      "target_name": "U.S. Amateur Championship"
+    },
+    {
+      "type": "PART_OF_COURSE",
+      "source_label": "Hole",
+      "source_name": "Hole 1",
+      "target_label": "Course",
+      "target_name": "St. Andrews Old Course"
+    },
+    {
+      "type": "PART_OF_COURSE",
+      "source_label": "Hole",
+      "source_name": "Hole 2",
+      "target_label": "Course",
+      "target_name": "Lake View Golf Resort"
+    },
+    {
+      "type": "PART_OF_COURSE",
+      "source_label": "Hole",
+      "source_name": "Hole 2",
+      "target_label": "Course",
+      "target_name": "TPC Sawgrass Stadium Course"
+    },
+    {
+      "type": "PART_OF_COURSE",
+      "source_label": "Hole",
+      "source_name": "Hole 3",
+      "target_label": "Course",
+      "target_name": "TPC Sawgrass Stadium Course"
+    },
+    {
+      "type": "PART_OF_COURSE",
+      "source_label": "Hole",
+      "source_name": "Hole 3",
+      "target_label": "Course",
+      "target_name": "Lake View Golf Resort"
+    },
+    {
+      "type": "PART_OF_COURSE",
+      "source_label": "Hole",
+      "source_name": "Hole 3",
+      "target_label": "Course",
+      "target_name": "Mountain Pines Municipal"
+    },
+    {
+      "type": "PART_OF_COURSE",
+      "source_label": "Hole",
+      "source_name": "Hole 4",
+      "target_label": "Course",
+      "target_name": "Royal Melbourne West"
+    },
+    {
+      "type": "PART_OF_COURSE",
+      "source_label": "Hole",
+      "source_name": "Hole 4",
+      "target_label": "Course",
+      "target_name": "Pebble Beach Golf Links"
+    },
+    {
+      "type": "PART_OF_COURSE",
+      "source_label": "Hole",
+      "source_name": "Hole 4",
+      "target_label": "Course",
+      "target_name": "Shinnecock Hills Golf Club"
+    },
+    {
+      "type": "PART_OF_COURSE",
+      "source_label": "Hole",
+      "source_name": "Hole 5",
+      "target_label": "Course",
+      "target_name": "St. Andrews Old Course"
+    },
+    {
+      "type": "PART_OF_COURSE",
+      "source_label": "Hole",
+      "source_name": "Hole 6",
+      "target_label": "Course",
+      "target_name": "Pebble Beach Golf Links"
+    },
+    {
+      "type": "PART_OF_COURSE",
+      "source_label": "Hole",
+      "source_name": "Hole 7",
+      "target_label": "Course",
+      "target_name": "River Oaks Country Club"
+    },
+    {
+      "type": "PART_OF_COURSE",
+      "source_label": "Hole",
+      "source_name": "Hole 7",
+      "target_label": "Course",
+      "target_name": "Westfield Commons Golf Course"
+    },
+    {
+      "type": "PART_OF_COURSE",
+      "source_label": "Hole",
+      "source_name": "Hole 7",
+      "target_label": "Course",
+      "target_name": "Pebble Beach Golf Links"
+    },
+    {
+      "type": "PART_OF_COURSE",
+      "source_label": "Hole",
+      "source_name": "Hole 8",
+      "target_label": "Course",
+      "target_name": "Westfield Commons Golf Course"
+    },
+    {
+      "type": "PART_OF_COURSE",
+      "source_label": "Hole",
+      "source_name": "Hole 8",
+      "target_label": "Course",
+      "target_name": "River Oaks Country Club"
+    },
+    {
+      "type": "PART_OF_COURSE",
+      "source_label": "Hole",
+      "source_name": "Hole 9",
+      "target_label": "Course",
+      "target_name": "River Oaks Country Club"
+    },
+    {
+      "type": "PART_OF_COURSE",
+      "source_label": "Hole",
+      "source_name": "Hole 10",
+      "target_label": "Course",
+      "target_name": "Mountain Pines Municipal"
+    },
+    {
+      "type": "PART_OF_COURSE",
+      "source_label": "Hole",
+      "source_name": "Hole 10",
+      "target_label": "Course",
+      "target_name": "TPC Sawgrass Stadium Course"
+    },
+    {
+      "type": "HAS_HANDICAP",
+      "source_label": "Player",
+      "source_name": "Tiger Woods",
+      "target_label": "Handicap",
+      "target_name": "Handicap 9"
+    },
+    {
+      "type": "HAS_HANDICAP",
+      "source_label": "Player",
+      "source_name": "Tiger Woods",
+      "target_label": "Handicap",
+      "target_name": "Handicap 6"
+    },
+    {
+      "type": "HAS_HANDICAP",
+      "source_label": "Player",
+      "source_name": "Tiger Woods",
+      "target_label": "Handicap",
+      "target_name": "Handicap 5"
+    },
+    {
+      "type": "HAS_HANDICAP",
+      "source_label": "Player",
+      "source_name": "Rory McIlroy",
+      "target_label": "Handicap",
+      "target_name": "Handicap 7"
+    },
+    {
+      "type": "HAS_HANDICAP",
+      "source_label": "Player",
+      "source_name": "Sakura Yamazaki",
+      "target_label": "Handicap",
+      "target_name": "Handicap 5"
+    },
+    {
+      "type": "HAS_HANDICAP",
+      "source_label": "Player",
+      "source_name": "Carlos Rodriguez",
+      "target_label": "Handicap",
+      "target_name": "Handicap 9"
+    },
+    {
+      "type": "HAS_HANDICAP",
+      "source_label": "Player",
+      "source_name": "Emma Thompson",
+      "target_label": "Handicap",
+      "target_name": "Handicap 7"
+    },
+    {
+      "type": "HAS_HANDICAP",
+      "source_label": "Player",
+      "source_name": "Emma Thompson",
+      "target_label": "Handicap",
+      "target_name": "Handicap 1"
+    },
+    {
+      "type": "HAS_HANDICAP",
+      "source_label": "Player",
+      "source_name": "Emma Thompson",
+      "target_label": "Handicap",
+      "target_name": "Handicap 4"
+    },
+    {
+      "type": "HAS_HANDICAP",
+      "source_label": "Player",
+      "source_name": "Ahmed Hassan",
+      "target_label": "Handicap",
+      "target_name": "Handicap 9"
+    },
+    {
+      "type": "HAS_HANDICAP",
+      "source_label": "Player",
+      "source_name": "Ahmed Hassan",
+      "target_label": "Handicap",
+      "target_name": "Handicap 2"
+    },
+    {
+      "type": "HAS_HANDICAP",
+      "source_label": "Player",
+      "source_name": "Margaret O'Sullivan",
+      "target_label": "Handicap",
+      "target_name": "Handicap 4"
+    },
+    {
+      "type": "HAS_HANDICAP",
+      "source_label": "Player",
+      "source_name": "Margaret O'Sullivan",
+      "target_label": "Handicap",
+      "target_name": "Handicap 1"
+    },
+    {
+      "type": "HAS_HANDICAP",
+      "source_label": "Player",
+      "source_name": "Margaret O'Sullivan",
+      "target_label": "Handicap",
+      "target_name": "Handicap 8"
+    },
+    {
+      "type": "HAS_HANDICAP",
+      "source_label": "Player",
+      "source_name": "David Kim",
+      "target_label": "Handicap",
+      "target_name": "Handicap 6"
+    },
+    {
+      "type": "HAS_HANDICAP",
+      "source_label": "Player",
+      "source_name": "Isabella Silva",
+      "target_label": "Handicap",
+      "target_name": "Handicap 1"
+    },
+    {
+      "type": "HAS_HANDICAP",
+      "source_label": "Player",
+      "source_name": "Robert Anderson",
+      "target_label": "Handicap",
+      "target_name": "Handicap 1"
+    },
+    {
+      "type": "HAS_HANDICAP",
+      "source_label": "Player",
+      "source_name": "Robert Anderson",
+      "target_label": "Handicap",
+      "target_name": "Handicap 6"
+    },
+    {
+      "type": "HAS_HANDICAP",
+      "source_label": "Player",
+      "source_name": "Robert Anderson",
+      "target_label": "Handicap",
+      "target_name": "Handicap 4"
+    },
+    {
+      "type": "ROUND_IN_TOURNAMENT",
+      "source_label": "Round",
+      "source_name": "Round 1",
+      "target_label": "Tournament",
+      "target_name": "Riverview Country Club Championship"
+    },
+    {
+      "type": "ROUND_IN_TOURNAMENT",
+      "source_label": "Round",
+      "source_name": "Round 1",
+      "target_label": "Tournament",
+      "target_name": "Bay Area Classic"
+    },
+    {
+      "type": "ROUND_IN_TOURNAMENT",
+      "source_label": "Round",
+      "source_name": "Round 1",
+      "target_label": "Tournament",
+      "target_name": "The Masters Tournament"
+    },
+    {
+      "type": "ROUND_IN_TOURNAMENT",
+      "source_label": "Round",
+      "source_name": "Round 2",
+      "target_label": "Tournament",
+      "target_name": "Corporate Invitational"
+    },
+    {
+      "type": "ROUND_IN_TOURNAMENT",
+      "source_label": "Round",
+      "source_name": "Round 2",
+      "target_label": "Tournament",
+      "target_name": "Phoenix Desert Classic"
+    },
+    {
+      "type": "ROUND_IN_TOURNAMENT",
+      "source_label": "Round",
+      "source_name": "Round 3",
+      "target_label": "Tournament",
+      "target_name": "Corporate Invitational"
+    },
+    {
+      "type": "ROUND_IN_TOURNAMENT",
+      "source_label": "Round",
+      "source_name": "Round 3",
+      "target_label": "Tournament",
+      "target_name": "PGA Championship"
+    },
+    {
+      "type": "ROUND_IN_TOURNAMENT",
+      "source_label": "Round",
+      "source_name": "Round 3",
+      "target_label": "Tournament",
+      "target_name": "The Masters Tournament"
+    },
+    {
+      "type": "ROUND_IN_TOURNAMENT",
+      "source_label": "Round",
+      "source_name": "Round 4",
+      "target_label": "Tournament",
+      "target_name": "Phoenix Desert Classic"
+    },
+    {
+      "type": "ROUND_IN_TOURNAMENT",
+      "source_label": "Round",
+      "source_name": "Round 4",
+      "target_label": "Tournament",
+      "target_name": "Bay Area Classic"
+    },
+    {
+      "type": "ROUND_IN_TOURNAMENT",
+      "source_label": "Round",
+      "source_name": "Round 5",
+      "target_label": "Tournament",
+      "target_name": "Children's Hospital Charity Open"
+    },
+    {
+      "type": "ROUND_IN_TOURNAMENT",
+      "source_label": "Round",
+      "source_name": "Round 5",
+      "target_label": "Tournament",
+      "target_name": "PGA Championship"
+    },
+    {
+      "type": "ROUND_IN_TOURNAMENT",
+      "source_label": "Round",
+      "source_name": "Round 5",
+      "target_label": "Tournament",
+      "target_name": "The Masters Tournament"
+    },
+    {
+      "type": "ROUND_IN_TOURNAMENT",
+      "source_label": "Round",
+      "source_name": "Round 6",
+      "target_label": "Tournament",
+      "target_name": "Bay Area Classic"
+    },
+    {
+      "type": "ROUND_IN_TOURNAMENT",
+      "source_label": "Round",
+      "source_name": "Round 7",
+      "target_label": "Tournament",
+      "target_name": "The Masters Tournament"
+    },
+    {
+      "type": "ROUND_IN_TOURNAMENT",
+      "source_label": "Round",
+      "source_name": "Round 7",
+      "target_label": "Tournament",
+      "target_name": "PGA Championship"
+    },
+    {
+      "type": "ROUND_IN_TOURNAMENT",
+      "source_label": "Round",
+      "source_name": "Round 7",
+      "target_label": "Tournament",
+      "target_name": "Riverview Country Club Championship"
+    },
+    {
+      "type": "ROUND_IN_TOURNAMENT",
+      "source_label": "Round",
+      "source_name": "Round 8",
+      "target_label": "Tournament",
+      "target_name": "The Masters Tournament"
+    },
+    {
+      "type": "ROUND_IN_TOURNAMENT",
+      "source_label": "Round",
+      "source_name": "Round 8",
+      "target_label": "Tournament",
+      "target_name": "U.S. Amateur Championship"
+    },
+    {
+      "type": "ROUND_IN_TOURNAMENT",
+      "source_label": "Round",
+      "source_name": "Round 8",
+      "target_label": "Tournament",
+      "target_name": "PGA Championship"
+    }
+  ],
+  "documents": [
+    {
+      "template_id": "scorecard",
+      "template_name": "Scorecard",
+      "title": "Tiger Woods - Round 2 Scorecard - Pebble Beach Golf Links",
+      "content": "Tiger Woods carded a stellar 4-under-par 68 during Round 2 at Pebble Beach Golf Links on March 15, 2024. The 15-time major champion demonstrated his mastery of the iconic coastal layout with 28 total putts, showcasing the putting precision that has defined his legendary career.\n\nWoods opened with consecutive birdies on the par-4 1st and par-5 2nd holes, capitalizing on favorable morning conditions before the Pacific winds strengthened. His approach shot on the 2nd landed within eight feet, setting up an easy birdie putt. The highlight of his front nine came at the scenic par-3 7th, where Woods found the green with a 6-iron despite swirling winds and converted a 15-foot putt for birdie.\n\nAfter making the turn at 3-under, Woods navigated the challenging back nine with characteristic patience. He saved par on multiple occasions, including a brilliant up-and-down from the bunker on the par-4 13th. His lone bogey came at the treacherous par-3 17th, where his tee shot found the front bunker, leading to a missed 8-foot par putt.\n\nWoods sealed his round with a spectacular eagle on the par-5 18th, launching a 3-wood from 245 yards to within 12 feet of the pin. The resulting eagle putt brought roars from the gallery and moved him into contention for the weekend.\n\nKey statistics: 11 of 14 fairways hit (78.6%), 13 of 18 greens in regulation (72.2%), and zero three-putts. His driving distance averaged 285 yards, perfectly suited for Pebble Beach's strategic demands. This performance positions Woods well for the weekend rounds at one of golf's most beloved venues."
+    },
+    {
+      "template_id": "scorecard",
+      "template_name": "Scorecard",
+      "title": "Rory McIlroy - Round 3 Scorecard - St. Andrews Old Course",
+      "content": "Rory McIlroy fired a commanding 6-under-par 66 in Round 3 at the legendary St. Andrews Old Course on July 22, 2024, requiring only 26 putts on the ancient greens. The Northern Irishman's masterful ball-striking and course management moved him into serious contention on golf's most historic stage.\n\nMcIlroy's round began quietly with routine pars on the opening three holes before igniting with birdies on the 4th and 5th. His aggressive line over the corner bunkers on the par-4 4th paid dividends, leaving just a wedge to a pin tucked behind the Valley of Sin. The par-5 5th saw McIlroy reach the green in two with a towering 4-iron that settled 20 feet from the hole.\n\nThe middle stretch proved pivotal as McIlroy birdied three of four holes from the 9th through 12th. His approach to the par-4 9th finished stone dead for a tap-in birdie, while a perfectly weighted lag putt on the massive 12th green set up another birdie from close range.\n\nMcIlroy's only blemish came at the infamous Road Hole 17th, where his second shot found the road behind the green. Despite the awkward stance, he managed to chip to 12 feet but missed the par putt for his sole bogey.\n\nHe bounced back immediately with a closing birdie at the par-4 18th, where local knowledge proved crucial in reading the subtle borrows on the Valley of Sin. Statistics: 12 of 14 fairways (85.7%), 15 of 18 greens in regulation (83.3%), and an impressive 1.44 putts per green in regulation. McIlroy's length off the tee averaged 315 yards, utilizing the firm conditions to maximum advantage."
+    },
+    {
+      "template_id": "scorecard",
+      "template_name": "Scorecard",
+      "title": "Sakura Yamazaki - Round 4 Scorecard - TPC Sawgrass Stadium Course",
+      "content": "Sakura Yamazaki closed with a gritty 2-under-par 70 in the final round at TPC Sawgrass Stadium Course on May 5, 2024, needing 30 putts on the challenging Pete Dye design. The Japanese star's mental fortitude shone through on one of golf's most demanding tests, particularly around the water-laden finishing holes.\n\nYamazaki started aggressively, birdieing the par-5 2nd hole with a perfectly executed wedge to eight feet. She added another birdie at the par-4 4th, where her approach shot nearly found the hole, finishing just two feet away. Her steady play continued through the challenging middle holes, making seven consecutive pars despite several difficult pin positions.\n\nThe par-3 13th provided drama as Yamazaki's 7-iron tee shot found the bunker, but her textbook sand save maintained momentum. Her round's defining moment came at the notorious par-3 17th island green, where she confidently struck an 8-iron to 18 feet under intense pressure, rolling in the putt for an unexpected birdie that sent the crowd into a frenzy.\n\nA bogey at the demanding par-4 18th, where she pulled her approach into the water fronting the green, was her only dropped shot of the day. Her penalty drop and subsequent pitch to 15 feet showed remarkable composure, though the par putt slid past the edge.\n\nYamazaki's final round statistics were impressive: 9 of 14 fairways (64.3%), 12 of 18 greens in regulation (66.7%), and zero three-putts despite the lightning-fast greens. Her scrambling percentage of 83.3% highlighted her short game prowess, essential for success at the Players Championship venue."
+    },
+    {
+      "template_id": "scorecard",
+      "template_name": "Scorecard",
+      "title": "Carlos Rodriguez - Round 1 Scorecard - Royal Melbourne West",
+      "content": "Carlos Rodriguez opened with an impressive 3-under-par 69 in Round 1 at Royal Melbourne West on November 12, 2024, utilizing 29 putts on the firm, fast greens of Alister MacKenzie's masterpiece. The Spanish golfer's strategic course management and precise iron play proved crucial on the challenging sandbelt layout.\n\nRodriguez began with a birdie on the par-4 1st, where his approach shot with a 9-iron finished six feet below the hole. The early momentum continued with another birdie at the par-3 5th, where he struck a perfectly judged 6-iron into the swirling wind to 10 feet and buried the putt.\n\nThe demanding middle holes tested Rodriguez's patience, but he maintained composure with six consecutive pars from holes 6-11. His course management shone on the par-4 8th, laying up short of the cross-bunkers and hitting wedge to 12 feet, though the birdie putt just missed.\n\nDisaster nearly struck at the par-3 12th, where Rodriguez's tee shot found the deep bunker short of the green. However, his bunker technique proved exceptional, splashing out to four feet and converting the par save. He capitalized on the par-5 14th, reaching the green in two with a bold 3-iron approach that finished 25 feet away, leading to his third birdie.\n\nTwo bogeys on the back nine came at the par-4 15th (three-putt from 40 feet) and the challenging par-4 18th (approach in the greenside bunker). Despite these setbacks, Rodriguez's round showed excellent promise.\n\nFinal statistics: 10 of 14 fairways (71.4%), 11 of 18 greens in regulation (61.1%), and one three-putt. His driving accuracy was crucial on the narrow fairways, averaging 278 yards while avoiding the penal rough and bunkers."
+    },
+    {
+      "template_id": "scorecard",
+      "template_name": "Scorecard",
+      "title": "Emma Thompson - Round 5 Scorecard - Shinnecock Hills Golf Club",
+      "content": "Emma Thompson battled challenging conditions to post an even-par 70 in Round 5 at Shinnecock Hills Golf Club on September 8, 2024, requiring 32 putts on the lightning-fast bentgrass greens. The English golfer's resilient performance came against 25-mph winds that made club selection and course management paramount.\n\nThompson's round began with back-to-back bogeys on the 1st and 2nd holes as she adjusted to the firm conditions and challenging pin positions. Her approach to the par-4 1st came up short in the front bunker, while the par-4 2nd saw her overshoot the green with a 6-iron that released into the rough.\n\nRecovery came quickly with birdies on the par-5 5th and par-3 7th. On the 5th, Thompson played conservatively to the center of the fairway, then hit a perfect 5-iron to 20 feet, draining the putt for her first birdie. The par-3 7th required a punched 7-iron into the wind that landed softly eight feet from the pin.\n\nThe back nine proved to be a survival test as winds intensified. Thompson's best hole came at the par-4 14th, where she drove into the fairway's sweet spot and hit a remarkable approach shot that landed 15 feet from a back pin position. The resulting birdie was her third of the day and moved her back to even par.\n\nLate bogeys at the 16th and 17th holes were offset by a clutch closing birdie at the 18th, where Thompson's aggressive approach to a front pin paid off with a 12-foot putt that found the center of the cup.\n\nStatistics: 8 of 14 fairways (57.1%), 10 of 18 greens in regulation (55.6%), demonstrating the course's defensive nature in windy conditions."
+    },
+    {
+      "template_id": "tournament_recap",
+      "template_name": "Tournament Recap",
+      "title": "The Masters Tournament Recap - Augusta National Golf Club",
+      "content": "The Masters Tournament concluded on Sunday at Augusta National Golf Club with Tiger Woods capturing his sixth green jacket in dramatic fashion. The tournament, held from April 7-10, 2024, featured a total purse of $18,000,000. Woods fired a final-round 67 to finish at 12-under-par, edging out Rory McIlroy by one stroke in a thrilling finish. McIlroy, seeking his first Masters victory, birdied the 72nd hole to force Woods into a clutch par save that sealed the victory. Carlos Rodriguez finished third at 9-under-par, marking his best major championship performance to date. The tournament was played under ideal conditions with sunny skies and mild temperatures throughout the week. Augusta National's signature azaleas were in full bloom, providing a stunning backdrop for the world's premier golf event. Notable performances included Emma Thompson's impressive T-15 finish, the highest by a female competitor in Masters history following the recent policy change allowing women to compete. The greens averaged 13.5 on the stimpmeter, presenting their typical challenge during Sunday's final round. Woods' victory marks his return to major championship form after struggling with injuries in recent years. His approach shot to the 15th hole on Sunday, landing within three feet of the pin, proved to be the tournament's defining moment. The win moves Woods closer to Jack Nicklaus's record of 18 major championships. Prize money for the winner totaled $3,240,000, with McIlroy earning $1,944,000 for his runner-up finish."
+    },
+    {
+      "template_id": "tournament_recap",
+      "template_name": "Tournament Recap",
+      "title": "PGA Championship Recap - TPC Sawgrass Stadium Course",
+      "content": "Rory McIlroy captured his third PGA Championship title at TPC Sawgrass Stadium Course, finishing at 16-under-par after four rounds of exceptional golf. The tournament, held from May 12-15, 2024, featured a $15,000,000 purse with McIlroy earning the winner's share of $2,700,000. The Northern Irishman's final round 66 included seven birdies and just one bogey, showcasing the form that has made him one of golf's elite players. Sakura Yamazaki finished second at 14-under-par, continuing her outstanding 2024 season with another top finish in a major championship. Her performance included a hole-in-one on the famous 17th island green during Friday's second round, electrifying the gallery and earning widespread acclaim. Carlos Rodriguez rounded out the top three at 13-under-par, marking his second consecutive top-three finish in a major. Course conditions were challenging throughout the week, with swirling winds off the Atlantic Ocean affecting play on all four days. The greens were firm and fast, measuring 12.8 on the stimpmeter, requiring precise approach shots and delicate putting. McIlroy's mastery of the famous 17th hole proved crucial, as he played it in 2-under-par for the week while many competitors struggled with the intimidating water hazard. Tiger Woods missed the cut after rounds of 74-72, continuing his inconsistent play in 2024. The victory marks McIlroy's first major championship since 2019 and positions him well for the remainder of the season. Weather delays on Saturday extended play into Sunday morning, but clear conditions allowed for an exciting finish."
+    },
+    {
+      "template_id": "tournament_recap",
+      "template_name": "Tournament Recap",
+      "title": "Bay Area Classic Recap - Pebble Beach Golf Links",
+      "content": "Emma Thompson claimed her first professional victory at the Bay Area Classic, held at the iconic Pebble Beach Golf Links from June 20-23, 2024. The tournament featured a $2,500,000 purse, with Thompson earning $450,000 for her breakthrough win. Thompson's four-round total of 11-under-par was highlighted by a spectacular third-round 64 that included eight birdies and an eagle on the par-5 6th hole. Her final round 70 was steady and composed, demonstrating the mental fortitude required to win on the Monterey Peninsula. Sakura Yamazaki finished second at 9-under-par, with her consistent play throughout the week keeping her in contention until the final holes. Carlos Rodriguez claimed third place at 8-under-par, marking another strong showing in what has been an exceptional season for the Spanish golfer. The tournament was played in typical Pebble Beach conditions, with cool temperatures and intermittent fog affecting visibility during early morning rounds. Coastal winds gusted up to 25 mph on Friday, making club selection particularly challenging on the oceanside holes. The famous 18th hole played especially difficult, yielding only 12 birdies over four rounds and contributing to several dramatic shifts in the leaderboard. Thompson's approach shot to within six feet on the 72nd hole set up the winning birdie putt, capping off a remarkable week. The victory qualifies Thompson for several upcoming major championships and establishes her as one of the tour's rising stars. Prize money for second place totaled $270,000, with Rodriguez earning $180,000 for his third-place finish."
+    },
+    {
+      "template_id": "tournament_recap",
+      "template_name": "Tournament Recap",
+      "title": "Children's Hospital Charity Open Recap - Royal Melbourne West",
+      "content": "Carlos Rodriguez captured the Children's Hospital Charity Open title at Royal Melbourne West, finishing at 14-under-par in the tournament held from August 15-18, 2024. The event, featuring a $3,000,000 purse, raised an additional $1,200,000 for children's medical research through various fundraising activities throughout the week. Rodriguez's victory was secured with a final-round 67 that included six birdies and no bogeys, showcasing the precision required on Royal Melbourne's challenging layout. Tiger Woods finished second at 12-under-par, with his weekend rounds of 66-68 demonstrating flashes of his legendary form. Emma Thompson claimed third place at 11-under-par, continuing her excellent 2024 season with another top-three finish. The tournament was played in windy conditions typical of Melbourne's sandbelt region, with gusts reaching 30 mph on Saturday afternoon. The course's famous fast-running fairways and subtle green complexes provided a stern test for the international field. Rodriguez's mastery of the short game proved decisive, as he ranked first in scrambling percentage for the week at 89%. His chip-in birdie on the par-4 14th hole during Sunday's final round energized the gallery and provided crucial momentum. The tournament's unique format included a Wednesday pro-am that raised $400,000 alone, with celebrity participants joining professional golfers for the charitable cause. Rory McIlroy struggled with his putting throughout the week, finishing T-12 despite striking the ball well from tee to green. Rodriguez earned $540,000 for the victory, while Woods received $324,000 for second place. The tournament's success ensures its continuation as a premier charitable event on the professional golf calendar."
+    },
+    {
+      "template_id": "tournament_recap",
+      "template_name": "Tournament Recap",
+      "title": "Riverview Country Club Championship Recap - Shinnecock Hills Golf Club",
+      "content": "Sakura Yamazaki dominated the Riverview Country Club Championship at Shinnecock Hills Golf Club, winning by four strokes with a 15-under-par total. The tournament, held from September 26-29, 2024, featured a $4,200,000 purse with Yamazaki earning $756,000 for her commanding performance. Her final round 69 was a masterclass in course management, as she navigated Shinnecock's notorious rough and undulating greens with precision and patience. Rory McIlroy finished second at 11-under-par, with his opening round 64 setting the early pace before Yamazaki's consistency proved decisive. Tiger Woods rounded out the top three at 10-under-par, marking his best finish in three months and suggesting a return to competitive form. The tournament was played in crisp autumn conditions on Long Island, with firm and fast conditions that emphasized strategic play over raw distance. Shinnecock's deep rough, grown to four inches for the championship, penalized wayward drives and demanded precise iron play throughout the week. Yamazaki's driving accuracy of 78% led the field and proved crucial on a course where finding fairways was paramount. Her approach shot to the par-4 16th on Sunday, spinning back to within two feet of the pin, drew roars from the gallery and effectively sealed the victory. Emma Thompson finished T-7 after struggling with the wind conditions during Saturday's third round. Carlos Rodriguez withdrew after the first round due to a minor wrist injury, though he is expected to return for next week's tournament. The victory marks Yamazaki's third win of the season and elevates her to second in the season-long points race. Prize money for second place totaled $453,600, while Woods earned $285,600 for his third-place finish."
+    },
+    {
+      "template_id": "course_evaluation",
+      "template_name": "Course Evaluation",
+      "title": "Course Evaluation: Pebble Beach Golf Links",
+      "content": "Course Name: Pebble Beach Golf Links\nPar: 72, Yardage: 6,828 yards\nCourse Rating: 74.5, Slope: 144\n\nPebble Beach Golf Links stands as one of golf's most iconic venues, masterfully balancing natural beauty with strategic challenge. The layout maximizes its stunning Monterey Peninsula location, with eight holes directly bordering the Pacific Ocean. The course demands precision over power, rewarding strategic thinking and course management.\n\nThe opening stretch from Hole 1 through Hole 5 establishes the course's character. Hole 1 serves as a gentle introduction, while Hole 2 begins the coastal journey with prevailing winds significantly impacting club selection. The layout's genius lies in its variety \u2013 from the dramatic cliff-side Hole 4 to the strategic inland holes that provide brief respite from coastal conditions.\n\nDifficulty assessment reveals a course that punishes wayward shots severely. The small, undulating greens demand precise approach play, while coastal winds can transform a manageable hole into a formidable challenge within minutes. Rough areas are penal but fair, and the course's natural hazards \u2013 primarily the ocean and indigenous vegetation \u2013 are clearly visible.\n\nCourse conditions consistently rank among the world's finest. Fairways provide excellent lies with minimal divot damage, while greens maintain true roll despite heavy play. Bunkers are well-maintained with consistent sand quality throughout. The coastal environment requires constant maintenance attention, which the grounds crew manages expertly.\n\nThe slope rating of 144 accurately reflects the course's challenge for higher handicappers, while the course rating of 74.5 indicates how accomplished players will find it demanding yet fair. Weather significantly influences playability, with morning marine layer and afternoon winds creating dramatically different conditions.\n\nOverall, Pebble Beach Golf Links delivers an unparalleled golf experience that justifies its premium pricing and exclusive reputation. The combination of natural beauty, strategic design, and impeccable conditioning creates a bucket-list venue that consistently exceeds expectations."
+    },
+    {
+      "template_id": "course_evaluation",
+      "template_name": "Course Evaluation",
+      "title": "Course Evaluation: St. Andrews Old Course",
+      "content": "Course Name: St. Andrews Old Course\nPar: 72, Yardage: 7,297 yards\nCourse Rating: 75.9, Slope: 131\n\nThe Old Course at St. Andrews represents golf in its purest form, where tradition and challenge converge on ancient linksland. This historic layout follows a unique out-and-back routing that creates shared fairways and greens, demanding intimate knowledge for optimal scoring. The course rewards local knowledge while punishing unfamiliarity with its subtle complexities.\n\nLayout analysis reveals masterful use of natural terrain. The opening holes from Hole 1 through Hole 5 showcase the course's deceptive nature \u2013 seemingly straightforward yet laden with hidden dangers. Hole 1 provides a wide landing area that narrows significantly for the approach, while the infamous Hole 2 features the treacherous Cheape's Bunker. The routing creates constantly changing wind directions, making club selection paramount.\n\nDifficulty stems from strategic positioning rather than pure length. The course's 112 bunkers, each with individual names and characteristics, create a minefield for imprecise shots. Shared greens like the massive double green serving holes 2 and 16 demand exceptional putting skills across varying distances and slopes. The famous Road Hole (17th) exemplifies how traditional design elements create enduring challenge.\n\nCourse conditions reflect links golf authenticity. Firm, fast fairways encourage creative shot-making and ground game tactics. Greens provide true roll but require careful reading of subtle undulations developed over centuries. The famous Old Course rough \u2013 thick and wiry \u2013 severely penalizes errant drives while maintaining the course's natural aesthetic.\n\nThe slope rating of 131, while moderate, understates the course's difficulty for visitors unfamiliar with its intricacies. Local knowledge significantly impacts scoring, with seasoned players holding substantial advantages. Weather conditions dramatically alter playability, from calm morning rounds to fierce afternoon gales.\n\nSt. Andrews Old Course offers an irreplaceable golf pilgrimage that every serious golfer must experience. Its historical significance, combined with timeless strategic challenges, creates rounds that are simultaneously humbling and inspiring."
+    },
+    {
+      "template_id": "course_evaluation",
+      "template_name": "Course Evaluation",
+      "title": "Course Evaluation: TPC Sawgrass Stadium Course",
+      "content": "Course Name: TPC Sawgrass Stadium Course\nPar: 72, Yardage: 7,245 yards\nCourse Rating: 75.2, Slope: 155\n\nTPC Sawgrass Stadium Course stands as modern golf architecture's most recognizable achievement, where stadium-style design meets championship-level challenge. Pete Dye's creation maximizes drama and spectator viewing while providing an exacting test for players of all abilities. The course's reputation for difficulty is well-earned through strategic design rather than overwhelming length.\n\nThe layout's opening sequence establishes immediate respect. Hole 1 requires precise positioning to avoid water hazards, while subsequent holes from Hole 2 through Hole 5 introduce the course's signature elements: strategic water placement, railroad ties, and undulating greens. Each hole presents multiple options, rewarding bold play while severely punishing poor execution.\n\nDifficulty assessment reveals a course designed to identify weaknesses in every aspect of the game. Water hazards affect 16 holes, with the famous island green 17th serving as the course's centerpiece. The slope rating of 155 accurately reflects how quickly scores can escalate for average players. Precise iron play becomes essential, as greens feature significant undulation and are protected by water, sand, and thick rough.\n\nCourse conditions consistently rank among professional golf's finest. TPC-caliber maintenance ensures perfect fairway lies and green surfaces that provide true roll at tournament speeds. Bunkers feature consistent sand depth and texture, while water hazards maintain clear definition. The Stadium Course's infrastructure supports optimal growing conditions year-round.\n\nStrategic elements demand course management skills. Risk-reward opportunities exist throughout, but conservative play often yields better scores than aggressive tactics. The course rewards accuracy over distance, with positioning becoming crucial for manageable approach angles. Mental toughness becomes essential as intimidating visuals can influence shot selection.\n\nTPC Sawgrass Stadium Course delivers a championship golf experience that challenges every skill level while maintaining fairness. The combination of strategic design, immaculate conditioning, and dramatic presentation creates memorable rounds that test both technical ability and mental fortitude."
+    },
+    {
+      "template_id": "course_evaluation",
+      "template_name": "Course Evaluation",
+      "title": "Course Evaluation: Royal Melbourne West Course",
+      "content": "Course Name: Royal Melbourne West Course\nPar: 72, Yardage: 6,589 yards\nCourse Rating: 74.1, Slope: 138\n\nRoyal Melbourne West Course represents sandbelt golf at its absolute finest, where Alister MacKenzie's design genius created a masterpiece of strategic architecture. This layout exemplifies how shorter yardage can produce exceptional challenge through thoughtful routing and natural hazard integration. The course rewards precision and course management while punishing aggressive play without proper execution.\n\nLayout analysis showcases MacKenzie's understanding of natural terrain utilization. The opening holes establish the course's character immediately, with Hole 1 providing a manageable start before difficulty escalates through Hole 5. Each hole flows naturally into the next, creating seamless transitions that maintain player engagement. The routing maximizes prevailing wind patterns while incorporating natural sandhills and native vegetation.\n\nDifficulty stems from strategic complexity rather than pure length. The course's famous bunkering \u2013 featuring over 100 sand hazards \u2013 creates a defensive network that demands precise positioning. Undulating fairways provide uneven lies that complicate approach shots to small, heavily contoured greens. The shorter yardage proves deceptive, as firm conditions and strategic design elements create substantial challenge.\n\nCourse conditions epitomize championship standards with firm, fast playing surfaces that reward skilled shotmaking. Couch grass fairways provide excellent lies while maintaining authentic Australian golf character. Greens offer true roll with subtle breaks that require careful reading. The famous Royal Melbourne sand \u2013 fine-grained and consistent \u2013 drains quickly while maintaining optimal playing conditions.\n\nThe slope rating of 138 accurately reflects how the course challenges mid-to-high handicappers through strategic penalties. Better players appreciate the course's demand for creativity and shot-making variety. Seasonal conditions significantly impact playability, with summer's firm conditions creating dramatically different strategy requirements.\n\nRoyal Melbourne West Course stands as global golf architecture's gold standard, proving that strategic design transcends length considerations. The combination of natural beauty, thoughtful challenge, and impeccable conditioning creates an unmatched golf experience that influences course design worldwide."
+    },
+    {
+      "template_id": "course_evaluation",
+      "template_name": "Course Evaluation",
+      "title": "Course Evaluation: Shinnecock Hills Golf Club",
+      "content": "Course Name: Shinnecock Hills Golf Club\nPar: 70, Yardage: 6,996 yards\nCourse Rating: 75.3, Slope: 142\n\nShinnecock Hills Golf Club embodies American links-style golf through masterful utilization of Long Island's natural topography. This historic layout combines traditional design principles with modern championship requirements, creating a venue that tests every aspect of the game. The course's reputation for difficulty increases exponentially under tournament conditions, where firm surfaces and strategic pin positions create formidable challenges.\n\nThe layout's architectural brilliance becomes apparent from the opening holes. Hole 1 through Hole 5 establish the course's character through strategic bunkering and natural elevation changes. The routing follows natural land contours while maximizing prevailing wind patterns. Each hole presents unique challenges, from elevated tees providing strategic advantages to blind approach shots demanding local knowledge and precise execution.\n\nDifficulty assessment reveals a course that punishes imprecision at every level. The famous fescue rough creates penal conditions for wayward drives, while small, undulating greens demand exceptional approach play. Natural elevation changes create uneven lies throughout, complicating distance control and shot selection. Wind significantly influences play, with exposed positioning creating constantly changing conditions.\n\nCourse conditions reflect championship standards with firm, fast surfaces that emphasize ground game tactics. Native fescue areas provide authentic links character while maintaining clear definitions between playable and hazard areas. Greens feature subtle undulations that become severe under tournament speeds. Fairway conditions reward precise positioning while punishing aggressive play.\n\nThe course rating of 75.3 accurately reflects how accomplished players face significant challenges, particularly when conditions firm up for major championships. Strategic elements reward conservative play, while aggressive tactics can quickly lead to large numbers. The par-70 layout creates unique scoring dynamics where every birdie opportunity becomes crucial.\n\nShinnecock Hills delivers an authentic American golf experience that honors the game's traditions while providing championship-level challenge. The combination of natural beauty, strategic complexity, and demanding conditions creates rounds that test character as much as technical skill."
+    },
+    {
+      "template_id": "player_profile",
+      "template_name": "Player Profile",
+      "title": "Tiger Woods - Professional Player Profile",
+      "content": "Tiger Woods remains one of golf's most accomplished professionals, currently maintaining a Handicap 1 status that reflects his elite skill level. With 15 major championships and 82 PGA Tour victories, Woods has established himself as a generational talent whose impact extends far beyond tournament results.\n\nCareer highlights include his historic 1997 Masters victory at age 21, where he won by 12 strokes, and his emotional 2019 Masters triumph that marked his return to major championship glory after an 11-year drought. His 2000-2001 'Tiger Slam' - holding all four major titles simultaneously - represents one of golf's greatest achievements.\n\nRecent performance analysis from Round 4 and Round 5 data shows Woods continues to demonstrate exceptional course management and clutch putting under pressure. His driving accuracy has improved significantly, now averaging 65% fairways hit, while maintaining his legendary short game precision.\n\nKey strengths include unmatched mental toughness, superior iron play from 150 yards and in, and perhaps the best closing ability in professional golf history. His pre-shot routine remains textbook, and his ability to manufacture shots under pressure is unparalleled.\n\nAreas for improvement focus primarily on physical conditioning and driving distance consistency. Recent rounds indicate occasional struggles with driver accuracy on tight layouts, and his putting stroke sometimes lacks the fluidity of his prime years. Working with his coaching team on maintaining flexibility and core strength continues to be a priority.\n\nWoods' influence on golf's global popularity cannot be overstated. His technical innovations, particularly his power-fade approach and aggressive pin-hunting strategy, have influenced countless players worldwide. Despite physical challenges, his competitive drive and course knowledge make him a threat in every tournament he enters."
+    },
+    {
+      "template_id": "player_profile",
+      "template_name": "Player Profile",
+      "title": "Rory McIlroy - Professional Player Profile",
+      "content": "Rory McIlroy, competing at Handicap 2 level, stands as one of golf's premier power players and a consistent force on the international stage. The Northern Irish professional has captured four major championships and over 30 professional victories worldwide, establishing himself as a dominant figure in modern golf.\n\nCareer highlights include his breakthrough 2011 U.S. Open victory at Congressional, where he won by eight strokes and set numerous scoring records. His 2012 season was particularly exceptional, claiming both the PGA Championship and becoming the youngest player to reach $10 million in career earnings. His 2014 victories at The Open Championship and PGA Championship within three weeks showcased his ability to perform under the highest pressure.\n\nRecent performance data from Round 1 through Round 3 reveals McIlroy's continued evolution as a complete player. His driving distance averages 320+ yards while maintaining 70% accuracy, and his approach play has become increasingly precise. Statistical analysis shows marked improvement in his putting from 10-15 feet, a crucial factor in his recent strong finishes.\n\nPrimary strengths include exceptional driving distance and accuracy combination, elite iron play, and remarkable course adaptability. His natural swing rhythm and timing are exemplary, and his ability to shape shots in both directions gives him tactical advantages on challenging layouts. His fitness regimen and mental preparation are considered tour-leading.\n\nImprovement areas center on short game consistency, particularly bunker play and putting from 4-8 feet. Round 2 and Round 5 analysis indicates occasional struggles with pace control on faster greens. Enhanced focus on pressure putting and developing a more reliable pre-shot routine for short putts could elevate his closing percentage in contention rounds. His competitive fire and technical foundation suggest continued success at golf's highest levels."
+    },
+    {
+      "template_id": "player_profile",
+      "template_name": "Player Profile",
+      "title": "Sakura Yamazaki - Amateur Player Profile",
+      "content": "Sakura Yamazaki represents the emerging talent in amateur golf, currently competing with a Handicap 3 that reflects her rapid development and natural ability. Based in Tokyo, she has quickly gained recognition in regional amateur circuits and university golf programs, demonstrating consistent improvement across all facets of her game.\n\nCareer highlights include her victory at the 2023 Tokyo Regional Amateur Championship, where she overcame a four-stroke final-round deficit with a brilliant 67. Her qualification for the Japan Amateur Championship marked a breakthrough moment, finishing tied for 12th against the country's top amateur talent. Recent university tournament victories have established her as a player to watch in amateur golf circles.\n\nPerformance analysis from Round 2 and Round 4 competitions shows remarkable consistency for a developing player. Her scoring average has dropped from 78 to 74 over the past season, with particular improvements in approach play accuracy and short game management. Her course management skills demonstrate maturity beyond her experience level.\n\nKey strengths include exceptional putting touch, particularly from inside 12 feet where she converts at an impressive 85% rate. Her iron play is notably consistent, with a natural draw that she controls effectively. Mental composure under pressure has been a standout characteristic, rarely allowing poor shots to affect subsequent holes. Her work ethic and attention to technical detail have impressed coaches and competitors alike.\n\nAreas needing development focus on driving distance and accuracy off the tee. Current driving averages suggest room for improvement through enhanced physical conditioning and technical refinements. Bunker play and recovery shots from difficult lies require additional practice time. Round 3 and Round 5 data indicates some inconsistency in windy conditions, suggesting course management adjustments could benefit overall scoring.\n\nYamazaki's trajectory points toward potential professional golf success with continued development and competitive experience at higher levels."
+    },
+    {
+      "template_id": "player_profile",
+      "template_name": "Player Profile",
+      "title": "Carlos Rodriguez - Professional Player Profile",
+      "content": "Carlos Rodriguez has established himself as a formidable professional competitor, maintaining Handicap 4 status while building an impressive international resume. The Spanish golfer has captured multiple European Challenge Tour victories and recently earned his PGA Tour card, representing the next generation of global golf talent.\n\nCareer highlights include his dramatic playoff victory at the 2022 Andalucia Open, where he holed a 40-foot putt on the second playoff hole. His consistent performance throughout the European Challenge Tour season, including three top-five finishes, demonstrated his readiness for golf's highest level. His amateur career included representing Spain in international team competitions and winning the Spanish Amateur Championship.\n\nRecent Round 1 and Round 5 performance data reveals significant improvements in scoring consistency and pressure management. His greens-in-regulation percentage has increased to 72%, while his putting statistics show marked improvement from outside 20 feet. His ability to maintain composure during difficult scoring conditions has become a defining characteristic.\n\nStrengths include exceptional short iron accuracy, creative shot-making ability, and strong tactical awareness. His natural feel around the greens, particularly from 30-60 yards, rivals tour veterans. Rodriguez demonstrates excellent course management skills and rarely makes strategic errors that lead to big numbers. His multilingual abilities and cultural adaptability have served him well in international competition.\n\nImprovement opportunities exist in driving consistency and physical conditioning. Round 2 and Round 3 analysis shows occasional distance control issues with longer clubs, particularly in varying wind conditions. Enhanced fitness training could provide additional clubhead speed and improved endurance during demanding tournament schedules. Mental game coaching to handle the pressures of professional golf's highest levels continues to be a development priority.\n\nRodriguez's combination of natural talent, work ethic, and international experience positions him for continued success as he establishes himself among professional golf's elite competitors."
+    },
+    {
+      "template_id": "player_profile",
+      "template_name": "Player Profile",
+      "title": "Emma Thompson - Amateur Player Profile",
+      "content": "Emma Thompson exemplifies dedicated amateur golf development, competing with Handicap 5 while pursuing excellence through collegiate golf and regional amateur competition. The English golfer has shown remarkable improvement over the past two seasons, establishing herself as a consistent contender in high-level amateur events throughout the UK and Europe.\n\nCareer achievements include her runner-up finish at the 2023 English Women's Amateur Championship, where she led after two rounds before finishing second by one stroke. Her victory at the University Championship marked a breakthrough performance, shooting four consecutive rounds under par. Recent qualification for the British Amateur demonstrates her rising competitive level and potential for future success.\n\nPerformance trends from Round 3 and Round 4 tournament data show consistent scoring improvement and enhanced competitive positioning. Her handicap has dropped from 8.5 to 5.0 over 18 months, reflecting dedicated practice and strategic game development. Statistical analysis reveals particular strength in approach play accuracy and improved decision-making under pressure.\n\nPrimary strengths include exceptional putting skills, particularly lag putting from longer distances where she rarely three-putts. Her course management has become increasingly sophisticated, showing mature shot selection that minimizes risk while maintaining aggressive play when opportunities arise. Thompson's physical conditioning and mental preparation routines have become exemplary among her peer group.\n\nDevelopment areas focus on driving distance and consistency, where additional clubhead speed would provide significant scoring advantages. Short game variety, particularly from challenging lies around greens, requires continued attention. Round 1 and Round 5 data suggests some inconsistency in opening and closing rounds, indicating opportunities for improved tournament preparation and pressure management.\n\nThompson's commitment to improvement, combined with strong fundamental skills and competitive temperament, suggests excellent potential for continued amateur success and possible professional golf consideration. Her analytical approach to game development and willingness to embrace modern training methods position her well for future achievements."
+    },
+    {
+      "template_id": "handicap_report",
+      "template_name": "Handicap Report",
+      "title": "Handicap Report - Tiger Woods",
+      "content": "HANDICAP ANALYSIS REPORT\n\nPlayer: Tiger Woods\nCurrent Handicap Index: 2.1\nTrend: Improving (-0.8 over last 8 rounds)\nLow Index (12 months): 1.9\nRounds Counted: 18 of 20 eligible rounds\n\nTIGER WOODS HANDICAP TREND ANALYSIS\n\nMr. Woods demonstrates exceptional consistency with his current handicap index of 2.1, showing marked improvement over the recent scoring period. The negative trend of -0.8 indicates strong performance momentum, with his scoring differential averaging 1.2 strokes better than his established index.\n\nKey Performance Indicators:\n- Score differential range: +0.3 to +4.1\n- Most frequent differential: +1.8 to +2.3 range\n- Exceptional scores (below low index): 3 rounds\n- Course difficulty adjustment impact: Minimal variance\n\nThe 18 countable rounds from his last 20 submitted scores reflect consistent competitive play across varying course conditions. Weather adjustments were applied to 4 rounds, with playing conditions calculation (PCC) adjustments ranging from -1 to +2 strokes.\n\nRECOMMENDATIONS:\n\n1. Continue current practice regimen focusing on short game precision\n2. Monitor putting statistics as recent rounds show 1.3 stroke improvement in this area\n3. Consider playing more challenging rated courses to test index accuracy\n4. Maintain posting discipline for accurate handicap calculation\n\nProjected handicap movement over next revision period suggests potential reduction to 1.8-2.0 range if current form continues. The handicap committee notes exemplary adherence to posting requirements and course rating protocols."
+    },
+    {
+      "template_id": "handicap_report",
+      "template_name": "Handicap Report",
+      "title": "Handicap Report - Rory McIlroy",
+      "content": "HANDICAP ANALYSIS REPORT\n\nPlayer: Rory McIlroy\nCurrent Handicap Index: 1.4\nTrend: Stable (+0.1 over last 8 rounds)\nLow Index (12 months): 1.2\nRounds Counted: 16 of 20 eligible rounds\n\nRORY MCILROY HANDICAP TREND ANALYSIS\n\nMr. McIlroy maintains an elite handicap index of 1.4 with remarkable stability over the assessment period. The minimal positive trend of +0.1 indicates consistent performance at his established skill level, with scoring patterns showing tight clustering around his index value.\n\nPerformance Metrics:\n- Score differential range: -0.8 to +3.9\n- Standard deviation: 1.1 (excellent consistency)\n- Rounds exceeding index by 3+ strokes: 2 instances\n- Below-index performances: 7 of 16 rounds\n\nThe 16 qualifying rounds represent diverse playing conditions across multiple course types. Notable performance includes exceptional round on April 15th with differential of -0.8, demonstrating continued competitive edge. Course rating variance from 68.2 to 74.1 with slope ratings between 119-142 provides comprehensive handicap validation.\n\nWeather and course condition adjustments were minimal, applied to only 2 rounds during the review period.\n\nRECOMMENDATIONS:\n\n1. Current training approach effectively maintaining elite performance level\n2. Focus on eliminating high differential rounds (3+ over index) through course management\n3. Consider strategic club selection review for challenging conditions\n4. Continue diverse course selection for comprehensive index validation\n\nHandicap projection indicates stability in 1.3-1.5 range for upcoming revision cycles, reflecting sustained elite-level consistency in competitive environments."
+    },
+    {
+      "template_id": "handicap_report",
+      "template_name": "Handicap Report",
+      "title": "Handicap Report - Sakura Yamazaki",
+      "content": "HANDICAP ANALYSIS REPORT\n\nPlayer: Sakura Yamazaki\nCurrent Handicap Index: 8.7\nTrend: Declining (-1.9 over last 8 rounds)\nLow Index (12 months): 7.8\nRounds Counted: 15 of 18 eligible rounds\n\nSAKURA YAMAZAKI HANDICAP TREND ANALYSIS\n\nMs. Yamazaki shows outstanding improvement with her handicap index declining from 10.6 to 8.7 over the past three revision periods. The significant negative trend of -1.9 reflects dedicated practice and course management development, with consistent scoring below her established index.\n\nImprovement Indicators:\n- Score differential range: +5.2 to +11.4\n- Recent 8-round average: 7.1 differential\n- Improvement rate: 0.6 strokes per month\n- Course difficulty adaptation: Strong across varying ratings\n\nThe 15 countable scores demonstrate progressive skill development with notable consistency in approach play and putting. Weather condition adjustments impacted 6 rounds, with Ms. Yamazaki showing particular strength in moderate wind conditions.\n\nStatistical Analysis:\n- Pre-round preparation correlation: Positive impact on scoring\n- Course familiarity factor: 1.2 stroke advantage on known layouts\n- Seasonal performance: Spring rounds averaging 0.8 strokes better\n\nRECOMMENDATIONS:\n\n1. Continue current improvement trajectory through structured practice plan\n2. Focus on lag putting to reduce three-putt frequency\n3. Develop course strategy for par-5 scoring opportunities\n4. Maintain regular posting schedule for accurate trend tracking\n5. Consider playing slightly more challenging courses to validate improvement\n\nProjected handicap movement suggests potential for mid-7 range achievement within 6-8 weeks if current development continues. Exceptional commitment to improvement protocols noted."
+    },
+    {
+      "template_id": "handicap_report",
+      "template_name": "Handicap Report",
+      "title": "Handicap Report - Carlos Rodriguez",
+      "content": "HANDICAP ANALYSIS REPORT\n\nPlayer: Carlos Rodriguez\nCurrent Handicap Index: 14.2\nTrend: Increasing (+2.3 over last 8 rounds)\nLow Index (12 months): 11.8\nRounds Counted: 20 of 20 eligible rounds\n\nCARLOS RODRIGUEZ HANDICAP TREND ANALYSIS\n\nMr. Rodriguez has experienced a challenging period with his handicap index rising from 11.9 to 14.2 over recent revisions. The positive trend of +2.3 indicates temporary performance difficulties requiring strategic adjustment and focused practice attention.\n\nChallenging Areas Identified:\n- Score differential range: +8.9 to +18.7\n- High differential rounds: 8 of 20 (above +16.0)\n- Consistency variance: Higher than optimal for skill development\n- Weather impact: Significant scoring variation in adverse conditions\n\nAll 20 eligible rounds were utilized in handicap calculation, providing comprehensive performance assessment. Course difficulty range from 68.8 to 73.2 rating with slopes 125-138 shows diverse challenge exposure.\n\nPerformance Pattern Analysis:\n- Weekend rounds: Average 1.4 strokes higher than weekday play\n- Front nine vs. back nine: Consistent scoring split\n- Seasonal impact: Winter rounds showing +2.1 differential increase\n\nRECOMMENDATIONS:\n\n1. Schedule professional instruction focusing on fundamentals review\n2. Implement pre-round warm-up routine for consistency\n3. Develop adverse weather playing strategies and club selection\n4. Consider shorter, less challenging courses during rebuild phase\n5. Focus on mental game and pressure management techniques\n6. Establish practice routine emphasizing short game precision\n\nRecovery projection suggests return to 12-13 range possible with dedicated improvement plan over 2-3 month period. Temporary setbacks are normal in golf development cycle."
+    },
+    {
+      "template_id": "handicap_report",
+      "template_name": "Handicap Report",
+      "title": "Handicap Report - Emma Thompson",
+      "content": "HANDICAP ANALYSIS REPORT\n\nPlayer: Emma Thompson\nCurrent Handicap Index: 22.4\nTrend: Improving (-2.7 over last 8 rounds)\nLow Index (12 months): 21.9\nRounds Counted: 17 of 19 eligible rounds\n\nEMMA THOMPSON HANDICAP TREND ANALYSIS\n\nMs. Thompson demonstrates encouraging progress with her handicap index improving from 25.1 to 22.4, representing significant skill development over the assessment period. The negative trend of -2.7 reflects consistent dedication to improvement and effective practice strategies.\n\nDevelopment Highlights:\n- Score differential range: +18.2 to +28.9\n- Breakthrough performances: 4 rounds below 24.0 differential\n- Course management improvement: Notable strategic decision-making\n- Equipment adjustment impact: Positive correlation with recent scores\n\nThe 17 qualifying rounds provide solid statistical foundation for handicap accuracy. Recent equipment fitting and lesson series show measurable impact on scoring consistency, particularly in approach shot accuracy and distance control.\n\nSkill Development Trends:\n- Driving accuracy: 12% improvement over 6-month period\n- Green-in-regulation frequency: Steady upward trend\n- Penalty stroke reduction: 1.3 fewer per round average\n- Course selection strategy: Appropriate difficulty matching\n\nRECOMMENDATIONS:\n\n1. Continue current lesson program with emphasis on short iron consistency\n2. Develop pre-shot routine for improved focus and execution\n3. Practice bunker play and recovery shots for confidence building\n4. Gradually introduce more challenging course selections\n5. Maintain detailed statistics tracking for continued improvement monitoring\n6. Consider group playing lessons for course management skills\n\nProjected handicap development suggests potential for low-20s achievement within next 2-3 revision cycles. Commitment to improvement plan and regular play schedule supporting positive trajectory effectively."
+    }
+  ],
+  "traces": [
+    {
+      "id": "tournament_selection",
+      "task": "Evaluate which tournament Tiger Woods should enter next",
+      "steps": [
+        {
+          "thought": "Review player's current form and recent round scores",
+          "action": "Query recent rounds and scoring trends for the player",
+          "observation": "Tiger's recent form shows inconsistency with rounds of 71, 74, 69, 72 over his last tournament, averaging 1.5 strokes above his season average, though his putting statistics have improved significantly in the past month."
+        },
+        {
+          "thought": "Assess course fit based on player strengths",
+          "action": "Compare player statistics with course characteristics of upcoming tournaments",
+          "observation": "The upcoming Genesis Invitational at Riviera features narrow fairways and premium rough that typically favor accurate drivers, while the WM Phoenix Open's wide fairways and shorter length better suit Tiger's current driving distance limitations and strategic course management style."
+        },
+        {
+          "thought": "Consider ranking implications and field strength",
+          "action": "Analyze tournament field quality and potential ranking movement",
+          "observation": "The Phoenix Open field includes 8 of the top 10 world-ranked players making it highly competitive, but a top-20 finish could move Tiger up 12-15 spots in the world rankings, whereas Genesis has a weaker field but offers fewer ranking points as a smaller purse event."
+        }
+      ],
+      "outcome": "Tiger should enter the WM Phoenix Open due to the course setup favoring his current game style and the significant ranking point opportunity, despite the stronger field competition."
+    },
+    {
+      "id": "handicap_adjustment",
+      "task": "Determine if Tiger Woods's handicap accurately reflects current ability",
+      "steps": [
+        {
+          "thought": "Analyze recent scoring differentials vs handicap index",
+          "action": "Query last 20 rounds and calculate scoring differentials",
+          "observation": "Tiger Woods's last 20 rounds show scoring differentials ranging from -2.8 to +1.4, with an average differential of -0.7, which is 1.2 strokes better than his current 1.9 handicap index."
+        },
+        {
+          "thought": "Identify trends in performance across different courses",
+          "action": "Compare scores at high-slope vs low-slope courses",
+          "observation": "Performance analysis reveals Tiger consistently shoots 2-3 strokes lower on high-slope courses (slope rating 130+) compared to standard courses, indicating his game management and course strategy remain elite level."
+        },
+        {
+          "thought": "Check for exceptional tournament scores",
+          "action": "Look for rounds significantly better or worse than handicap",
+          "observation": "Tournament rounds from the past six months include two exceptional scores of 65 and 66 that were 4-5 strokes below his handicap expectation, while his worst round was only 1 stroke above expectation."
+        }
+      ],
+      "outcome": "Tiger Woods's handicap index of 1.9 does not accurately reflect his current ability and should be lowered to approximately 0.5-0.7 based on consistent scoring patterns that demonstrate he's performing significantly better than his current rating suggests."
+    },
+    {
+      "id": "course_strategy",
+      "task": "Develop a course strategy for Emma Thompson at Pebble Beach Golf Links",
+      "steps": [
+        {
+          "thought": "Analyze hole-by-hole difficulty and player tendencies",
+          "action": "Query hole data and player's historical performance on similar holes",
+          "observation": "Emma's driving accuracy of 68% struggles on holes 8, 10, and 18 where narrow fairways and ocean winds have historically cost her 0.8 strokes per round compared to field average. Her short iron play (120-150 yards) ranks in top 15% on tour, making her particularly strong on approach shots to holes 7, 11, and 17."
+        },
+        {
+          "thought": "Identify scoring opportunities and risk holes",
+          "action": "Map birdie opportunities vs high-risk holes based on player stats",
+          "observation": "Holes 7, 11, 13, and 17 present legitimate birdie opportunities given Emma's iron accuracy, while holes 8, 10, and 18 are designated as damage control holes where par should be the primary target. Statistical analysis shows she loses 2.1 strokes per round on risk-reward holes when playing aggressively versus 0.7 strokes when playing conservatively."
+        },
+        {
+          "thought": "Consider weather and course conditions",
+          "action": "Factor in expected conditions and adjust strategy",
+          "observation": "Southwest winds at 12-15 mph with gusts to 20 mph are forecast, creating significant crosswinds on holes 9, 10, and 18, while the marine layer will keep greens receptive through the morning round. These conditions favor her controlled ball flight but will require club adjustments on exposed coastal holes."
+        }
+      ],
+      "outcome": "Emma should adopt a conservative-aggressive strategy: attack pins on protected holes 7, 11, 13, and 17 where her iron play excels, while prioritizing fairway position and playing to center of greens on wind-exposed holes 8, 10, and 18. This approach projects to a target score of 2-under par with minimized double-bogey risk."
+    }
+  ]
+}

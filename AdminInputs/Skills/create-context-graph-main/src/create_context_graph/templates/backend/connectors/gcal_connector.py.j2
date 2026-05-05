@@ -1,0 +1,216 @@
+{% raw %}"""Google Calendar connector — imports events using gws CLI or Google API Python client."""
+
+from __future__ import annotations
+
+import json
+import shutil
+import subprocess
+from datetime import datetime, timedelta, timezone
+from typing import Any
+
+
+def _check_gws_cli() -> bool:
+    """Check if the Google Workspace CLI (gws) is available."""
+    return shutil.which("gws") is not None
+
+
+def _run_gws_command(args: list[str]) -> Any:
+    """Run a gws CLI command and return parsed JSON output."""
+    result = subprocess.run(
+        ["gws"] + args + ["--format", "json"],
+        capture_output=True,
+        text=True,
+        timeout=60,
+    )
+    if result.returncode != 0:
+        raise RuntimeError(f"gws command failed: {result.stderr}")
+    return json.loads(result.stdout)
+
+
+class GCalConnector:
+    """Import events from Google Calendar.
+
+    Prefers the Google Workspace CLI (gws) if available; falls back to
+    the Python Google API client with OAuth2.
+    """
+
+    def __init__(self):
+        self._use_gws = False
+        self._service = None
+
+    def authenticate(self, credentials: dict[str, str]) -> None:
+        """Authenticate with Google Calendar.
+
+        If gws CLI is available, no credentials are needed (gws handles auth).
+        Otherwise, provide "client_id" and "client_secret" for OAuth2.
+        """
+        if _check_gws_cli():
+            self._use_gws = True
+            return
+
+        try:
+            from google_auth_oauthlib.flow import InstalledAppFlow
+            from googleapiclient.discovery import build
+        except ImportError:
+            raise ImportError(
+                "google-api-python-client and google-auth-oauthlib are required. "
+                "Install with: pip install google-api-python-client google-auth-oauthlib"
+            )
+
+        client_config = {
+            "installed": {
+                "client_id": credentials["client_id"],
+                "client_secret": credentials["client_secret"],
+                "auth_uri": "https://accounts.google.com/o/oauth2/v2/auth",
+                "token_uri": "https://oauth2.googleapis.com/token",
+                "redirect_uris": ["http://localhost"],
+            }
+        }
+        flow = InstalledAppFlow.from_client_config(
+            client_config,
+            scopes=["https://www.googleapis.com/auth/calendar.readonly"],
+        )
+        creds = flow.run_local_server(port=0)
+        self._service = build("calendar", "v3", credentials=creds)
+
+    def _parse_event(self, event: dict) -> tuple[dict, list[dict], list[dict]]:
+        """Parse a calendar event into entity, attendee entities, and relationships."""
+        summary = event.get("summary", "Untitled Event")
+        start = event.get("start", {}).get("dateTime", event.get("start", {}).get("date", ""))
+        end = event.get("end", {}).get("dateTime", event.get("end", {}).get("date", ""))
+
+        entity = {
+            "name": summary,
+            "event_id": event.get("id", ""),
+            "start_time": start,
+            "end_time": end,
+            "location": event.get("location", ""),
+            "description": event.get("description", ""),
+            "status": event.get("status", ""),
+        }
+
+        attendees = []
+        relationships = []
+        for attendee in event.get("attendees", []):
+            email = attendee.get("email", "")
+            name = attendee.get("displayName", email.split("@")[0] if email else "Unknown")
+            attendees.append({
+                "name": name,
+                "email": email,
+                "role": "calendar-attendee",
+                "description": f"Response: {attendee.get('responseStatus', 'unknown')}",
+            })
+            relationships.append({
+                "type": "ATTENDING",
+                "source": name,
+                "source_label": "Person",
+                "target": summary,
+                "target_label": "CalendarEvent",
+            })
+
+        organizer = event.get("organizer", {})
+        if organizer:
+            org_email = organizer.get("email", "")
+            org_name = organizer.get("displayName", org_email.split("@")[0] if org_email else "Unknown")
+            relationships.append({
+                "type": "ORGANIZED",
+                "source": org_name,
+                "source_label": "Person",
+                "target": summary,
+                "target_label": "CalendarEvent",
+            })
+
+        return entity, attendees, relationships
+
+    def _fetch_via_gws(self, limit: int) -> dict:
+        """Fetch calendar events using the gws CLI."""
+        entities: dict[str, list[dict]] = {"Person": [], "CalendarEvent": []}
+        relationships: list[dict] = []
+        documents: list[dict] = []
+        seen_users: set[str] = set()
+
+        try:
+            result = _run_gws_command([
+                "calendar", "+list",
+                "--max-results", str(min(limit, 250)),
+            ])
+        except RuntimeError:
+            return {"entities": entities, "relationships": relationships, "documents": documents}
+
+        events = result if isinstance(result, list) else result.get("items", [])
+
+        for event in events[:limit]:
+            entity, attendees, rels = self._parse_event(event)
+            entities["CalendarEvent"].append(entity)
+            relationships.extend(rels)
+            for att in attendees:
+                if att["email"] not in seen_users:
+                    seen_users.add(att["email"])
+                    entities["Person"].append(att)
+
+            if event.get("description"):
+                documents.append({
+                    "title": event.get("summary", "Event"),
+                    "content": event["description"],
+                    "type": "calendar-event",
+                    "metadata": {
+                        "start": entity["start_time"],
+                        "end": entity["end_time"],
+                    },
+                })
+
+        return {"entities": entities, "relationships": relationships, "documents": documents}
+
+    def _fetch_via_api(self, limit: int) -> dict:
+        """Fetch calendar events using the Python Google API client."""
+        entities: dict[str, list[dict]] = {"Person": [], "CalendarEvent": []}
+        relationships: list[dict] = []
+        documents: list[dict] = []
+        seen_users: set[str] = set()
+
+        now = datetime.now(timezone.utc)
+        time_min = (now - timedelta(days=90)).isoformat()
+
+        results = self._service.events().list(
+            calendarId="primary",
+            timeMin=time_min,
+            maxResults=min(limit, 250),
+            singleEvents=True,
+            orderBy="startTime",
+        ).execute()
+
+        for event in results.get("items", []):
+            entity, attendees, rels = self._parse_event(event)
+            entities["CalendarEvent"].append(entity)
+            relationships.extend(rels)
+            for att in attendees:
+                if att["email"] not in seen_users:
+                    seen_users.add(att["email"])
+                    entities["Person"].append(att)
+
+            if event.get("description"):
+                documents.append({
+                    "title": event.get("summary", "Event"),
+                    "content": event["description"],
+                    "type": "calendar-event",
+                    "metadata": {
+                        "start": entity["start_time"],
+                        "end": entity["end_time"],
+                    },
+                })
+
+        return {"entities": entities, "relationships": relationships, "documents": documents}
+
+    def fetch(self, **kwargs: Any) -> dict:
+        """Fetch calendar events from Google Calendar.
+
+        Returns:
+            dict with keys "entities", "relationships", "documents".
+        """
+        limit = kwargs.get("limit", 250)
+        if self._use_gws:
+            return self._fetch_via_gws(limit)
+        if self._service:
+            return self._fetch_via_api(limit)
+        raise RuntimeError("Call authenticate() first")
+{% endraw %}

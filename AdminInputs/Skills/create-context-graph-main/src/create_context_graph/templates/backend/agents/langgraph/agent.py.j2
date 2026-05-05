@@ -1,0 +1,183 @@
+"""{{ domain.name }} AI Agent — LangGraph implementation."""
+
+from __future__ import annotations
+
+import json
+
+from langchain_anthropic import ChatAnthropic
+from langchain_core.tools import tool
+from langgraph.prebuilt import create_react_agent
+
+from app.config import settings
+from app.context_graph_client import execute_cypher, get_schema
+from app.memory import store_message, get_context, resolve_session_id
+
+
+SYSTEM_PROMPT = """{{ system_prompt }}
+
+IMPORTANT: You MUST use the available tools to query the knowledge graph before answering any question about the data. Never guess or make up information — always use tools to look up actual data from the graph.
+
+CRITICAL: Call tools DIRECTLY without any introductory text. Do NOT say "I'll search for..." or "Let me look up..." before calling a tool — just call the tool immediately. Only generate text AFTER you have received the tool results and are ready to provide your final answer."""
+
+# ---------------------------------------------------------------------------
+# Agent tools — domain-specific for {{ domain.name }}
+# ---------------------------------------------------------------------------
+
+{% for tool in agent_tools %}
+@tool
+async def {{ tool.name }}({% for param in tool.parameters %}{{ param.name }}: {{ 'str' if param.type == 'string' else 'int' if param.type == 'integer' else 'float' if param.type == 'float' else 'str' }}{% if param.default is not none %} = {{ param.default if param.type != 'string' else '"' + param.default + '"' }}{% endif %}{% if not loop.last %}, {% endif %}{% endfor %}) -> str:
+    """{{ tool.description }}"""
+    cypher = """{{ tool.cypher | indent(4) }}"""
+    params = {
+{% for param in tool.parameters %}
+        "{{ param.name }}": {{ param.name }},
+{% endfor %}
+    }
+    result = await execute_cypher(cypher, params, tool_name="{{ tool.name }}")
+    return json.dumps(result, default=str)
+
+{% endfor %}
+
+{% raw %}
+@tool
+async def run_cypher(query: str, parameters: str = "{}") -> str:
+    """Execute a read-only Cypher query against the knowledge graph."""
+    try:
+        params = json.loads(parameters) if parameters else {}
+    except json.JSONDecodeError:
+        return json.dumps({"error": "Invalid JSON parameters"})
+    params.setdefault("domain", settings.domain_id)
+    try:
+        result = await execute_cypher(query, params, tool_name="run_cypher")
+        return json.dumps(result, default=str)
+    except Exception as e:
+        return json.dumps({"error": f"Cypher query failed: {e}"})
+
+
+@tool
+async def get_graph_schema() -> str:
+    """Get the knowledge graph schema (node labels and relationship types)."""
+    result = await get_schema()
+    return json.dumps(result, default=str)
+{% endraw %}
+
+TOOLS = [
+{% for tool in agent_tools %}
+    {{ tool.name }},
+{% endfor %}
+    run_cypher,
+    get_graph_schema,
+]
+
+{% raw %}
+model = ChatAnthropic(
+    model="claude-sonnet-4-20250514",
+    api_key=settings.anthropic_api_key,
+)
+
+graph = create_react_agent(model, TOOLS, prompt=SYSTEM_PROMPT)
+
+
+# ---------------------------------------------------------------------------
+# Message handler
+# ---------------------------------------------------------------------------
+
+
+async def handle_message(message: str, session_id: str | None = None) -> dict:
+    """Handle an incoming chat message."""
+    session_id = resolve_session_id(session_id)
+
+    # Retrieve conversation history and store the new user message
+    await store_message(session_id, "user", message)
+    context = await get_context(session_id, query=message)
+    history = context.get("messages", [])
+
+    # Build messages list with conversation history
+    from langchain_core.messages import HumanMessage, AIMessage
+    history_messages = []
+    for msg in history:
+        if msg["role"] == "user":
+            history_messages.append(HumanMessage(content=msg["content"]))
+        elif msg["role"] == "assistant":
+            history_messages.append(AIMessage(content=msg["content"]))
+
+    result = await graph.ainvoke(
+        {"messages": history_messages + [HumanMessage(content=message)]},
+        config={"configurable": {"thread_id": session_id}},
+    )
+
+    # Extract the last AI message
+    ai_messages = [m for m in result["messages"] if hasattr(m, "content") and m.type == "ai"]
+    response_text = ai_messages[-1].content if ai_messages else ""
+    if not response_text.strip():
+        response_text = "I searched the knowledge graph but couldn't find relevant results for your query. Could you try rephrasing your question?"
+
+    assistant_result = await store_message(session_id, "assistant", response_text)
+
+    return {
+        "response": response_text,
+        "session_id": session_id,
+        "graph_data": None,
+        "entities_extracted": (assistant_result or {}).get("entities", []),
+        "preferences_detected": (assistant_result or {}).get("preferences", []),
+    }
+
+
+async def handle_message_stream(message: str, session_id: str | None = None) -> dict:
+    """Handle a chat message with streaming text deltas via the collector event queue."""
+    from app.context_graph_client import get_collector
+
+    session_id = resolve_session_id(session_id)
+
+    collector = get_collector()
+    await store_message(session_id, "user", message)
+    context = await get_context(session_id, query=message)
+    history = context.get("messages", [])
+
+    from langchain_core.messages import HumanMessage, AIMessage
+    history_messages = []
+    for msg in history:
+        if msg["role"] == "user":
+            history_messages.append(HumanMessage(content=msg["content"]))
+        elif msg["role"] == "assistant":
+            history_messages.append(AIMessage(content=msg["content"]))
+
+    response_text = ""
+    async for event in graph.astream_events(
+        {"messages": history_messages + [HumanMessage(content=message)]},
+        config={"configurable": {"thread_id": session_id}},
+        version="v2",
+    ):
+        kind = event.get("event", "")
+        if kind == "on_chat_model_stream":
+            chunk = event.get("data", {}).get("chunk")
+            if chunk and hasattr(chunk, "content"):
+                text = ""
+                if isinstance(chunk.content, str):
+                    text = chunk.content
+                elif isinstance(chunk.content, list):
+                    text = "".join(
+                        block.get("text", "") if isinstance(block, dict) else getattr(block, "text", "")
+                        for block in chunk.content
+                        if (isinstance(block, dict) and block.get("type") == "text")
+                        or (hasattr(block, "type") and getattr(block, "type", None) == "text")
+                    )
+                if text:
+                    collector.emit_text_delta(text)
+                    response_text += text
+
+    if not response_text.strip():
+        response_text = "I searched the knowledge graph but couldn't find relevant results for your query. Could you try rephrasing your question?"
+
+    assistant_result = await store_message(session_id, "assistant", response_text)
+    if assistant_result:
+        collector.emit_entities_extracted(assistant_result.get("entities", []))
+        collector.emit_preferences_detected(assistant_result.get("preferences", []))
+    collector.emit_done(response_text, session_id)
+
+    return {
+        "response": response_text,
+        "session_id": session_id,
+        "graph_data": None,
+    }
+{% endraw %}

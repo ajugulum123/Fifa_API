@@ -1,0 +1,36 @@
+"""{{ domain.name }} AI Agent — {{ framework_display_name }}.
+
+This is a stub implementation. Replace with a full agent implementation
+using {{ framework_display_name }}.
+"""
+{% raw %}
+from __future__ import annotations
+
+import uuid
+
+from app.context_graph_client import search_entities, execute_cypher, get_schema
+
+
+async def handle_message(message: str, session_id: str | None = None) -> dict:
+    """Handle an incoming chat message."""
+    if session_id is None:
+        session_id = str(uuid.uuid4())
+
+    results = await search_entities(message)
+
+    if results:
+        response = f"Found {len(results)} related entities:\n"
+        for r in results[:5]:
+            response += f"- {r.get('n', {}).get('name', 'Unknown')}\n"
+    else:
+        response = (
+            "I can help you explore the knowledge graph. "
+            "Try asking about specific entities or topics."
+        )
+
+    return {
+        "response": response,
+        "session_id": session_id,
+        "graph_data": None,
+    }
+{% endraw %}

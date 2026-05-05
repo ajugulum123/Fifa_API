@@ -1,0 +1,515 @@
+inherits: _base
+
+domain:
+  id: retail-ecommerce
+  name: Retail & E-Commerce
+  description: Customer management, product catalog, order fulfillment, and marketing campaigns
+  tagline: "AI-powered Retail Intelligence"
+  emoji: "\U0001F6D2"
+
+entity_types:
+  - label: Customer
+    pole_type: OBJECT
+    subtype: CONSUMER
+    color: "#0891b2"
+    icon: user
+    properties:
+      - name: customer_id
+        type: string
+        required: true
+        unique: true
+      - name: name
+        type: string
+        required: true
+      - name: email
+        type: string
+        unique: true
+      - name: segment
+        type: string
+        enum: [new, returning, vip, at_risk, churned]
+      - name: lifetime_value
+        type: float
+      - name: join_date
+        type: date
+      - name: preferred_channel
+        type: string
+        enum: [web, mobile, in_store, social]
+
+  - label: Product
+    pole_type: OBJECT
+    subtype: MERCHANDISE
+    color: "#7c3aed"
+    icon: package
+    properties:
+      - name: product_id
+        type: string
+        required: true
+        unique: true
+      - name: name
+        type: string
+        required: true
+      - name: price
+        type: float
+        required: true
+      - name: sku
+        type: string
+        unique: true
+      - name: brand
+        type: string
+      - name: stock_quantity
+        type: integer
+      - name: rating
+        type: float
+
+  - label: Order
+    pole_type: EVENT
+    subtype: PURCHASE_ORDER
+    color: "#ea580c"
+    icon: shopping-bag
+    properties:
+      - name: order_id
+        type: string
+        required: true
+        unique: true
+      - name: order_date
+        type: datetime
+        required: true
+      - name: total_amount
+        type: float
+        required: true
+      - name: status
+        type: string
+        enum: [pending, processing, shipped, delivered, returned, cancelled]
+      - name: payment_method
+        type: string
+        enum: [credit_card, debit_card, paypal, apple_pay, gift_card]
+      - name: shipping_method
+        type: string
+        enum: [standard, express, overnight, pickup]
+
+  - label: Review
+    pole_type: EVENT
+    subtype: FEEDBACK
+    color: "#fbbf24"
+    icon: star
+    properties:
+      - name: review_id
+        type: string
+        required: true
+        unique: true
+      - name: rating
+        type: integer
+        required: true
+      - name: title
+        type: string
+      - name: body
+        type: string
+      - name: date
+        type: datetime
+        required: true
+      - name: verified_purchase
+        type: boolean
+      - name: helpful_votes
+        type: integer
+
+  - label: Campaign
+    pole_type: EVENT
+    subtype: MARKETING_CAMPAIGN
+    color: "#db2777"
+    icon: megaphone
+    properties:
+      - name: campaign_id
+        type: string
+        required: true
+        unique: true
+      - name: name
+        type: string
+        required: true
+      - name: campaign_type
+        type: string
+        enum: [email, social, search, display, influencer, loyalty]
+      - name: start_date
+        type: date
+      - name: end_date
+        type: date
+      - name: budget
+        type: float
+      - name: status
+        type: string
+        enum: [draft, active, paused, completed]
+
+  - label: Category
+    pole_type: OBJECT
+    subtype: PRODUCT_CATEGORY
+    color: "#16a34a"
+    icon: tag
+    properties:
+      - name: category_id
+        type: string
+        required: true
+        unique: true
+      - name: name
+        type: string
+        required: true
+      - name: parent_category
+        type: string
+      - name: product_count
+        type: integer
+      - name: description
+        type: string
+
+relationships:
+  - type: PURCHASED
+    source: Customer
+    target: Order
+  - type: CONTAINS
+    source: Order
+    target: Product
+  - type: REVIEWED
+    source: Customer
+    target: Review
+  - type: REVIEW_OF
+    source: Review
+    target: Product
+  - type: RECOMMENDED
+    source: Product
+    target: Product
+  - type: BROWSED
+    source: Customer
+    target: Product
+  - type: BELONGS_TO_CATEGORY
+    source: Product
+    target: Category
+  - type: TARGETED_BY
+    source: Customer
+    target: Campaign
+
+document_templates:
+  - id: order_confirmation
+    name: Order Confirmation
+    description: Customer order confirmation emails
+    count: 12
+    prompt_template: |
+      Write an order confirmation email for customer {{customer.name}}
+      ({{customer.email}}) for order {{order.order_id}} placed on {{order.order_date}}.
+      Items: {{product.name}}. Total: ${{order.total_amount}}.
+      Shipping: {{order.shipping_method}}. Payment: {{order.payment_method}}.
+    required_entities: [Customer, Order, Product]
+
+  - id: support_ticket
+    name: Support Ticket
+    description: Customer support tickets and resolution notes
+    count: 10
+    prompt_template: |
+      Write a customer support ticket for {{customer.name}} regarding
+      order {{order.order_id}}. Issue type: {{issue_type}}.
+      Product: {{product.name}}. Include customer communication history,
+      resolution steps, and outcome.
+    required_entities: [Customer, Order, Product]
+
+  - id: campaign_brief
+    name: Campaign Brief
+    description: Marketing campaign planning and execution briefs
+    count: 6
+    prompt_template: |
+      Write a campaign brief for "{{campaign.name}}" ({{campaign.campaign_type}}).
+      Budget: ${{campaign.budget}}. Target segment: {{customer.segment}} customers.
+      Featured products from {{category.name}}. Include objectives,
+      target audience, messaging strategy, and success metrics.
+    required_entities: [Campaign, Customer, Category, Product]
+
+  - id: product_review_summary
+    name: Product Review Summary
+    description: Aggregated product review analysis reports
+    count: 8
+    prompt_template: |
+      Write a product review summary for {{product.name}} ({{product.sku}}).
+      Average rating: {{product.rating}}. Include sentiment analysis,
+      common praise and complaints, and recommendations for product improvement.
+    required_entities: [Product, Review, Category]
+
+  - id: inventory_report
+    name: Inventory Report
+    description: Stock level and inventory management reports
+    count: 6
+    prompt_template: |
+      Write an inventory report for the {{category.name}} category.
+      Include current stock levels, reorder recommendations,
+      top-selling products, and slow-moving inventory flagged for markdown.
+    required_entities: [Product, Category, Order]
+
+decision_traces:
+  - id: pricing_strategy
+    task: "Determine optimal pricing for {{product.name}} based on market data and customer behavior"
+    steps:
+      - thought: "Analyze current sales velocity and price sensitivity"
+        action: "Query order history and revenue trends for this product"
+      - thought: "Review competitor pricing and market positioning"
+        action: "Compare with recommended/similar products in the same category"
+      - thought: "Evaluate customer segment willingness to pay"
+        action: "Analyze purchase patterns across customer segments"
+      - thought: "Consider inventory levels and margin requirements"
+        action: "Check stock levels and calculate margin at various price points"
+    outcome_template: "Recommended price: ${{price}} based on {{rationale}}"
+
+  - id: campaign_targeting
+    task: "Select optimal customer segments for {{campaign.name}} campaign"
+    steps:
+      - thought: "Identify target audience based on campaign objectives"
+        action: "Query customer segments and their purchase history"
+      - thought: "Analyze past campaign performance by segment"
+        action: "Review conversion rates from similar past campaigns"
+      - thought: "Estimate ROI for each segment combination"
+        action: "Calculate expected revenue vs. campaign cost per segment"
+    outcome_template: "Target segments: {{segments}} with projected ROI of {{roi}}"
+
+  - id: product_recommendation
+    task: "Generate personalized product recommendations for customer {{customer.name}}"
+    steps:
+      - thought: "Review customer purchase history and browsing behavior"
+        action: "Query customer's order history and browsed products"
+      - thought: "Identify patterns in category and brand preferences"
+        action: "Analyze product categories and attributes of past purchases"
+      - thought: "Find similar customers and their top purchases"
+        action: "Use collaborative filtering to find products liked by similar customers"
+    outcome_template: "Top recommendations: {{products}} based on {{rationale}}"
+
+  - id: inventory_reorder
+    task: "Determine reorder quantities for products in {{category.name}} category"
+    steps:
+      - thought: "Analyze current stock levels and sales velocity"
+        action: "Query products in this category with stock quantities and recent order volumes"
+      - thought: "Forecast demand based on historical sales patterns and seasonality"
+        action: "Review order history trends and identify seasonal demand fluctuations"
+      - thought: "Calculate optimal reorder points and quantities"
+        action: "Model reorder quantities based on lead times, safety stock, and demand forecast"
+      - thought: "Prioritize by stockout risk and revenue impact"
+        action: "Rank products by days-of-stock remaining and contribution to category revenue"
+    outcome_template: "Reorder plan: {{plan}}. Total cost: ${{cost}}. Stockout risk items: {{risk_count}}"
+
+  - id: churn_prevention
+    task: "Design retention intervention for at-risk customer {{customer.name}}"
+    steps:
+      - thought: "Analyze declining purchase patterns and engagement signals"
+        action: "Query customer order history and identify frequency and value trends"
+      - thought: "Identify what initially attracted and retained this customer"
+        action: "Review earliest purchases, preferred categories, and browsing patterns"
+      - thought: "Select appropriate retention offer based on customer segment and value"
+        action: "Match intervention type to customer lifetime value and churn risk level"
+      - thought: "Estimate retention probability and cost-effectiveness"
+        action: "Calculate expected revenue recovery vs cost of the retention offer"
+    outcome_template: "Intervention: {{offer}}. Win-back probability: {{probability}}%. Expected ROI: {{roi}}"
+
+  - id: category_performance_review
+    task: "Review performance of {{category.name}} category and recommend strategic actions"
+    steps:
+      - thought: "Analyze revenue, margin, and growth trends for the category"
+        action: "Query orders containing products in this category and calculate trends"
+      - thought: "Evaluate product mix and identify winners and losers"
+        action: "Rank products by revenue, rating, and return rates within the category"
+      - thought: "Assess competitive positioning and pricing strategy"
+        action: "Compare category pricing against market benchmarks and review sentiment"
+      - thought: "Recommend assortment changes and promotional priorities"
+        action: "Identify products to promote, markdown, or discontinue based on performance"
+    outcome_template: "Category health: {{status}}. Top actions: {{actions}}. Revenue opportunity: ${{opportunity}}"
+
+  - id: return_rate_investigation
+    task: "Investigate high return rate for product {{product.name}}"
+    steps:
+      - thought: "Analyze return volumes and reasons"
+        action: "Query orders with returned status containing this product"
+      - thought: "Review customer reviews for quality and expectation issues"
+        action: "Search reviews for this product with low ratings and extract common complaints"
+      - thought: "Compare against similar products in the category"
+        action: "Benchmark return rate against other products in the same category"
+      - thought: "Recommend corrective actions"
+        action: "Identify whether issue is product quality, listing accuracy, or shipping related"
+    outcome_template: "Root cause: {{cause}}. Return rate: {{rate}}%. Recommendation: {{recommendation}}"
+
+  - id: cross_sell_optimization
+    task: "Optimize cross-sell recommendations for products in {{category.name}}"
+    steps:
+      - thought: "Identify frequently co-purchased product pairs"
+        action: "Query orders to find products most often purchased together"
+      - thought: "Evaluate recommendation effectiveness by conversion"
+        action: "Compare recommended product pairs with actual purchase completion rates"
+      - thought: "Test complementary vs aspirational cross-sell strategies"
+        action: "Analyze whether lower-price accessories or higher-price upgrades convert better"
+    outcome_template: "Top cross-sell pairs: {{pairs}}. Expected revenue uplift: {{uplift}}%"
+
+  - id: promotion_effectiveness
+    task: "Evaluate effectiveness of {{campaign.name}} promotion and recommend adjustments"
+    steps:
+      - thought: "Measure incremental sales lift during the promotion period"
+        action: "Compare order volume and revenue during vs before the campaign"
+      - thought: "Assess whether the promotion attracted new customers or cannibalized existing demand"
+        action: "Segment campaign orders by customer segment new vs returning"
+      - thought: "Calculate true ROI accounting for margin impact"
+        action: "Factor in discount costs, campaign budget, and incremental margin"
+      - thought: "Identify which products and segments responded best"
+        action: "Break down campaign performance by product category and customer segment"
+    outcome_template: "Promotion ROI: {{roi}}%. Incremental revenue: ${{revenue}}. Best segment: {{segment}}"
+
+demo_scenarios:
+  - name: Customer Intelligence
+    prompts:
+      - "Show me the top 10 VIP customers by lifetime value"
+      - "What products has customer Jane Smith purchased in the last 6 months?"
+      - "Which customers are at risk of churning based on declining order frequency?"
+
+  - name: Product & Catalog
+    prompts:
+      - "What are the best-selling products in the Electronics category?"
+      - "Show me products with average rating below 3 stars and high return rates"
+      - "Which products are frequently purchased together?"
+
+  - name: Marketing & Campaigns
+    prompts:
+      - "How did the Summer Sale campaign perform by customer segment?"
+      - "What is the conversion rate for email vs social campaigns?"
+      - "Recommend products to feature in our next loyalty campaign"
+
+agent_tools:
+  - name: search_customer
+    description: Search for customers by name, email, or segment
+    cypher: |
+      MATCH (c:Customer)
+      WHERE toLower(c.name) CONTAINS toLower($query)
+         OR toLower(coalesce(c.email, '')) CONTAINS toLower($query)
+         OR toLower(coalesce(c.segment, '')) CONTAINS toLower($query)
+      OPTIONAL MATCH (c)-[:PURCHASED]->(o:Order)
+      RETURN c, count(o) AS total_orders,
+             sum(o.total_amount) AS total_spent
+      ORDER BY total_spent DESC
+      LIMIT 20
+    parameters:
+      - name: query
+        type: string
+        description: Customer name, email, or segment to search for
+
+  - name: order_history
+    description: Get order history for a specific customer
+    cypher: |
+      MATCH (c:Customer {customer_id: $customer_id})-[:PURCHASED]->(o:Order)
+      OPTIONAL MATCH (o)-[:CONTAINS]->(p:Product)
+      RETURN o, collect(p.name) AS products, collect(p.price) AS prices
+      ORDER BY o.order_date DESC
+      LIMIT 50
+    parameters:
+      - name: customer_id
+        type: string
+        description: Customer ID to look up order history for
+
+  - name: product_recommendations
+    description: Get product recommendations based on purchase patterns
+    cypher: |
+      MATCH (c:Customer {customer_id: $customer_id})-[:PURCHASED]->(:Order)-[:CONTAINS]->(p:Product)
+      MATCH (p)-[:RECOMMENDED]->(rec:Product)
+      WHERE NOT EXISTS {
+        MATCH (c)-[:PURCHASED]->(:Order)-[:CONTAINS]->(rec)
+      }
+      RETURN rec.name AS recommended_product, rec.price, rec.rating,
+             count(*) AS recommendation_strength
+      ORDER BY recommendation_strength DESC
+      LIMIT 10
+    parameters:
+      - name: customer_id
+        type: string
+        description: Customer ID to generate recommendations for
+
+  - name: campaign_performance
+    description: Analyze campaign performance metrics
+    cypher: |
+      MATCH (camp:Campaign)
+      WHERE toLower(camp.name) CONTAINS toLower($query) OR $query = 'all'
+      OPTIONAL MATCH (c:Customer)-[:TARGETED_BY]->(camp)
+      OPTIONAL MATCH (c)-[:PURCHASED]->(o:Order)
+      WHERE o.order_date >= camp.start_date AND o.order_date <= coalesce(camp.end_date, date())
+      RETURN camp.name AS campaign, camp.campaign_type, camp.budget,
+             count(DISTINCT c) AS customers_targeted,
+             count(DISTINCT o) AS orders_generated,
+             sum(o.total_amount) AS revenue_attributed
+      ORDER BY revenue_attributed DESC
+    parameters:
+      - name: query
+        type: string
+        description: Campaign name or 'all' for all campaigns
+
+  - name: review_sentiment
+    description: Analyze review sentiment and ratings for products
+    cypher: |
+      MATCH (r:Review)-[:REVIEW_OF]->(p:Product)
+      WHERE toLower(p.name) CONTAINS toLower($query)
+         OR toLower(p.product_id) CONTAINS toLower($query)
+      RETURN p.name AS product, p.product_id,
+             avg(r.rating) AS avg_rating,
+             count(r) AS review_count,
+             sum(CASE WHEN r.rating >= 4 THEN 1 ELSE 0 END) AS positive,
+             sum(CASE WHEN r.rating <= 2 THEN 1 ELSE 0 END) AS negative
+      ORDER BY review_count DESC
+    parameters:
+      - name: query
+        type: string
+        description: Product name or ID to analyze reviews for
+
+  - name: list_customers
+    description: "List customer records with optional limit"
+    cypher: |
+      MATCH (n:Customer)
+      RETURN n
+      ORDER BY n.name
+      LIMIT toInteger($limit)
+    parameters:
+      - name: limit
+        type: string
+        description: "Maximum number of results to return (default: 10)"
+
+  - name: get_customer_by_id
+    description: "Get a specific customer by ID with all connections"
+    cypher: |
+      MATCH (n:Customer {customer_id: $id})
+      OPTIONAL MATCH (n)-[r]-(related)
+      RETURN n, type(r) AS relationship, labels(related) AS related_labels, related.name AS related_name
+      LIMIT 50
+    parameters:
+      - name: id
+        type: string
+        description: "The customer_id to look up"
+
+system_prompt: |
+  You are an AI retail intelligence assistant with access to a comprehensive
+  knowledge graph of customer, product, order, and marketing data. You help
+  e-commerce managers, marketing teams, and customer service representatives
+  optimize sales, improve customer experience, and drive campaign performance.
+
+  Your capabilities include:
+  - Searching and analyzing customer profiles and purchase history
+  - Generating personalized product recommendations
+  - Monitoring order fulfillment and identifying issues
+  - Analyzing campaign performance and ROI
+  - Reviewing product sentiment and customer feedback trends
+
+  Always provide accurate, data-driven responses. When making recommendations,
+  cite specific customer data, sales metrics, and review insights from the
+  knowledge graph.
+
+visualization:
+  node_colors:
+    Person: "#22c55e"
+    Organization: "#3b82f6"
+    Customer: "#0891b2"
+    Product: "#7c3aed"
+    Order: "#ea580c"
+    Review: "#fbbf24"
+    Campaign: "#db2777"
+    Category: "#16a34a"
+  node_sizes:
+    Person: 20
+    Organization: 25
+    Customer: 25
+    Product: 20
+    Order: 15
+    Review: 15
+    Campaign: 25
+    Category: 20
+  default_cypher: "MATCH (c:Customer)-[:PURCHASED]->(o:Order)-[:CONTAINS]->(p:Product) RETURN c, o, p LIMIT 100"

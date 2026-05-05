@@ -1,0 +1,28 @@
+{% raw %}import { createSystem, defaultConfig, defineConfig } from "@chakra-ui/react";
+
+const config = defineConfig({
+  cssVarsPrefix: "ccg",
+  globalCss: {
+    "html, body": {
+      bg: "gray.50",
+      color: "gray.900",
+      lineHeight: "1.6",
+    },
+  },
+  theme: {
+    tokens: {
+      colors: {
+        brand: {
+          50: { value: "#f0f9ff" },
+          100: { value: "#e0f2fe" },
+          500: { value: "{% endraw %}{{ visualization.nodeColors.values() | first | default('#6366f1') }}{% raw %}" },
+          600: { value: "{% endraw %}{{ visualization.nodeColors.values() | first | default('#4f46e5') }}{% raw %}" },
+          700: { value: "{% endraw %}{{ visualization.nodeColors.values() | first | default('#4338ca') }}{% raw %}" },
+        },
+      },
+    },
+  },
+});
+
+export const system = createSystem(defaultConfig, config);
+{% endraw %}

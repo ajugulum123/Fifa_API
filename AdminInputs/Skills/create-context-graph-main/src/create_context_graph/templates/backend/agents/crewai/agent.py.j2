@@ -1,0 +1,178 @@
+"""{{ domain.name }} AI Agent — CrewAI implementation."""
+
+from __future__ import annotations
+
+import json
+import logging
+import os
+
+import asyncio
+
+from crewai import Agent, Crew, Task
+from crewai.tools import tool
+
+from app.config import settings
+from app.context_graph_client import execute_cypher, get_schema
+from app.memory import store_message, get_context, resolve_session_id
+
+logger = logging.getLogger(__name__)
+
+{% raw %}
+# Ensure ANTHROPIC_API_KEY is available in the environment
+if not os.environ.get("ANTHROPIC_API_KEY"):
+    if settings.anthropic_api_key:
+        os.environ["ANTHROPIC_API_KEY"] = settings.anthropic_api_key
+    else:
+        from dotenv import dotenv_values
+        _key = dotenv_values("../.env").get("ANTHROPIC_API_KEY", "")
+        if _key:
+            os.environ["ANTHROPIC_API_KEY"] = _key
+{% endraw %}
+
+
+_main_loop: asyncio.AbstractEventLoop | None = None
+
+
+def _capture_loop():
+    """Capture the running event loop. Must be called from async context."""
+    global _main_loop
+    _main_loop = asyncio.get_running_loop()
+
+
+def _run_sync(coro):
+    """Run an async coroutine from a synchronous worker thread.
+
+    Schedules the coroutine on the main event loop (captured at request time)
+    using ``run_coroutine_threadsafe`` so that asyncio.Queue operations and
+    Neo4j async driver calls stay on the correct loop.
+    """
+    loop = _main_loop
+    if loop is not None and loop.is_running():
+        future = asyncio.run_coroutine_threadsafe(coro, loop)
+        return future.result(timeout=30)
+    return asyncio.run(coro)
+
+
+SYSTEM_PROMPT = """{{ system_prompt }}
+
+IMPORTANT: You MUST use the available tools to query the knowledge graph before answering any question about the data. Never guess or make up information — always use tools to look up actual data from the graph.
+
+CRITICAL: Call tools DIRECTLY without any introductory text. Do NOT say "I'll search for..." or "Let me look up..." before calling a tool — just call the tool immediately. Only generate text AFTER you have received the tool results and are ready to provide your final answer."""
+
+# ---------------------------------------------------------------------------
+# Agent tools — domain-specific for {{ domain.name }}
+# ---------------------------------------------------------------------------
+
+{% for tool in agent_tools %}
+@tool
+def {{ tool.name }}({% for param in tool.parameters %}{{ param.name }}: {{ 'str' if param.type == 'string' else 'int' if param.type == 'integer' else 'float' if param.type == 'float' else 'str' }}{% if param.default is not none %} = {{ param.default if param.type != 'string' else '"' + param.default + '"' }}{% endif %}{% if not loop.last %}, {% endif %}{% endfor %}) -> str:
+    """{{ tool.description }}"""
+    cypher = """{{ tool.cypher | indent(4) }}"""
+    params = {
+{% for param in tool.parameters %}
+        "{{ param.name }}": {{ param.name }},
+{% endfor %}
+    }
+    result = _run_sync(execute_cypher(cypher, params, tool_name="{{ tool.name }}"))
+    return json.dumps(result, default=str)
+
+{% endfor %}
+
+{% raw %}
+@tool
+def run_cypher(query: str, parameters: str = "{}") -> str:
+    """Execute a read-only Cypher query against the knowledge graph."""
+    try:
+        params = json.loads(parameters) if parameters else {}
+    except json.JSONDecodeError:
+        return json.dumps({"error": "Invalid JSON parameters"})
+    params.setdefault("domain", settings.domain_id)
+    try:
+        result = _run_sync(execute_cypher(query, params, tool_name="run_cypher"))
+        return json.dumps(result, default=str)
+    except Exception as e:
+        return json.dumps({"error": f"Cypher query failed: {e}"})
+
+
+@tool
+def get_graph_schema() -> str:
+    """Get the knowledge graph schema (node labels and relationship types)."""
+    result = _run_sync(get_schema())
+    return json.dumps(result, default=str)
+{% endraw %}
+
+agent = Agent(
+    role="{{ domain.name }} Analyst",
+    goal="Help users analyze and explore the {{ domain.name | lower }} knowledge graph",
+    backstory=SYSTEM_PROMPT,
+    tools=[
+{% for tool in agent_tools %}
+        {{ tool.name }},
+{% endfor %}
+        run_cypher,
+        get_graph_schema,
+    ],
+    llm="anthropic/claude-sonnet-4-20250514",
+    verbose=False,
+)
+
+{% raw %}
+# ---------------------------------------------------------------------------
+# Message handler
+# ---------------------------------------------------------------------------
+
+
+async def handle_message(message: str, session_id: str | None = None) -> dict:
+    """Handle an incoming chat message."""
+    session_id = resolve_session_id(session_id)
+
+    # Store user message and retrieve context
+    await store_message(session_id, "user", message)
+    context = await get_context(session_id, query=message)
+    history = context.get("messages", [])
+
+    # Build task description with structured conversation history
+    if history:
+        history_block = "\n\n".join(
+            f"[{m['role'].upper()}]\n{m['content']}" for m in history
+        )
+        task_description = (
+            f"<conversation_history>\n{history_block}\n</conversation_history>\n\n"
+            f"[USER]\n{message}"
+        )
+    else:
+        task_description = message
+
+    task = Task(
+        description=task_description,
+        expected_output="A helpful response with relevant data from the knowledge graph",
+        agent=agent,
+    )
+
+    crew = Crew(agents=[agent], tasks=[task], verbose=False)
+    _capture_loop()
+    logger.info("CrewAI: starting crew.kickoff for message: %s", message[:100])
+    try:
+        result = await asyncio.wait_for(
+            asyncio.to_thread(crew.kickoff),
+            timeout=60.0,
+        )
+        response_text = str(result)
+        logger.info("CrewAI: completed successfully, response length: %d", len(response_text))
+    except asyncio.TimeoutError:
+        logger.error("CrewAI: timed out after 60 seconds")
+        response_text = "The request timed out after 60 seconds. Please try a simpler question or try again."
+    except Exception as e:
+        logger.error("CrewAI agent error: %s", e, exc_info=True)
+        response_text = f"An error occurred: {e}"
+
+    assistant_result = await store_message(session_id, "assistant", response_text)
+
+    return {
+        "response": response_text,
+        "session_id": session_id,
+        "graph_data": None,
+        "entities_extracted": (assistant_result or {}).get("entities", []),
+        "preferences_detected": (assistant_result or {}).get("preferences", []),
+    }
+{% endraw %}

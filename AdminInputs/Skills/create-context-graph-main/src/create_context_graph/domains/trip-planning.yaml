@@ -1,0 +1,513 @@
+inherits: _base
+
+domain:
+  id: trip-planning
+  name: Trip Planning
+  description: Travel planning, destination research, booking management, and itinerary optimization
+  tagline: "AI-powered Travel Intelligence"
+  emoji: "\U0001F30D"
+
+entity_types:
+  - label: Destination
+    pole_type: OBJECT
+    subtype: TRAVEL_DESTINATION
+    color: "#059669"
+    icon: map-pin
+    properties:
+      - name: destination_id
+        type: string
+        required: true
+        unique: true
+      - name: name
+        type: string
+        required: true
+      - name: country
+        type: string
+        required: true
+      - name: region
+        type: string
+      - name: destination_type
+        type: string
+        enum: [city, beach, mountain, island, countryside, historical, resort]
+      - name: best_season
+        type: string
+        enum: [spring, summer, fall, winter, year_round]
+      - name: avg_daily_cost
+        type: float
+
+  - label: Hotel
+    pole_type: OBJECT
+    subtype: ACCOMMODATION
+    color: "#2563eb"
+    icon: bed
+    properties:
+      - name: hotel_id
+        type: string
+        required: true
+        unique: true
+      - name: name
+        type: string
+        required: true
+      - name: category
+        type: string
+        enum: [budget, mid_range, luxury, boutique, hostel, vacation_rental]
+      - name: star_rating
+        type: float
+      - name: price_per_night
+        type: float
+      - name: amenities
+        type: string
+      - name: address
+        type: string
+
+  - label: Activity
+    pole_type: OBJECT
+    subtype: TRAVEL_ACTIVITY
+    color: "#d946ef"
+    icon: compass
+    properties:
+      - name: activity_id
+        type: string
+        required: true
+        unique: true
+      - name: name
+        type: string
+        required: true
+      - name: activity_type
+        type: string
+        enum: [sightseeing, adventure, cultural, food_tour, nature, nightlife, shopping, wellness]
+      - name: duration_hours
+        type: float
+      - name: price
+        type: float
+      - name: difficulty
+        type: string
+        enum: [easy, moderate, challenging, extreme]
+      - name: rating
+        type: float
+
+  - label: Restaurant
+    pole_type: OBJECT
+    subtype: DINING
+    color: "#dc2626"
+    icon: utensils
+    properties:
+      - name: restaurant_id
+        type: string
+        required: true
+        unique: true
+      - name: name
+        type: string
+        required: true
+      - name: cuisine
+        type: string
+        enum: [local, italian, japanese, french, mexican, indian, fusion, seafood, vegetarian]
+      - name: price_range
+        type: string
+        enum: [budget, moderate, upscale, fine_dining]
+      - name: rating
+        type: float
+      - name: michelin_stars
+        type: integer
+      - name: reservation_required
+        type: boolean
+
+  - label: Itinerary
+    pole_type: EVENT
+    subtype: TRAVEL_PLAN
+    color: "#8b5cf6"
+    icon: calendar
+    properties:
+      - name: itinerary_id
+        type: string
+        required: true
+        unique: true
+      - name: name
+        type: string
+        required: true
+      - name: start_date
+        type: date
+        required: true
+      - name: end_date
+        type: date
+        required: true
+      - name: travelers
+        type: integer
+      - name: total_budget
+        type: float
+      - name: status
+        type: string
+        enum: [planning, booked, in_progress, completed, cancelled]
+
+  - label: Review
+    pole_type: EVENT
+    subtype: TRAVEL_REVIEW
+    color: "#f472b6"
+    icon: star
+    properties:
+      - name: review_id
+        type: string
+        required: true
+        unique: true
+      - name: rating
+        type: float
+        required: true
+      - name: title
+        type: string
+      - name: content
+        type: string
+      - name: date
+        type: date
+        required: true
+      - name: reviewer
+        type: string
+      - name: travel_style
+        type: string
+        enum: [solo, couple, family, group, business]
+
+relationships:
+  - type: LOCATED_IN
+    source: Hotel
+    target: Destination
+  - type: RECOMMENDED_FOR
+    source: Activity
+    target: Destination
+  - type: BOOKED_AT
+    source: Itinerary
+    target: Hotel
+  - type: NEAR
+    source: Restaurant
+    target: Hotel
+  - type: PART_OF_TRIP
+    source: Activity
+    target: Itinerary
+  - type: REVIEWED_BY
+    source: Hotel
+    target: Review
+  - type: INCLUDES_DESTINATION
+    source: Itinerary
+    target: Destination
+  - type: REVIEWED_ACTIVITY
+    source: Review
+    target: Activity
+
+document_templates:
+  - id: itinerary_doc
+    name: Itinerary Document
+    description: Detailed day-by-day travel itinerary
+    count: 8
+    prompt_template: |
+      Write a detailed day-by-day itinerary for "{{itinerary.name}}"
+      visiting {{destination.name}}, {{destination.country}}.
+      Dates: {{itinerary.start_date}} to {{itinerary.end_date}}.
+      Travelers: {{itinerary.travelers}}. Budget: ${{itinerary.total_budget}}.
+      Hotel: {{hotel.name}}. Include activities, restaurant recommendations,
+      and travel tips.
+    required_entities: [Itinerary, Destination, Hotel, Activity]
+
+  - id: booking_confirmation
+    name: Booking Confirmation
+    description: Confirmation details for hotel and activity bookings
+    count: 10
+    prompt_template: |
+      Write a booking confirmation for {{hotel.name}} ({{hotel.category}},
+      {{hotel.star_rating}} stars) in {{destination.name}}.
+      Itinerary: {{itinerary.name}}. Check-in: {{itinerary.start_date}},
+      Check-out: {{itinerary.end_date}}. Rate: ${{hotel.price_per_night}}/night.
+      Include amenities, cancellation policy, and local tips.
+    required_entities: [Hotel, Destination, Itinerary]
+
+  - id: travel_review
+    name: Travel Review
+    description: Detailed reviews of destinations, hotels, and activities
+    count: 10
+    prompt_template: |
+      Write a travel review for {{hotel.name}} in {{destination.name}}
+      by a {{review.travel_style}} traveler. Rating: {{review.rating}}/5.
+      Include impressions of the accommodation, nearby activities like
+      {{activity.name}}, dining at {{restaurant.name}}, and overall
+      destination experience.
+    required_entities: [Review, Hotel, Destination, Activity, Restaurant]
+
+  - id: destination_guide
+    name: Destination Guide
+    description: Comprehensive guide to a travel destination
+    count: 6
+    prompt_template: |
+      Write a destination guide for {{destination.name}}, {{destination.country}}
+      (type: {{destination.destination_type}}, best season: {{destination.best_season}}).
+      Cover top activities, recommended hotels, must-try restaurants,
+      budget tips (avg daily cost: ${{destination.avg_daily_cost}}),
+      and cultural etiquette.
+    required_entities: [Destination, Hotel, Activity, Restaurant]
+
+  - id: budget_summary
+    name: Budget Summary
+    description: Detailed budget breakdown for a trip
+    count: 6
+    prompt_template: |
+      Write a budget summary for trip "{{itinerary.name}}" to
+      {{destination.name}}. Total budget: ${{itinerary.total_budget}}.
+      Hotel: {{hotel.name}} at ${{hotel.price_per_night}}/night.
+      Include accommodation, activities, dining, transportation,
+      and miscellaneous cost breakdowns with savings tips.
+    required_entities: [Itinerary, Destination, Hotel]
+
+decision_traces:
+  - id: destination_selection
+    task: "Help choose the best destination for a {{review.travel_style}} trip in {{destination.best_season}}"
+    steps:
+      - thought: "Identify destinations matching travel style and season preferences"
+        action: "Query destinations filtered by best_season and type, with reviews by travel style"
+      - thought: "Compare costs and value across candidate destinations"
+        action: "Calculate average daily costs including hotel, activities, and dining"
+      - thought: "Review traveler ratings and recent experiences"
+        action: "Aggregate review scores by destination and travel style"
+    outcome_template: "Recommended destination: {{destination}} based on {{criteria}}"
+
+  - id: hotel_selection
+    task: "Select the best hotel in {{destination.name}} for budget ${{budget}}/night"
+    steps:
+      - thought: "Filter hotels by price range and destination"
+        action: "Query hotels in destination within budget, ordered by rating"
+      - thought: "Evaluate amenities and proximity to planned activities"
+        action: "Check hotel amenities and distance to booked activities"
+      - thought: "Review guest experiences from similar travelers"
+        action: "Pull reviews filtered by matching travel style"
+    outcome_template: "Recommended hotel: {{hotel}} ({{rating}} stars, ${{price}}/night)"
+
+  - id: itinerary_optimization
+    task: "Optimize itinerary {{itinerary.name}} for best experience within budget"
+    steps:
+      - thought: "Assess current activity schedule for time conflicts and logistics"
+        action: "Map all activities by day, check for overlaps and travel time"
+      - thought: "Identify budget allocation and remaining flexibility"
+        action: "Sum current bookings and compare against total budget"
+      - thought: "Suggest alternatives for low-rated or overpriced items"
+        action: "Find higher-rated or better-value alternatives for each activity slot"
+    outcome_template: "Optimized plan saves ${{savings}} with {{improvement}} in ratings"
+
+  - id: activity_scheduling
+    task: "Schedule activities for {{itinerary.name}} to minimize travel time and maximize enjoyment"
+    steps:
+      - thought: "Map all booked activities by location and duration"
+        action: "Query activities linked to itinerary with durations and destination locations"
+      - thought: "Cluster activities by proximity to reduce transit time"
+        action: "Group activities near the same hotel or neighborhood by day"
+      - thought: "Balance intensity levels across each day"
+        action: "Alternate high-energy and relaxing activities, avoiding back-to-back extremes"
+      - thought: "Verify opening hours and seasonal availability"
+        action: "Cross-reference activity schedules with trip dates and local calendars"
+    outcome_template: "Scheduled {{count}} activities across {{days}} days with {{transit_reduction}} less transit"
+
+  - id: budget_allocation
+    task: "Allocate ${{itinerary.total_budget}} budget across accommodation, activities, and dining for {{destination.name}}"
+    steps:
+      - thought: "Determine baseline costs for accommodation at the destination"
+        action: "Query average hotel prices by category in the destination"
+      - thought: "Estimate activity spending based on planned experiences"
+        action: "Sum prices of selected activities and identify free alternatives"
+      - thought: "Calculate dining budget based on restaurant options and traveler count"
+        action: "Query restaurant price ranges near the hotel and estimate daily meal costs"
+    outcome_template: "Budget split: accommodation ${{accommodation}}, activities ${{activities}}, dining ${{dining}}, reserve ${{reserve}}"
+
+  - id: weather_contingency
+    task: "Create weather contingency plan for {{itinerary.name}} visiting {{destination.name}} in {{destination.best_season}}"
+    steps:
+      - thought: "Identify outdoor activities vulnerable to bad weather"
+        action: "Query activities on the itinerary with types sightseeing, adventure, or nature"
+      - thought: "Find indoor alternatives for each weather-sensitive activity"
+        action: "Search for cultural, shopping, or wellness activities at the same destination"
+      - thought: "Assess hotel amenities as fallback entertainment"
+        action: "Check hotel amenities for spa, pool, or indoor facilities"
+    outcome_template: "Contingency plan covers {{outdoor_count}} outdoor activities with {{indoor_count}} indoor alternatives"
+
+  - id: restaurant_reservation
+    task: "Plan dining reservations for {{itinerary.name}} near {{hotel.name}} in {{destination.name}}"
+    steps:
+      - thought: "Identify top-rated restaurants near the booked hotel"
+        action: "Query restaurants with NEAR relationship to the hotel, ordered by rating"
+      - thought: "Diversify cuisine types across trip days"
+        action: "Group restaurants by cuisine and assign one per evening to avoid repetition"
+      - thought: "Check reservation requirements and price compatibility with budget"
+        action: "Filter restaurants by reservation_required flag and price_range within budget"
+      - thought: "Account for special dietary needs and traveler preferences"
+        action: "Review cuisine options for vegetarian, allergy-friendly, or local specialties"
+    outcome_template: "Reserved {{count}} restaurants across {{cuisines}} cuisine types, avg ${{avg_cost}}/meal"
+
+  - id: transport_planning
+    task: "Plan transportation for {{itinerary.name}} across activities in {{destination.name}}"
+    steps:
+      - thought: "Map distances between hotel, activities, and restaurants"
+        action: "Query locations of all booked activities and restaurants relative to hotel"
+      - thought: "Evaluate local transport options and costs"
+        action: "Assess destination type for public transit, taxi, rental car, or walking feasibility"
+      - thought: "Optimize daily routes to minimize backtracking"
+        action: "Sequence each day's activities by geographic proximity"
+    outcome_template: "Transport plan: {{mode}} recommended, estimated ${{cost}} total, {{time}} daily transit"
+
+  - id: travel_companion_matching
+    task: "Suggest group-compatible activities for {{review.travel_style}} travelers visiting {{destination.name}}"
+    steps:
+      - thought: "Identify activities suitable for the travel style and group size"
+        action: "Query activities at destination filtered by difficulty and type matching travel style"
+      - thought: "Balance group preferences using review sentiment"
+        action: "Aggregate review ratings by travel style for each activity"
+      - thought: "Check group booking availability and discounts"
+        action: "Filter activities that accommodate the itinerary's traveler count"
+    outcome_template: "Matched {{count}} activities for {{travel_style}} group with avg rating {{rating}}"
+
+demo_scenarios:
+  - name: Trip Planning
+    prompts:
+      - "Help me plan a 7-day trip to Japan for two people in spring"
+      - "What are the top-rated activities in Barcelona?"
+      - "Compare luxury hotels in Bali under $200/night"
+
+  - name: Destination Research
+    prompts:
+      - "Which destinations are best for a family vacation in summer?"
+      - "Show me all beach destinations with average daily cost under $150"
+      - "What do solo travelers say about Lisbon?"
+
+  - name: Budget & Booking
+    prompts:
+      - "What's the total estimated cost for my Italy trip?"
+      - "Show me all my upcoming itineraries and their booking status"
+      - "Find restaurants near my hotel in Tokyo with vegetarian options"
+
+agent_tools:
+  - name: search_destination
+    description: Search for travel destinations by name, country, or type
+    cypher: |
+      MATCH (d:Destination)
+      WHERE toLower(d.name) CONTAINS toLower($query)
+         OR toLower(d.country) CONTAINS toLower($query)
+         OR toLower(coalesce(d.destination_type, '')) CONTAINS toLower($query)
+      OPTIONAL MATCH (h:Hotel)-[:LOCATED_IN]->(d)
+      OPTIONAL MATCH (a:Activity)-[:RECOMMENDED_FOR]->(d)
+      RETURN d, count(DISTINCT h) AS hotel_count, count(DISTINCT a) AS activity_count
+      ORDER BY activity_count DESC
+      LIMIT 20
+    parameters:
+      - name: query
+        type: string
+        description: Destination name, country, or type to search for
+
+  - name: find_activities
+    description: Find activities at a destination filtered by type or budget
+    cypher: |
+      MATCH (a:Activity)-[:RECOMMENDED_FOR]->(d:Destination)
+      WHERE toLower(d.name) CONTAINS toLower($destination)
+      OPTIONAL MATCH (r:Review)-[:REVIEWED_ACTIVITY]->(a)
+      RETURN a, d.name AS destination, avg(r.rating) AS avg_review_rating
+      ORDER BY avg_review_rating DESC
+      LIMIT 20
+    parameters:
+      - name: destination
+        type: string
+        description: Destination name to find activities for
+
+  - name: hotel_comparison
+    description: Compare hotels at a destination by price, rating, and amenities
+    cypher: |
+      MATCH (h:Hotel)-[:LOCATED_IN]->(d:Destination)
+      WHERE toLower(d.name) CONTAINS toLower($destination)
+      OPTIONAL MATCH (h)-[:REVIEWED_BY]->(r:Review)
+      RETURN h, d.name AS destination, avg(r.rating) AS avg_review,
+             count(r) AS review_count
+      ORDER BY h.star_rating DESC, avg_review DESC
+      LIMIT 20
+    parameters:
+      - name: destination
+        type: string
+        description: Destination name to compare hotels for
+
+  - name: restaurant_recommendations
+    description: Find restaurants near a hotel or in a destination
+    cypher: |
+      MATCH (rest:Restaurant)-[:NEAR]->(h:Hotel)-[:LOCATED_IN]->(d:Destination)
+      WHERE toLower(d.name) CONTAINS toLower($destination)
+      RETURN rest, h.name AS near_hotel, d.name AS destination
+      ORDER BY rest.rating DESC
+      LIMIT 20
+    parameters:
+      - name: destination
+        type: string
+        description: Destination name to find restaurants in
+
+  - name: trip_budget
+    description: Calculate budget breakdown for an itinerary
+    cypher: |
+      MATCH (i:Itinerary {name: $itinerary_name})
+      OPTIONAL MATCH (i)-[:BOOKED_AT]->(h:Hotel)
+      OPTIONAL MATCH (a:Activity)-[:PART_OF_TRIP]->(i)
+      OPTIONAL MATCH (i)-[:INCLUDES_DESTINATION]->(d:Destination)
+      WITH i, h, collect(DISTINCT a) AS activities, d,
+           duration.inDays(date(i.start_date), date(i.end_date)).days AS nights
+      RETURN i, h.name AS hotel, h.price_per_night * nights AS hotel_total,
+             reduce(s = 0, act IN activities | s + coalesce(act.price, 0)) AS activities_total,
+             d.name AS destination, d.avg_daily_cost * nights AS est_other_costs
+    parameters:
+      - name: itinerary_name
+        type: string
+        description: Name of the itinerary to calculate budget for
+
+  - name: list_destinations
+    description: "List destination records with optional limit"
+    cypher: |
+      MATCH (n:Destination)
+      RETURN n
+      ORDER BY n.name
+      LIMIT toInteger($limit)
+    parameters:
+      - name: limit
+        type: string
+        description: "Maximum number of results to return (default: 10)"
+
+  - name: get_destination_by_id
+    description: "Get a specific destination by ID with all connections"
+    cypher: |
+      MATCH (n:Destination {destination_id: $id})
+      OPTIONAL MATCH (n)-[r]-(related)
+      RETURN n, type(r) AS relationship, labels(related) AS related_labels, related.name AS related_name
+      LIMIT 50
+    parameters:
+      - name: id
+        type: string
+        description: "The destination_id to look up"
+
+system_prompt: |
+  You are an AI travel planning assistant with access to a knowledge graph of
+  destinations, hotels, activities, restaurants, itineraries, and traveler reviews.
+
+  Your capabilities include:
+  - Searching and comparing travel destinations worldwide
+  - Finding and recommending hotels, activities, and restaurants
+  - Building and optimizing day-by-day itineraries
+  - Calculating trip budgets and finding cost savings
+  - Surfacing relevant traveler reviews and ratings
+
+  Be enthusiastic but practical. Tailor recommendations to the traveler's style,
+  budget, and preferences. Always provide specific data like prices, ratings, and
+  availability from the knowledge graph. Flag seasonal considerations and
+  budget implications proactively.
+
+visualization:
+  node_colors:
+    Destination: "#059669"
+    Hotel: "#2563eb"
+    Activity: "#d946ef"
+    Restaurant: "#dc2626"
+    Itinerary: "#8b5cf6"
+    Review: "#f472b6"
+    Person: "#22c55e"
+    Location: "#a855f7"
+  node_sizes:
+    Destination: 30
+    Hotel: 25
+    Activity: 20
+    Restaurant: 20
+    Itinerary: 25
+    Review: 15
+  default_cypher: "MATCH (d:Destination)<-[:LOCATED_IN]-(h:Hotel) OPTIONAL MATCH (a:Activity)-[:RECOMMENDED_FOR]->(d) RETURN d, h, a LIMIT 100"

@@ -1,0 +1,2203 @@
+{
+  "domain": "oil-gas",
+  "entities": {
+    "Person": [
+      {
+        "name": "Sarah Chen",
+        "email": "sarah.chen@peakenergyops.com",
+        "role": "Drilling Operations Manager",
+        "description": "Lead drilling operations manager with 12 years experience in deepwater and onshore drilling projects across North America"
+      },
+      {
+        "name": "Marcus Rodriguez",
+        "email": "m.rodriguez@gulfcoastpetro.com",
+        "role": "Production Engineer",
+        "description": "Senior production engineer specializing in enhanced oil recovery techniques and reservoir optimization in shale plays"
+      },
+      {
+        "name": "Fatima Al-Rashid",
+        "email": "f.alrashid@desertfieldsllc.com",
+        "role": "Environmental Compliance Officer",
+        "description": "Environmental compliance specialist with expertise in air quality monitoring and waste management for upstream operations"
+      },
+      {
+        "name": "Erik Johansson",
+        "email": "erik.johansson@northseaenergy.no",
+        "role": "Reservoir Geologist",
+        "description": "Petroleum geologist with 15 years experience in structural geology and reservoir characterization for offshore developments"
+      },
+      {
+        "name": "Priya Patel",
+        "email": "priya.patel@midlanddrilling.com",
+        "role": "HSE Inspector",
+        "description": "Health, safety, and environmental inspector certified for upstream operations with focus on drilling safety protocols"
+      }
+    ],
+    "Organization": [
+      {
+        "name": "Peak Energy Operations LLC",
+        "description": "Independent oil and gas exploration and production company focused on unconventional shale plays in the Permian Basin",
+        "industry": "Oil & Gas Exploration and Production"
+      },
+      {
+        "name": "Gulf Coast Petroleum Services",
+        "description": "Offshore drilling contractor specializing in deepwater exploration and development projects in the Gulf of Mexico",
+        "industry": "Oilfield Services"
+      },
+      {
+        "name": "TransCanada Pipeline Systems",
+        "description": "Major pipeline transportation company operating midstream infrastructure across North America",
+        "industry": "Pipeline Transportation"
+      },
+      {
+        "name": "Bakken Field Solutions Inc",
+        "description": "Regional oilfield services company providing drilling, completion, and production services in the Williston Basin",
+        "industry": "Oilfield Services"
+      },
+      {
+        "name": "ExxonMobil Upstream Research",
+        "description": "Research and development division focused on advanced drilling technologies and enhanced recovery methods",
+        "industry": "Oil & Gas Technology"
+      }
+    ],
+    "Location": [
+      {
+        "name": "Midland Operations Center",
+        "address": "4850 E University Blvd, Midland, TX 79706",
+        "latitude": 31.9973,
+        "longitude": -102.0779
+      },
+      {
+        "name": "Williston Basin Field Office",
+        "address": "1324 31st Ave SW, Williston, ND 58801",
+        "latitude": 48.1469,
+        "longitude": -103.6183
+      },
+      {
+        "name": "Gulf of Mexico Platform Charlie",
+        "address": "Gulf of Mexico, Block 252",
+        "latitude": 27.8424,
+        "longitude": -91.2156
+      },
+      {
+        "name": "Eagle Ford Processing Facility",
+        "address": "18750 FM 536, Karnes City, TX 78118",
+        "latitude": 28.8851,
+        "longitude": -97.9014
+      },
+      {
+        "name": "Denver Regional Headquarters",
+        "address": "1775 Sherman St, Denver, CO 80203",
+        "latitude": 39.7462,
+        "longitude": -104.98
+      }
+    ],
+    "Event": [
+      {
+        "name": "Q3 Production Review Meeting",
+        "date": "2024-10-15T09:00:00Z",
+        "description": "Quarterly review of production performance across all active wells in the Permian Basin operations"
+      },
+      {
+        "name": "Annual Safety Training Conference",
+        "date": "2024-11-22T08:00:00Z",
+        "description": "Mandatory safety training and certification renewal for all drilling and production personnel"
+      },
+      {
+        "name": "Regulatory Compliance Audit",
+        "date": "2024-09-08T10:00:00Z",
+        "description": "State environmental agency audit of waste management and air emissions compliance"
+      },
+      {
+        "name": "New Technology Implementation Workshop",
+        "date": "2024-12-05T13:30:00Z",
+        "description": "Training session for deployment of automated drilling monitoring systems"
+      },
+      {
+        "name": "Emergency Response Drill",
+        "date": "2024-10-28T11:00:00Z",
+        "description": "Simulated blowout response and evacuation procedures at offshore platform"
+      }
+    ],
+    "Object": [
+      {
+        "name": "Drilling Mud System",
+        "description": "High-performance oil-based drilling fluid system designed for horizontal shale drilling operations"
+      },
+      {
+        "name": "Wellhead Control Panel",
+        "description": "Automated wellhead monitoring and control system with remote operation capabilities"
+      },
+      {
+        "name": "Production Data Logger",
+        "description": "Real-time data acquisition system for monitoring flow rates, pressures, and temperatures"
+      },
+      {
+        "name": "Gas Chromatograph Unit",
+        "description": "Laboratory-grade analytical instrument for hydrocarbon composition analysis"
+      },
+      {
+        "name": "Seismic Survey Dataset",
+        "description": "3D seismic interpretation data covering 45 square miles of prospective acreage"
+      }
+    ],
+    "Well": [
+      {
+        "well_id": "TX-42-301-45892",
+        "name": "Eagle Point 1H",
+        "well_type": "development",
+        "status": "producing",
+        "spud_date": "2023-04-15",
+        "total_depth_ft": 12850.5,
+        "latitude": 31.8456,
+        "longitude": -102.2134,
+        "daily_production_bbl": 285.6
+      },
+      {
+        "well_id": "ND-22-153-30567",
+        "name": "Bakken Star 3H",
+        "well_type": "development",
+        "status": "producing",
+        "spud_date": "2023-08-22",
+        "total_depth_ft": 14200.0,
+        "latitude": 47.8923,
+        "longitude": -103.4567,
+        "daily_production_bbl": 412.3
+      },
+      {
+        "well_id": "OK-35-125-78234",
+        "name": "Cherokee Ridge 2",
+        "well_type": "exploration",
+        "status": "drilling",
+        "spud_date": "2024-09-01",
+        "total_depth_ft": 8500.0,
+        "latitude": 36.2145,
+        "longitude": -97.8934,
+        "daily_production_bbl": 0.0
+      },
+      {
+        "well_id": "TX-42-329-67123",
+        "name": "Wolfcamp Express 5H",
+        "well_type": "development",
+        "status": "completed",
+        "spud_date": "2024-07-10",
+        "total_depth_ft": 11750.0,
+        "latitude": 32.1234,
+        "longitude": -101.9876,
+        "daily_production_bbl": 0.0
+      },
+      {
+        "well_id": "LA-17-056-89456",
+        "name": "Gulf Stream 1",
+        "well_type": "exploration",
+        "status": "producing",
+        "spud_date": "2022-11-18",
+        "total_depth_ft": 18500.0,
+        "latitude": 29.3456,
+        "longitude": -89.7823,
+        "daily_production_bbl": 1250.8
+      },
+      {
+        "well_id": "CO-45-089-34521",
+        "name": "DJ Basin Test 4",
+        "well_type": "injection",
+        "status": "producing",
+        "spud_date": "2023-05-30",
+        "total_depth_ft": 7200.0,
+        "latitude": 40.1789,
+        "longitude": -104.5623,
+        "daily_production_bbl": 0.0
+      },
+      {
+        "well_id": "WY-56-012-78901",
+        "name": "Powder River 6H",
+        "well_type": "development",
+        "status": "shut_in",
+        "spud_date": "2023-01-14",
+        "total_depth_ft": 9800.0,
+        "latitude": 43.8567,
+        "longitude": -105.2341,
+        "daily_production_bbl": 0.0
+      },
+      {
+        "well_id": "NM-30-015-56789",
+        "name": "Delaware Basin 8H",
+        "well_type": "development",
+        "status": "producing",
+        "spud_date": "2024-02-28",
+        "total_depth_ft": 13200.0,
+        "latitude": 32.4567,
+        "longitude": -103.8912,
+        "daily_production_bbl": 356.2
+      },
+      {
+        "well_id": "TX-42-165-23456",
+        "name": "Bone Spring 2H",
+        "well_type": "development",
+        "status": "producing",
+        "spud_date": "2023-12-05",
+        "total_depth_ft": 11950.0,
+        "latitude": 31.7823,
+        "longitude": -102.4567,
+        "daily_production_bbl": 198.7
+      },
+      {
+        "well_id": "PA-37-125-67890",
+        "name": "Marcellus Deep 1H",
+        "well_type": "exploration",
+        "status": "suspended",
+        "spud_date": "2023-06-12",
+        "total_depth_ft": 7850.0,
+        "latitude": 40.8934,
+        "longitude": -78.5612,
+        "daily_production_bbl": 0.0
+      }
+    ],
+    "Reservoir": [
+      {
+        "reservoir_id": "WC-2024-001",
+        "name": "Wolfcamp A Lower Bench",
+        "reservoir_type": "shale",
+        "depth_ft": 9850.0,
+        "pressure_psi": 4250.0,
+        "temperature_f": 185.0,
+        "porosity_pct": 8.5,
+        "estimated_reserves_mmbbl": 12.5
+      },
+      {
+        "reservoir_id": "BK-2023-045",
+        "name": "Bakken Middle Member",
+        "reservoir_type": "tight",
+        "depth_ft": 10200.0,
+        "pressure_psi": 4800.0,
+        "temperature_f": 210.0,
+        "porosity_pct": 12.3,
+        "estimated_reserves_mmbbl": 8.7
+      },
+      {
+        "reservoir_id": "EF-2024-023",
+        "name": "Eagle Ford Black Oil Window",
+        "reservoir_type": "shale",
+        "depth_ft": 11500.0,
+        "pressure_psi": 5200.0,
+        "temperature_f": 265.0,
+        "porosity_pct": 7.8,
+        "estimated_reserves_mmbbl": 15.2
+      },
+      {
+        "reservoir_id": "BS-2024-012",
+        "name": "Bone Spring Sand",
+        "reservoir_type": "sandstone",
+        "depth_ft": 8750.0,
+        "pressure_psi": 3900.0,
+        "temperature_f": 170.0,
+        "porosity_pct": 14.6,
+        "estimated_reserves_mmbbl": 6.8
+      },
+      {
+        "reservoir_id": "MS-2023-067",
+        "name": "Marcellus Shale Formation",
+        "reservoir_type": "shale",
+        "depth_ft": 7200.0,
+        "pressure_psi": 3400.0,
+        "temperature_f": 155.0,
+        "porosity_pct": 6.2,
+        "estimated_reserves_mmbbl": 4.3
+      },
+      {
+        "reservoir_id": "DB-2024-034",
+        "name": "Delaware Mountain Group",
+        "reservoir_type": "sandstone",
+        "depth_ft": 12800.0,
+        "pressure_psi": 5800.0,
+        "temperature_f": 290.0,
+        "porosity_pct": 16.1,
+        "estimated_reserves_mmbbl": 22.4
+      },
+      {
+        "reservoir_id": "NI-2023-089",
+        "name": "Niobrara Formation B Bench",
+        "reservoir_type": "shale",
+        "depth_ft": 6800.0,
+        "pressure_psi": 2850.0,
+        "temperature_f": 142.0,
+        "porosity_pct": 9.7,
+        "estimated_reserves_mmbbl": 7.1
+      },
+      {
+        "reservoir_id": "CH-2024-056",
+        "name": "Cherokee Sand Unit",
+        "reservoir_type": "conventional",
+        "depth_ft": 4200.0,
+        "pressure_psi": 1850.0,
+        "temperature_f": 108.0,
+        "porosity_pct": 22.4,
+        "estimated_reserves_mmbbl": 3.8
+      },
+      {
+        "reservoir_id": "TU-2023-078",
+        "name": "Tuscaloosa Marine Shale",
+        "reservoir_type": "shale",
+        "depth_ft": 11200.0,
+        "pressure_psi": 4950.0,
+        "temperature_f": 245.0,
+        "porosity_pct": 8.9,
+        "estimated_reserves_mmbbl": 11.6
+      },
+      {
+        "reservoir_id": "AV-2024-023",
+        "name": "Avalon Shale Lower",
+        "reservoir_type": "shale",
+        "depth_ft": 9200.0,
+        "pressure_psi": 4100.0,
+        "temperature_f": 175.0,
+        "porosity_pct": 7.5,
+        "estimated_reserves_mmbbl": 9.2
+      }
+    ],
+    "Equipment": [
+      {
+        "equipment_id": "PJ-2023-4587",
+        "name": "Lufkin C-456D Pump Jack",
+        "equipment_type": "pump_jack",
+        "manufacturer": "Lufkin Industries",
+        "install_date": "2023-03-15",
+        "last_service_date": "2024-08-22",
+        "condition": "good",
+        "operating_hours": 12450
+      },
+      {
+        "equipment_id": "CP-2022-8934",
+        "name": "Ariel JGK Gas Compressor",
+        "equipment_type": "compressor",
+        "manufacturer": "Ariel Corporation",
+        "install_date": "2022-11-08",
+        "last_service_date": "2024-09-10",
+        "condition": "fair",
+        "operating_hours": 15678
+      },
+      {
+        "equipment_id": "SP-2024-1234",
+        "name": "Natco 3-Phase Separator",
+        "equipment_type": "separator",
+        "manufacturer": "Natco Group",
+        "install_date": "2024-01-20",
+        "last_service_date": "2024-07-15",
+        "condition": "new",
+        "operating_hours": 6234
+      },
+      {
+        "equipment_id": "PL-2021-7890",
+        "name": "16-inch Gathering Pipeline",
+        "equipment_type": "pipeline",
+        "manufacturer": "Welded Construction",
+        "install_date": "2021-09-12",
+        "last_service_date": "2024-05-30",
+        "condition": "good",
+        "operating_hours": 24576
+      },
+      {
+        "equipment_id": "TK-2023-5678",
+        "name": "300 BBL Production Tank",
+        "equipment_type": "tank",
+        "manufacturer": "Highland Tank",
+        "install_date": "2023-07-05",
+        "last_service_date": "2024-09-18",
+        "condition": "good",
+        "operating_hours": 10890
+      },
+      {
+        "equipment_id": "BOP-2024-3456",
+        "name": "Cameron DL Blowout Preventer",
+        "equipment_type": "bop",
+        "manufacturer": "Schlumberger",
+        "install_date": "2024-04-10",
+        "last_service_date": "2024-09-25",
+        "condition": "new",
+        "operating_hours": 4567
+      },
+      {
+        "equipment_id": "RG-2022-9012",
+        "name": "NOV M1000 Drilling Rig",
+        "equipment_type": "rig",
+        "manufacturer": "National Oilwell Varco",
+        "install_date": "2022-05-18",
+        "last_service_date": "2024-08-14",
+        "condition": "good",
+        "operating_hours": 18234
+      },
+      {
+        "equipment_id": "MT-2023-6789",
+        "name": "Daniel Gas Flow Meter",
+        "equipment_type": "meter",
+        "manufacturer": "Emerson Process",
+        "install_date": "2023-10-22",
+        "last_service_date": "2024-06-12",
+        "condition": "good",
+        "operating_hours": 8765
+      },
+      {
+        "equipment_id": "CP-2024-2345",
+        "name": "Caterpillar C32 Compressor",
+        "equipment_type": "compressor",
+        "manufacturer": "Caterpillar Inc",
+        "install_date": "2024-06-15",
+        "last_service_date": "2024-09-30",
+        "condition": "new",
+        "operating_hours": 2890
+      },
+      {
+        "equipment_id": "PJ-2021-8901",
+        "name": "Weatherford Mark II Pump Jack",
+        "equipment_type": "pump_jack",
+        "manufacturer": "Weatherford International",
+        "install_date": "2021-12-03",
+        "last_service_date": "2024-07-28",
+        "condition": "poor",
+        "operating_hours": 22134
+      }
+    ],
+    "Inspection": [
+      {
+        "inspection_id": "INS-2024-0892",
+        "inspection_date": "2024-09-15",
+        "inspector": "Marcus Rodriguez",
+        "inspection_type": "safety",
+        "result": "pass",
+        "findings": "All safety systems operational, minor housekeeping issues noted",
+        "corrective_actions": "Clean debris from walkways, update safety signage",
+        "name": "Inspection 1"
+      },
+      {
+        "inspection_id": "INS-2024-1045",
+        "inspection_date": "2024-08-22",
+        "inspector": "Fatima Al-Rashid",
+        "inspection_type": "environmental",
+        "result": "conditional_pass",
+        "findings": "Small hydrocarbon stain detected near separator unit",
+        "corrective_actions": "Clean contaminated soil, implement secondary containment",
+        "name": "Inspection 2"
+      },
+      {
+        "inspection_id": "INS-2024-1167",
+        "inspection_date": "2024-09-30",
+        "inspector": "Erik Johansson",
+        "inspection_type": "mechanical",
+        "result": "fail",
+        "findings": "Pump jack gearbox showing excessive wear and vibration",
+        "corrective_actions": "Replace gearbox, schedule comprehensive overhaul",
+        "name": "Inspection 3"
+      },
+      {
+        "inspection_id": "INS-2024-1289",
+        "inspection_date": "2024-10-05",
+        "inspector": "Priya Patel",
+        "inspection_type": "regulatory",
+        "result": "pass",
+        "findings": "All required documentation current, meters calibrated",
+        "corrective_actions": "None required",
+        "name": "Inspection 4"
+      },
+      {
+        "inspection_id": "INS-2024-1345",
+        "inspection_date": "2024-09-18",
+        "inspector": "Sarah Chen",
+        "inspection_type": "pressure_test",
+        "result": "pass",
+        "findings": "Wellhead pressure test successful at 3000 PSI",
+        "corrective_actions": "None required",
+        "name": "Inspection 5"
+      },
+      {
+        "inspection_id": "INS-2024-1423",
+        "inspection_date": "2024-08-14",
+        "inspector": "Marcus Rodriguez",
+        "inspection_type": "corrosion",
+        "result": "conditional_pass",
+        "findings": "Minor external corrosion on pipeline coating",
+        "corrective_actions": "Apply protective coating, schedule ultrasonic testing",
+        "name": "Inspection 6"
+      },
+      {
+        "inspection_id": "INS-2024-1567",
+        "inspection_date": "2024-10-10",
+        "inspector": "Fatima Al-Rashid",
+        "inspection_type": "safety",
+        "result": "critical_failure",
+        "findings": "H2S detection system offline, emergency shutdown valve stuck",
+        "corrective_actions": "Immediate repair of gas detection system, valve replacement",
+        "name": "Inspection 7"
+      },
+      {
+        "inspection_id": "INS-2024-1678",
+        "inspection_date": "2024-09-28",
+        "inspector": "Priya Patel",
+        "inspection_type": "environmental",
+        "result": "pass",
+        "findings": "Air emissions within acceptable limits, waste management compliant",
+        "corrective_actions": "Continue current monitoring schedule",
+        "name": "Inspection 8"
+      }
+    ],
+    "Permit": [
+      {
+        "permit_id": "TX-DRL-2024-4567",
+        "permit_type": "drilling",
+        "issuing_authority": "Railroad Commission of Texas",
+        "issue_date": "2024-07-15",
+        "expiry_date": "2025-07-15",
+        "status": "active",
+        "conditions": "Must maintain 500ft setback from water wells, H2S contingency plan required",
+        "name": "Permit 1"
+      },
+      {
+        "permit_id": "ND-CMP-2024-8901",
+        "permit_type": "completion",
+        "issuing_authority": "North Dakota Industrial Commission",
+        "issue_date": "2024-08-20",
+        "expiry_date": "2025-02-20",
+        "status": "active",
+        "conditions": "Flaring restricted to 90 days, green completion required",
+        "name": "Permit 2"
+      },
+      {
+        "permit_id": "OK-WRK-2024-2345",
+        "permit_type": "workover",
+        "issuing_authority": "Oklahoma Corporation Commission",
+        "issue_date": "2024-09-10",
+        "expiry_date": "2024-12-10",
+        "status": "active",
+        "conditions": "Operations limited to daylight hours, noise monitoring required",
+        "name": "Permit 3"
+      },
+      {
+        "permit_id": "TX-DSP-2024-6789",
+        "permit_type": "disposal",
+        "issuing_authority": "Texas Commission on Environmental Quality",
+        "issue_date": "2024-06-01",
+        "expiry_date": "2029-06-01",
+        "status": "active",
+        "conditions": "Maximum injection rate 5000 BBL/day, quarterly water quality reporting",
+        "name": "Permit 4"
+      },
+      {
+        "permit_id": "LA-PPL-2023-3456",
+        "permit_type": "pipeline",
+        "issuing_authority": "Louisiana Department of Natural Resources",
+        "issue_date": "2023-11-15",
+        "expiry_date": "2033-11-15",
+        "status": "active",
+        "conditions": "Wetland crossing restrictions, annual integrity assessment required",
+        "name": "Permit 5"
+      },
+      {
+        "permit_id": "CO-ENV-2024-7890",
+        "permit_type": "environmental",
+        "issuing_authority": "Colorado Oil and Gas Conservation Commission",
+        "issue_date": "2024-04-22",
+        "expiry_date": "2027-04-22",
+        "status": "active",
+        "conditions": "Air quality monitoring, wildlife protection measures during nesting season",
+        "name": "Permit 6"
+      },
+      {
+        "permit_id": "NM-PRD-2024-1234",
+        "permit_type": "production",
+        "issuing_authority": "New Mexico Oil Conservation Division",
+        "issue_date": "2024-05-30",
+        "expiry_date": "2029-05-30",
+        "status": "active",
+        "conditions": "Monthly production reporting, venting and flaring limitations",
+        "name": "Permit 7"
+      },
+      {
+        "permit_id": "WY-DRL-2024-5678",
+        "permit_type": "drilling",
+        "issuing_authority": "Wyoming Oil and Gas Conservation Commission",
+        "issue_date": "2024-03-12",
+        "expiry_date": "2025-03-12",
+        "status": "under_review",
+        "conditions": "Pending wildlife survey completion, sage grouse habitat considerations",
+        "name": "Permit 8"
+      },
+      {
+        "permit_id": "PA-ENV-2023-9012",
+        "permit_type": "environmental",
+        "issuing_authority": "Pennsylvania Department of Environmental Protection",
+        "issue_date": "2023-12-08",
+        "expiry_date": "2028-12-08",
+        "status": "expired",
+        "conditions": "Water monitoring, restoration bond requirement",
+        "name": "Permit 9"
+      },
+      {
+        "permit_id": "TX-CMP-2024-3456",
+        "permit_type": "completion",
+        "issuing_authority": "Railroad Commission of Texas",
+        "issue_date": "2024-09-25",
+        "expiry_date": "2025-03-25",
+        "status": "approved",
+        "conditions": "Green completion mandatory, reduced emission completion techniques required",
+        "name": "Permit 10"
+      }
+    ],
+    "Formation": [
+      {
+        "formation_id": "FORM-WC-001",
+        "name": "Wolfcamp Formation",
+        "geological_age": "permian",
+        "lithology": "shale",
+        "thickness_ft": 850.0,
+        "top_depth_ft": 9200.0,
+        "hydrocarbon_bearing": true
+      },
+      {
+        "formation_id": "FORM-BK-002",
+        "name": "Bakken Formation",
+        "geological_age": "devonian",
+        "lithology": "shale",
+        "thickness_ft": 140.0,
+        "top_depth_ft": 10050.0,
+        "hydrocarbon_bearing": true
+      },
+      {
+        "formation_id": "FORM-EF-003",
+        "name": "Eagle Ford Group",
+        "geological_age": "cretaceous",
+        "lithology": "shale",
+        "thickness_ft": 250.0,
+        "top_depth_ft": 11200.0,
+        "hydrocarbon_bearing": true
+      },
+      {
+        "formation_id": "FORM-BS-004",
+        "name": "Bone Spring Limestone",
+        "geological_age": "permian",
+        "lithology": "limestone",
+        "thickness_ft": 400.0,
+        "top_depth_ft": 8500.0,
+        "hydrocarbon_bearing": true
+      },
+      {
+        "formation_id": "FORM-MS-005",
+        "name": "Marcellus Shale",
+        "geological_age": "devonian",
+        "lithology": "shale",
+        "thickness_ft": 180.0,
+        "top_depth_ft": 7000.0,
+        "hydrocarbon_bearing": true
+      },
+      {
+        "formation_id": "FORM-NI-006",
+        "name": "Niobrara Formation",
+        "geological_age": "cretaceous",
+        "lithology": "limestone",
+        "thickness_ft": 320.0,
+        "top_depth_ft": 6450.0,
+        "hydrocarbon_bearing": true
+      },
+      {
+        "formation_id": "FORM-CT-007",
+        "name": "Cotton Valley Group",
+        "geological_age": "jurassic",
+        "lithology": "sandstone",
+        "thickness_ft": 650.0,
+        "top_depth_ft": 9800.0,
+        "hydrocarbon_bearing": true
+      },
+      {
+        "formation_id": "FORM-HA-008",
+        "name": "Haynesville Shale",
+        "geological_age": "jurassic",
+        "lithology": "shale",
+        "thickness_ft": 200.0,
+        "top_depth_ft": 11500.0,
+        "hydrocarbon_bearing": true
+      },
+      {
+        "formation_id": "FORM-PC-009",
+        "name": "Pierre Shale",
+        "geological_age": "cretaceous",
+        "lithology": "shale",
+        "thickness_ft": 1200.0,
+        "top_depth_ft": 2500.0,
+        "hydrocarbon_bearing": false
+      },
+      {
+        "formation_id": "FORM-DA-010",
+        "name": "Dakota Sandstone",
+        "geological_age": "cretaceous",
+        "lithology": "sandstone",
+        "thickness_ft": 180.0,
+        "top_depth_ft": 3800.0,
+        "hydrocarbon_bearing": true
+      }
+    ]
+  },
+  "relationships": [
+    {
+      "type": "WORKS_FOR",
+      "source_label": "Person",
+      "source_name": "Sarah Chen",
+      "target_label": "Organization",
+      "target_name": "Bakken Field Solutions Inc"
+    },
+    {
+      "type": "WORKS_FOR",
+      "source_label": "Person",
+      "source_name": "Sarah Chen",
+      "target_label": "Organization",
+      "target_name": "Peak Energy Operations LLC"
+    },
+    {
+      "type": "WORKS_FOR",
+      "source_label": "Person",
+      "source_name": "Marcus Rodriguez",
+      "target_label": "Organization",
+      "target_name": "Bakken Field Solutions Inc"
+    },
+    {
+      "type": "WORKS_FOR",
+      "source_label": "Person",
+      "source_name": "Marcus Rodriguez",
+      "target_label": "Organization",
+      "target_name": "ExxonMobil Upstream Research"
+    },
+    {
+      "type": "WORKS_FOR",
+      "source_label": "Person",
+      "source_name": "Fatima Al-Rashid",
+      "target_label": "Organization",
+      "target_name": "Peak Energy Operations LLC"
+    },
+    {
+      "type": "WORKS_FOR",
+      "source_label": "Person",
+      "source_name": "Fatima Al-Rashid",
+      "target_label": "Organization",
+      "target_name": "TransCanada Pipeline Systems"
+    },
+    {
+      "type": "WORKS_FOR",
+      "source_label": "Person",
+      "source_name": "Erik Johansson",
+      "target_label": "Organization",
+      "target_name": "TransCanada Pipeline Systems"
+    },
+    {
+      "type": "WORKS_FOR",
+      "source_label": "Person",
+      "source_name": "Erik Johansson",
+      "target_label": "Organization",
+      "target_name": "Peak Energy Operations LLC"
+    },
+    {
+      "type": "WORKS_FOR",
+      "source_label": "Person",
+      "source_name": "Priya Patel",
+      "target_label": "Organization",
+      "target_name": "TransCanada Pipeline Systems"
+    },
+    {
+      "type": "WORKS_FOR",
+      "source_label": "Person",
+      "source_name": "Priya Patel",
+      "target_label": "Organization",
+      "target_name": "Gulf Coast Petroleum Services"
+    },
+    {
+      "type": "WORKS_FOR",
+      "source_label": "Person",
+      "source_name": "Priya Patel",
+      "target_label": "Organization",
+      "target_name": "Bakken Field Solutions Inc"
+    },
+    {
+      "type": "LOCATED_AT",
+      "source_label": "Organization",
+      "source_name": "Peak Energy Operations LLC",
+      "target_label": "Location",
+      "target_name": "Denver Regional Headquarters"
+    },
+    {
+      "type": "LOCATED_AT",
+      "source_label": "Organization",
+      "source_name": "Peak Energy Operations LLC",
+      "target_label": "Location",
+      "target_name": "Eagle Ford Processing Facility"
+    },
+    {
+      "type": "LOCATED_AT",
+      "source_label": "Organization",
+      "source_name": "Gulf Coast Petroleum Services",
+      "target_label": "Location",
+      "target_name": "Eagle Ford Processing Facility"
+    },
+    {
+      "type": "LOCATED_AT",
+      "source_label": "Organization",
+      "source_name": "TransCanada Pipeline Systems",
+      "target_label": "Location",
+      "target_name": "Midland Operations Center"
+    },
+    {
+      "type": "LOCATED_AT",
+      "source_label": "Organization",
+      "source_name": "TransCanada Pipeline Systems",
+      "target_label": "Location",
+      "target_name": "Denver Regional Headquarters"
+    },
+    {
+      "type": "LOCATED_AT",
+      "source_label": "Organization",
+      "source_name": "Bakken Field Solutions Inc",
+      "target_label": "Location",
+      "target_name": "Williston Basin Field Office"
+    },
+    {
+      "type": "LOCATED_AT",
+      "source_label": "Organization",
+      "source_name": "ExxonMobil Upstream Research",
+      "target_label": "Location",
+      "target_name": "Denver Regional Headquarters"
+    },
+    {
+      "type": "PARTICIPATED_IN",
+      "source_label": "Person",
+      "source_name": "Sarah Chen",
+      "target_label": "Event",
+      "target_name": "Q3 Production Review Meeting"
+    },
+    {
+      "type": "PARTICIPATED_IN",
+      "source_label": "Person",
+      "source_name": "Sarah Chen",
+      "target_label": "Event",
+      "target_name": "New Technology Implementation Workshop"
+    },
+    {
+      "type": "PARTICIPATED_IN",
+      "source_label": "Person",
+      "source_name": "Marcus Rodriguez",
+      "target_label": "Event",
+      "target_name": "Emergency Response Drill"
+    },
+    {
+      "type": "PARTICIPATED_IN",
+      "source_label": "Person",
+      "source_name": "Fatima Al-Rashid",
+      "target_label": "Event",
+      "target_name": "Emergency Response Drill"
+    },
+    {
+      "type": "PARTICIPATED_IN",
+      "source_label": "Person",
+      "source_name": "Fatima Al-Rashid",
+      "target_label": "Event",
+      "target_name": "Annual Safety Training Conference"
+    },
+    {
+      "type": "PARTICIPATED_IN",
+      "source_label": "Person",
+      "source_name": "Fatima Al-Rashid",
+      "target_label": "Event",
+      "target_name": "New Technology Implementation Workshop"
+    },
+    {
+      "type": "PARTICIPATED_IN",
+      "source_label": "Person",
+      "source_name": "Erik Johansson",
+      "target_label": "Event",
+      "target_name": "Annual Safety Training Conference"
+    },
+    {
+      "type": "PARTICIPATED_IN",
+      "source_label": "Person",
+      "source_name": "Priya Patel",
+      "target_label": "Event",
+      "target_name": "New Technology Implementation Workshop"
+    },
+    {
+      "type": "PARTICIPATED_IN",
+      "source_label": "Person",
+      "source_name": "Priya Patel",
+      "target_label": "Event",
+      "target_name": "Regulatory Compliance Audit"
+    },
+    {
+      "type": "PARTICIPATED_IN",
+      "source_label": "Person",
+      "source_name": "Priya Patel",
+      "target_label": "Event",
+      "target_name": "Emergency Response Drill"
+    },
+    {
+      "type": "DRILLED_IN",
+      "source_label": "Well",
+      "source_name": "Eagle Point 1H",
+      "target_label": "Formation",
+      "target_name": "Eagle Ford Group"
+    },
+    {
+      "type": "DRILLED_IN",
+      "source_label": "Well",
+      "source_name": "Bakken Star 3H",
+      "target_label": "Formation",
+      "target_name": "Niobrara Formation"
+    },
+    {
+      "type": "DRILLED_IN",
+      "source_label": "Well",
+      "source_name": "Bakken Star 3H",
+      "target_label": "Formation",
+      "target_name": "Wolfcamp Formation"
+    },
+    {
+      "type": "DRILLED_IN",
+      "source_label": "Well",
+      "source_name": "Cherokee Ridge 2",
+      "target_label": "Formation",
+      "target_name": "Bakken Formation"
+    },
+    {
+      "type": "DRILLED_IN",
+      "source_label": "Well",
+      "source_name": "Cherokee Ridge 2",
+      "target_label": "Formation",
+      "target_name": "Haynesville Shale"
+    },
+    {
+      "type": "DRILLED_IN",
+      "source_label": "Well",
+      "source_name": "Wolfcamp Express 5H",
+      "target_label": "Formation",
+      "target_name": "Pierre Shale"
+    },
+    {
+      "type": "DRILLED_IN",
+      "source_label": "Well",
+      "source_name": "Gulf Stream 1",
+      "target_label": "Formation",
+      "target_name": "Pierre Shale"
+    },
+    {
+      "type": "DRILLED_IN",
+      "source_label": "Well",
+      "source_name": "Gulf Stream 1",
+      "target_label": "Formation",
+      "target_name": "Marcellus Shale"
+    },
+    {
+      "type": "DRILLED_IN",
+      "source_label": "Well",
+      "source_name": "DJ Basin Test 4",
+      "target_label": "Formation",
+      "target_name": "Haynesville Shale"
+    },
+    {
+      "type": "DRILLED_IN",
+      "source_label": "Well",
+      "source_name": "DJ Basin Test 4",
+      "target_label": "Formation",
+      "target_name": "Niobrara Formation"
+    },
+    {
+      "type": "DRILLED_IN",
+      "source_label": "Well",
+      "source_name": "Powder River 6H",
+      "target_label": "Formation",
+      "target_name": "Eagle Ford Group"
+    },
+    {
+      "type": "DRILLED_IN",
+      "source_label": "Well",
+      "source_name": "Powder River 6H",
+      "target_label": "Formation",
+      "target_name": "Niobrara Formation"
+    },
+    {
+      "type": "DRILLED_IN",
+      "source_label": "Well",
+      "source_name": "Powder River 6H",
+      "target_label": "Formation",
+      "target_name": "Haynesville Shale"
+    },
+    {
+      "type": "DRILLED_IN",
+      "source_label": "Well",
+      "source_name": "Delaware Basin 8H",
+      "target_label": "Formation",
+      "target_name": "Bone Spring Limestone"
+    },
+    {
+      "type": "DRILLED_IN",
+      "source_label": "Well",
+      "source_name": "Delaware Basin 8H",
+      "target_label": "Formation",
+      "target_name": "Cotton Valley Group"
+    },
+    {
+      "type": "DRILLED_IN",
+      "source_label": "Well",
+      "source_name": "Bone Spring 2H",
+      "target_label": "Formation",
+      "target_name": "Marcellus Shale"
+    },
+    {
+      "type": "DRILLED_IN",
+      "source_label": "Well",
+      "source_name": "Bone Spring 2H",
+      "target_label": "Formation",
+      "target_name": "Haynesville Shale"
+    },
+    {
+      "type": "DRILLED_IN",
+      "source_label": "Well",
+      "source_name": "Marcellus Deep 1H",
+      "target_label": "Formation",
+      "target_name": "Pierre Shale"
+    },
+    {
+      "type": "DRILLED_IN",
+      "source_label": "Well",
+      "source_name": "Marcellus Deep 1H",
+      "target_label": "Formation",
+      "target_name": "Haynesville Shale"
+    },
+    {
+      "type": "DRILLED_IN",
+      "source_label": "Well",
+      "source_name": "Marcellus Deep 1H",
+      "target_label": "Formation",
+      "target_name": "Dakota Sandstone"
+    },
+    {
+      "type": "INSPECTED_BY",
+      "source_label": "Inspection",
+      "source_name": "Inspection 1",
+      "target_label": "Well",
+      "target_name": "Eagle Point 1H"
+    },
+    {
+      "type": "INSPECTED_BY",
+      "source_label": "Inspection",
+      "source_name": "Inspection 1",
+      "target_label": "Well",
+      "target_name": "Bakken Star 3H"
+    },
+    {
+      "type": "INSPECTED_BY",
+      "source_label": "Inspection",
+      "source_name": "Inspection 1",
+      "target_label": "Well",
+      "target_name": "Cherokee Ridge 2"
+    },
+    {
+      "type": "INSPECTED_BY",
+      "source_label": "Inspection",
+      "source_name": "Inspection 2",
+      "target_label": "Well",
+      "target_name": "Marcellus Deep 1H"
+    },
+    {
+      "type": "INSPECTED_BY",
+      "source_label": "Inspection",
+      "source_name": "Inspection 3",
+      "target_label": "Well",
+      "target_name": "Delaware Basin 8H"
+    },
+    {
+      "type": "INSPECTED_BY",
+      "source_label": "Inspection",
+      "source_name": "Inspection 4",
+      "target_label": "Well",
+      "target_name": "Wolfcamp Express 5H"
+    },
+    {
+      "type": "INSPECTED_BY",
+      "source_label": "Inspection",
+      "source_name": "Inspection 4",
+      "target_label": "Well",
+      "target_name": "Marcellus Deep 1H"
+    },
+    {
+      "type": "INSPECTED_BY",
+      "source_label": "Inspection",
+      "source_name": "Inspection 5",
+      "target_label": "Well",
+      "target_name": "Delaware Basin 8H"
+    },
+    {
+      "type": "INSPECTED_BY",
+      "source_label": "Inspection",
+      "source_name": "Inspection 5",
+      "target_label": "Well",
+      "target_name": "Wolfcamp Express 5H"
+    },
+    {
+      "type": "INSPECTED_BY",
+      "source_label": "Inspection",
+      "source_name": "Inspection 5",
+      "target_label": "Well",
+      "target_name": "Powder River 6H"
+    },
+    {
+      "type": "INSPECTED_BY",
+      "source_label": "Inspection",
+      "source_name": "Inspection 6",
+      "target_label": "Well",
+      "target_name": "DJ Basin Test 4"
+    },
+    {
+      "type": "INSPECTED_BY",
+      "source_label": "Inspection",
+      "source_name": "Inspection 6",
+      "target_label": "Well",
+      "target_name": "Bone Spring 2H"
+    },
+    {
+      "type": "INSPECTED_BY",
+      "source_label": "Inspection",
+      "source_name": "Inspection 7",
+      "target_label": "Well",
+      "target_name": "Eagle Point 1H"
+    },
+    {
+      "type": "INSPECTED_BY",
+      "source_label": "Inspection",
+      "source_name": "Inspection 8",
+      "target_label": "Well",
+      "target_name": "Eagle Point 1H"
+    },
+    {
+      "type": "PERMITTED_FOR",
+      "source_label": "Permit",
+      "source_name": "Permit 1",
+      "target_label": "Well",
+      "target_name": "Powder River 6H"
+    },
+    {
+      "type": "PERMITTED_FOR",
+      "source_label": "Permit",
+      "source_name": "Permit 1",
+      "target_label": "Well",
+      "target_name": "Eagle Point 1H"
+    },
+    {
+      "type": "PERMITTED_FOR",
+      "source_label": "Permit",
+      "source_name": "Permit 1",
+      "target_label": "Well",
+      "target_name": "Bakken Star 3H"
+    },
+    {
+      "type": "PERMITTED_FOR",
+      "source_label": "Permit",
+      "source_name": "Permit 2",
+      "target_label": "Well",
+      "target_name": "Eagle Point 1H"
+    },
+    {
+      "type": "PERMITTED_FOR",
+      "source_label": "Permit",
+      "source_name": "Permit 3",
+      "target_label": "Well",
+      "target_name": "Gulf Stream 1"
+    },
+    {
+      "type": "PERMITTED_FOR",
+      "source_label": "Permit",
+      "source_name": "Permit 3",
+      "target_label": "Well",
+      "target_name": "Eagle Point 1H"
+    },
+    {
+      "type": "PERMITTED_FOR",
+      "source_label": "Permit",
+      "source_name": "Permit 3",
+      "target_label": "Well",
+      "target_name": "Delaware Basin 8H"
+    },
+    {
+      "type": "PERMITTED_FOR",
+      "source_label": "Permit",
+      "source_name": "Permit 4",
+      "target_label": "Well",
+      "target_name": "Powder River 6H"
+    },
+    {
+      "type": "PERMITTED_FOR",
+      "source_label": "Permit",
+      "source_name": "Permit 4",
+      "target_label": "Well",
+      "target_name": "Eagle Point 1H"
+    },
+    {
+      "type": "PERMITTED_FOR",
+      "source_label": "Permit",
+      "source_name": "Permit 4",
+      "target_label": "Well",
+      "target_name": "Marcellus Deep 1H"
+    },
+    {
+      "type": "PERMITTED_FOR",
+      "source_label": "Permit",
+      "source_name": "Permit 5",
+      "target_label": "Well",
+      "target_name": "Delaware Basin 8H"
+    },
+    {
+      "type": "PERMITTED_FOR",
+      "source_label": "Permit",
+      "source_name": "Permit 5",
+      "target_label": "Well",
+      "target_name": "Gulf Stream 1"
+    },
+    {
+      "type": "PERMITTED_FOR",
+      "source_label": "Permit",
+      "source_name": "Permit 5",
+      "target_label": "Well",
+      "target_name": "Marcellus Deep 1H"
+    },
+    {
+      "type": "PERMITTED_FOR",
+      "source_label": "Permit",
+      "source_name": "Permit 6",
+      "target_label": "Well",
+      "target_name": "Bone Spring 2H"
+    },
+    {
+      "type": "PERMITTED_FOR",
+      "source_label": "Permit",
+      "source_name": "Permit 7",
+      "target_label": "Well",
+      "target_name": "Cherokee Ridge 2"
+    },
+    {
+      "type": "PERMITTED_FOR",
+      "source_label": "Permit",
+      "source_name": "Permit 8",
+      "target_label": "Well",
+      "target_name": "Bone Spring 2H"
+    },
+    {
+      "type": "PERMITTED_FOR",
+      "source_label": "Permit",
+      "source_name": "Permit 8",
+      "target_label": "Well",
+      "target_name": "Cherokee Ridge 2"
+    },
+    {
+      "type": "PERMITTED_FOR",
+      "source_label": "Permit",
+      "source_name": "Permit 9",
+      "target_label": "Well",
+      "target_name": "Bone Spring 2H"
+    },
+    {
+      "type": "PERMITTED_FOR",
+      "source_label": "Permit",
+      "source_name": "Permit 9",
+      "target_label": "Well",
+      "target_name": "Gulf Stream 1"
+    },
+    {
+      "type": "PERMITTED_FOR",
+      "source_label": "Permit",
+      "source_name": "Permit 9",
+      "target_label": "Well",
+      "target_name": "Cherokee Ridge 2"
+    },
+    {
+      "type": "PERMITTED_FOR",
+      "source_label": "Permit",
+      "source_name": "Permit 10",
+      "target_label": "Well",
+      "target_name": "Eagle Point 1H"
+    },
+    {
+      "type": "PRODUCES_FROM",
+      "source_label": "Well",
+      "source_name": "Eagle Point 1H",
+      "target_label": "Reservoir",
+      "target_name": "Eagle Ford Black Oil Window"
+    },
+    {
+      "type": "PRODUCES_FROM",
+      "source_label": "Well",
+      "source_name": "Bakken Star 3H",
+      "target_label": "Reservoir",
+      "target_name": "Marcellus Shale Formation"
+    },
+    {
+      "type": "PRODUCES_FROM",
+      "source_label": "Well",
+      "source_name": "Bakken Star 3H",
+      "target_label": "Reservoir",
+      "target_name": "Avalon Shale Lower"
+    },
+    {
+      "type": "PRODUCES_FROM",
+      "source_label": "Well",
+      "source_name": "Bakken Star 3H",
+      "target_label": "Reservoir",
+      "target_name": "Tuscaloosa Marine Shale"
+    },
+    {
+      "type": "PRODUCES_FROM",
+      "source_label": "Well",
+      "source_name": "Cherokee Ridge 2",
+      "target_label": "Reservoir",
+      "target_name": "Delaware Mountain Group"
+    },
+    {
+      "type": "PRODUCES_FROM",
+      "source_label": "Well",
+      "source_name": "Wolfcamp Express 5H",
+      "target_label": "Reservoir",
+      "target_name": "Bone Spring Sand"
+    },
+    {
+      "type": "PRODUCES_FROM",
+      "source_label": "Well",
+      "source_name": "Wolfcamp Express 5H",
+      "target_label": "Reservoir",
+      "target_name": "Tuscaloosa Marine Shale"
+    },
+    {
+      "type": "PRODUCES_FROM",
+      "source_label": "Well",
+      "source_name": "Gulf Stream 1",
+      "target_label": "Reservoir",
+      "target_name": "Wolfcamp A Lower Bench"
+    },
+    {
+      "type": "PRODUCES_FROM",
+      "source_label": "Well",
+      "source_name": "Gulf Stream 1",
+      "target_label": "Reservoir",
+      "target_name": "Delaware Mountain Group"
+    },
+    {
+      "type": "PRODUCES_FROM",
+      "source_label": "Well",
+      "source_name": "Gulf Stream 1",
+      "target_label": "Reservoir",
+      "target_name": "Niobrara Formation B Bench"
+    },
+    {
+      "type": "PRODUCES_FROM",
+      "source_label": "Well",
+      "source_name": "DJ Basin Test 4",
+      "target_label": "Reservoir",
+      "target_name": "Niobrara Formation B Bench"
+    },
+    {
+      "type": "PRODUCES_FROM",
+      "source_label": "Well",
+      "source_name": "DJ Basin Test 4",
+      "target_label": "Reservoir",
+      "target_name": "Cherokee Sand Unit"
+    },
+    {
+      "type": "PRODUCES_FROM",
+      "source_label": "Well",
+      "source_name": "Powder River 6H",
+      "target_label": "Reservoir",
+      "target_name": "Cherokee Sand Unit"
+    },
+    {
+      "type": "PRODUCES_FROM",
+      "source_label": "Well",
+      "source_name": "Delaware Basin 8H",
+      "target_label": "Reservoir",
+      "target_name": "Tuscaloosa Marine Shale"
+    },
+    {
+      "type": "PRODUCES_FROM",
+      "source_label": "Well",
+      "source_name": "Delaware Basin 8H",
+      "target_label": "Reservoir",
+      "target_name": "Niobrara Formation B Bench"
+    },
+    {
+      "type": "PRODUCES_FROM",
+      "source_label": "Well",
+      "source_name": "Bone Spring 2H",
+      "target_label": "Reservoir",
+      "target_name": "Niobrara Formation B Bench"
+    },
+    {
+      "type": "PRODUCES_FROM",
+      "source_label": "Well",
+      "source_name": "Marcellus Deep 1H",
+      "target_label": "Reservoir",
+      "target_name": "Tuscaloosa Marine Shale"
+    },
+    {
+      "type": "PRODUCES_FROM",
+      "source_label": "Well",
+      "source_name": "Marcellus Deep 1H",
+      "target_label": "Reservoir",
+      "target_name": "Marcellus Shale Formation"
+    },
+    {
+      "type": "PRODUCES_FROM",
+      "source_label": "Well",
+      "source_name": "Marcellus Deep 1H",
+      "target_label": "Reservoir",
+      "target_name": "Bone Spring Sand"
+    },
+    {
+      "type": "CONNECTED_TO",
+      "source_label": "Equipment",
+      "source_name": "Lufkin C-456D Pump Jack",
+      "target_label": "Well",
+      "target_name": "Marcellus Deep 1H"
+    },
+    {
+      "type": "CONNECTED_TO",
+      "source_label": "Equipment",
+      "source_name": "Lufkin C-456D Pump Jack",
+      "target_label": "Well",
+      "target_name": "Wolfcamp Express 5H"
+    },
+    {
+      "type": "CONNECTED_TO",
+      "source_label": "Equipment",
+      "source_name": "Ariel JGK Gas Compressor",
+      "target_label": "Well",
+      "target_name": "Bone Spring 2H"
+    },
+    {
+      "type": "CONNECTED_TO",
+      "source_label": "Equipment",
+      "source_name": "Natco 3-Phase Separator",
+      "target_label": "Well",
+      "target_name": "DJ Basin Test 4"
+    },
+    {
+      "type": "CONNECTED_TO",
+      "source_label": "Equipment",
+      "source_name": "Natco 3-Phase Separator",
+      "target_label": "Well",
+      "target_name": "Marcellus Deep 1H"
+    },
+    {
+      "type": "CONNECTED_TO",
+      "source_label": "Equipment",
+      "source_name": "16-inch Gathering Pipeline",
+      "target_label": "Well",
+      "target_name": "Powder River 6H"
+    },
+    {
+      "type": "CONNECTED_TO",
+      "source_label": "Equipment",
+      "source_name": "300 BBL Production Tank",
+      "target_label": "Well",
+      "target_name": "Delaware Basin 8H"
+    },
+    {
+      "type": "CONNECTED_TO",
+      "source_label": "Equipment",
+      "source_name": "300 BBL Production Tank",
+      "target_label": "Well",
+      "target_name": "Powder River 6H"
+    },
+    {
+      "type": "CONNECTED_TO",
+      "source_label": "Equipment",
+      "source_name": "Cameron DL Blowout Preventer",
+      "target_label": "Well",
+      "target_name": "Delaware Basin 8H"
+    },
+    {
+      "type": "CONNECTED_TO",
+      "source_label": "Equipment",
+      "source_name": "Cameron DL Blowout Preventer",
+      "target_label": "Well",
+      "target_name": "Eagle Point 1H"
+    },
+    {
+      "type": "CONNECTED_TO",
+      "source_label": "Equipment",
+      "source_name": "Cameron DL Blowout Preventer",
+      "target_label": "Well",
+      "target_name": "Gulf Stream 1"
+    },
+    {
+      "type": "CONNECTED_TO",
+      "source_label": "Equipment",
+      "source_name": "NOV M1000 Drilling Rig",
+      "target_label": "Well",
+      "target_name": "DJ Basin Test 4"
+    },
+    {
+      "type": "CONNECTED_TO",
+      "source_label": "Equipment",
+      "source_name": "Daniel Gas Flow Meter",
+      "target_label": "Well",
+      "target_name": "DJ Basin Test 4"
+    },
+    {
+      "type": "CONNECTED_TO",
+      "source_label": "Equipment",
+      "source_name": "Caterpillar C32 Compressor",
+      "target_label": "Well",
+      "target_name": "Eagle Point 1H"
+    },
+    {
+      "type": "CONNECTED_TO",
+      "source_label": "Equipment",
+      "source_name": "Caterpillar C32 Compressor",
+      "target_label": "Well",
+      "target_name": "Gulf Stream 1"
+    },
+    {
+      "type": "CONNECTED_TO",
+      "source_label": "Equipment",
+      "source_name": "Caterpillar C32 Compressor",
+      "target_label": "Well",
+      "target_name": "Delaware Basin 8H"
+    },
+    {
+      "type": "CONNECTED_TO",
+      "source_label": "Equipment",
+      "source_name": "Weatherford Mark II Pump Jack",
+      "target_label": "Well",
+      "target_name": "Marcellus Deep 1H"
+    },
+    {
+      "type": "CONNECTED_TO",
+      "source_label": "Equipment",
+      "source_name": "Weatherford Mark II Pump Jack",
+      "target_label": "Well",
+      "target_name": "Delaware Basin 8H"
+    },
+    {
+      "type": "CONNECTED_TO",
+      "source_label": "Equipment",
+      "source_name": "Weatherford Mark II Pump Jack",
+      "target_label": "Well",
+      "target_name": "Bone Spring 2H"
+    },
+    {
+      "type": "MAINTAINED_BY",
+      "source_label": "Equipment",
+      "source_name": "Lufkin C-456D Pump Jack",
+      "target_label": "Person",
+      "target_name": "Sarah Chen"
+    },
+    {
+      "type": "MAINTAINED_BY",
+      "source_label": "Equipment",
+      "source_name": "Ariel JGK Gas Compressor",
+      "target_label": "Person",
+      "target_name": "Erik Johansson"
+    },
+    {
+      "type": "MAINTAINED_BY",
+      "source_label": "Equipment",
+      "source_name": "Ariel JGK Gas Compressor",
+      "target_label": "Person",
+      "target_name": "Fatima Al-Rashid"
+    },
+    {
+      "type": "MAINTAINED_BY",
+      "source_label": "Equipment",
+      "source_name": "Natco 3-Phase Separator",
+      "target_label": "Person",
+      "target_name": "Sarah Chen"
+    },
+    {
+      "type": "MAINTAINED_BY",
+      "source_label": "Equipment",
+      "source_name": "16-inch Gathering Pipeline",
+      "target_label": "Person",
+      "target_name": "Priya Patel"
+    },
+    {
+      "type": "MAINTAINED_BY",
+      "source_label": "Equipment",
+      "source_name": "300 BBL Production Tank",
+      "target_label": "Person",
+      "target_name": "Fatima Al-Rashid"
+    },
+    {
+      "type": "MAINTAINED_BY",
+      "source_label": "Equipment",
+      "source_name": "300 BBL Production Tank",
+      "target_label": "Person",
+      "target_name": "Marcus Rodriguez"
+    },
+    {
+      "type": "MAINTAINED_BY",
+      "source_label": "Equipment",
+      "source_name": "300 BBL Production Tank",
+      "target_label": "Person",
+      "target_name": "Sarah Chen"
+    },
+    {
+      "type": "MAINTAINED_BY",
+      "source_label": "Equipment",
+      "source_name": "Cameron DL Blowout Preventer",
+      "target_label": "Person",
+      "target_name": "Fatima Al-Rashid"
+    },
+    {
+      "type": "MAINTAINED_BY",
+      "source_label": "Equipment",
+      "source_name": "Cameron DL Blowout Preventer",
+      "target_label": "Person",
+      "target_name": "Priya Patel"
+    },
+    {
+      "type": "MAINTAINED_BY",
+      "source_label": "Equipment",
+      "source_name": "Cameron DL Blowout Preventer",
+      "target_label": "Person",
+      "target_name": "Erik Johansson"
+    },
+    {
+      "type": "MAINTAINED_BY",
+      "source_label": "Equipment",
+      "source_name": "NOV M1000 Drilling Rig",
+      "target_label": "Person",
+      "target_name": "Priya Patel"
+    },
+    {
+      "type": "MAINTAINED_BY",
+      "source_label": "Equipment",
+      "source_name": "NOV M1000 Drilling Rig",
+      "target_label": "Person",
+      "target_name": "Erik Johansson"
+    },
+    {
+      "type": "MAINTAINED_BY",
+      "source_label": "Equipment",
+      "source_name": "Daniel Gas Flow Meter",
+      "target_label": "Person",
+      "target_name": "Fatima Al-Rashid"
+    },
+    {
+      "type": "MAINTAINED_BY",
+      "source_label": "Equipment",
+      "source_name": "Caterpillar C32 Compressor",
+      "target_label": "Person",
+      "target_name": "Erik Johansson"
+    },
+    {
+      "type": "MAINTAINED_BY",
+      "source_label": "Equipment",
+      "source_name": "Caterpillar C32 Compressor",
+      "target_label": "Person",
+      "target_name": "Sarah Chen"
+    },
+    {
+      "type": "MAINTAINED_BY",
+      "source_label": "Equipment",
+      "source_name": "Caterpillar C32 Compressor",
+      "target_label": "Person",
+      "target_name": "Priya Patel"
+    },
+    {
+      "type": "MAINTAINED_BY",
+      "source_label": "Equipment",
+      "source_name": "Weatherford Mark II Pump Jack",
+      "target_label": "Person",
+      "target_name": "Fatima Al-Rashid"
+    },
+    {
+      "type": "MAINTAINED_BY",
+      "source_label": "Equipment",
+      "source_name": "Weatherford Mark II Pump Jack",
+      "target_label": "Person",
+      "target_name": "Marcus Rodriguez"
+    },
+    {
+      "type": "MAINTAINED_BY",
+      "source_label": "Equipment",
+      "source_name": "Weatherford Mark II Pump Jack",
+      "target_label": "Person",
+      "target_name": "Sarah Chen"
+    },
+    {
+      "type": "CONTAINS",
+      "source_label": "Formation",
+      "source_name": "Wolfcamp Formation",
+      "target_label": "Reservoir",
+      "target_name": "Avalon Shale Lower"
+    },
+    {
+      "type": "CONTAINS",
+      "source_label": "Formation",
+      "source_name": "Wolfcamp Formation",
+      "target_label": "Reservoir",
+      "target_name": "Cherokee Sand Unit"
+    },
+    {
+      "type": "CONTAINS",
+      "source_label": "Formation",
+      "source_name": "Wolfcamp Formation",
+      "target_label": "Reservoir",
+      "target_name": "Bakken Middle Member"
+    },
+    {
+      "type": "CONTAINS",
+      "source_label": "Formation",
+      "source_name": "Bakken Formation",
+      "target_label": "Reservoir",
+      "target_name": "Niobrara Formation B Bench"
+    },
+    {
+      "type": "CONTAINS",
+      "source_label": "Formation",
+      "source_name": "Bakken Formation",
+      "target_label": "Reservoir",
+      "target_name": "Cherokee Sand Unit"
+    },
+    {
+      "type": "CONTAINS",
+      "source_label": "Formation",
+      "source_name": "Eagle Ford Group",
+      "target_label": "Reservoir",
+      "target_name": "Bakken Middle Member"
+    },
+    {
+      "type": "CONTAINS",
+      "source_label": "Formation",
+      "source_name": "Eagle Ford Group",
+      "target_label": "Reservoir",
+      "target_name": "Niobrara Formation B Bench"
+    },
+    {
+      "type": "CONTAINS",
+      "source_label": "Formation",
+      "source_name": "Eagle Ford Group",
+      "target_label": "Reservoir",
+      "target_name": "Avalon Shale Lower"
+    },
+    {
+      "type": "CONTAINS",
+      "source_label": "Formation",
+      "source_name": "Bone Spring Limestone",
+      "target_label": "Reservoir",
+      "target_name": "Wolfcamp A Lower Bench"
+    },
+    {
+      "type": "CONTAINS",
+      "source_label": "Formation",
+      "source_name": "Bone Spring Limestone",
+      "target_label": "Reservoir",
+      "target_name": "Eagle Ford Black Oil Window"
+    },
+    {
+      "type": "CONTAINS",
+      "source_label": "Formation",
+      "source_name": "Marcellus Shale",
+      "target_label": "Reservoir",
+      "target_name": "Bakken Middle Member"
+    },
+    {
+      "type": "CONTAINS",
+      "source_label": "Formation",
+      "source_name": "Niobrara Formation",
+      "target_label": "Reservoir",
+      "target_name": "Avalon Shale Lower"
+    },
+    {
+      "type": "CONTAINS",
+      "source_label": "Formation",
+      "source_name": "Niobrara Formation",
+      "target_label": "Reservoir",
+      "target_name": "Delaware Mountain Group"
+    },
+    {
+      "type": "CONTAINS",
+      "source_label": "Formation",
+      "source_name": "Niobrara Formation",
+      "target_label": "Reservoir",
+      "target_name": "Marcellus Shale Formation"
+    },
+    {
+      "type": "CONTAINS",
+      "source_label": "Formation",
+      "source_name": "Cotton Valley Group",
+      "target_label": "Reservoir",
+      "target_name": "Avalon Shale Lower"
+    },
+    {
+      "type": "CONTAINS",
+      "source_label": "Formation",
+      "source_name": "Cotton Valley Group",
+      "target_label": "Reservoir",
+      "target_name": "Eagle Ford Black Oil Window"
+    },
+    {
+      "type": "CONTAINS",
+      "source_label": "Formation",
+      "source_name": "Cotton Valley Group",
+      "target_label": "Reservoir",
+      "target_name": "Tuscaloosa Marine Shale"
+    },
+    {
+      "type": "CONTAINS",
+      "source_label": "Formation",
+      "source_name": "Haynesville Shale",
+      "target_label": "Reservoir",
+      "target_name": "Marcellus Shale Formation"
+    },
+    {
+      "type": "CONTAINS",
+      "source_label": "Formation",
+      "source_name": "Haynesville Shale",
+      "target_label": "Reservoir",
+      "target_name": "Bakken Middle Member"
+    },
+    {
+      "type": "CONTAINS",
+      "source_label": "Formation",
+      "source_name": "Haynesville Shale",
+      "target_label": "Reservoir",
+      "target_name": "Eagle Ford Black Oil Window"
+    },
+    {
+      "type": "CONTAINS",
+      "source_label": "Formation",
+      "source_name": "Pierre Shale",
+      "target_label": "Reservoir",
+      "target_name": "Tuscaloosa Marine Shale"
+    },
+    {
+      "type": "CONTAINS",
+      "source_label": "Formation",
+      "source_name": "Dakota Sandstone",
+      "target_label": "Reservoir",
+      "target_name": "Wolfcamp A Lower Bench"
+    },
+    {
+      "type": "INSPECTED_EQUIPMENT",
+      "source_label": "Inspection",
+      "source_name": "Inspection 1",
+      "target_label": "Equipment",
+      "target_name": "NOV M1000 Drilling Rig"
+    },
+    {
+      "type": "INSPECTED_EQUIPMENT",
+      "source_label": "Inspection",
+      "source_name": "Inspection 2",
+      "target_label": "Equipment",
+      "target_name": "300 BBL Production Tank"
+    },
+    {
+      "type": "INSPECTED_EQUIPMENT",
+      "source_label": "Inspection",
+      "source_name": "Inspection 2",
+      "target_label": "Equipment",
+      "target_name": "Caterpillar C32 Compressor"
+    },
+    {
+      "type": "INSPECTED_EQUIPMENT",
+      "source_label": "Inspection",
+      "source_name": "Inspection 3",
+      "target_label": "Equipment",
+      "target_name": "300 BBL Production Tank"
+    },
+    {
+      "type": "INSPECTED_EQUIPMENT",
+      "source_label": "Inspection",
+      "source_name": "Inspection 4",
+      "target_label": "Equipment",
+      "target_name": "Natco 3-Phase Separator"
+    },
+    {
+      "type": "INSPECTED_EQUIPMENT",
+      "source_label": "Inspection",
+      "source_name": "Inspection 4",
+      "target_label": "Equipment",
+      "target_name": "Weatherford Mark II Pump Jack"
+    },
+    {
+      "type": "INSPECTED_EQUIPMENT",
+      "source_label": "Inspection",
+      "source_name": "Inspection 4",
+      "target_label": "Equipment",
+      "target_name": "16-inch Gathering Pipeline"
+    },
+    {
+      "type": "INSPECTED_EQUIPMENT",
+      "source_label": "Inspection",
+      "source_name": "Inspection 5",
+      "target_label": "Equipment",
+      "target_name": "Ariel JGK Gas Compressor"
+    },
+    {
+      "type": "INSPECTED_EQUIPMENT",
+      "source_label": "Inspection",
+      "source_name": "Inspection 6",
+      "target_label": "Equipment",
+      "target_name": "Caterpillar C32 Compressor"
+    },
+    {
+      "type": "INSPECTED_EQUIPMENT",
+      "source_label": "Inspection",
+      "source_name": "Inspection 6",
+      "target_label": "Equipment",
+      "target_name": "Natco 3-Phase Separator"
+    },
+    {
+      "type": "INSPECTED_EQUIPMENT",
+      "source_label": "Inspection",
+      "source_name": "Inspection 7",
+      "target_label": "Equipment",
+      "target_name": "Daniel Gas Flow Meter"
+    },
+    {
+      "type": "INSPECTED_EQUIPMENT",
+      "source_label": "Inspection",
+      "source_name": "Inspection 8",
+      "target_label": "Equipment",
+      "target_name": "Cameron DL Blowout Preventer"
+    },
+    {
+      "type": "INSPECTED_EQUIPMENT",
+      "source_label": "Inspection",
+      "source_name": "Inspection 8",
+      "target_label": "Equipment",
+      "target_name": "Natco 3-Phase Separator"
+    },
+    {
+      "type": "INSPECTED_EQUIPMENT",
+      "source_label": "Inspection",
+      "source_name": "Inspection 8",
+      "target_label": "Equipment",
+      "target_name": "300 BBL Production Tank"
+    }
+  ],
+  "documents": [
+    {
+      "template_id": "drilling_report",
+      "template_name": "Drilling Report",
+      "title": "Daily Drilling Report - Eagle Point 1H - Day 23",
+      "content": "DAILY DRILLING REPORT\n\nWell: Eagle Point 1H (EP-001-2024)\nDate: March 15, 2024\nStatus: Drilling Ahead\nCurrent Depth: 8,425 ft MD / 7,890 ft TVD\nFormation: Wolfcamp Formation (tight sandstone/shale)\n\nDRILLING OPERATIONS:\nDrilled 287 ft in 24 hours using 8.5\" PDC bit #3. Maintained WOB at 25-30K lbs with rotary speed of 120-140 RPM. Penetration rate averaged 11.9 ft/hr. Encountered minor torque variations between 7,950-8,100 ft indicating possible fault zone. No significant shows observed.\n\nMUD PROPERTIES:\nMud weight: 11.2 ppg, maintained within target range\nViscosity: 48 sec/qt (Marsh Funnel)\nFluid loss: 6.2 ml/30 min\nPH: 9.8\nChlorides: 1,850 ppm\nSolids content: 8.4%\nMud volume: 650 bbls active system\n\nBIT PERFORMANCE:\nCurrent bit has 47.3 rotating hours with good cutting structure condition. Dull grade estimated at T-2-I-E-I-2-TD. No junk in hole. Recommend continuing with current bit for next 200-300 ft based on formation consistency.\n\nFORMATION CHARACTERISTICS:\nWolfcamp Formation showing typical tight sandstone interbedded with organic-rich shale layers. Cuttings analysis indicates 15-20% quartz, 45% clay minerals, 25% carbonate cement. Gamma ray readings steady at 85-95 API units. No hydrocarbon shows detected in current interval.\n\nSAFETY & ENVIRONMENTAL:\nNo safety incidents or near-misses reported. H2S levels remain below detection limits (<5 ppm). Waste management protocols followed with 12 bbls of contaminated mud properly contained. All crew attended morning safety meeting focusing on tong safety procedures."
+    },
+    {
+      "template_id": "drilling_report",
+      "template_name": "Drilling Report",
+      "title": "Daily Drilling Report - Bakken Star 3H - Day 41",
+      "content": "DAILY DRILLING REPORT\n\nWell: Bakken Star 3H (BKS-003-2024)\nDate: March 15, 2024\nStatus: Drilling Ahead - Lateral Section\nCurrent Depth: 12,890 ft MD / 9,245 ft TVD\nFormation: Bakken Formation (organic shale with tight oil zones)\n\nDRILLING OPERATIONS:\nCompleted 195 ft of lateral drilling in Bakken Formation using 6.125\" rotary steerable system. Maintained inclination at 89.5-90.2 degrees with excellent directional control. Drilling parameters optimized: 15-18K lbs WOB, 180 RPM, 280 GPM flow rate. ROP averaged 8.3 ft/hr in challenging shale sections.\n\nMUD PROPERTIES:\nOil-based mud system performing excellently:\nMud weight: 10.8 ppg\nPlastic viscosity: 28 cp\nYield point: 18 lb/100ft\u00b2\nOil/water ratio: 85/15\nElectrical stability: 485 volts\nFiltrate: 3.2 ml\nLow gravity solids: 4.1%\n\nBIT PERFORMANCE:\nPDC bit #7 showing excellent performance in Bakken shale with 38.2 hours runtime. Cutting structure remains sharp with minimal wear on gauge pads. Torque response smooth at 8-12K ft-lbs. MSE calculations indicate optimal drilling efficiency. Bit projected to drill additional 400-500 ft.\n\nFORMATION CHARACTERISTICS:\nBakken Formation exhibiting classic characteristics with TOC values estimated 8-12%. Cuttings show dark brown to black organic-rich shale with occasional calcite stringers. Strong oil shows observed with bright yellow fluorescence under UV light. Gas chromatography indicates C1-C5 hydrocarbon presence. Formation pressure gradient estimated at 0.68 psi/ft.\n\nSAFETY & ENVIRONMENTAL:\nZero incidents reported. Continuous H2S monitoring with levels at 15-25 ppm, well below action limits. Enhanced ventilation systems operating properly. Completed weekly BOP test with all functions operational. Environmental compliance maintained with proper cuttings management."
+    },
+    {
+      "template_id": "drilling_report",
+      "template_name": "Drilling Report",
+      "title": "Daily Drilling Report - Cherokee Ridge 2 - Day 18",
+      "content": "DAILY DRILLING REPORT\n\nWell: Cherokee Ridge 2 (CHR-002-2024)\nDate: March 15, 2024\nStatus: Drilling Ahead - Intermediate Hole\nCurrent Depth: 6,750 ft MD / 6,745 ft TVD\nFormation: Eagle Ford Group (calcareous shale)\n\nDRILLING OPERATIONS:\nDrilled 312 ft through Eagle Ford Group using 9.875\" tricone bit. Encountered hard limestone stringers requiring increased WOB to 35-40K lbs. Rotary speed maintained at 90-110 RPM. Penetration rate varied 8-16 ft/hr depending on lithology. Conducted wiper trip from 6,450-6,750 ft with minimal drag, indicating good hole condition.\n\nMUD PROPERTIES:\nWater-based polymer mud system:\nMud weight: 9.4 ppg\nFunnel viscosity: 42 sec/qt\nFluid loss: 8.8 ml/30 min\nPH: 10.2\nAlkalinity: 0.8/2.3 (Pf/Mf)\nCalcium: 180 ppm\nTotal hardness: 220 ppm\nActive mud volume: 580 bbls\n\nBIT PERFORMANCE:\nTricone bit #4 performance degraded in hard Eagle Ford carbonates. Penetration rate dropped 40% over last 8 hours. Torque increased to 18-22K ft-lbs with erratic response. Dull grade estimated T-4-I-A-X-3-TD. Recommend bit trip at current depth to maintain drilling efficiency.\n\nFORMATION CHARACTERISTICS:\nEagle Ford Group showing mixed lithology: 60% calcareous shale, 30% limestone, 10% marl. Cuttings analysis reveals high carbonate content (45-55%) with moderate organic matter. Formation competent with minimal cavings. Slight oil staining observed on limestone cuttings. Gamma ray readings 75-120 API with peaks corresponding to organic-rich intervals.\n\nSAFETY & ENVIRONMENTAL:\nSafety performance excellent with zero recordable incidents. Conducted weekly safety meeting on well control procedures. All personnel current on H2S certification. Mud logging trailer H2S detection system tested and calibrated. Waste volume: 8 bbls oil-contaminated materials properly segregated for disposal. Environmental monitoring shows no impact to surrounding area."
+    },
+    {
+      "template_id": "drilling_report",
+      "template_name": "Drilling Report",
+      "title": "Daily Drilling Report - Wolfcamp Express 5H - Day 35",
+      "content": "DAILY DRILLING REPORT\n\nWell: Wolfcamp Express 5H (WCE-005-2024)\nDate: March 15, 2024\nStatus: Drilling Ahead - Curve Section\nCurrent Depth: 9,125 ft MD / 8,890 ft TVD\nFormation: Bone Spring Limestone (limestone/dolomite)\n\nDRILLING OPERATIONS:\nBuilding angle through Bone Spring Limestone using motor assembly with 1.5\u00b0 bend. Current inclination: 67.2\u00b0, building at 3.8\u00b0/100ft. Drilled 156 ft with excellent directional control. Motor parameters: 40 GPM flow rate, 300 PSI differential pressure. Slide/rotate ratio 70/30 to maintain trajectory. No significant drilling problems encountered.\n\nMUD PROPERTIES:\nSynthetic-based mud (SBM) system:\nMud weight: 12.1 ppg (elevated for pressure management)\nPlastic viscosity: 35 cp\nYield point: 23 lb/100ft\u00b2\nGel strengths: 8/15 lb/100ft\u00b2 (10 sec/10 min)\nFiltrate: 2.8 ml\nRetort: 78% oil, 16% water, 6% solids\nElectrical stability: 520 volts\n\nBIT PERFORMANCE:\nPDC bit #5 performing well in hard Bone Spring carbonates. 42.8 hours on bit with good cutting structure integrity. WOB maintained at 20-25K lbs with smooth torque response 10-14K ft-lbs. ROP averaged 6.7 ft/hr, consistent with offset wells in similar formation. Bit condition estimated 3-4 on IADC scale.\n\nFORMATION CHARACTERISTICS:\nBone Spring Limestone composed primarily of dense limestone (70%) and dolomite (25%) with minor shale interbeds (5%). Formation very competent with minimal hole enlargement. Cuttings exhibit light gray to tan coloration with crystalline texture. Minor oil shows observed with pale yellow fluorescence. Formation pressure slightly overpressured at 0.52 psi/ft gradient.\n\nSAFETY & ENVIRONMENTAL:\nOutstanding safety record continues with 127 days without incident. All safety systems operational including BOP stack tested at 5,000 PSI. H2S levels consistently below 10 ppm. Completed monthly environmental inspection with no findings. SBM recovery system operating at 92% efficiency, minimizing waste generation."
+    },
+    {
+      "template_id": "drilling_report",
+      "template_name": "Drilling Report",
+      "title": "Daily Drilling Report - Gulf Stream 1 - Day 12",
+      "content": "DAILY DRILLING REPORT\n\nWell: Gulf Stream 1 (GS-001-2024)\nDate: March 15, 2024\nStatus: Drilling Ahead - Surface Hole\nCurrent Depth: 3,850 ft MD / 3,850 ft TVD\nFormation: Marcellus Shale (organic-rich shale)\n\nDRILLING OPERATIONS:\nDrilled 425 ft through upper Marcellus Shale using 12.25\" PDC bit. Excellent drilling conditions with consistent formation properties. Maintained drilling parameters: WOB 22-28K lbs, rotary speed 80-100 RPM, flow rate 520 GPM. Penetration rate averaged 35.4 ft/hr, exceeding AFE estimates by 15%. No wellbore stability issues observed.\n\nMUD PROPERTIES:\nFreshwater polymer mud system:\nMud weight: 9.0 ppg\nFunnel viscosity: 38 sec/qt\nYield point: 12 lb/100ft\u00b2\nFluid loss: 12.4 ml/30 min\nPH: 9.6\nChlorides: 420 ppm\nPotassium: 1,200 ppm (KCl addition for shale stability)\nSolids: 6.2%\nActive volume: 720 bbls\n\nBIT PERFORMANCE:\nPDC bit #2 demonstrating exceptional performance in Marcellus Shale. Only 28.5 hours on bit with all cutters intact and sharp. Minimal wear on gauge protection with smooth drilling torque 6-9K ft-lbs. Hydraulic horsepower optimized at 2.8 HP/in\u00b2. Bit capable of drilling to planned casing point at 4,500 ft.\n\nFORMATION CHARACTERISTICS:\nMarcellus Shale exhibiting typical characteristics: dark gray to black fissile shale with high organic content (8-15% TOC). Cuttings analysis shows 65% clay minerals, 25% quartz, 8% pyrite, 2% carbonate. Strong hydrocarbon shows with bright white fluorescence and rapid gas liberation. Background gas 180-220 units increasing. Natural fractures observed with calcite mineralization.\n\nSAFETY & ENVIRONMENTAL:\nExcellent safety performance with proactive hazard identification during daily meetings. H2S monitoring systems fully operational with levels <5 ppm. Completed BOP drill achieving connection time of 4 minutes 30 seconds. Environmental monitoring shows no impact to local water sources. Cuttings management plan executed with 15 bbls waste properly contained and staged for licensed disposal facility."
+    },
+    {
+      "template_id": "safety_inspection",
+      "template_name": "Safety Inspection Report",
+      "title": "Safety Inspection Report - Eagle Point 1H Well Site",
+      "content": "SAFETY INSPECTION REPORT\n\nWell Name: Eagle Point 1H\nInspector: Michael Rodriguez, Certified Safety Professional\nInspection Type: Quarterly Safety & Environmental Assessment\nInspection Date: October 15, 2024\nResult: PASS with Minor Deficiencies\n\nFINDINGS:\nConducted comprehensive safety inspection of Eagle Point 1H well site and associated equipment. The Lufkin C-456D Pump Jack showed proper operational parameters with all safety guards in place. However, observed minor hydraulic fluid leak at base requiring immediate attention. The 300 BBL Production Tank exhibited proper secondary containment with no visible signs of corrosion or structural integrity issues.\n\nEnvironmental assessment revealed compliance with current air quality standards. Noise levels measured at 68 dB at property boundary, well within regulatory limits per Permit 2 specifications. No evidence of soil contamination or groundwater impact detected during visual inspection.\n\nREGULATORY COMPLIANCE:\nSite maintains full compliance with EPA regulations 40 CFR Part 60 and state environmental standards. All required safety signage present and legible. Emergency response equipment including eyewash station and spill kits properly maintained and within expiration dates.\n\nCORRECTIVE ACTIONS REQUIRED:\n1. Repair hydraulic fluid leak on pump jack within 72 hours\n2. Replace worn safety barrier tape around wellhead area\n3. Update emergency contact information on site notification board\n\nFOLLOW-UP SCHEDULE:\nRe-inspection scheduled for November 1, 2024, to verify completion of corrective actions. Next quarterly inspection due January 15, 2025. Site operator notified of all findings and acknowledged responsibility for timely completion of required actions.\n\nInspector Signature: M. Rodriguez\nDate: October 15, 2024"
+    },
+    {
+      "template_id": "safety_inspection",
+      "template_name": "Safety Inspection Report",
+      "title": "Environmental Compliance Inspection - Bakken Star 3H",
+      "content": "FIELD SAFETY & ENVIRONMENTAL INSPECTION REPORT\n\nWell Identification: Bakken Star 3H\nLead Inspector: Sarah Chen, Environmental Compliance Specialist\nInspection Classification: Annual Environmental Impact Assessment\nInspection Date: September 28, 2024\nOverall Result: CONDITIONAL PASS\n\nDETAILED FINDINGS:\nPerformed thorough environmental and safety evaluation of Bakken Star 3H production facility. The Ariel JGK Gas Compressor demonstrated excellent maintenance standards with zero fugitive emissions detected during leak detection survey using OGI camera. All pressure relief valves tested within acceptable parameters.\n\nIdentified significant concern with 16-inch Gathering Pipeline showing signs of external corrosion at mile marker 2.3. Cathodic protection system readings indicate potential coating failure requiring immediate engineering assessment. Soil sampling conducted around affected area showed no hydrocarbon contamination at this time.\n\nWater management practices observed to be exemplary. Produced water handling system operating efficiently with proper disposal documentation maintained. Stormwater management compliant with NPDES permit requirements.\n\nCOMPLIANCE STATUS:\nPartial compliance noted. Site operating under Permit 3 authorization with minor deviations requiring corrective action. OSHA safety standards fully met with proper PPE availability and confined space entry procedures documented.\n\nMANDATORY CORRECTIVE ACTIONS:\n1. Initiate pipeline integrity assessment within 30 days\n2. Implement enhanced corrosion monitoring program\n3. Submit pipeline repair timeline to regulatory authority\n4. Install additional soil monitoring wells at pipeline crossing\n\nFOLLOW-UP REQUIREMENTS:\nProgress report due November 15, 2024. Full re-inspection scheduled upon completion of pipeline repairs. Operator must provide weekly status updates during remediation period.\n\nInspector Authorization: S. Chen, CEM #4782\nReport Date: September 28, 2024"
+    },
+    {
+      "template_id": "safety_inspection",
+      "template_name": "Safety Inspection Report",
+      "title": "Routine Safety Inspection Report - Cherokee Ridge 2",
+      "content": "SAFETY INSPECTION DOCUMENTATION\n\nFacility: Cherokee Ridge 2 Well Site\nInspecting Officer: James Thompson, Safety Compliance Manager\nInspection Category: Monthly Routine Safety Check\nDate of Inspection: November 3, 2024\nInspection Result: SATISFACTORY\n\nINSPECTION SUMMARY:\nCompleted monthly safety inspection of Cherokee Ridge 2 production site. All primary safety systems functioning properly with no immediate hazards identified. The Natco 3-Phase Separator operating within design parameters showing excellent separation efficiency and proper pressure control.\n\nFire suppression systems tested successfully with all portable extinguishers showing proper pressure and recent inspection tags. Fixed fire suppression system around separator vessel activated during test sequence without issues. Emergency shutdown systems responded appropriately during functional testing.\n\nPersonnel safety protocols observed during inspection showed good adherence to established procedures. Confined space entry permits properly completed for tank inspection activities. Gas monitoring equipment calibrated and functional.\n\nREGULATORY ADHERENCE:\nFull compliance maintained with DOT pipeline safety regulations and state oil and gas commission requirements. Current operating permits (Permit 4) remain valid through March 2025. Safety data sheets current and accessible. Training records reviewed and found complete.\n\nMINOR OBSERVATIONS:\n1. Recommend replacement of weathered safety signage at east gate entrance\n2. Suggest additional lighting near separator unit for improved visibility\n3. Update emergency evacuation route map to reflect recent site modifications\n\nRECOMMENDATIONS:\nNo immediate corrective actions required. Suggestions listed above should be addressed during next scheduled maintenance window. Continue current safety practices and monitoring protocols.\n\nNEXT INSPECTION:\nRoutine monthly inspection scheduled for December 3, 2024. Special focus on winter weather preparedness and freeze protection systems activation.\n\nCertified By: J. Thompson, CSP\nSubmission Date: November 3, 2024"
+    },
+    {
+      "template_id": "safety_inspection",
+      "template_name": "Safety Inspection Report",
+      "title": "Critical Safety Assessment - Wolfcamp Express 5H",
+      "content": "COMPREHENSIVE SAFETY INSPECTION REPORT\n\nWell Designation: Wolfcamp Express 5H\nChief Inspector: Dr. Patricia Williams, Senior Safety Engineer\nInspection Protocol: Semi-Annual Comprehensive Safety Review\nExecution Date: August 22, 2024\nFinal Result: REQUIRES IMMEDIATE ATTENTION\n\nCRITICAL FINDINGS:\nConducted intensive safety evaluation of Wolfcamp Express 5H high-pressure production facility. Discovered significant safety concern with pressure relief valve on 300 BBL Production Tank showing signs of seat leakage and potential failure. Immediate shutdown recommended until valve replacement completed.\n\nH2S monitoring system calibration expired, creating potential exposure risk for personnel. Personal gas monitors tested and found two units non-functional. Site atmosphere testing conducted with portable equipment confirmed safe working conditions at time of inspection.\n\nElectrical systems inspection revealed non-compliant wiring installations in control panel housing. Arc flash protection inadequate per NFPA 70E standards. Grounding system tested satisfactory with proper continuity measurements recorded.\n\nCOMPLIANCE DEFICIENCIES:\nMultiple violations of OSHA 29 CFR 1910.119 Process Safety Management standards identified. Permit 5 conditions not fully met regarding safety equipment maintenance schedules. Immediate regulatory notification required.\n\nMANDATORY CORRECTIVE ACTIONS:\n1. Replace defective pressure relief valve before resuming operations\n2. Recalibrate all H2S detection equipment immediately\n3. Repair/replace faulty personal gas monitors\n4. Correct electrical panel deficiencies within 10 days\n5. Submit updated Process Hazard Analysis to regulatory authority\n\nENFORCEMENT ACTIONS:\nProduction suspension recommended until critical safety items addressed. Regulatory agencies notified of findings. Operator must provide certified completion documentation before restart authorization.\n\nREINSPECTION SCHEDULE:\nMandatory follow-up inspection within 14 days of reported corrections completion.\n\nAuthorizing Signature: Dr. P. Williams, PE\nReport Generation Date: August 22, 2024"
+    },
+    {
+      "template_id": "safety_inspection",
+      "template_name": "Safety Inspection Report",
+      "title": "Environmental Impact Inspection - Gulf Stream 1",
+      "content": "ENVIRONMENTAL & SAFETY COMPLIANCE REPORT\n\nProduction Facility: Gulf Stream 1\nCertified Inspector: Robert Martinez, Environmental Health & Safety Specialist\nInspection Type: Bi-Annual Environmental Compliance Audit\nDate Conducted: July 10, 2024\nAssessment Result: EXCEEDS STANDARDS\n\nCOMPREHENSIVE EVALUATION:\nPerformed detailed environmental and safety assessment of Gulf Stream 1 offshore production platform. All safety management systems demonstrated exceptional performance with zero non-conformities identified. Emergency response drills conducted during inspection showed excellent crew preparedness and equipment readiness.\n\nThe 16-inch Gathering Pipeline underwater inspection via ROV revealed excellent coating condition with no signs of marine growth interference or structural degradation. Cathodic protection system operating optimally with all readings within design specifications.\n\nWaste management practices exemplary with proper segregation and manifesting of hazardous materials. Produced water discharge monitoring shows consistent compliance with NPDES permit limitations. Marine mammal protection protocols properly implemented with designated observers maintaining required logs.\n\nENVIRONMENTAL PERFORMANCE:\nAir emissions well below permitted limits with continuous monitoring system showing 99.7% uptime. Noise pollution measurements at 500-meter radius indicate full compliance with marine protection standards. No reportable spills or releases during audit period.\n\nBEST PRACTICES OBSERVED:\nSite demonstrates industry-leading environmental stewardship. Preventive maintenance program exceeds regulatory requirements. Personnel training records comprehensive and current. Emergency response equipment tested and certified.\n\nRECOMMENDATIONS:\nNo corrective actions required. Recommend sharing best practices with other facilities in fleet. Consider nomination for environmental excellence recognition program.\n\nCONTINUED MONITORING:\nMaintain current inspection schedule. Next comprehensive audit due January 2025. Monthly environmental monitoring reports continue to show consistent compliance trends.\n\nReport Certified By: R. Martinez, CIH\nFinal Report Date: July 10, 2024"
+    },
+    {
+      "template_id": "regulatory_filing",
+      "template_name": "Regulatory Filing",
+      "title": "Environmental Compliance Report - Permit 1 (Air Quality Permit) - Eagle Point 1H",
+      "content": "This environmental compliance report is submitted to the Texas Commission on Environmental Quality pursuant to Permit 1 (Air Quality Permit) for well Eagle Point 1H located in Karnes County, Texas. OPERATIONAL SUMMARY: During Q3 2024, Eagle Point 1H maintained continuous production operations with an average daily production rate of 850 BOPD and 2.1 MMCF/D of natural gas. All flaring activities were conducted in accordance with permit conditions, with total flared volume of 45,000 MCF representing 2.1% of total gas production. COMPLIANCE METRICS: NOx emissions averaged 12.4 tons/year, well within the permitted limit of 25 tons/year. VOC emissions totaled 8.7 tons/year against a permitted limit of 15 tons/year. H2S concentrations at the fence line averaged 0.003 ppm, maintaining compliance with the 0.080 ppm limit. ENVIRONMENTAL MONITORING DATA: Continuous emissions monitoring systems operated at 99.2% uptime. Monthly leak detection and repair inspections identified and remediated 3 minor fugitive emission sources. Ambient air quality monitoring at the northeast boundary showed PM2.5 levels averaging 12.8 \u03bcg/m\u00b3, well below NAAQS standards. PERMIT CONDITION STATUS: All 17 permit conditions remain in full compliance. Required quarterly reporting has been submitted timely. Emergency response equipment testing completed with 100% operational status. We certify that all information contained herein is true and accurate to the best of our knowledge."
+    },
+    {
+      "template_id": "regulatory_filing",
+      "template_name": "Regulatory Filing",
+      "title": "Water Discharge Permit Compliance Filing - Permit 2 (NPDES Permit) - Bakken Star 3H",
+      "content": "This compliance filing is submitted to the North Dakota Department of Environmental Quality for Permit 2 (NPDES Permit) covering water discharge activities at Bakken Star 3H in McKenzie County, North Dakota. OPERATIONAL SUMMARY: Bakken Star 3H completed hydraulic fracturing operations in August 2024, utilizing 4.2 million gallons of freshwater and generating approximately 1.8 million gallons of flowback water. Current production operations generate an average of 280 barrels of produced water daily, all of which is transported via pipeline to the Williston Water Treatment Facility. COMPLIANCE METRICS: Discharge point effluent quality consistently met all permit limits. Total Dissolved Solids averaged 890 mg/L against a limit of 2,000 mg/L. Oil and grease concentrations remained below detection limits of 5 mg/L throughout the reporting period. pH levels ranged from 7.2 to 8.1, within the permitted range of 6.0-9.0. ENVIRONMENTAL MONITORING DATA: Groundwater monitoring wells MW-1 through MW-4 show no statistical increase in chloride, benzene, or other indicator parameters. Surface water sampling at two downstream locations indicates no impact to Tobacco Creek water quality. Monthly biological monitoring confirms healthy aquatic communities with no observable stress indicators. PERMIT CONDITION STATUS: All special conditions are in compliance including the spill prevention plan update and operator certification renewals. Inspection 2 conducted by NDDEQ in September 2024 resulted in no violations or corrective actions. Required annual groundwater assessment submitted on schedule."
+    },
+    {
+      "template_id": "regulatory_filing",
+      "template_name": "Regulatory Filing",
+      "title": "Drilling Permit Compliance Report - Permit 3 (APD Authorization) - Cherokee Ridge 2",
+      "content": "This compliance report is filed with the Bureau of Land Management pursuant to Permit 3 (Application for Permit to Drill) for Cherokee Ridge 2 located on federal lease NM-108756 in Eddy County, New Mexico. OPERATIONAL SUMMARY: Cherokee Ridge 2 drilling operations commenced on September 15, 2024, and reached total depth of 8,450 feet on October 22, 2024. The well was drilled using a closed-loop mud system with 100% containment of drill cuttings and fluids. Surface hole was set at 2,100 feet with 13-3/8 inch casing, followed by intermediate casing at 6,200 feet using 9-5/8 inch steel casing. Production casing of 5-1/2 inch was set to total depth with full cement circulation achieved. COMPLIANCE METRICS: All drilling activities maintained 500-foot setback from identified sensitive areas. Noise levels at nearest residence averaged 48 dB, below the 55 dB daytime limit. H2S monitoring equipment operated continuously with maximum detected concentration of 12 ppm, triggering appropriate safety protocols. Zero reportable spills or releases occurred during operations. ENVIRONMENTAL MONITORING DATA: Air quality monitoring showed PM10 levels averaging 95 \u03bcg/m\u00b3 during active drilling, within permitted limits. Cultural resource monitors were present during surface disturbance with no artifacts encountered. Wildlife monitoring documented continued use of adjacent habitat areas by mule deer and pronghorn populations. PERMIT CONDITION STATUS: All 23 permit stipulations have been satisfied including archaeological clearance, biological surveys, and bonding requirements. Inspection 3 by BLM occurred on October 10, 2024, with full compliance noted. Required drilling reports submitted within 30-day timeframes."
+    },
+    {
+      "template_id": "regulatory_filing",
+      "template_name": "Regulatory Filing",
+      "title": "Production Facility Permit Annual Report - Permit 4 (Operating Permit) - Wolfcamp Express 5H",
+      "content": "Annual compliance report submitted to the Railroad Commission of Texas for Permit 4 (Operating Permit) covering production facilities at Wolfcamp Express 5H in Reeves County, Texas. OPERATIONAL SUMMARY: Wolfcamp Express 5H achieved first production on March 12, 2024, with current stabilized production rates of 1,250 BOPD and 3.8 MMCF/D. The facility operates a three-phase separator system with 400-barrel oil storage tanks and low-pressure flare system. Gas compression equipment maintains pipeline delivery pressure of 1,200 psig. Produced water handling capacity of 500 BPD utilizes closed-loop trucking for disposal at permitted Class II injection wells. COMPLIANCE METRICS: Facility operated with 98.7% uptime during the reporting period. Emergency shutdown systems tested monthly with 100% functionality. Pressure relief devices calibrated and tested per API standards with all systems within tolerance. Flare efficiency maintained above 98% with proper flame characteristics documented through quarterly inspections. ENVIRONMENTAL MONITORING DATA: Quarterly soil sampling at eight perimeter locations shows no hydrocarbon contamination above detection limits. Groundwater monitoring well GW-5H indicates stable water quality with no impact from operations. Vegetation monitoring within 1,000-foot radius shows healthy plant communities with no stress indicators. Air emissions calculations based on actual production data confirm compliance with permitted thresholds. PERMIT CONDITION STATUS: All operational requirements satisfied including operator training, emergency response procedures, and financial assurance. Inspection 4 completed by RRC field inspector resulted in satisfactory rating with no deficiencies. Required production reports filed timely through the P-5 system with accurate allocation data."
+    },
+    {
+      "template_id": "regulatory_filing",
+      "template_name": "Regulatory Filing",
+      "title": "Offshore Installation Safety Case - Permit 5 (OCS Permit) - Gulf Stream 1",
+      "content": "Safety Case submission to the Bureau of Safety and Environmental Enforcement for Permit 5 (Outer Continental Shelf Permit) covering Gulf Stream 1 operations in Mississippi Canyon Block 252, Gulf of Mexico. OPERATIONAL SUMMARY: Gulf Stream 1 subsea completion was installed in 1,847 feet of water depth in May 2024, tied back to the Thunder Horse platform via 12-inch production flowline. Current production averages 4,200 BOPD with 98% oil cut and minimal water production. Subsea tree and manifold systems operate remotely with real-time monitoring of pressure, temperature, and flow parameters. Integrity management program includes annual subsea inspections and quarterly ROV surveys. COMPLIANCE METRICS: Safety management system maintains 99.1% completion rate for planned maintenance activities. Personnel certification compliance stands at 100% with current BOSIET and helicopter underwater escape training. Emergency response drills conducted quarterly with average response time of 3.2 minutes to muster stations. Pollution prevention equipment tested monthly with 100% operational status of containment systems. ENVIRONMENTAL MONITORING DATA: Marine mammal observers documented standard Gulf species with no unusual behavioral patterns noted. Water quality monitoring at four stations shows parameters within natural variability. Seafloor survey data indicates no detectable impact to benthic communities around installation sites. Chemical discharge monitoring confirms compliance with NPDES general permit conditions. PERMIT CONDITION STATUS: All safety case elements remain current including HAZOP studies, quantitative risk assessment, and performance standards verification. Inspection 5 by BSEE resulted in zero incidents of non-compliance. Required monthly production reports submitted through OGOR system with accurate hydrocarbon accounting and royalty calculations."
+    },
+    {
+      "template_id": "production_log",
+      "template_name": "Production Log",
+      "title": "Eagle Point 1H Production Log - Wolfcamp A Lower Bench",
+      "content": "Well: Eagle Point 1H\nReservoir: Wolfcamp A Lower Bench (Unconventional Shale)\nDaily Production: 245 bbl\nDate: November 15, 2024\n\nProduction rates show consistent performance with oil production averaging 245 bbl/day over the past 30-day period. Gas production remains steady at 420 Mcf/day with a GOR of 1,714 scf/bbl. Water cut has increased to 28% from 22% recorded last quarter, indicating natural reservoir pressure decline and potential water breakthrough from adjacent formations.\n\nPressure readings from downhole gauges indicate flowing tubing head pressure of 1,850 psi with casing pressure at 2,100 psi. Static bottom hole pressure measured at 3,200 psi during recent buildup test, showing 15% decline from initial reservoir pressure of 3,765 psi.\n\nDecline curve analysis using Arps hyperbolic model indicates initial decline rate of 45% nominal with b-factor of 1.2, transitioning to exponential decline of 8% annually. Current EUR estimate revised to 185,000 bbl based on 18-month production history.\n\nThe Lufkin C-456D Pump Jack system is operating at 12 SPM with 168-inch stroke length, achieving 92% volumetric efficiency. Surface equipment including Natco 3-Phase Separator is handling fluid volumes effectively with minimal operational issues.\n\nOptimization recommendations include implementing gas lift to reduce hydrostatic pressure and increase drawdown. Consider acidizing treatment to improve near-wellbore permeability. Artificial lift redesign may extend economic life by 24 months. Water disposal strategy through existing 16-inch Gathering Pipeline remains viable with current cut levels."
+    },
+    {
+      "template_id": "production_log",
+      "template_name": "Production Log",
+      "title": "Bakken Star 3H Production Log - Bakken Middle Member",
+      "content": "Well: Bakken Star 3H\nReservoir: Bakken Middle Member (Unconventional Shale)\nDaily Production: 180 bbl\nDate: November 15, 2024\n\nBakken Star 3H demonstrates stable production characteristics with current oil rate of 180 bbl/day, representing controlled decline from initial production of 425 bbl/day. Associated gas production measures 315 Mcf/day yielding GOR of 1,750 scf/bbl, consistent with Bakken Middle Member reservoir fluid properties.\n\nWater production has stabilized at 45 bbl/day representing 20% water cut, within expected parameters for this formation. Chloride analysis indicates formation water with 180,000 ppm total dissolved solids, confirming reservoir source rather than drilling fluid contamination.\n\nFlowing wellhead pressure recorded at 1,200 psi with line pressure maintained at 800 psi through choke management. Recent pressure transient analysis reveals permeability of 0.08 md with skin factor of -2.5, indicating effective hydraulic fracturing completion.\n\nProduction decline follows typical Bakken performance with steep initial decline transitioning to more gradual exponential decline. Decline curve modeling projects remaining reserves of 95,000 bbl over 15-year economic limit.\n\nThe 300 BBL Production Tank requires emptying every 1.7 days maintaining optimal fluid handling capacity. Ariel JGK Gas Compressor operates efficiently at 75% capacity handling associated gas volumes for sales line delivery.\n\nRecommendations include implementing plunger lift system to improve liquid removal efficiency and reduce tubing pressure. Consider refracturing evaluation after analyzing offset well performance. Monthly production surveillance should continue monitoring water cut trends and pressure maintenance."
+    },
+    {
+      "template_id": "production_log",
+      "template_name": "Production Log",
+      "title": "Cherokee Ridge 2 Production Log - Eagle Ford Black Oil Window",
+      "content": "Well: Cherokee Ridge 2\nReservoir: Eagle Ford Black Oil Window (Unconventional Shale)\nDaily Production: 315 bbl\nDate: November 15, 2024\n\nCherokee Ridge 2 continues strong production performance with current oil rate of 315 bbl/day from Eagle Ford Black Oil Window completion. The well maintains excellent productivity with associated gas production of 535 Mcf/day, yielding favorable GOR of 1,698 scf/bbl typical of this reservoir window.\n\nWater production remains minimal at 15 bbl/day representing 4.5% water cut, indicating strong reservoir pressure support and effective completion isolation. Produced water salinity measures 140,000 ppm TDS confirming formation source.\n\nWellhead flowing pressure stabilized at 2,450 psi with separator pressure maintained at 500 psi through surface choke adjustment. Bottom hole flowing pressure estimated at 3,850 psi based on gradient calculations and recent memory gauge data.\n\nProduction decline analysis indicates initial exponential decline rate of 35% nominal, moderating to 12% annual decline. Reservoir simulation suggests EUR of 275,000 bbl with current depletion strategy.\n\nSurface facilities perform optimally with Natco 3-Phase Separator achieving 99.5% oil recovery efficiency. The 16-inch Gathering Pipeline maintains adequate capacity for current and projected production volumes through facility expansion.\n\nOptimization opportunities include optimizing choke size to maximize productivity while maintaining reservoir pressure. Consider implementing real-time pressure monitoring system. Evaluate enhanced oil recovery techniques including CO2 injection pilot program. Continue monthly well testing protocol to monitor performance trends and identify any operational anomalies requiring intervention."
+    },
+    {
+      "template_id": "production_log",
+      "template_name": "Production Log",
+      "title": "Wolfcamp Express 5H Production Log - Bone Spring Sand",
+      "content": "Well: Wolfcamp Express 5H\nReservoir: Bone Spring Sand (Conventional Sandstone)\nDaily Production: 425 bbl\nDate: November 15, 2024\n\nWolfcamp Express 5H delivers robust production from Bone Spring Sand reservoir with current oil rate of 425 bbl/day. This conventional sandstone completion demonstrates excellent reservoir quality with sustained productivity and manageable decline characteristics.\n\nGas production averages 680 Mcf/day with GOR of 1,600 scf/bbl, consistent with solution gas drive mechanism. Water cut remains low at 12% with production water rate of 58 bbl/day, indicating effective aquifer pressure support without significant water encroachment.\n\nFlowing tubing head pressure measures 1,950 psi with wellhead temperature of 165\u00b0F. Static reservoir pressure from recent buildup test indicates 4,200 psi, representing minimal depletion from original pressure of 4,400 psi.\n\nDecline curve analysis shows gentle exponential decline of 18% annually, significantly lower than typical unconventional completions. Reservoir engineering estimates EUR of 485,000 bbl based on material balance calculations and analog performance.\n\nThe Lufkin C-456D Pump Jack operates efficiently at 10 SPM with 144-inch stroke, maintaining 95% volumetric efficiency. Surface equipment handles production volumes effectively with the 300 BBL Production Tank providing adequate storage capacity.\n\nRecommendations include maintaining current artificial lift configuration while monitoring for any efficiency degradation. Consider waterflood pilot implementation to enhance recovery factors. Install permanent downhole gauges for real-time pressure monitoring. Evaluate infill drilling opportunities based on reservoir performance data. Continue quarterly pressure transient testing to monitor reservoir connectivity and compartmentalization effects."
+    },
+    {
+      "template_id": "production_log",
+      "template_name": "Production Log",
+      "title": "Gulf Stream 1 Production Log - Marcellus Shale Formation",
+      "content": "Well: Gulf Stream 1\nReservoir: Marcellus Shale Formation (Unconventional Shale)\nDaily Production: 85 bbl\nDate: November 15, 2024\n\nGulf Stream 1 produces primarily from wet gas window of Marcellus Shale Formation with condensate production of 85 bbl/day. Gas production dominates at 2,450 Mcf/day yielding high GOR of 28,824 scf/bbl, characteristic of gas-condensate reservoir fluid.\n\nCondensate-to-gas ratio remains stable at 35 bbl/MMcf with C5+ content averaging 4.2 gal/Mcf. Water production minimal at 8 bbl/day representing 8.6% water cut, primarily from completion fluids and minor formation water influx.\n\nWellhead pressure maintained at 3,200 psi with flowing temperature of 145\u00b0F. Line pressure regulation through 64/64\" choke maintains optimal gas velocity for liquid carryover prevention. Recent pressure buildup indicates reservoir pressure of 4,850 psi.\n\nDecline analysis shows typical shale gas performance with initial decline rate of 55% transitioning to 10% exponential decline. Gas EUR estimated at 4.2 Bcf with condensate recovery of 145,000 bbl over well life.\n\nThe Ariel JGK Gas Compressor handles full gas stream at 85% capacity with glycol dehydration maintaining pipeline specifications. Condensate handling through existing infrastructure proves adequate for current production levels.\n\nRecommendations include installing plunger lift system to optimize liquid removal and reduce wellbore loading. Consider velocity string to improve gas lift efficiency. Implement real-time gas analysis to monitor retrograde condensation effects. Evaluate compression requirements for late-life production. Monthly well testing should focus on gas composition changes and pressure maintenance monitoring to optimize long-term recovery strategies."
+    },
+    {
+      "template_id": "equipment_maintenance",
+      "template_name": "Equipment Maintenance Report",
+      "title": "Equipment Maintenance Report - Lufkin C-456D Pump Jack (Unit PJ-001)",
+      "content": "EQUIPMENT MAINTENANCE REPORT\n\nEquipment: Lufkin C-456D Pump Jack (Unit PJ-001)\nLocation: Eagle Point 1H\nEquipment Type: Artificial Lift System\nCondition: Fair - Requires Immediate Attention\nOperating Hours: 4,247 hours\nTechnician: Sarah Chen\nDate: March 15, 2024\n\nWORK PERFORMED:\nConducted comprehensive inspection of pump jack unit following reports of irregular pumping cycles. Replaced worn horsehead bearing assembly and counterweight guide bushings. Performed belt tensioning on prime mover system and adjusted walking beam timing. Rebuilt stuffing box assembly with new packing rings and updated fluid end components.\n\nPARTS REPLACED:\n- Horsehead bearing assembly (P/N LFK-4562)\n- Counterweight guide bushings (qty 4)\n- V-belt set for prime mover\n- Stuffing box packing rings\n- Fluid end O-ring seals\n\nTEST RESULTS:\nDynamic testing revealed improved load distribution with 15% reduction in peak stress readings. Pumping efficiency increased from 67% to 82%. Surface unit operating temperature reduced by 12\u00b0F. Vibration analysis shows acceptable levels across all measurement points. Production rate restored to 45 BOPD baseline.\n\nSAFETY OBSERVATIONS:\nGuard rails secure, emergency stops functional. Warning signs properly positioned and legible.\n\nNEXT SERVICE RECOMMENDATION:\nSchedule 90-day inspection for June 15, 2024. Monitor production rates weekly. Replace prime mover oil filter at 5,000 operating hours. Consider upgrading to enhanced bearing package during next major overhaul scheduled for Q4 2024."
+    },
+    {
+      "template_id": "equipment_maintenance",
+      "template_name": "Equipment Maintenance Report",
+      "title": "Equipment Maintenance Report - Ariel JGK Gas Compressor (Unit GC-003)",
+      "content": "EQUIPMENT MAINTENANCE REPORT\n\nEquipment: Ariel JGK Gas Compressor (Unit GC-003)\nLocation: Bakken Star 3H\nEquipment Type: Reciprocating Gas Compressor\nCondition: Good\nOperating Hours: 2,156 hours\nTechnician: Marcus Rodriguez\nDate: March 18, 2024\n\nWORK PERFORMED:\nExecuted scheduled quarterly maintenance on reciprocating compressor system. Performed valve inspection and replacement on cylinder 2. Conducted crankcase oil analysis and full oil change with filter replacement. Cleaned and calibrated pressure relief valves and safety systems. Inspected cylinder liners for wear patterns and performed compression testing across all four cylinders.\n\nPARTS REPLACED:\n- Cylinder 2 inlet valve assembly\n- Crankcase oil filter cartridge\n- Air intake pre-filter elements (qty 2)\n- Valve spring retainers\n- Gasket kit for valve covers\n\nTEST RESULTS:\nCompression test results: Cylinder 1: 485 PSI, Cylinder 2: 492 PSI, Cylinder 3: 478 PSI, Cylinder 4: 483 PSI. All readings within acceptable tolerance of \u00b15%. Vibration analysis indicates normal operating characteristics. Discharge pressure maintaining 850 PSI with 15% capacity margin. Oil analysis shows acceptable contamination levels with no metal particles detected.\n\nSAFETY OBSERVATIONS:\nEmergency shutdown systems tested and verified operational. Gas detection equipment calibrated and functional.\n\nNEXT SERVICE RECOMMENDATION:\nNext maintenance due at 2,400 operating hours (estimated June 2024). Replace piston rings during next major overhaul. Monitor cylinder 3 performance closely due to slightly lower compression reading. Schedule intercooler cleaning for next service interval."
+    },
+    {
+      "template_id": "equipment_maintenance",
+      "template_name": "Equipment Maintenance Report",
+      "title": "Equipment Maintenance Report - Natco 3-Phase Separator (Unit SEP-002)",
+      "content": "EQUIPMENT MAINTENANCE REPORT\n\nEquipment: Natco 3-Phase Separator (Unit SEP-002)\nLocation: Cherokee Ridge 2\nEquipment Type: Production Separator\nCondition: Excellent\nOperating Hours: 8,734 hours\nTechnician: Fatima Al-Rashid\nDate: March 20, 2024\n\nWORK PERFORMED:\nCompleted annual internal inspection following 30-day shutdown for scheduled maintenance. Performed ultrasonic thickness testing on vessel walls and heads. Replaced level control instrumentation and recalibrated all pressure transmitters. Conducted hydrostatic pressure test at 1.5 times maximum allowable working pressure. Cleaned internal demister pads and replaced corroded internal piping supports.\n\nPARTS REPLACED:\n- Level control transmitter (LT-201)\n- Demister pad assembly\n- Internal support brackets (stainless steel)\n- Manway gasket and bolting\n- Pressure relief valve spring assembly\n\nTEST RESULTS:\nHydrostatic test successful at 450 PSI (MAWP: 300 PSI). Ultrasonic readings confirm vessel wall thickness within design specifications. No evidence of corrosion or material degradation observed. Separation efficiency test achieved 99.2% water removal and 99.8% gas separation. Interface level controls responding accurately within \u00b10.5 inch tolerance.\n\nSAFETY OBSERVATIONS:\nPressure relief system functioning properly. All safety instrumentation calibrated and operational.\n\nNEXT SERVICE RECOMMENDATION:\nNext internal inspection due March 2025. Replace gas outlet valve actuator at next shutdown. Consider upgrading control system to smart transmitters for enhanced monitoring capabilities. Schedule quarterly external visual inspections to monitor for corrosion. Implement weekly interface level trend monitoring to optimize separation performance."
+    },
+    {
+      "template_id": "equipment_maintenance",
+      "template_name": "Equipment Maintenance Report",
+      "title": "Equipment Maintenance Report - 16-inch Gathering Pipeline (Segment GL-004)",
+      "content": "EQUIPMENT MAINTENANCE REPORT\n\nEquipment: 16-inch Gathering Pipeline (Segment GL-004)\nLocation: Wolfcamp Express 5H to Processing Facility\nEquipment Type: Steel Pipeline Infrastructure\nCondition: Good with Minor Defects\nOperating Hours: Continuous Service - 15,623 hours\nTechnician: Erik Johansson\nDate: March 22, 2024\n\nWORK PERFORMED:\nConducted inline inspection using magnetic flux leakage (MFL) intelligent pig. Performed external coating survey and cathodic protection system evaluation. Excavated and inspected three anomalous areas identified during pig run. Replaced damaged coating at Station 12+45 and installed additional test points for cathodic protection monitoring. Pressure tested repaired sections at 1,125 PSI.\n\nPARTS REPLACED:\n- External coating patch kit (3M brand)\n- Cathodic protection test station\n- Pipeline marker posts (qty 4)\n- Valve actuator seals at mainline valve MLV-003\n\nTEST RESULTS:\nInline inspection revealed 12 minor metal loss features, all less than 10% wall thickness. Cathodic protection survey shows adequate protection with potentials ranging from -850 to -1,200 mV CSE. Pressure test on repaired section held steady at test pressure for 8 hours with zero pressure drop. Coating adhesion tests passed at all inspection points.\n\nSAFETY OBSERVATIONS:\nRight-of-way clear of encroachments. Warning signs and marker posts in good condition.\n\nNEXT SERVICE RECOMMENDATION:\nNext inline inspection due in 24 months. Monitor cathodic protection readings monthly. Schedule vegetation management for Q2 2024. Implement quarterly aerial patrol inspections. Consider upgrading to impressed current cathodic protection system in areas showing lower protection levels."
+    },
+    {
+      "template_id": "equipment_maintenance",
+      "template_name": "Equipment Maintenance Report",
+      "title": "Equipment Maintenance Report - 300 BBL Production Tank (Unit TNK-001)",
+      "content": "EQUIPMENT MAINTENANCE REPORT\n\nEquipment: 300 BBL Production Tank (Unit TNK-001)\nLocation: Gulf Stream 1\nEquipment Type: Crude Oil Storage Tank\nCondition: Fair - Coating Deterioration Noted\nOperating Hours: 12,445 hours (continuous service)\nTechnician: Priya Patel\nDate: March 25, 2024\n\nWORK PERFORMED:\nPerformed comprehensive tank inspection including bottom scan, shell thickness measurements, and roof structural assessment. Cleaned and inspected flame arrestor and pressure/vacuum relief devices. Replaced corroded thief hatch gasket and repaired minor shell plate corrosion on east side of tank. Applied protective coating to prepared areas and tested all tank instrumentation systems.\n\nPARTS REPLACED:\n- Thief hatch assembly with new gasket\n- Pressure/vacuum relief valve (6-inch)\n- Tank gauging tape and float\n- Flame arrestor element\n- External ladder safety cage hardware\n\nTEST RESULTS:\nUltrasonic thickness readings show minimum shell thickness of 0.187 inches (original: 0.250 inches). Bottom scan revealed no significant pitting or hole formation. Pressure test on vacuum relief valve successful at -2.5 PSI. Flame arrestor flow test passed at maximum design flow rate. Tank capacity calibration confirms 298.7 BBL usable volume.\n\nSAFETY OBSERVATIONS:\nSecondary containment integrity confirmed. Grounding system continuity verified. Emergency response equipment properly positioned.\n\nNEXT SERVICE RECOMMENDATION:\nSchedule full external coating renovation within 6 months due to accelerated corrosion noted on east shell plates. Replace tank bottom in 18 months based on thickness readings. Upgrade to electronic tank gauging system during next turnaround. Implement monthly ultrasonic thickness monitoring program for early corrosion detection."
+    }
+  ],
+  "traces": [
+    {
+      "id": "drilling_decision",
+      "task": "Evaluate whether to drill a new well in Bakken Formation formation at proposed location",
+      "steps": [
+        {
+          "thought": "Assess geological data and reservoir characteristics",
+          "action": "Query formation properties, nearby well results, and reservoir estimates",
+          "observation": "Seismic data shows the proposed location sits in a high-quality Middle Bakken interval with 45-foot net pay thickness and porosity averaging 12%, while offset wells within 2 miles have achieved initial production rates of 800-1,200 BOPD with estimated ultimate recovery of 650,000 BOE."
+        },
+        {
+          "thought": "Review permit requirements and regulatory constraints",
+          "action": "Check permit status and environmental restrictions for the area",
+          "observation": "The drilling permit application is approved and environmental assessment shows no protected species or water sources within the 500-foot buffer zone, though North Dakota requires a $50,000 reclamation bond and quarterly groundwater monitoring for the first two years."
+        },
+        {
+          "thought": "Evaluate economic viability based on estimated reserves",
+          "action": "Calculate projected production, costs, and breakeven price",
+          "observation": "Economic modeling indicates the well will cost $8.2 million to drill and complete with projected 18-month payback at current WTI prices of $78/barrel, generating an estimated NPV of $4.8 million and IRR of 35% over 15 years."
+        },
+        {
+          "thought": "Assess operational risks and mitigation options",
+          "action": "Review inspection history and equipment availability for similar wells",
+          "observation": "Recent mechanical integrity tests on nearby wells show 98% success rate with no major equipment failures, and drilling contractor Nabors has two available rigs within 50 miles that can commence operations within 30 days."
+        }
+      ],
+      "outcome": "Proceed with drilling authorization based on strong geological indicators, regulatory compliance, and attractive economics that exceed the company's 25% IRR threshold. Secure rig scheduling with Nabors for Q2 spud date to optimize winter drilling conditions."
+    },
+    {
+      "id": "well_intervention",
+      "task": "Determine if well Bone Spring 2H requires workover or stimulation",
+      "steps": [
+        {
+          "thought": "Analyze production decline and compare to type curve",
+          "action": "Query production history and calculate decline rate",
+          "observation": "Production analysis shows Bone Spring 2H has declined from initial 950 BOE/d to current 185 BOE/d over 18 months, with decline rate accelerating to 3.2% monthly versus 2.1% type curve expectation. Water cut has increased from 15% to 47% indicating potential completion integrity issues."
+        },
+        {
+          "thought": "Review well condition and recent inspection findings",
+          "action": "Check inspection reports and equipment condition assessments",
+          "observation": "Inspection reports reveal 15% scale buildup in tubing and minor corrosion on packers, but no critical equipment failures. Downhole pressure gauge shows reservoir pressure maintained at 3,200 psi, suggesting near-wellbore damage rather than reservoir depletion."
+        },
+        {
+          "thought": "Evaluate intervention options and expected uplift",
+          "action": "Compare costs and production gains for workover vs stimulation vs status quo",
+          "observation": "Economic analysis indicates restimulation would cost $1.2M with projected 65% production uplift for 24-month payout, while workover costs $380K with 25% uplift for 18-month payout. Current well NPV at $2.1M supports intervention."
+        }
+      ],
+      "outcome": "Recommend proceeding with restimulation of Bone Spring 2H based on favorable economics and reservoir pressure maintenance, with operations scheduled for Q2 to optimize production before peak demand season."
+    },
+    {
+      "id": "equipment_replacement",
+      "task": "Assess whether to repair or replace Natco 3-Phase Separator at well Powder River 6H",
+      "steps": [
+        {
+          "thought": "Review equipment condition history and failure patterns",
+          "action": "Query inspection records and maintenance history",
+          "observation": "Inspection records show the Natco 3-Phase Separator has experienced three major seal failures in the past 18 months, with increasing frequency of minor repairs and corrosion detected in the oil weir compartment. The unit was manufactured in 2018 and has processed approximately 2.1 million barrels, operating at 85% efficiency compared to its original specification."
+        },
+        {
+          "thought": "Compare repair cost vs replacement cost and downtime impact",
+          "action": "Estimate repair costs, replacement costs, and production loss",
+          "observation": "Repair costs are estimated at $78,000 including new internals and vessel modifications, with 5 days downtime resulting in $145,000 production loss at current 850 BOPD rate. Complete replacement with a new Natco unit would cost $285,000 plus $35,000 installation, requiring 7 days downtime but including a 3-year warranty."
+        },
+        {
+          "thought": "Consider remaining useful life and technology upgrades",
+          "action": "Evaluate newer equipment options and efficiency improvements",
+          "observation": "Newer separator models offer 12% improved oil recovery efficiency and enhanced sand handling capabilities that would reduce downstream processing costs by an estimated $25,000 annually. The current unit has an estimated remaining useful life of 3-4 years if repaired, while a new unit would provide 15+ years of service."
+        }
+      ],
+      "outcome": "Recommend replacing the separator based on the analysis showing that while repair costs are lower upfront, the combination of improved efficiency, reduced maintenance, and extended service life of new equipment provides better long-term value with payback within 2.8 years."
+    }
+  ]
+}

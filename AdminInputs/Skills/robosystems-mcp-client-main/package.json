@@ -1,0 +1,68 @@
+{
+  "name": "@robosystems/mcp",
+  "version": "0.3.9",
+  "description": "MCP client adapter for connecting AI agents to RoboSystems Financial Knowledge Graph API endpoints with workspace support",
+  "type": "module",
+  "main": "index.js",
+  "bin": {
+    "@robosystems/mcp": "./index.js",
+    "create-feature": "./bin/create-feature.sh"
+  },
+  "files": [
+    "index.js",
+    "README.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "start": "node index.js",
+    "format": "prettier . --write",
+    "format:check": "prettier . --check",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "validate:fix": "npm run format && npm run lint:fix",
+    "validate": "npm run validate:fix && npm run lint",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:all": "npm run validate && npm run test",
+    "feature:create": "./bin/create-feature.sh",
+    "release:create": "./bin/create-release.sh",
+    "pr:create": "./bin/create-pr.sh"
+  },
+  "keywords": [
+    "mcp",
+    "robosystems",
+    "financial",
+    "graph",
+    "api",
+    "model-context-protocol"
+  ],
+  "author": "RFS LLC",
+  "license": "MIT",
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.17.1",
+    "eventsource": "^4.0.0"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.39.2",
+    "eslint": "^9.39.2",
+    "eslint-config-prettier": "^10.0.0",
+    "eslint-plugin-prettier": "^5.0.0",
+    "happy-dom": "^20.0.8",
+    "prettier": "^3.0.0",
+    "vitest": "^4.0.3"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/RoboFinSystems/robosystems-mcp-client"
+  },
+  "bugs": {
+    "url": "https://github.com/RoboFinSystems/robosystems-mcp-client/issues"
+  },
+  "homepage": "https://github.com/RoboFinSystems/robosystems-mcp-client#readme"
+}

@@ -1,0 +1,1983 @@
+{
+  "domain": "manufacturing",
+  "entities": {
+    "Person": [
+      {
+        "name": "Sarah Chen",
+        "email": "sarah.chen@precisionmfg.com",
+        "role": "Production Manager",
+        "description": "Oversees daily production operations and coordinates with quality assurance teams"
+      },
+      {
+        "name": "Marcus Rodriguez",
+        "email": "marcus.rodriguez@precisionmfg.com",
+        "role": "Quality Control Supervisor",
+        "description": "Manages quality inspection processes and maintains ISO 9001 compliance standards"
+      },
+      {
+        "name": "Priya Patel",
+        "email": "priya.patel@precisionmfg.com",
+        "role": "Supply Chain Coordinator",
+        "description": "Coordinates procurement activities and manages supplier relationships"
+      },
+      {
+        "name": "Klaus Weber",
+        "email": "klaus.weber@precisionmfg.com",
+        "role": "Maintenance Engineer",
+        "description": "Responsible for preventive maintenance scheduling and equipment troubleshooting"
+      },
+      {
+        "name": "Aisha Johnson",
+        "email": "aisha.johnson@precisionmfg.com",
+        "role": "Operations Director",
+        "description": "Senior executive overseeing all manufacturing operations and strategic planning"
+      }
+    ],
+    "Organization": [
+      {
+        "name": "Precision Manufacturing Solutions",
+        "description": "Leading manufacturer of automotive components and precision machinery parts",
+        "industry": "Automotive Manufacturing"
+      },
+      {
+        "name": "TechSteel Industries",
+        "description": "Steel processing and fabrication company specializing in industrial applications",
+        "industry": "Metal Fabrication"
+      },
+      {
+        "name": "Global Electronics Assembly",
+        "description": "Contract manufacturer providing electronic assembly and testing services",
+        "industry": "Electronics Manufacturing"
+      },
+      {
+        "name": "Advanced Plastics Corp",
+        "description": "Injection molding and plastic component manufacturing for consumer goods",
+        "industry": "Plastic Manufacturing"
+      },
+      {
+        "name": "MedDevice Manufacturing",
+        "description": "FDA-compliant medical device manufacturing and packaging services",
+        "industry": "Medical Device Manufacturing"
+      }
+    ],
+    "Location": [
+      {
+        "name": "Main Production Facility",
+        "address": "1250 Industrial Blvd, Detroit, MI 48201",
+        "latitude": 42.3314,
+        "longitude": -83.0458
+      },
+      {
+        "name": "Quality Control Laboratory",
+        "address": "875 Technology Drive, Austin, TX 78759",
+        "latitude": 30.2672,
+        "longitude": -97.7431
+      },
+      {
+        "name": "Distribution Center",
+        "address": "3400 Logistics Way, Atlanta, GA 30309",
+        "latitude": 33.749,
+        "longitude": -84.388
+      },
+      {
+        "name": "Research and Development Center",
+        "address": "2100 Innovation Circle, San Jose, CA 95134",
+        "latitude": 37.3382,
+        "longitude": -121.8863
+      },
+      {
+        "name": "Secondary Manufacturing Plant",
+        "address": "560 Manufacturing Row, Charlotte, NC 28202",
+        "latitude": 35.2271,
+        "longitude": -80.8431
+      }
+    ],
+    "Event": [
+      {
+        "name": "Annual Safety Training",
+        "date": "2024-03-15T09:00:00Z",
+        "description": "Mandatory safety training session for all production floor employees"
+      },
+      {
+        "name": "Equipment Calibration Audit",
+        "date": "2024-02-28T14:30:00Z",
+        "description": "Quarterly audit of measurement equipment and calibration procedures"
+      },
+      {
+        "name": "Supplier Quality Review",
+        "date": "2024-04-10T10:00:00Z",
+        "description": "Quarterly review meeting with key suppliers to discuss quality metrics"
+      },
+      {
+        "name": "Production Line Upgrade",
+        "date": "2024-05-20T08:00:00Z",
+        "description": "Installation of new automation equipment on Line 3"
+      },
+      {
+        "name": "ISO Certification Renewal",
+        "date": "2024-06-15T13:00:00Z",
+        "description": "External audit for ISO 9001:2015 certification renewal"
+      }
+    ],
+    "Object": [
+      {
+        "name": "Safety Protocols Manual",
+        "description": "Comprehensive guide covering all workplace safety procedures and emergency protocols"
+      },
+      {
+        "name": "Quality Management System",
+        "description": "Software system for tracking quality metrics and managing corrective actions"
+      },
+      {
+        "name": "Production Schedule",
+        "description": "Master schedule coordinating all production activities across multiple lines"
+      },
+      {
+        "name": "Maintenance Log Database",
+        "description": "Digital repository of all equipment maintenance records and service histories"
+      },
+      {
+        "name": "Supplier Evaluation Criteria",
+        "description": "Standardized criteria and scoring system for evaluating supplier performance"
+      }
+    ],
+    "Machine": [
+      {
+        "machine_id": "CNC-001",
+        "name": "Haas VF-4SS CNC Mill",
+        "machine_type": "cnc",
+        "manufacturer": "Haas Automation",
+        "install_date": "2022-01-15",
+        "status": "operational",
+        "operating_hours": 8450
+      },
+      {
+        "machine_id": "PRESS-205",
+        "name": "Schuler Hydraulic Press",
+        "machine_type": "press",
+        "manufacturer": "Schuler Group",
+        "install_date": "2021-08-22",
+        "status": "operational",
+        "operating_hours": 12300
+      },
+      {
+        "machine_id": "LAT-103",
+        "name": "Mazak QuickTurn Nexus 250",
+        "machine_type": "lathe",
+        "manufacturer": "Mazak Corporation",
+        "install_date": "2023-03-10",
+        "status": "maintenance",
+        "operating_hours": 3200
+      },
+      {
+        "machine_id": "WELD-078",
+        "name": "Lincoln Electric Robotic Welder",
+        "machine_type": "welder",
+        "manufacturer": "Lincoln Electric",
+        "install_date": "2020-11-05",
+        "status": "operational",
+        "operating_hours": 15600
+      },
+      {
+        "machine_id": "ASM-041",
+        "name": "Bosch Rexroth Assembly Station",
+        "machine_type": "assembler",
+        "manufacturer": "Bosch Rexroth",
+        "install_date": "2022-07-18",
+        "status": "operational",
+        "operating_hours": 6800
+      },
+      {
+        "machine_id": "CONV-012",
+        "name": "FlexMove Modular Conveyor",
+        "machine_type": "conveyor",
+        "manufacturer": "FlexLink",
+        "install_date": "2021-12-03",
+        "status": "offline",
+        "operating_hours": 9200
+      },
+      {
+        "machine_id": "ROB-089",
+        "name": "KUKA KR 210 R3100 Robot",
+        "machine_type": "robot",
+        "manufacturer": "KUKA Robotics",
+        "install_date": "2023-01-25",
+        "status": "operational",
+        "operating_hours": 4100
+      },
+      {
+        "machine_id": "PKG-156",
+        "name": "Ishida Multihead Packaging System",
+        "machine_type": "packaging",
+        "manufacturer": "Ishida Co.",
+        "install_date": "2022-05-12",
+        "status": "operational",
+        "operating_hours": 7300
+      },
+      {
+        "machine_id": "CNC-067",
+        "name": "DMG Mori NLX 2500Y Lathe",
+        "machine_type": "cnc",
+        "manufacturer": "DMG Mori",
+        "install_date": "2020-09-14",
+        "status": "operational",
+        "operating_hours": 18500
+      },
+      {
+        "machine_id": "PRESS-234",
+        "name": "Amada HFE M2 Press Brake",
+        "machine_type": "press",
+        "manufacturer": "Amada America",
+        "install_date": "2023-06-08",
+        "status": "operational",
+        "operating_hours": 2100
+      }
+    ],
+    "Part": [
+      {
+        "part_number": "ENG-4521-A",
+        "name": "Engine Block Casting",
+        "category": "raw_material",
+        "unit_cost": 245.5,
+        "stock_quantity": 125,
+        "minimum_stock": 50,
+        "specification": "Cast iron engine block for 2.0L turbocharged engine"
+      },
+      {
+        "part_number": "BRK-2301-B",
+        "name": "Brake Pad Assembly",
+        "category": "component",
+        "unit_cost": 35.75,
+        "stock_quantity": 890,
+        "minimum_stock": 200,
+        "specification": "Ceramic brake pad with heat dissipation backing plate"
+      },
+      {
+        "part_number": "TRN-8845-C",
+        "name": "Transmission Housing",
+        "category": "subassembly",
+        "unit_cost": 420.0,
+        "stock_quantity": 45,
+        "minimum_stock": 15,
+        "specification": "Aluminum transmission housing for 6-speed automatic"
+      },
+      {
+        "part_number": "FG-1204-X",
+        "name": "Complete Automotive Engine",
+        "category": "finished_good",
+        "unit_cost": 3250.0,
+        "stock_quantity": 28,
+        "minimum_stock": 10,
+        "specification": "Fully assembled 2.0L turbocharged engine with ECU"
+      },
+      {
+        "part_number": "STL-6789-R",
+        "name": "High-Grade Steel Rod",
+        "category": "raw_material",
+        "unit_cost": 12.25,
+        "stock_quantity": 2400,
+        "minimum_stock": 500,
+        "specification": "4140 alloy steel rod, 25mm diameter, 3m length"
+      },
+      {
+        "part_number": "ELC-3456-D",
+        "name": "Electronic Control Module",
+        "category": "component",
+        "unit_cost": 185.3,
+        "stock_quantity": 156,
+        "minimum_stock": 75,
+        "specification": "Automotive ECM with CAN bus interface"
+      },
+      {
+        "part_number": "WHE-9012-F",
+        "name": "Wheel Hub Assembly",
+        "category": "subassembly",
+        "unit_cost": 95.8,
+        "stock_quantity": 320,
+        "minimum_stock": 100,
+        "specification": "Front wheel hub with integrated ABS sensor"
+      },
+      {
+        "part_number": "FG-5678-Y",
+        "name": "Complete Brake System",
+        "category": "finished_good",
+        "unit_cost": 850.0,
+        "stock_quantity": 67,
+        "minimum_stock": 25,
+        "specification": "Complete disc brake system with ABS integration"
+      },
+      {
+        "part_number": "ALM-1357-S",
+        "name": "Aluminum Sheet Stock",
+        "category": "raw_material",
+        "unit_cost": 8.45,
+        "stock_quantity": 1800,
+        "minimum_stock": 300,
+        "specification": "6061-T6 aluminum sheet, 2mm thickness, 1m x 2m"
+      },
+      {
+        "part_number": "GSK-7890-P",
+        "name": "Engine Gasket Set",
+        "category": "component",
+        "unit_cost": 45.2,
+        "stock_quantity": 245,
+        "minimum_stock": 80,
+        "specification": "Complete engine gasket set for 2.0L engine rebuild"
+      }
+    ],
+    "WorkOrder": [
+      {
+        "work_order_id": "WO-2024-001",
+        "description": "Production run for brake pad assemblies - Q1 order fulfillment",
+        "priority": "high",
+        "status": "in_progress",
+        "start_date": "2024-02-15T08:00:00Z",
+        "due_date": "2024-03-01T17:00:00Z",
+        "quantity": 1500,
+        "name": "WorkOrder 1"
+      },
+      {
+        "work_order_id": "WO-2024-002",
+        "description": "Engine block casting production for automotive client",
+        "priority": "critical",
+        "status": "planned",
+        "start_date": "2024-03-10T06:00:00Z",
+        "due_date": "2024-03-25T18:00:00Z",
+        "quantity": 200,
+        "name": "WorkOrder 2"
+      },
+      {
+        "work_order_id": "WO-2024-003",
+        "description": "Transmission housing machining and finishing",
+        "priority": "medium",
+        "status": "completed",
+        "start_date": "2024-01-20T08:00:00Z",
+        "due_date": "2024-02-10T17:00:00Z",
+        "quantity": 85,
+        "name": "WorkOrder 3"
+      },
+      {
+        "work_order_id": "WO-2024-004",
+        "description": "Emergency repair order for damaged brake components",
+        "priority": "critical",
+        "status": "on_hold",
+        "start_date": "2024-02-28T10:00:00Z",
+        "due_date": "2024-03-05T16:00:00Z",
+        "quantity": 50,
+        "name": "WorkOrder 4"
+      },
+      {
+        "work_order_id": "WO-2024-005",
+        "description": "Wheel hub assembly production for spring inventory",
+        "priority": "low",
+        "status": "planned",
+        "start_date": "2024-04-01T08:00:00Z",
+        "due_date": "2024-04-20T17:00:00Z",
+        "quantity": 750,
+        "name": "WorkOrder 5"
+      },
+      {
+        "work_order_id": "WO-2024-006",
+        "description": "Electronic control module assembly and testing",
+        "priority": "high",
+        "status": "in_progress",
+        "start_date": "2024-02-25T09:00:00Z",
+        "due_date": "2024-03-15T17:00:00Z",
+        "quantity": 300,
+        "name": "WorkOrder 6"
+      },
+      {
+        "work_order_id": "WO-2024-007",
+        "description": "Complete engine assembly for premium automotive line",
+        "priority": "high",
+        "status": "planned",
+        "start_date": "2024-03-20T07:00:00Z",
+        "due_date": "2024-04-15T18:00:00Z",
+        "quantity": 125,
+        "name": "WorkOrder 7"
+      },
+      {
+        "work_order_id": "WO-2024-008",
+        "description": "Gasket set packaging and quality verification",
+        "priority": "medium",
+        "status": "completed",
+        "start_date": "2024-02-05T08:00:00Z",
+        "due_date": "2024-02-18T16:00:00Z",
+        "quantity": 2000,
+        "name": "WorkOrder 8"
+      }
+    ],
+    "Supplier": [
+      {
+        "supplier_id": "SUP-001",
+        "name": "MetalWorks Industries LLC",
+        "country": "United States",
+        "lead_time_days": 14,
+        "quality_rating": 4.7,
+        "status": "approved"
+      },
+      {
+        "supplier_id": "SUP-002",
+        "name": "Precision Components GmbH",
+        "country": "Germany",
+        "lead_time_days": 21,
+        "quality_rating": 4.9,
+        "status": "approved"
+      },
+      {
+        "supplier_id": "SUP-003",
+        "name": "Sakura Manufacturing Co Ltd",
+        "country": "Japan",
+        "lead_time_days": 28,
+        "quality_rating": 4.8,
+        "status": "approved"
+      },
+      {
+        "supplier_id": "SUP-004",
+        "name": "BrassTech Solutions",
+        "country": "Canada",
+        "lead_time_days": 10,
+        "quality_rating": 3.2,
+        "status": "probationary"
+      },
+      {
+        "supplier_id": "SUP-005",
+        "name": "Global Steel Enterprises",
+        "country": "South Korea",
+        "lead_time_days": 35,
+        "quality_rating": 4.5,
+        "status": "approved"
+      },
+      {
+        "supplier_id": "SUP-006",
+        "name": "Alpine Electronics SA",
+        "country": "Switzerland",
+        "lead_time_days": 18,
+        "quality_rating": 4.6,
+        "status": "approved"
+      },
+      {
+        "supplier_id": "SUP-007",
+        "name": "Industrial Materials Inc",
+        "country": "Mexico",
+        "lead_time_days": 12,
+        "quality_rating": 2.8,
+        "status": "suspended"
+      },
+      {
+        "supplier_id": "SUP-008",
+        "name": "Nordic Castings AB",
+        "country": "Sweden",
+        "lead_time_days": 25,
+        "quality_rating": 4.4,
+        "status": "approved"
+      },
+      {
+        "supplier_id": "SUP-009",
+        "name": "FastTrack Components",
+        "country": "United Kingdom",
+        "lead_time_days": 8,
+        "quality_rating": 3.9,
+        "status": "approved"
+      },
+      {
+        "supplier_id": "SUP-010",
+        "name": "Defective Parts Co",
+        "country": "China",
+        "lead_time_days": 45,
+        "quality_rating": 1.5,
+        "status": "blacklisted"
+      }
+    ],
+    "QualityReport": [
+      {
+        "report_id": "QR-2024-001",
+        "inspection_date": "2024-02-20T14:30:00Z",
+        "inspector": "Marcus Rodriguez",
+        "result": "pass",
+        "defect_count": 2,
+        "defect_type": "surface_finish",
+        "notes": "Minor surface imperfections within acceptable tolerance range",
+        "name": "QualityReport 1"
+      },
+      {
+        "report_id": "QR-2024-002",
+        "inspection_date": "2024-02-18T10:15:00Z",
+        "inspector": "Jennifer Kim",
+        "result": "fail",
+        "defect_count": 15,
+        "defect_type": "dimensional",
+        "notes": "Multiple parts exceed dimensional specifications, investigate tooling wear",
+        "name": "QualityReport 2"
+      },
+      {
+        "report_id": "QR-2024-003",
+        "inspection_date": "2024-02-25T16:45:00Z",
+        "inspector": "Carlos Mendoza",
+        "result": "conditional_pass",
+        "defect_count": 5,
+        "defect_type": "material",
+        "notes": "Material hardness slightly below specification, acceptable for non-critical applications",
+        "name": "QualityReport 3"
+      },
+      {
+        "report_id": "QR-2024-004",
+        "inspection_date": "2024-02-22T09:30:00Z",
+        "inspector": "Sarah Chen",
+        "result": "pass",
+        "defect_count": 0,
+        "defect_type": "none",
+        "notes": "All samples meet quality standards, excellent batch quality",
+        "name": "QualityReport 4"
+      },
+      {
+        "report_id": "QR-2024-005",
+        "inspection_date": "2024-02-28T13:20:00Z",
+        "inspector": "Ahmed Hassan",
+        "result": "fail",
+        "defect_count": 8,
+        "defect_type": "assembly",
+        "notes": "Incorrect torque specifications applied during assembly process",
+        "name": "QualityReport 5"
+      },
+      {
+        "report_id": "QR-2024-006",
+        "inspection_date": "2024-03-01T11:00:00Z",
+        "inspector": "Lisa Wang",
+        "result": "pass",
+        "defect_count": 1,
+        "defect_type": "cosmetic",
+        "notes": "Single cosmetic defect, does not affect functionality or safety",
+        "name": "QualityReport 6"
+      },
+      {
+        "report_id": "QR-2024-007",
+        "inspection_date": "2024-02-26T15:15:00Z",
+        "inspector": "Robert Thompson",
+        "result": "conditional_pass",
+        "defect_count": 3,
+        "defect_type": "electrical",
+        "notes": "Electrical resistance values at upper tolerance limit, monitor future batches",
+        "name": "QualityReport 7"
+      },
+      {
+        "report_id": "QR-2024-008",
+        "inspection_date": "2024-03-03T08:45:00Z",
+        "inspector": "Maria Gonzalez",
+        "result": "pass",
+        "defect_count": 0,
+        "defect_type": "none",
+        "notes": "Perfect quality batch, process improvements showing positive results",
+        "name": "QualityReport 8"
+      }
+    ],
+    "ProductionLine": [
+      {
+        "line_id": "LINE-A01",
+        "name": "Engine Assembly Line Alpha",
+        "capacity_per_hour": 45,
+        "efficiency_rating": 0.92,
+        "status": "active",
+        "shift_pattern": "double"
+      },
+      {
+        "line_id": "LINE-B02",
+        "name": "Brake Component Production Beta",
+        "capacity_per_hour": 120,
+        "efficiency_rating": 0.88,
+        "status": "active",
+        "shift_pattern": "triple"
+      },
+      {
+        "line_id": "LINE-C03",
+        "name": "Transmission Assembly Charlie",
+        "capacity_per_hour": 32,
+        "efficiency_rating": 0.85,
+        "status": "maintenance",
+        "shift_pattern": "single"
+      },
+      {
+        "line_id": "LINE-D04",
+        "name": "Electronic Component Delta",
+        "capacity_per_hour": 200,
+        "efficiency_rating": 0.94,
+        "status": "active",
+        "shift_pattern": "continuous"
+      },
+      {
+        "line_id": "LINE-E05",
+        "name": "Wheel Hub Assembly Echo",
+        "capacity_per_hour": 85,
+        "efficiency_rating": 0.87,
+        "status": "retooling",
+        "shift_pattern": "double"
+      },
+      {
+        "line_id": "LINE-F06",
+        "name": "Final Assembly Foxtrot",
+        "capacity_per_hour": 28,
+        "efficiency_rating": 0.91,
+        "status": "active",
+        "shift_pattern": "double"
+      },
+      {
+        "line_id": "LINE-G07",
+        "name": "Quality Control Golf",
+        "capacity_per_hour": 150,
+        "efficiency_rating": 0.96,
+        "status": "active",
+        "shift_pattern": "continuous"
+      },
+      {
+        "line_id": "LINE-H08",
+        "name": "Packaging Hotel",
+        "capacity_per_hour": 300,
+        "efficiency_rating": 0.89,
+        "status": "idle",
+        "shift_pattern": "single"
+      },
+      {
+        "line_id": "LINE-I09",
+        "name": "Casting India",
+        "capacity_per_hour": 15,
+        "efficiency_rating": 0.82,
+        "status": "active",
+        "shift_pattern": "continuous"
+      },
+      {
+        "line_id": "LINE-J10",
+        "name": "Machining Juliet",
+        "capacity_per_hour": 65,
+        "efficiency_rating": 0.93,
+        "status": "active",
+        "shift_pattern": "triple"
+      }
+    ]
+  },
+  "relationships": [
+    {
+      "type": "WORKS_FOR",
+      "source_label": "Person",
+      "source_name": "Sarah Chen",
+      "target_label": "Organization",
+      "target_name": "Precision Manufacturing Solutions"
+    },
+    {
+      "type": "WORKS_FOR",
+      "source_label": "Person",
+      "source_name": "Marcus Rodriguez",
+      "target_label": "Organization",
+      "target_name": "Advanced Plastics Corp"
+    },
+    {
+      "type": "WORKS_FOR",
+      "source_label": "Person",
+      "source_name": "Marcus Rodriguez",
+      "target_label": "Organization",
+      "target_name": "Precision Manufacturing Solutions"
+    },
+    {
+      "type": "WORKS_FOR",
+      "source_label": "Person",
+      "source_name": "Marcus Rodriguez",
+      "target_label": "Organization",
+      "target_name": "MedDevice Manufacturing"
+    },
+    {
+      "type": "WORKS_FOR",
+      "source_label": "Person",
+      "source_name": "Priya Patel",
+      "target_label": "Organization",
+      "target_name": "MedDevice Manufacturing"
+    },
+    {
+      "type": "WORKS_FOR",
+      "source_label": "Person",
+      "source_name": "Klaus Weber",
+      "target_label": "Organization",
+      "target_name": "Advanced Plastics Corp"
+    },
+    {
+      "type": "WORKS_FOR",
+      "source_label": "Person",
+      "source_name": "Klaus Weber",
+      "target_label": "Organization",
+      "target_name": "TechSteel Industries"
+    },
+    {
+      "type": "WORKS_FOR",
+      "source_label": "Person",
+      "source_name": "Klaus Weber",
+      "target_label": "Organization",
+      "target_name": "Global Electronics Assembly"
+    },
+    {
+      "type": "WORKS_FOR",
+      "source_label": "Person",
+      "source_name": "Aisha Johnson",
+      "target_label": "Organization",
+      "target_name": "MedDevice Manufacturing"
+    },
+    {
+      "type": "WORKS_FOR",
+      "source_label": "Person",
+      "source_name": "Aisha Johnson",
+      "target_label": "Organization",
+      "target_name": "Advanced Plastics Corp"
+    },
+    {
+      "type": "WORKS_FOR",
+      "source_label": "Person",
+      "source_name": "Aisha Johnson",
+      "target_label": "Organization",
+      "target_name": "Precision Manufacturing Solutions"
+    },
+    {
+      "type": "LOCATED_AT",
+      "source_label": "Organization",
+      "source_name": "Precision Manufacturing Solutions",
+      "target_label": "Location",
+      "target_name": "Main Production Facility"
+    },
+    {
+      "type": "LOCATED_AT",
+      "source_label": "Organization",
+      "source_name": "Precision Manufacturing Solutions",
+      "target_label": "Location",
+      "target_name": "Secondary Manufacturing Plant"
+    },
+    {
+      "type": "LOCATED_AT",
+      "source_label": "Organization",
+      "source_name": "Precision Manufacturing Solutions",
+      "target_label": "Location",
+      "target_name": "Distribution Center"
+    },
+    {
+      "type": "LOCATED_AT",
+      "source_label": "Organization",
+      "source_name": "TechSteel Industries",
+      "target_label": "Location",
+      "target_name": "Quality Control Laboratory"
+    },
+    {
+      "type": "LOCATED_AT",
+      "source_label": "Organization",
+      "source_name": "Global Electronics Assembly",
+      "target_label": "Location",
+      "target_name": "Research and Development Center"
+    },
+    {
+      "type": "LOCATED_AT",
+      "source_label": "Organization",
+      "source_name": "Global Electronics Assembly",
+      "target_label": "Location",
+      "target_name": "Distribution Center"
+    },
+    {
+      "type": "LOCATED_AT",
+      "source_label": "Organization",
+      "source_name": "Global Electronics Assembly",
+      "target_label": "Location",
+      "target_name": "Secondary Manufacturing Plant"
+    },
+    {
+      "type": "LOCATED_AT",
+      "source_label": "Organization",
+      "source_name": "Advanced Plastics Corp",
+      "target_label": "Location",
+      "target_name": "Main Production Facility"
+    },
+    {
+      "type": "LOCATED_AT",
+      "source_label": "Organization",
+      "source_name": "MedDevice Manufacturing",
+      "target_label": "Location",
+      "target_name": "Main Production Facility"
+    },
+    {
+      "type": "PARTICIPATED_IN",
+      "source_label": "Person",
+      "source_name": "Sarah Chen",
+      "target_label": "Event",
+      "target_name": "Production Line Upgrade"
+    },
+    {
+      "type": "PARTICIPATED_IN",
+      "source_label": "Person",
+      "source_name": "Marcus Rodriguez",
+      "target_label": "Event",
+      "target_name": "Production Line Upgrade"
+    },
+    {
+      "type": "PARTICIPATED_IN",
+      "source_label": "Person",
+      "source_name": "Marcus Rodriguez",
+      "target_label": "Event",
+      "target_name": "Supplier Quality Review"
+    },
+    {
+      "type": "PARTICIPATED_IN",
+      "source_label": "Person",
+      "source_name": "Marcus Rodriguez",
+      "target_label": "Event",
+      "target_name": "Annual Safety Training"
+    },
+    {
+      "type": "PARTICIPATED_IN",
+      "source_label": "Person",
+      "source_name": "Priya Patel",
+      "target_label": "Event",
+      "target_name": "Production Line Upgrade"
+    },
+    {
+      "type": "PARTICIPATED_IN",
+      "source_label": "Person",
+      "source_name": "Klaus Weber",
+      "target_label": "Event",
+      "target_name": "Annual Safety Training"
+    },
+    {
+      "type": "PARTICIPATED_IN",
+      "source_label": "Person",
+      "source_name": "Klaus Weber",
+      "target_label": "Event",
+      "target_name": "Supplier Quality Review"
+    },
+    {
+      "type": "PARTICIPATED_IN",
+      "source_label": "Person",
+      "source_name": "Klaus Weber",
+      "target_label": "Event",
+      "target_name": "Equipment Calibration Audit"
+    },
+    {
+      "type": "PARTICIPATED_IN",
+      "source_label": "Person",
+      "source_name": "Aisha Johnson",
+      "target_label": "Event",
+      "target_name": "Supplier Quality Review"
+    },
+    {
+      "type": "PARTICIPATED_IN",
+      "source_label": "Person",
+      "source_name": "Aisha Johnson",
+      "target_label": "Event",
+      "target_name": "Annual Safety Training"
+    },
+    {
+      "type": "PARTICIPATED_IN",
+      "source_label": "Person",
+      "source_name": "Aisha Johnson",
+      "target_label": "Event",
+      "target_name": "Production Line Upgrade"
+    },
+    {
+      "type": "ASSEMBLED_FROM",
+      "source_label": "Part",
+      "source_name": "Engine Block Casting",
+      "target_label": "Part",
+      "target_name": "Electronic Control Module"
+    },
+    {
+      "type": "ASSEMBLED_FROM",
+      "source_label": "Part",
+      "source_name": "Brake Pad Assembly",
+      "target_label": "Part",
+      "target_name": "Complete Brake System"
+    },
+    {
+      "type": "ASSEMBLED_FROM",
+      "source_label": "Part",
+      "source_name": "Brake Pad Assembly",
+      "target_label": "Part",
+      "target_name": "Engine Gasket Set"
+    },
+    {
+      "type": "ASSEMBLED_FROM",
+      "source_label": "Part",
+      "source_name": "Transmission Housing",
+      "target_label": "Part",
+      "target_name": "Aluminum Sheet Stock"
+    },
+    {
+      "type": "ASSEMBLED_FROM",
+      "source_label": "Part",
+      "source_name": "Complete Automotive Engine",
+      "target_label": "Part",
+      "target_name": "High-Grade Steel Rod"
+    },
+    {
+      "type": "ASSEMBLED_FROM",
+      "source_label": "Part",
+      "source_name": "High-Grade Steel Rod",
+      "target_label": "Part",
+      "target_name": "Electronic Control Module"
+    },
+    {
+      "type": "ASSEMBLED_FROM",
+      "source_label": "Part",
+      "source_name": "Electronic Control Module",
+      "target_label": "Part",
+      "target_name": "Engine Gasket Set"
+    },
+    {
+      "type": "ASSEMBLED_FROM",
+      "source_label": "Part",
+      "source_name": "Electronic Control Module",
+      "target_label": "Part",
+      "target_name": "Complete Brake System"
+    },
+    {
+      "type": "ASSEMBLED_FROM",
+      "source_label": "Part",
+      "source_name": "Electronic Control Module",
+      "target_label": "Part",
+      "target_name": "Aluminum Sheet Stock"
+    },
+    {
+      "type": "ASSEMBLED_FROM",
+      "source_label": "Part",
+      "source_name": "Wheel Hub Assembly",
+      "target_label": "Part",
+      "target_name": "Brake Pad Assembly"
+    },
+    {
+      "type": "ASSEMBLED_FROM",
+      "source_label": "Part",
+      "source_name": "Wheel Hub Assembly",
+      "target_label": "Part",
+      "target_name": "Transmission Housing"
+    },
+    {
+      "type": "ASSEMBLED_FROM",
+      "source_label": "Part",
+      "source_name": "Complete Brake System",
+      "target_label": "Part",
+      "target_name": "Complete Automotive Engine"
+    },
+    {
+      "type": "ASSEMBLED_FROM",
+      "source_label": "Part",
+      "source_name": "Complete Brake System",
+      "target_label": "Part",
+      "target_name": "Engine Block Casting"
+    },
+    {
+      "type": "ASSEMBLED_FROM",
+      "source_label": "Part",
+      "source_name": "Aluminum Sheet Stock",
+      "target_label": "Part",
+      "target_name": "Transmission Housing"
+    },
+    {
+      "type": "ASSEMBLED_FROM",
+      "source_label": "Part",
+      "source_name": "Aluminum Sheet Stock",
+      "target_label": "Part",
+      "target_name": "Engine Block Casting"
+    },
+    {
+      "type": "ASSEMBLED_FROM",
+      "source_label": "Part",
+      "source_name": "Aluminum Sheet Stock",
+      "target_label": "Part",
+      "target_name": "Wheel Hub Assembly"
+    },
+    {
+      "type": "ASSEMBLED_FROM",
+      "source_label": "Part",
+      "source_name": "Engine Gasket Set",
+      "target_label": "Part",
+      "target_name": "Brake Pad Assembly"
+    },
+    {
+      "type": "ASSEMBLED_FROM",
+      "source_label": "Part",
+      "source_name": "Engine Gasket Set",
+      "target_label": "Part",
+      "target_name": "Transmission Housing"
+    },
+    {
+      "type": "SUPPLIED_BY",
+      "source_label": "Part",
+      "source_name": "Engine Block Casting",
+      "target_label": "Supplier",
+      "target_name": "Industrial Materials Inc"
+    },
+    {
+      "type": "SUPPLIED_BY",
+      "source_label": "Part",
+      "source_name": "Brake Pad Assembly",
+      "target_label": "Supplier",
+      "target_name": "Industrial Materials Inc"
+    },
+    {
+      "type": "SUPPLIED_BY",
+      "source_label": "Part",
+      "source_name": "Brake Pad Assembly",
+      "target_label": "Supplier",
+      "target_name": "FastTrack Components"
+    },
+    {
+      "type": "SUPPLIED_BY",
+      "source_label": "Part",
+      "source_name": "Transmission Housing",
+      "target_label": "Supplier",
+      "target_name": "Nordic Castings AB"
+    },
+    {
+      "type": "SUPPLIED_BY",
+      "source_label": "Part",
+      "source_name": "Complete Automotive Engine",
+      "target_label": "Supplier",
+      "target_name": "Defective Parts Co"
+    },
+    {
+      "type": "SUPPLIED_BY",
+      "source_label": "Part",
+      "source_name": "Complete Automotive Engine",
+      "target_label": "Supplier",
+      "target_name": "FastTrack Components"
+    },
+    {
+      "type": "SUPPLIED_BY",
+      "source_label": "Part",
+      "source_name": "Complete Automotive Engine",
+      "target_label": "Supplier",
+      "target_name": "Precision Components GmbH"
+    },
+    {
+      "type": "SUPPLIED_BY",
+      "source_label": "Part",
+      "source_name": "High-Grade Steel Rod",
+      "target_label": "Supplier",
+      "target_name": "FastTrack Components"
+    },
+    {
+      "type": "SUPPLIED_BY",
+      "source_label": "Part",
+      "source_name": "High-Grade Steel Rod",
+      "target_label": "Supplier",
+      "target_name": "Industrial Materials Inc"
+    },
+    {
+      "type": "SUPPLIED_BY",
+      "source_label": "Part",
+      "source_name": "Electronic Control Module",
+      "target_label": "Supplier",
+      "target_name": "MetalWorks Industries LLC"
+    },
+    {
+      "type": "SUPPLIED_BY",
+      "source_label": "Part",
+      "source_name": "Electronic Control Module",
+      "target_label": "Supplier",
+      "target_name": "Precision Components GmbH"
+    },
+    {
+      "type": "SUPPLIED_BY",
+      "source_label": "Part",
+      "source_name": "Wheel Hub Assembly",
+      "target_label": "Supplier",
+      "target_name": "Sakura Manufacturing Co Ltd"
+    },
+    {
+      "type": "SUPPLIED_BY",
+      "source_label": "Part",
+      "source_name": "Wheel Hub Assembly",
+      "target_label": "Supplier",
+      "target_name": "Alpine Electronics SA"
+    },
+    {
+      "type": "SUPPLIED_BY",
+      "source_label": "Part",
+      "source_name": "Wheel Hub Assembly",
+      "target_label": "Supplier",
+      "target_name": "Industrial Materials Inc"
+    },
+    {
+      "type": "SUPPLIED_BY",
+      "source_label": "Part",
+      "source_name": "Complete Brake System",
+      "target_label": "Supplier",
+      "target_name": "Alpine Electronics SA"
+    },
+    {
+      "type": "SUPPLIED_BY",
+      "source_label": "Part",
+      "source_name": "Complete Brake System",
+      "target_label": "Supplier",
+      "target_name": "Nordic Castings AB"
+    },
+    {
+      "type": "SUPPLIED_BY",
+      "source_label": "Part",
+      "source_name": "Complete Brake System",
+      "target_label": "Supplier",
+      "target_name": "MetalWorks Industries LLC"
+    },
+    {
+      "type": "SUPPLIED_BY",
+      "source_label": "Part",
+      "source_name": "Aluminum Sheet Stock",
+      "target_label": "Supplier",
+      "target_name": "Sakura Manufacturing Co Ltd"
+    },
+    {
+      "type": "SUPPLIED_BY",
+      "source_label": "Part",
+      "source_name": "Aluminum Sheet Stock",
+      "target_label": "Supplier",
+      "target_name": "Alpine Electronics SA"
+    },
+    {
+      "type": "SUPPLIED_BY",
+      "source_label": "Part",
+      "source_name": "Engine Gasket Set",
+      "target_label": "Supplier",
+      "target_name": "BrassTech Solutions"
+    },
+    {
+      "type": "SUPPLIED_BY",
+      "source_label": "Part",
+      "source_name": "Engine Gasket Set",
+      "target_label": "Supplier",
+      "target_name": "Precision Components GmbH"
+    },
+    {
+      "type": "SUPPLIED_BY",
+      "source_label": "Part",
+      "source_name": "Engine Gasket Set",
+      "target_label": "Supplier",
+      "target_name": "Industrial Materials Inc"
+    },
+    {
+      "type": "INSPECTED",
+      "source_label": "QualityReport",
+      "source_name": "QualityReport 1",
+      "target_label": "Part",
+      "target_name": "Complete Brake System"
+    },
+    {
+      "type": "INSPECTED",
+      "source_label": "QualityReport",
+      "source_name": "QualityReport 1",
+      "target_label": "Part",
+      "target_name": "Complete Automotive Engine"
+    },
+    {
+      "type": "INSPECTED",
+      "source_label": "QualityReport",
+      "source_name": "QualityReport 2",
+      "target_label": "Part",
+      "target_name": "Aluminum Sheet Stock"
+    },
+    {
+      "type": "INSPECTED",
+      "source_label": "QualityReport",
+      "source_name": "QualityReport 2",
+      "target_label": "Part",
+      "target_name": "Complete Brake System"
+    },
+    {
+      "type": "INSPECTED",
+      "source_label": "QualityReport",
+      "source_name": "QualityReport 3",
+      "target_label": "Part",
+      "target_name": "Complete Brake System"
+    },
+    {
+      "type": "INSPECTED",
+      "source_label": "QualityReport",
+      "source_name": "QualityReport 3",
+      "target_label": "Part",
+      "target_name": "High-Grade Steel Rod"
+    },
+    {
+      "type": "INSPECTED",
+      "source_label": "QualityReport",
+      "source_name": "QualityReport 4",
+      "target_label": "Part",
+      "target_name": "Engine Block Casting"
+    },
+    {
+      "type": "INSPECTED",
+      "source_label": "QualityReport",
+      "source_name": "QualityReport 4",
+      "target_label": "Part",
+      "target_name": "Complete Automotive Engine"
+    },
+    {
+      "type": "INSPECTED",
+      "source_label": "QualityReport",
+      "source_name": "QualityReport 5",
+      "target_label": "Part",
+      "target_name": "Aluminum Sheet Stock"
+    },
+    {
+      "type": "INSPECTED",
+      "source_label": "QualityReport",
+      "source_name": "QualityReport 6",
+      "target_label": "Part",
+      "target_name": "Electronic Control Module"
+    },
+    {
+      "type": "INSPECTED",
+      "source_label": "QualityReport",
+      "source_name": "QualityReport 6",
+      "target_label": "Part",
+      "target_name": "Complete Brake System"
+    },
+    {
+      "type": "INSPECTED",
+      "source_label": "QualityReport",
+      "source_name": "QualityReport 6",
+      "target_label": "Part",
+      "target_name": "Brake Pad Assembly"
+    },
+    {
+      "type": "INSPECTED",
+      "source_label": "QualityReport",
+      "source_name": "QualityReport 7",
+      "target_label": "Part",
+      "target_name": "Complete Automotive Engine"
+    },
+    {
+      "type": "INSPECTED",
+      "source_label": "QualityReport",
+      "source_name": "QualityReport 7",
+      "target_label": "Part",
+      "target_name": "High-Grade Steel Rod"
+    },
+    {
+      "type": "INSPECTED",
+      "source_label": "QualityReport",
+      "source_name": "QualityReport 7",
+      "target_label": "Part",
+      "target_name": "Aluminum Sheet Stock"
+    },
+    {
+      "type": "INSPECTED",
+      "source_label": "QualityReport",
+      "source_name": "QualityReport 8",
+      "target_label": "Part",
+      "target_name": "Aluminum Sheet Stock"
+    },
+    {
+      "type": "PRODUCED_ON",
+      "source_label": "WorkOrder",
+      "source_name": "WorkOrder 1",
+      "target_label": "ProductionLine",
+      "target_name": "Engine Assembly Line Alpha"
+    },
+    {
+      "type": "PRODUCED_ON",
+      "source_label": "WorkOrder",
+      "source_name": "WorkOrder 2",
+      "target_label": "ProductionLine",
+      "target_name": "Electronic Component Delta"
+    },
+    {
+      "type": "PRODUCED_ON",
+      "source_label": "WorkOrder",
+      "source_name": "WorkOrder 3",
+      "target_label": "ProductionLine",
+      "target_name": "Wheel Hub Assembly Echo"
+    },
+    {
+      "type": "PRODUCED_ON",
+      "source_label": "WorkOrder",
+      "source_name": "WorkOrder 4",
+      "target_label": "ProductionLine",
+      "target_name": "Machining Juliet"
+    },
+    {
+      "type": "PRODUCED_ON",
+      "source_label": "WorkOrder",
+      "source_name": "WorkOrder 5",
+      "target_label": "ProductionLine",
+      "target_name": "Machining Juliet"
+    },
+    {
+      "type": "PRODUCED_ON",
+      "source_label": "WorkOrder",
+      "source_name": "WorkOrder 5",
+      "target_label": "ProductionLine",
+      "target_name": "Casting India"
+    },
+    {
+      "type": "PRODUCED_ON",
+      "source_label": "WorkOrder",
+      "source_name": "WorkOrder 6",
+      "target_label": "ProductionLine",
+      "target_name": "Electronic Component Delta"
+    },
+    {
+      "type": "PRODUCED_ON",
+      "source_label": "WorkOrder",
+      "source_name": "WorkOrder 6",
+      "target_label": "ProductionLine",
+      "target_name": "Final Assembly Foxtrot"
+    },
+    {
+      "type": "PRODUCED_ON",
+      "source_label": "WorkOrder",
+      "source_name": "WorkOrder 7",
+      "target_label": "ProductionLine",
+      "target_name": "Transmission Assembly Charlie"
+    },
+    {
+      "type": "PRODUCED_ON",
+      "source_label": "WorkOrder",
+      "source_name": "WorkOrder 7",
+      "target_label": "ProductionLine",
+      "target_name": "Wheel Hub Assembly Echo"
+    },
+    {
+      "type": "PRODUCED_ON",
+      "source_label": "WorkOrder",
+      "source_name": "WorkOrder 8",
+      "target_label": "ProductionLine",
+      "target_name": "Packaging Hotel"
+    },
+    {
+      "type": "PRODUCED_ON",
+      "source_label": "WorkOrder",
+      "source_name": "WorkOrder 8",
+      "target_label": "ProductionLine",
+      "target_name": "Casting India"
+    },
+    {
+      "type": "DEPENDS_ON",
+      "source_label": "WorkOrder",
+      "source_name": "WorkOrder 1",
+      "target_label": "Part",
+      "target_name": "Brake Pad Assembly"
+    },
+    {
+      "type": "DEPENDS_ON",
+      "source_label": "WorkOrder",
+      "source_name": "WorkOrder 1",
+      "target_label": "Part",
+      "target_name": "Complete Automotive Engine"
+    },
+    {
+      "type": "DEPENDS_ON",
+      "source_label": "WorkOrder",
+      "source_name": "WorkOrder 1",
+      "target_label": "Part",
+      "target_name": "Engine Block Casting"
+    },
+    {
+      "type": "DEPENDS_ON",
+      "source_label": "WorkOrder",
+      "source_name": "WorkOrder 2",
+      "target_label": "Part",
+      "target_name": "Electronic Control Module"
+    },
+    {
+      "type": "DEPENDS_ON",
+      "source_label": "WorkOrder",
+      "source_name": "WorkOrder 3",
+      "target_label": "Part",
+      "target_name": "Wheel Hub Assembly"
+    },
+    {
+      "type": "DEPENDS_ON",
+      "source_label": "WorkOrder",
+      "source_name": "WorkOrder 4",
+      "target_label": "Part",
+      "target_name": "Wheel Hub Assembly"
+    },
+    {
+      "type": "DEPENDS_ON",
+      "source_label": "WorkOrder",
+      "source_name": "WorkOrder 4",
+      "target_label": "Part",
+      "target_name": "Complete Automotive Engine"
+    },
+    {
+      "type": "DEPENDS_ON",
+      "source_label": "WorkOrder",
+      "source_name": "WorkOrder 5",
+      "target_label": "Part",
+      "target_name": "Engine Block Casting"
+    },
+    {
+      "type": "DEPENDS_ON",
+      "source_label": "WorkOrder",
+      "source_name": "WorkOrder 5",
+      "target_label": "Part",
+      "target_name": "Aluminum Sheet Stock"
+    },
+    {
+      "type": "DEPENDS_ON",
+      "source_label": "WorkOrder",
+      "source_name": "WorkOrder 6",
+      "target_label": "Part",
+      "target_name": "Electronic Control Module"
+    },
+    {
+      "type": "DEPENDS_ON",
+      "source_label": "WorkOrder",
+      "source_name": "WorkOrder 7",
+      "target_label": "Part",
+      "target_name": "Complete Automotive Engine"
+    },
+    {
+      "type": "DEPENDS_ON",
+      "source_label": "WorkOrder",
+      "source_name": "WorkOrder 7",
+      "target_label": "Part",
+      "target_name": "Aluminum Sheet Stock"
+    },
+    {
+      "type": "DEPENDS_ON",
+      "source_label": "WorkOrder",
+      "source_name": "WorkOrder 8",
+      "target_label": "Part",
+      "target_name": "Transmission Housing"
+    },
+    {
+      "type": "OPERATED_BY",
+      "source_label": "Machine",
+      "source_name": "Haas VF-4SS CNC Mill",
+      "target_label": "ProductionLine",
+      "target_name": "Machining Juliet"
+    },
+    {
+      "type": "OPERATED_BY",
+      "source_label": "Machine",
+      "source_name": "Schuler Hydraulic Press",
+      "target_label": "ProductionLine",
+      "target_name": "Machining Juliet"
+    },
+    {
+      "type": "OPERATED_BY",
+      "source_label": "Machine",
+      "source_name": "Schuler Hydraulic Press",
+      "target_label": "ProductionLine",
+      "target_name": "Engine Assembly Line Alpha"
+    },
+    {
+      "type": "OPERATED_BY",
+      "source_label": "Machine",
+      "source_name": "Mazak QuickTurn Nexus 250",
+      "target_label": "ProductionLine",
+      "target_name": "Wheel Hub Assembly Echo"
+    },
+    {
+      "type": "OPERATED_BY",
+      "source_label": "Machine",
+      "source_name": "Lincoln Electric Robotic Welder",
+      "target_label": "ProductionLine",
+      "target_name": "Packaging Hotel"
+    },
+    {
+      "type": "OPERATED_BY",
+      "source_label": "Machine",
+      "source_name": "Lincoln Electric Robotic Welder",
+      "target_label": "ProductionLine",
+      "target_name": "Brake Component Production Beta"
+    },
+    {
+      "type": "OPERATED_BY",
+      "source_label": "Machine",
+      "source_name": "Bosch Rexroth Assembly Station",
+      "target_label": "ProductionLine",
+      "target_name": "Machining Juliet"
+    },
+    {
+      "type": "OPERATED_BY",
+      "source_label": "Machine",
+      "source_name": "FlexMove Modular Conveyor",
+      "target_label": "ProductionLine",
+      "target_name": "Casting India"
+    },
+    {
+      "type": "OPERATED_BY",
+      "source_label": "Machine",
+      "source_name": "KUKA KR 210 R3100 Robot",
+      "target_label": "ProductionLine",
+      "target_name": "Electronic Component Delta"
+    },
+    {
+      "type": "OPERATED_BY",
+      "source_label": "Machine",
+      "source_name": "KUKA KR 210 R3100 Robot",
+      "target_label": "ProductionLine",
+      "target_name": "Engine Assembly Line Alpha"
+    },
+    {
+      "type": "OPERATED_BY",
+      "source_label": "Machine",
+      "source_name": "Ishida Multihead Packaging System",
+      "target_label": "ProductionLine",
+      "target_name": "Casting India"
+    },
+    {
+      "type": "OPERATED_BY",
+      "source_label": "Machine",
+      "source_name": "DMG Mori NLX 2500Y Lathe",
+      "target_label": "ProductionLine",
+      "target_name": "Machining Juliet"
+    },
+    {
+      "type": "OPERATED_BY",
+      "source_label": "Machine",
+      "source_name": "DMG Mori NLX 2500Y Lathe",
+      "target_label": "ProductionLine",
+      "target_name": "Packaging Hotel"
+    },
+    {
+      "type": "OPERATED_BY",
+      "source_label": "Machine",
+      "source_name": "Amada HFE M2 Press Brake",
+      "target_label": "ProductionLine",
+      "target_name": "Electronic Component Delta"
+    },
+    {
+      "type": "OPERATED_BY",
+      "source_label": "Machine",
+      "source_name": "Amada HFE M2 Press Brake",
+      "target_label": "ProductionLine",
+      "target_name": "Transmission Assembly Charlie"
+    },
+    {
+      "type": "ASSIGNED_TO",
+      "source_label": "WorkOrder",
+      "source_name": "WorkOrder 1",
+      "target_label": "Machine",
+      "target_name": "Ishida Multihead Packaging System"
+    },
+    {
+      "type": "ASSIGNED_TO",
+      "source_label": "WorkOrder",
+      "source_name": "WorkOrder 1",
+      "target_label": "Machine",
+      "target_name": "FlexMove Modular Conveyor"
+    },
+    {
+      "type": "ASSIGNED_TO",
+      "source_label": "WorkOrder",
+      "source_name": "WorkOrder 1",
+      "target_label": "Machine",
+      "target_name": "Bosch Rexroth Assembly Station"
+    },
+    {
+      "type": "ASSIGNED_TO",
+      "source_label": "WorkOrder",
+      "source_name": "WorkOrder 2",
+      "target_label": "Machine",
+      "target_name": "DMG Mori NLX 2500Y Lathe"
+    },
+    {
+      "type": "ASSIGNED_TO",
+      "source_label": "WorkOrder",
+      "source_name": "WorkOrder 2",
+      "target_label": "Machine",
+      "target_name": "Ishida Multihead Packaging System"
+    },
+    {
+      "type": "ASSIGNED_TO",
+      "source_label": "WorkOrder",
+      "source_name": "WorkOrder 2",
+      "target_label": "Machine",
+      "target_name": "KUKA KR 210 R3100 Robot"
+    },
+    {
+      "type": "ASSIGNED_TO",
+      "source_label": "WorkOrder",
+      "source_name": "WorkOrder 3",
+      "target_label": "Machine",
+      "target_name": "Mazak QuickTurn Nexus 250"
+    },
+    {
+      "type": "ASSIGNED_TO",
+      "source_label": "WorkOrder",
+      "source_name": "WorkOrder 3",
+      "target_label": "Machine",
+      "target_name": "FlexMove Modular Conveyor"
+    },
+    {
+      "type": "ASSIGNED_TO",
+      "source_label": "WorkOrder",
+      "source_name": "WorkOrder 4",
+      "target_label": "Machine",
+      "target_name": "Haas VF-4SS CNC Mill"
+    },
+    {
+      "type": "ASSIGNED_TO",
+      "source_label": "WorkOrder",
+      "source_name": "WorkOrder 4",
+      "target_label": "Machine",
+      "target_name": "Lincoln Electric Robotic Welder"
+    },
+    {
+      "type": "ASSIGNED_TO",
+      "source_label": "WorkOrder",
+      "source_name": "WorkOrder 4",
+      "target_label": "Machine",
+      "target_name": "Mazak QuickTurn Nexus 250"
+    },
+    {
+      "type": "ASSIGNED_TO",
+      "source_label": "WorkOrder",
+      "source_name": "WorkOrder 5",
+      "target_label": "Machine",
+      "target_name": "Amada HFE M2 Press Brake"
+    },
+    {
+      "type": "ASSIGNED_TO",
+      "source_label": "WorkOrder",
+      "source_name": "WorkOrder 6",
+      "target_label": "Machine",
+      "target_name": "Haas VF-4SS CNC Mill"
+    },
+    {
+      "type": "ASSIGNED_TO",
+      "source_label": "WorkOrder",
+      "source_name": "WorkOrder 7",
+      "target_label": "Machine",
+      "target_name": "DMG Mori NLX 2500Y Lathe"
+    },
+    {
+      "type": "ASSIGNED_TO",
+      "source_label": "WorkOrder",
+      "source_name": "WorkOrder 8",
+      "target_label": "Machine",
+      "target_name": "Ishida Multihead Packaging System"
+    },
+    {
+      "type": "ASSIGNED_TO",
+      "source_label": "WorkOrder",
+      "source_name": "WorkOrder 8",
+      "target_label": "Machine",
+      "target_name": "Bosch Rexroth Assembly Station"
+    },
+    {
+      "type": "REPORTED_BY",
+      "source_label": "QualityReport",
+      "source_name": "QualityReport 1",
+      "target_label": "Person",
+      "target_name": "Aisha Johnson"
+    },
+    {
+      "type": "REPORTED_BY",
+      "source_label": "QualityReport",
+      "source_name": "QualityReport 2",
+      "target_label": "Person",
+      "target_name": "Sarah Chen"
+    },
+    {
+      "type": "REPORTED_BY",
+      "source_label": "QualityReport",
+      "source_name": "QualityReport 2",
+      "target_label": "Person",
+      "target_name": "Aisha Johnson"
+    },
+    {
+      "type": "REPORTED_BY",
+      "source_label": "QualityReport",
+      "source_name": "QualityReport 2",
+      "target_label": "Person",
+      "target_name": "Marcus Rodriguez"
+    },
+    {
+      "type": "REPORTED_BY",
+      "source_label": "QualityReport",
+      "source_name": "QualityReport 3",
+      "target_label": "Person",
+      "target_name": "Marcus Rodriguez"
+    },
+    {
+      "type": "REPORTED_BY",
+      "source_label": "QualityReport",
+      "source_name": "QualityReport 3",
+      "target_label": "Person",
+      "target_name": "Sarah Chen"
+    },
+    {
+      "type": "REPORTED_BY",
+      "source_label": "QualityReport",
+      "source_name": "QualityReport 3",
+      "target_label": "Person",
+      "target_name": "Priya Patel"
+    },
+    {
+      "type": "REPORTED_BY",
+      "source_label": "QualityReport",
+      "source_name": "QualityReport 4",
+      "target_label": "Person",
+      "target_name": "Sarah Chen"
+    },
+    {
+      "type": "REPORTED_BY",
+      "source_label": "QualityReport",
+      "source_name": "QualityReport 5",
+      "target_label": "Person",
+      "target_name": "Klaus Weber"
+    },
+    {
+      "type": "REPORTED_BY",
+      "source_label": "QualityReport",
+      "source_name": "QualityReport 6",
+      "target_label": "Person",
+      "target_name": "Aisha Johnson"
+    },
+    {
+      "type": "REPORTED_BY",
+      "source_label": "QualityReport",
+      "source_name": "QualityReport 6",
+      "target_label": "Person",
+      "target_name": "Priya Patel"
+    },
+    {
+      "type": "REPORTED_BY",
+      "source_label": "QualityReport",
+      "source_name": "QualityReport 7",
+      "target_label": "Person",
+      "target_name": "Aisha Johnson"
+    },
+    {
+      "type": "REPORTED_BY",
+      "source_label": "QualityReport",
+      "source_name": "QualityReport 8",
+      "target_label": "Person",
+      "target_name": "Sarah Chen"
+    },
+    {
+      "type": "REPORTED_BY",
+      "source_label": "QualityReport",
+      "source_name": "QualityReport 8",
+      "target_label": "Person",
+      "target_name": "Aisha Johnson"
+    }
+  ],
+  "documents": [
+    {
+      "template_id": "work_order_doc",
+      "template_name": "Work Order",
+      "title": "Work Order WO-2024-0087 - Engine Block Casting Production",
+      "content": "WORK ORDER NUMBER: WO-2024-0087\nDATE ISSUED: January 15, 2024\nPRIORITY: HIGH\nDUE DATE: January 22, 2024\n\nPRODUCT: Engine Block Casting (Part Number: EBC-4586)\nQUANTITY: 150 units\nPRODUCTION LINE: Engine Assembly Line Alpha\n\nMACHINE ASSIGNMENTS:\nPrimary: Haas VF-4SS CNC Mill (Station 3)\nSecondary: Mazak QuickTurn Nexus 250 (Finishing operations)\n\nMATERIAL REQUIREMENTS:\n- Cast iron blocks (Grade 250): 150 units + 5% scrap allowance\n- Cutting fluid: 200 gallons\n- Carbide insert tooling: Set A-47 (verify tool life remaining)\n- Coolant system operational check required\n\nPROCESS SPECIFICATIONS:\n1. Rough machining on Haas VF-4SS: Feed rate 800mm/min, Spindle speed 1200 RPM\n2. Precision boring operations: Tolerance \u00b10.05mm on cylinder bores\n3. Surface finishing on Mazak QuickTurn: Ra 1.6\u03bcm maximum\n\nQUALITY CHECKPOINTS:\n- Dimensional inspection every 10th unit\n- Surface roughness measurement at completion\n- CMM verification on first and last pieces\n- Metallurgical sample testing (1 per 50 units)\n\nSAFETY REQUIREMENTS:\n- PPE mandatory: Safety glasses, steel-toed boots, hearing protection\n- Lockout/Tagout procedures for tool changes\n- Hot metal handling protocols in effect\n\nSHIFT ALLOCATION:\nDay Shift: Units 1-75\nNight Shift: Units 76-150\n\nSUPERVISOR: M. Rodriguez\nQUALITY INSPECTOR: J. Chen\nOPERATOR ASSIGNED: T. Williams (Day), R. Johnson (Night)\n\nNOTES: Customer requires expedited delivery. Coordinate with shipping department for immediate packaging upon completion."
+    },
+    {
+      "template_id": "work_order_doc",
+      "template_name": "Work Order",
+      "title": "Work Order WO-2024-0091 - Brake Pad Assembly Production",
+      "content": "WORK ORDER NUMBER: WO-2024-0091\nDATE ISSUED: January 16, 2024\nPRIORITY: MEDIUM\nDUE DATE: January 25, 2024\n\nPRODUCT: Brake Pad Assembly (Part Number: BPA-3297)\nQUANTITY: 500 units\nPRODUCTION LINE: Brake Component Production Beta\n\nMACHINE ASSIGNMENTS:\nPrimary: Schuler Hydraulic Press (Press Bay 2)\nSecondary: Bosch Rexroth Assembly Station (Final assembly)\n\nMATERIAL REQUIREMENTS:\n- Friction material sheets: 500 pieces (Supplier: FrictionTech Corp)\n- Steel backing plates: 500 pieces (Grade AISI 1008)\n- Phenolic resin adhesive: 25 kg\n- Hardware kit assemblies: 500 sets (springs, clips, wear indicators)\n- Anti-squeal shims: 1000 pieces\n\nPROCESS SPECIFICATIONS:\n1. Adhesive application: 180\u00b0C cure temperature, 15-minute cycle\n2. Press bonding: 450 PSI pressure, hold time 8 seconds\n3. Edge chamfering: 45\u00b0 angle, 0.5mm depth\n4. Slot cutting for wear indicators: CNC programmed depths\n\nQUALITY CHECKPOINTS:\n- Bond strength testing: 5 samples per 100 units\n- Dimensional verification: Thickness \u00b10.2mm tolerance\n- Visual inspection for delamination or voids\n- Friction coefficient verification (random sampling)\n- Packaging inspection for proper labeling\n\nENVIRONMENTAL CONTROLS:\n- Ventilation system active for resin fumes\n- Temperature monitoring in cure ovens\n- Humidity control <60% RH in assembly area\n\nPRODUCTION SCHEDULE:\nWeek 1: 300 units (Mon-Wed)\nWeek 2: 200 units (Thu-Fri)\n\nSUPERVISOR: K. Martinez\nQUALITY INSPECTOR: S. Patel\nOPERATOR ASSIGNED: L. Thompson\n\nSPECIAL INSTRUCTIONS: This batch is for OEM customer BrakeCorp. Ensure all units pass noise vibration testing before shipment."
+    },
+    {
+      "template_id": "work_order_doc",
+      "template_name": "Work Order",
+      "title": "Work Order WO-2024-0095 - Transmission Housing Manufacturing",
+      "content": "WORK ORDER NUMBER: WO-2024-0095\nDATE ISSUED: January 17, 2024\nPRIORITY: HIGH\nDUE DATE: February 2, 2024\n\nPRODUCT: Transmission Housing (Part Number: TH-8942)\nQUANTITY: 75 units\nPRODUCTION LINE: Transmission Assembly Charlie\n\nMACHINE ASSIGNMENTS:\nPrimary: Haas VF-4SS CNC Mill (Station 1)\nSecondary: Lincoln Electric Robotic Welder (Seam welding)\nTertiary: Mazak QuickTurn Nexus 250 (Bearing race machining)\n\nMATERIAL REQUIREMENTS:\n- Aluminum alloy casting blanks (A356-T6): 75 units\n- Welding wire ER4043: 50 lbs\n- Cutting tools: Carbide end mills (various sizes)\n- Hydraulic test fluid: 100 gallons\n- Gasket material (Viton): 75 sets\n\nPROCESS SPECIFICATIONS:\n1. Rough machining: Remove 3mm material allowance\n2. Semi-finish operations: 0.5mm stock remaining\n3. Heat treatment: Age hardening at 155\u00b0C for 6 hours\n4. Finish machining: Final dimensions per drawing TH-8942-REV-C\n5. Robotic welding: Continuous seam, 150 amps, 20 IPM travel speed\n\nQUALITY CHECKPOINTS:\n- Pressure testing: 300 PSI for 10 minutes (no leakage)\n- Surface finish verification: Ra 3.2\u03bcm on mating surfaces\n- Geometric dimensioning and tolerancing (GD&T) inspection\n- Hardness testing: HB 95-105 required range\n- Final assembly fit check with mating components\n\nCRITICAL DIMENSIONS:\n- Bearing bore diameter: 65.00 \u00b10.025mm\n- Mounting face flatness: 0.05mm maximum\n- Wall thickness: 8.0 \u00b10.3mm\n\nSUPERVISOR: D. Anderson\nQUALITY INSPECTOR: M. Kim\nOPERATOR ASSIGNED: A. Garcia (Primary), B. Wilson (Secondary)\n\nNOTES: Customer requires serialization and traceability documentation for each unit. Coordinate with quality department for certificate generation."
+    },
+    {
+      "template_id": "work_order_doc",
+      "template_name": "Work Order",
+      "title": "Work Order WO-2024-0102 - Complete Automotive Engine Assembly",
+      "content": "WORK ORDER NUMBER: WO-2024-0102\nDATE ISSUED: January 18, 2024\nPRIORITY: URGENT\nDUE DATE: January 30, 2024\n\nPRODUCT: Complete Automotive Engine (Part Number: CAE-2468)\nQUANTITY: 25 units\nPRODUCTION LINE: Engine Assembly Line Alpha\n\nMACHINE ASSIGNMENTS:\nPrimary: Bosch Rexroth Assembly Station (Main assembly)\nSecondary: Lincoln Electric Robotic Welder (Manifold attachment)\nSupport: Mazak QuickTurn Nexus 250 (Flywheel balancing)\n\nMATERIAL REQUIREMENTS:\n- Engine block assemblies: 25 units (from inventory)\n- Cylinder head assemblies: 25 units\n- Crankshaft assemblies: 25 units (forged steel)\n- Piston and connecting rod sets: 100 sets (4-cylinder configuration)\n- Engine management wiring harnesses: 25 units\n- Gasket and seal kits: 25 complete sets\n- Engine oil: 125 liters (5L per engine for testing)\n- Coolant: 75 liters (3L per engine)\n\nASSEMBLY SEQUENCE:\n1. Block preparation and bore honing verification\n2. Crankshaft installation with bearing torque: 95 Nm \u00b15%\n3. Piston assembly installation (ring gap verification required)\n4. Cylinder head mounting: Head bolt torque sequence per specification\n5. Timing chain/belt installation and tensioning\n6. Intake and exhaust manifold attachment\n7. Fuel system and electrical harness installation\n\nQUALITY CHECKPOINTS:\n- Compression testing: Minimum 150 PSI per cylinder\n- Oil pressure verification: 40-60 PSI at idle\n- Leak testing: Coolant and oil systems\n- Engine break-in procedure: 30-minute run cycle\n- Emissions pre-test (random sampling)\n- Dynamometer testing on 10% of units\n\nPERFORMANCE TARGETS:\n- Power output: 180 HP \u00b15%\n- Torque: 200 lb-ft \u00b13%\n- Idle speed: 750 RPM \u00b150\n\nSUPERVISOR: R. Thompson\nQUALITY INSPECTOR: C. Brown\nLEAD TECHNICIAN: J. Martinez\n\nSPECIAL REQUIREMENTS: Engines destined for cold climate markets. Ensure cold-start additives are included in oil specification."
+    },
+    {
+      "template_id": "work_order_doc",
+      "template_name": "Work Order",
+      "title": "Work Order WO-2024-0108 - High-Grade Steel Rod Production",
+      "content": "WORK ORDER NUMBER: WO-2024-0108\nDATE ISSUED: January 19, 2024\nPRIORITY: MEDIUM\nDUE DATE: February 5, 2024\n\nPRODUCT: High-Grade Steel Rod (Part Number: HGSR-7531)\nQUANTITY: 200 units (6-meter lengths)\nPRODUCTION LINE: Electronic Component Delta\n\nMACHINE ASSIGNMENTS:\nPrimary: Mazak QuickTurn Nexus 250 (Turning operations)\nSecondary: Haas VF-4SS CNC Mill (End facing and centering)\nSupport: Schuler Hydraulic Press (Straightening operations)\n\nMATERIAL REQUIREMENTS:\n- Steel bar stock (4140 alloy): 1200 meters (includes 10% scrap allowance)\n- Cutting oil (sulfur-based): 150 gallons\n- Carbide turning inserts: Grade KC250 (250 pieces)\n- Grinding wheels: 46J8V (12 pieces)\n- Heat treatment chemicals: Quench oil 500 gallons\n\nPROCESS SPECIFICATIONS:\n1. Bar stock inspection and marking for traceability\n2. Rough turning: Remove scale and achieve 25.5mm diameter\n3. Heat treatment cycle: Austenitize 850\u00b0C, quench, temper 400\u00b0C\n4. Finish turning: Final diameter 25.0mm \u00b10.05mm\n5. Straightness verification: Maximum 0.2mm per meter\n6. Surface grinding: Ra 1.6\u03bcm finish requirement\n7. End facing and chamfering: 45\u00b0 \u00d7 1mm chamfer\n\nQUALITY CHECKPOINTS:\n- Hardness testing: HRC 28-32 required range\n- Tensile strength verification: Minimum 850 MPa\n- Dimensional inspection: Every 25th piece\n- Surface finish measurement: Contact profilometer\n- Straightness measurement using V-blocks\n- Chemical composition verification (heat analysis)\n- Ultrasonic testing for internal defects\n\nHEAT TREATMENT SCHEDULE:\nBatch 1 (100 rods): Week 1\nBatch 2 (100 rods): Week 2\n\nSUPERVISOR: P. Johnson\nQUALITY INSPECTOR: F. Lopez\nHEAT TREAT OPERATOR: N. Davis\nMACHINIST: V. Nguyen\n\nSPECIAL INSTRUCTIONS: Customer requires certified material test reports (CMTRs) for each heat lot. Coordinate with metallurgy lab for accelerated testing schedule to meet delivery deadline."
+    },
+    {
+      "template_id": "quality_audit",
+      "template_name": "Quality Audit",
+      "title": "Quality Audit Report - Engine Block Casting (QA-2024-001)",
+      "content": "QUALITY AUDIT REPORT\n\nDate: March 15, 2024\nPart: Engine Block Casting\nProduction Line: Engine Assembly Line Alpha\nInspector: Sarah Chen\nShift: Day Shift A\nLot Number: EBC-240315-001\n\nINSPECTION RESULTS:\nResult: FAILED\nDefects Found: 12\n\nDETAILED FINDINGS:\nDuring routine quality inspection of Engine Block Casting units, twelve critical defects were identified across a sample of 50 units (24% defect rate). Primary defects included: surface porosity (5 units), dimensional deviation in cylinder bore diameter (4 units), incomplete machining of mounting surfaces (2 units), and material inclusion defects (1 unit).\n\nMeasurements revealed cylinder bore diameters ranging from 86.2mm to 86.8mm against specification of 86.5mm \u00b10.1mm. Surface roughness exceeded acceptable limits of Ra 1.6\u03bcm, measuring up to Ra 2.4\u03bcm on affected units.\n\nROOT CAUSE ANALYSIS:\nInvestigation indicates primary causes stem from: 1) Inadequate sand core preparation resulting in surface defects, 2) Worn tooling on CNC machining center causing dimensional variations, 3) Inconsistent molten metal temperature control during casting process, 4) Insufficient quality checks during setup phase.\n\nCORRECTIVE ACTIONS:\n1. Immediate replacement of worn cutting tools on Engine Assembly Line Alpha\n2. Recalibration of temperature monitoring systems with daily verification checks\n3. Enhanced sand core preparation procedures with moisture content verification\n4. Implementation of first-article inspection protocol for all new lots\n5. Additional operator training on dimensional measurement techniques\n6. Quarantine of remaining lot pending rework evaluation\n\nFOLLOW-UP:\nRe-inspection scheduled for March 18, 2024. Production hold remains in effect until corrective actions are verified and process capability study is completed.\n\nInspector Signature: S. Chen\nQuality Manager Approval: Required"
+    },
+    {
+      "template_id": "quality_audit",
+      "template_name": "Quality Audit",
+      "title": "Quality Audit Report - Brake Pad Assembly (QA-2024-002)",
+      "content": "QUALITY AUDIT REPORT\n\nDate: March 16, 2024\nPart: Brake Pad Assembly\nProduction Line: Brake Component Production Beta\nInspector: Marcus Rodriguez\nShift: Night Shift B\nLot Number: BPA-240316-002\n\nINSPECTION RESULTS:\nResult: PASSED WITH MINOR OBSERVATIONS\nDefects Found: 3\n\nDETAILED FINDINGS:\nQuality audit of Brake Pad Assembly units revealed overall compliance with specifications. Sample size of 100 units yielded 3% defect rate, within acceptable limits. Identified defects included: friction material edge chipping (2 units) and backing plate coating irregularity (1 unit).\n\nThickness measurements averaged 12.8mm against specification of 12.5mm \u00b10.5mm. Friction coefficient testing showed consistent values between 0.38-0.42, meeting requirement of 0.35-0.45. Shear strength testing exceeded minimum 2.5 MPa requirement with average of 3.2 MPa.\n\nROOT CAUSE ANALYSIS:\nMinor defects attributed to: 1) Slight misalignment in friction material pressing operation causing edge irregularities, 2) Coating spray gun requiring cleaning resulting in uneven application on single unit. No systemic issues identified.\n\nCORRECTIVE ACTIONS:\n1. Adjustment of pressing die alignment on Station 3 of Brake Component Production Beta\n2. Preventive maintenance performed on coating application equipment\n3. Enhanced visual inspection training for operators on edge quality assessment\n4. Updated work instruction to include coating thickness verification at 2-hour intervals\n5. Defective units segregated for rework evaluation\n\nCONCLUSION:\nProduction line demonstrates good process control with minor adjustments required. No production delays necessary. Recommend continued monitoring of pressing operation alignment and coating application consistency.\n\nNext scheduled audit: April 16, 2024\n\nInspector Signature: M. Rodriguez\nProduction Supervisor: Notified"
+    },
+    {
+      "template_id": "quality_audit",
+      "template_name": "Quality Audit",
+      "title": "Quality Audit Report - Transmission Housing (QA-2024-003)",
+      "content": "QUALITY AUDIT REPORT\n\nDate: March 17, 2024\nPart: Transmission Housing\nProduction Line: Transmission Assembly Charlie\nInspector: Priya Patel\nShift: Day Shift A\nLot Number: TH-240317-003\n\nINSPECTION RESULTS:\nResult: FAILED - CRITICAL\nDefects Found: 8\n\nDETAILED FINDINGS:\nCritical quality audit failure identified during inspection of Transmission Housing units. Sample of 75 units revealed 8 critical defects (10.7% defect rate), exceeding maximum allowable 2% threshold. Critical findings include: incorrect bolt hole patterns (3 units), seal groove depth variations (3 units), and surface finish defects affecting sealing surfaces (2 units).\n\nDimensional analysis showed bolt hole positioning errors up to 1.2mm from nominal, against tolerance of \u00b10.2mm. Seal groove depths measured between 3.8-4.4mm versus specification of 4.0mm \u00b10.1mm. Surface roughness on sealing surfaces exceeded Ra 0.8\u03bcm specification, measuring up to Ra 1.5\u03bcm.\n\nROOT CAUSE ANALYSIS:\nDetailed investigation revealed multiple contributing factors: 1) CNC program modification error during recent setup change, 2) Worn cutting tool in finishing operation not identified during routine tool change, 3) Inadequate fixture clamping allowing workpiece movement during machining, 4) Missing verification step in setup approval process.\n\nCORRECTIVE ACTIONS:\n1. IMMEDIATE: Full production stop on Transmission Assembly Charlie\n2. CNC program verification and correction with engineering approval\n3. Complete tooling inspection and replacement of identified worn components\n4. Fixture maintenance and clamping torque verification\n5. Implementation of mandatory first-article inspection after any program changes\n6. Enhanced setup verification checklist with quality sign-off requirement\n7. Full lot quarantine pending disposition decision\n\nFOLLOW-UP:\nProduction restart conditional on successful completion of corrective actions and process validation run.\n\nInspector Signature: P. Patel\nQuality Manager: Immediate escalation"
+    },
+    {
+      "template_id": "quality_audit",
+      "template_name": "Quality Audit",
+      "title": "Quality Audit Report - Complete Automotive Engine (QA-2024-004)",
+      "content": "QUALITY AUDIT REPORT\n\nDate: March 18, 2024\nPart: Complete Automotive Engine\nProduction Line: Electronic Component Delta\nInspector: Klaus Weber\nShift: Day Shift A\nLot Number: CAE-240318-004\n\nINSPECTION RESULTS:\nResult: PASSED\nDefects Found: 1\n\nDETAILED FINDINGS:\nComprehensive quality audit of Complete Automotive Engine assembly demonstrated excellent process control. Inspection of 25 units (full lot) identified single minor defect representing 4% defect rate, well within 10% acceptance criteria. The defect involved incomplete torque marking on valve cover bolt (1 unit), with actual torque values meeting specification.\n\nPerformance testing results exceeded expectations: compression ratios averaged 9.8:1 \u00b10.1 against specification of 9.5-10.0:1, oil pressure maintained 45 PSI at idle (minimum 35 PSI required), and leak-down testing showed <1% compression loss across all cylinders.\n\nElectronic systems integration testing confirmed proper ECU communication, sensor calibration within \u00b12% accuracy, and emission control system functionality meeting EPA standards.\n\nROOT CAUSE ANALYSIS:\nSingle defect attributed to operator oversight during final assembly torque verification process. Investigation revealed inadequate lighting at Station 12 contributing to missed visual verification of torque marking application.\n\nCORRECTIVE ACTIONS:\n1. Improved LED lighting installation at final assembly Station 12\n2. Enhanced visual inspection checklist with mandatory sign-off for torque markings\n3. Refresher training for assembly operators on torque verification procedures\n4. Implementation of random audit checks for torque marking compliance\n5. Single defective unit reworked and re-inspected successfully\n\nCOMMENDATION:\nElectronic Component Delta line demonstrates exceptional quality performance. Engine performance parameters consistently exceed customer requirements with minimal variation.\n\nNext audit scheduled: May 18, 2024\n\nInspector Signature: K. Weber\nProduction Manager: Excellent performance noted"
+    },
+    {
+      "template_id": "quality_audit",
+      "template_name": "Quality Audit",
+      "title": "Quality Audit Report - High-Grade Steel Rod (QA-2024-005)",
+      "content": "QUALITY AUDIT REPORT\n\nDate: March 19, 2024\nPart: High-Grade Steel Rod\nProduction Line: Wheel Hub Assembly Echo\nInspector: Aisha Johnson\nShift: Night Shift B\nLot Number: HGSR-240319-005\n\nINSPECTION RESULTS:\nResult: PASSED WITH CONDITIONS\nDefects Found: 5\n\nDETAILED FINDINGS:\nQuality audit of High-Grade Steel Rod production revealed generally acceptable quality with conditional pass status. Sample inspection of 150 units identified 5 defects (3.3% defect rate), marginally within 4% acceptance threshold. Defects included: surface scoring (2 units), diameter variation beyond tolerance (2 units), and straightness deviation (1 unit).\n\nMetallurgical testing confirmed material composition within AISI 4140 specification: Carbon 0.42%, Chromium 0.95%, Molybdenum 0.18%. Hardness testing averaged HRC 28-32 across length, meeting requirement of HRC 25-35. Tensile strength testing showed 850 MPa average, exceeding minimum 780 MPa specification.\n\nDimensional analysis revealed diameter variations of +0.08/-0.12mm against tolerance of \u00b10.05mm on affected units. Straightness measurements showed maximum deviation of 0.8mm per meter versus 0.5mm specification on single unit.\n\nROOT CAUSE ANALYSIS:\nDefects traced to: 1) Drawing die wear causing surface scoring and dimensional variations, 2) Inadequate straightening operation parameters, 3) Material handling practices contributing to surface damage, 4) Insufficient cooling during drawing process affecting dimensional stability.\n\nCORRECTIVE ACTIONS:\n1. Scheduled die replacement and inspection program implementation\n2. Straightening machine parameter optimization with operator retraining\n3. Improved material handling procedures with protective coverings\n4. Cooling system evaluation and upgrade recommendations\n5. Enhanced in-process dimensional monitoring at 30-minute intervals\n6. Defective units quarantined for customer disposition evaluation\n\nCONDITIONAL APPROVAL:\nLot released with customer notification and enhanced inspection requirements for next production run.\n\nInspector Signature: A. Johnson\nCustomer Quality Engineer: Notification required"
+    },
+    {
+      "template_id": "supplier_evaluation",
+      "template_name": "Supplier Evaluation",
+      "title": "Quarterly Supplier Performance Evaluation - MetalWorks Industries LLC (SUP-001)",
+      "content": "SUPPLIER EVALUATION REPORT\n\nSupplier: MetalWorks Industries LLC\nSupplier ID: SUP-001\nEvaluation Period: Q4 2023\nPrimary Part Supplied: Engine Block Casting\n\nQUALITY PERFORMANCE\nOverall Quality Rating: 8.5/10\nMetalWorks Industries has demonstrated consistent quality in their Engine Block Casting deliveries. During this evaluation period, the rejection rate remained at 2.1%, well within our acceptable threshold of 3%. QualityReport 1 indicates improved dimensional accuracy compared to previous quarters, with 98.2% of castings meeting specifications on first inspection. Minor issues were identified in surface finish consistency, addressed through their corrective action plan.\n\nDELIVERY PERFORMANCE\nAverage Lead Time: 14 days\nOn-time delivery performance: 94.6%\nMetalWorks has maintained excellent delivery reliability with only 3 late shipments out of 54 total deliveries this quarter. Their average lead time of 14 days consistently meets our production scheduling requirements. The supplier proactively communicates any potential delays, allowing for effective production planning adjustments.\n\nCOST AND COMMERCIAL PERFORMANCE\nPricing remains competitive within market standards. MetalWorks honored all contractual terms and demonstrated flexibility during urgent requirement changes. Their invoicing accuracy is 99.1%, reducing administrative burden on our accounts payable team.\n\nRECOMMENDAT ION\nContinued engagement is strongly recommended. MetalWorks Industries LLC remains a preferred supplier for Engine Block Casting components. Recommend extending current contract for additional 12 months with quarterly performance reviews. Suggested improvement areas include surface finish consistency training and implementation of advanced quality control measures.\n\nNext Review Date: March 15, 2024\nEvaluated by: Sarah Mitchell, Procurement Manager"
+    },
+    {
+      "template_id": "supplier_evaluation",
+      "template_name": "Supplier Evaluation",
+      "title": "Annual Supplier Assessment - Precision Components GmbH (SUP-002)",
+      "content": "ANNUAL SUPPLIER PERFORMANCE ASSESSMENT\n\nSupplier: Precision Components GmbH\nSupplier ID: SUP-002\nAssessment Period: January - December 2023\nPrimary Part Supplied: Brake Pad Assembly\n\nQUALITY METRICS\nOverall Quality Rating: 9.2/10\nPrecision Components GmbH has exceeded quality expectations throughout 2023. The Brake Pad Assembly components consistently meet OEM specifications with a defect rate of only 0.8%. QualityReport 2 highlights their exceptional performance in friction coefficient consistency and wear resistance testing. Zero critical quality incidents occurred during the evaluation period, demonstrating robust quality management systems.\n\nSUPPLY CHAIN RELIABILITY\nAverage Lead Time: 21 days\nDelivery Performance: 97.3% on-time\nDespite longer lead times compared to domestic suppliers, Precision Components maintains exceptional reliability. Their 21-day lead time is consistently met, with advanced shipping notifications provided 5 days prior to dispatch. Only 4 delivery delays occurred in 148 shipments, all due to documented force majeure events with proper mitigation measures implemented.\n\nTECHNICAL CAPABILITIES\nThe supplier demonstrates strong engineering support and continuous improvement initiatives. They successfully implemented design modifications to enhance brake pad performance while maintaining cost targets. Their ISO 9001:2015 and IATF 16949 certifications remain current with clean audit results.\n\nAREAS FOR IMPROVEMENT\nLead time reduction opportunities exist through local inventory programs. Communication response time could improve during European holiday periods.\n\nCONCLUSION\nPrecision Components GmbH is classified as a strategic preferred supplier. Recommend contract renewal with expanded scope to include additional brake system components. Their technical expertise and quality consistency make them invaluable for critical safety components.\n\nApproved by: Michael Chen, Global Sourcing Director"
+    },
+    {
+      "template_id": "supplier_evaluation",
+      "template_name": "Supplier Evaluation",
+      "title": "Semi-Annual Supplier Review - Sakura Manufacturing Co Ltd (SUP-003)",
+      "content": "SEMI-ANNUAL SUPPLIER PERFORMANCE REVIEW\n\nSupplier: Sakura Manufacturing Co Ltd\nSupplier ID: SUP-003\nReview Period: July - December 2023\nPrimary Part Supplied: Transmission Housing\n\nPERFORMANCE OVERVIEW\nOverall Quality Rating: 7.8/10\nSakura Manufacturing has shown steady improvement in their Transmission Housing production quality. While starting the period with quality concerns, their implementation of enhanced inspection protocols has resulted in measurable improvements. QualityReport 3 documents a reduction in dimensional variance from 4.2% to 2.1% over the six-month period.\n\nDELIVERY AND LOGISTICS\nAverage Lead Time: 18 days\nOn-time Delivery Rate: 91.2%\nDelivery performance has been generally acceptable with room for improvement. Sakura experienced challenges during peak production periods, resulting in 8 late deliveries out of 92 total shipments. However, they demonstrated good communication and provided alternative solutions to minimize production impact. Their lead time of 18 days aligns with our planning cycles.\n\nQUALITY IMPROVEMENTS\nSignificant investments in new CNC machining equipment have improved surface finish quality and dimensional accuracy. Implementation of statistical process control has reduced variation in critical housing dimensions. Rejection rate decreased from 5.1% to 2.8% during the evaluation period.\n\nCOST COMPETITIVENESS\nPricing remains competitive within the Asian supplier base. Sakura absorbed raw material cost increases without passing full impact to customers, demonstrating partnership approach.\n\nRECOMMENDAT ION\nContinue partnership with conditional status. Require monthly quality reporting and implementation of buffer inventory for peak periods. Schedule engineering visit to their facility in Q1 2024 to assess capability expansion potential. Monitor performance closely over next quarter before determining long-term contract extension.\n\nPrepared by: Jennifer Walsh, Supplier Quality Engineer"
+    },
+    {
+      "template_id": "supplier_evaluation",
+      "template_name": "Supplier Evaluation",
+      "title": "Quarterly Performance Assessment - BrassTech Solutions (SUP-004)",
+      "content": "QUARTERLY SUPPLIER PERFORMANCE ASSESSMENT\n\nSupplier: BrassTech Solutions\nSupplier ID: SUP-004\nAssessment Period: Q3 2023\nPrimary Part Supplied: Complete Automotive Engine\n\nEXECUTIVE SUMMARY\nOverall Quality Rating: 9.6/10\nBrassTech Solutions continues to excel as our premier engine supplier, demonstrating exceptional performance across all evaluated criteria. Their Complete Automotive Engine assemblies consistently exceed industry benchmarks for quality, reliability, and performance specifications.\n\nQUALITY EXCELLENCE\nQualityReport 4 indicates outstanding performance with only 0.3% defect rate on incoming engines. All 127 engines delivered during Q3 passed initial quality inspection without requiring rework. BrassTech's Six Sigma implementation has resulted in improved process consistency and reduced variation in critical engine parameters. Their quality management system maintains AS9100 and ISO 14001 certifications.\n\nSUPPLY CHAIN PERFORMANCE\nAverage Lead Time: 35 days\nDelivery Accuracy: 98.4%\nDespite the complexity of complete engine assembly, BrassTech maintains impressive delivery performance. Their 35-day lead time accommodates our production planning requirements while allowing for thorough quality verification. Only 2 delivery delays occurred, both communicated proactively with acceptable mitigation plans.\n\nTECHNICAL COLLABORATION\nBrassTech's engineering team actively participates in our product development initiatives. Their technical expertise contributed to 12% fuel efficiency improvement in our latest engine variant. They maintain dedicated project managers for seamless communication and rapid issue resolution.\n\nCOST MANAGEMENT\nWhile premium-priced, BrassTech provides excellent value through reduced warranty claims and enhanced customer satisfaction. Total cost of ownership analysis shows 15% better value compared to alternative suppliers.\n\nSTRATEGIC RECOMMENDATION\nMaintain and expand strategic partnership. Recommend increasing order volume by 25% for 2024. Consider co-development opportunities for next-generation hybrid powertrains. Schedule annual business review to align long-term capacity planning.\n\nAuthorized by: David Rodriguez, Vice President of Procurement"
+    },
+    {
+      "template_id": "supplier_evaluation",
+      "template_name": "Supplier Evaluation",
+      "title": "Monthly Supplier Evaluation - Global Steel Enterprises (SUP-005)",
+      "content": "MONTHLY SUPPLIER EVALUATION REPORT\n\nSupplier: Global Steel Enterprises\nSupplier ID: SUP-005\nEvaluation Period: November 2023\nPrimary Part Supplied: High-Grade Steel Rod\n\nPERFORMANCE SUMMARY\nOverall Quality Rating: 6.9/10\nGlobal Steel Enterprises has experienced challenges this month that require immediate attention and corrective action. While historically a reliable supplier, recent performance indicates need for improvement across multiple areas.\n\nQUALITY CONCERNS\nQualityReport 5 reveals concerning trends in High-Grade Steel Rod specifications. Material hardness variations exceeded tolerance limits in 12% of delivered lots, compared to their typical 3% variation rate. Chemical composition analysis showed minor deviations in carbon content for 3 batches, requiring additional heat treatment processes on our end. Overall rejection rate increased to 8.2% from previous month's 3.1%.\n\nDELIVERY CHALLENGES\nAverage Lead Time: 28 days (standard: 22 days)\nOn-time Delivery: 78.5%\nDelivery performance significantly declined with 6 late shipments out of 28 total deliveries. Global Steel cited raw material sourcing issues and equipment maintenance delays as primary causes. Extended lead times disrupted our production schedule, requiring overtime costs and expedited alternative sourcing for critical orders.\n\nROOT CAUSE ANALYSIS\nDiscussions with Global Steel management revealed equipment aging issues at their primary production facility and challenges with their new quality control system implementation. They have committed to $2.3M facility upgrade over the next 6 months.\n\nCORRECTIVE ACTIONS REQUIRED\n- Weekly quality reporting until performance stabilizes\n- Dedicated customer service representative assignment\n- Buffer inventory establishment to mitigate delivery risks\n- Monthly management review meetings\n\nRECOMMENDAT ION\nPlace supplier on conditional status with 90-day improvement plan. Maintain relationship due to strategic importance but develop backup supplier capacity. Review status monthly with potential for contract termination if improvements are not achieved.\n\nReviewed by: Amanda Foster, Materials Quality Manager"
+    },
+    {
+      "template_id": "maintenance_log",
+      "template_name": "Maintenance Log",
+      "title": "Maintenance Log - Haas VF-4SS CNC Mill - Engine Assembly Line Alpha",
+      "content": "MAINTENANCE LOG ENTRY\n\nMachine: Haas VF-4SS CNC Mill (ID: VF4SS-001)\nProduction Line: Engine Assembly Line Alpha\nTechnician: Sarah Chen\nDate: November 15, 2024\nOperating Hours: 3,247 hours\n\nWork Performed:\nConducted comprehensive preventive maintenance including spindle inspection, coolant system flush, and axis calibration. Replaced worn spindle bearings due to excessive vibration detected during previous shift. Performed complete lubrication of all grease fittings and way surfaces. Cleaned chip conveyor and replaced worn chain links. Updated control software to latest firmware version 2.14.3 to resolve intermittent tool changer positioning errors.\n\nParts Replaced:\n- Spindle bearing assembly (P/N: HB-3247-A)\n- Chip conveyor chain links x4 (P/N: CC-112-L)\n- Coolant pump filter (P/N: CF-890-B)\n- Tool change arm pneumatic seal kit (P/N: TC-455-S)\n\nDiagnostic Results:\nSpindle run-out measured at 0.0003\" (within tolerance). All axis positioning accuracy verified within \u00b10.0001\". Coolant flow rate restored to optimal 8.5 GPM. Tool change cycle time improved from 6.2 to 4.8 seconds.\n\nNext Scheduled Maintenance:\n- 250-hour inspection due at 3,497 hours (estimated December 3, 2024)\n- Spindle bearing analysis recommended at 4,000 hours\n- Annual calibration due February 2025\n\nTechnician Notes:\nMachine performance significantly improved after bearing replacement. Recommend monitoring spindle temperature closely over next 48 hours of operation. All safety interlocks tested and functioning properly.\n\nTechnician Signature: S. Chen\nSupervisor Approval: M. Thompson"
+    },
+    {
+      "template_id": "maintenance_log",
+      "template_name": "Maintenance Log",
+      "title": "Maintenance Log - Schuler Hydraulic Press - Brake Component Production Beta",
+      "content": "MAINTENANCE LOG ENTRY\n\nMachine: Schuler Hydraulic Press (ID: SHP-750-02)\nProduction Line: Brake Component Production Beta\nTechnician: Marcus Rodriguez\nDate: November 15, 2024\nOperating Hours: 8,156 hours\n\nWork Performed:\nEmergency repair following hydraulic pressure loss during production shift. Diagnosed failed main pump relief valve and cracked hydraulic manifold. Replaced entire pump assembly and manifold block. Performed complete hydraulic system pressure test and recalibrated force settings for brake rotor forming operation. Inspected and cleaned filtration system, replacing all hydraulic filters. Verified press alignment using laser measurement system.\n\nParts Replaced:\n- Main hydraulic pump assembly (P/N: MP-4500-H)\n- Hydraulic manifold block (P/N: HM-750-C)\n- High-pressure hydraulic filters x3 (P/N: HF-200-X)\n- Pressure transducer (P/N: PT-350-B)\n- O-ring seal kit, complete (P/N: OR-KIT-750)\n\nSystem Testing:\nOperating pressure verified at 3,500 PSI. Cycle time restored to specification of 18 seconds. Force measurement calibrated to \u00b150 lbs accuracy. All emergency stops and safety systems tested functional.\n\nFluid Analysis:\nHydraulic fluid condition good, no contamination detected. Fluid level topped off with 15 gallons ISO 46 hydraulic oil.\n\nNext Scheduled Maintenance:\n- Weekly hydraulic system check due November 22, 2024\n- 500-hour major service at 8,656 hours (estimated January 2025)\n- Annual safety inspection due March 2025\n\nTechnician Notes:\nRecommend daily monitoring of hydraulic pressure for next week. Pump failure likely due to contaminated fluid from previous service. All lock-out/tag-out procedures followed during repair.\n\nTechnician Signature: M. Rodriguez\nSupervisor Approval: K. Patterson"
+    },
+    {
+      "template_id": "maintenance_log",
+      "template_name": "Maintenance Log",
+      "title": "Maintenance Log - Mazak QuickTurn Nexus 250 - Transmission Assembly Charlie",
+      "content": "MAINTENANCE LOG ENTRY\n\nMachine: Mazak QuickTurn Nexus 250 (ID: QTN-250-03)\nProduction Line: Transmission Assembly Charlie\nTechnician: Priya Patel\nDate: November 15, 2024\nOperating Hours: 5,892 hours\n\nWork Performed:\nRoutine 1000-hour maintenance service including chuck jaw replacement and turret indexing adjustment. Discovered worn sub-spindle drive belt causing synchronization errors during part transfer operations. Replaced drive belt and realigned sub-spindle assembly. Performed complete tool calibration for all 24 tool stations. Updated part program parameters for improved surface finish on transmission gear blanks. Cleaned and inspected automatic part catcher system.\n\nParts Replaced:\n- Sub-spindle drive belt (P/N: SB-250-V)\n- Chuck jaw set, hardened (P/N: CJ-8H-250)\n- Turret indexing motor encoder (P/N: TE-450-M)\n- Coolant nozzle assembly x6 (P/N: CN-125-A)\n\nCalibration Results:\nTool length offsets verified within \u00b10.0002\". Sub-spindle synchronization error reduced from 0.8\u00b0 to 0.1\u00b0. Part transfer cycle time improved by 1.2 seconds. Surface finish measurements confirm Ra values between 32-63 microinches as specified.\n\nPerformance Verification:\nCompleted 50-piece test run with zero defects. All dimensional tolerances held within \u00b10.0003\". Chip evacuation functioning properly with no accumulation in work area.\n\nNext Scheduled Maintenance:\n- Daily spindle warm-up verification\n- 250-hour service due at 6,142 hours (estimated December 8, 2024)\n- Tool life monitoring review weekly\n- Semi-annual accuracy check due April 2025\n\nTechnician Notes:\nMachine running smoothly after belt replacement. Recommend checking sub-spindle belt tension monthly. New chuck jaws properly seated and torqued to specification.\n\nTechnician Signature: P. Patel\nSupervisor Approval: R. Kim"
+    },
+    {
+      "template_id": "maintenance_log",
+      "template_name": "Maintenance Log",
+      "title": "Maintenance Log - Lincoln Electric Robotic Welder - Electronic Component Delta",
+      "content": "MAINTENANCE LOG ENTRY\n\nMachine: Lincoln Electric Robotic Welder (ID: LEW-450-01)\nProduction Line: Electronic Component Delta\nTechnician: Klaus Weber\nDate: November 15, 2024\nOperating Hours: 2,733 hours\n\nWork Performed:\nScheduled preventive maintenance focusing on welding torch maintenance and robot calibration. Replaced welding consumables including contact tips, nozzles, and liner. Performed complete robot arm calibration and updated teaching points for new electronic housing weld sequence. Cleaned welding wire feed system and replaced drive rollers showing excessive wear. Verified gas flow rates and mixture ratios for argon/CO2 shielding gas. Inspected and tested all safety light curtains and emergency stop systems.\n\nParts Replaced:\n- Welding contact tips x12 (P/N: CT-045-CU)\n- Gas nozzle assembly (P/N: GN-450-B)\n- Wire feed liner, 15ft (P/N: WL-045-T)\n- Drive roller set (P/N: DR-450-S)\n- Gas solenoid valve (P/N: SV-250-G)\n\nWeld Quality Testing:\nCompleted test welds on sample electronic housings. Penetration depth measured at 0.125\" \u00b10.005\". No porosity or inclusion defects detected. Arc stability excellent with consistent 285 amps at 28.5 volts. Wire feed speed calibrated to 420 IPM.\n\nRobot Performance:\nPath accuracy verified within \u00b10.5mm at all teaching points. Repeatability test shows \u00b10.1mm variation over 100 cycles. Program execution time optimized by 8% through improved motion planning.\n\nNext Scheduled Maintenance:\n- Weekly consumables inspection\n- 500-hour service at 3,233 hours (estimated December 28, 2024)\n- Robot accuracy verification monthly\n- Annual safety system certification due June 2025\n\nTechnician Notes:\nExcellent weld quality achieved after calibration. Gas consumption within normal parameters. All robot movements smooth with no unusual vibrations detected.\n\nTechnician Signature: K. Weber\nSupervisor Approval: D. Martinez"
+    },
+    {
+      "template_id": "maintenance_log",
+      "template_name": "Maintenance Log",
+      "title": "Maintenance Log - Bosch Rexroth Assembly Station - Wheel Hub Assembly Echo",
+      "content": "MAINTENANCE LOG ENTRY\n\nMachine: Bosch Rexroth Assembly Station (ID: BRA-800-04)\nProduction Line: Wheel Hub Assembly Echo\nTechnician: Aisha Johnson\nDate: November 15, 2024\nOperating Hours: 4,567 hours\n\nWork Performed:\nAddressed intermittent pneumatic pressure drops affecting torque wrench accuracy during lug nut installation. Diagnosed leaking air cylinder seals and worn quick-disconnect fittings throughout the pneumatic distribution system. Replaced all cylinder seal kits and upgraded to reinforced quick-disconnect fittings. Recalibrated torque specifications for all six stations to meet wheel hub assembly requirements of 95 ft-lbs \u00b15%. Performed complete PLC program backup and updated HMI interface software.\n\nParts Replaced:\n- Pneumatic cylinder seal kits x8 (P/N: PS-40-NBR)\n- Quick-disconnect fittings x16 (P/N: QD-38-SS)\n- Torque transducer, station 3 (P/N: TT-100-LB)\n- Pneumatic filter regulator (P/N: FR-150-P)\n- Position sensor assemblies x4 (P/N: PS-M18-I)\n\nSystem Verification:\nOperating pressure stabilized at 90 PSI across all stations. Torque accuracy verified within \u00b12 ft-lbs specification. Cycle time maintained at 45 seconds per hub assembly. All pneumatic actuators responding within 0.3 seconds.\n\nQuality Control Testing:\nCompleted 25-piece validation run with 100% pass rate on final torque verification. Part positioning sensors achieving \u00b11mm repeatability. No missed parts detected by vision system.\n\nNext Scheduled Maintenance:\n- Daily pressure checks and lubrication points\n- 300-hour pneumatic system inspection at 4,867 hours (estimated December 15, 2024)\n- Torque tool calibration verification monthly\n- Annual electrical safety inspection due August 2025\n\nTechnician Notes:\nSignificant improvement in system reliability after seal replacement. Recommend monitoring air consumption for potential additional leaks. All safety devices tested and operational.\n\nTechnician Signature: A. Johnson\nSupervisor Approval: T. Anderson"
+    },
+    {
+      "template_id": "production_report",
+      "template_name": "Production Report",
+      "title": "Engine Assembly Line Alpha - Weekly Production Report (March 4-10, 2024)",
+      "content": "PRODUCTION SUMMARY\nEngine Assembly Line Alpha completed 847 units during the reporting period, achieving 94.2% of the weekly target of 900 units. Three work orders were executed: WorkOrder 1 (V6 engines - 312 units), WorkOrder 3 (V8 engines - 285 units), and WorkOrder 5 (hybrid powertrains - 250 units).\n\nEFFICIENCY METRICS\nOverall Equipment Effectiveness (OEE) reached 87.3%, slightly below the 90% target. Availability stood at 91.2%, performance at 95.7%, and quality at 100%. Cycle time averaged 18.7 minutes per unit, within acceptable parameters.\n\nDOWNTIME ANALYSIS\nTotal downtime: 14.2 hours. Primary causes included hydraulic pump failure on Station 7 (6.8 hours), scheduled preventive maintenance (4.5 hours), and conveyor belt alignment issues (2.9 hours). The hydraulic failure resulted from bearing wear exceeding maintenance intervals.\n\nQUALITY PERFORMANCE\nQualityReport 1 indicates a 99.3% pass rate with zero critical defects. Minor issues included torque specification variations (4 units) and cosmetic imperfections (2 units), all successfully reworked. Final inspection approval rate maintained at 100%.\n\nRECOMMENDations\n1. Implement predictive maintenance protocols for hydraulic systems to prevent unexpected failures\n2. Adjust torque calibration procedures during shift changes\n3. Increase spare parts inventory for critical hydraulic components\n4. Schedule additional operator training on conveyor alignment procedures\n\nNext week's production target remains 900 units with focus on achieving 90% OEE through enhanced maintenance scheduling."
+    },
+    {
+      "template_id": "production_report",
+      "template_name": "Production Report",
+      "title": "Brake Component Production Beta - Daily Production Report (March 12, 2024)",
+      "content": "DAILY PRODUCTION OVERVIEW\nBrake Component Production Beta completed WorkOrder 2 on March 12, 2024, manufacturing 1,247 brake disc assemblies against a target of 1,200 units, representing 103.9% target achievement. Production ran across two 8-hour shifts with seamless handover protocols.\n\nOPERATIONAL EFFICIENCY\nLine efficiency reached 96.4% during first shift and 94.1% during second shift, averaging 95.3% for the day. Machine utilization peaked at 98.2% with minimal changeover time between product variants. Raw material flow maintained consistent supply rates with zero stockout incidents.\n\nDOWNTIME INCIDENTS\nTotal unplanned downtime: 47 minutes. Incidents included CNC lathe recalibration (23 minutes), press brake sensor malfunction (18 minutes), and quality inspection bottleneck (6 minutes). All issues were resolved using standard troubleshooting procedures without external technical support.\n\nQUALITY METRICS\nQualityReport 2 confirms 98.7% first-pass yield with 16 units requiring rework for surface finish specifications. Critical dimensions remained within tolerance limits for 100% of production. Statistical process control charts indicate stable performance across all measurement parameters.\n\nSAFETY AND COMPLIANCE\nZero safety incidents reported. Environmental controls maintained proper ventilation rates and noise levels below regulatory thresholds. Waste generation reduced by 3.2% compared to previous day through improved cutting tool optimization.\n\nACTION ITEMS\n1. Replace aging sensor on press brake during next scheduled maintenance window\n2. Review inspection workflow to eliminate bottlenecks\n3. Continue surface finish process refinement initiated this week\n\nOverall performance exceeded expectations with strong quality outcomes and minimal disruptions."
+    },
+    {
+      "template_id": "production_report",
+      "template_name": "Production Report",
+      "title": "Transmission Assembly Charlie - Weekly Production Report (February 26 - March 3, 2024)",
+      "content": "WEEKLY PERFORMANCE SUMMARY\nTransmission Assembly Charlie delivered exceptional results during the reporting period, completing 1,456 transmission units across WorkOrder 4 (automatic transmissions) and WorkOrder 1 (manual transmissions). This represents 121.3% of the planned 1,200-unit target, marking the highest weekly output in Q1.\n\nPRODUCTION EFFICIENCY\nOverall Equipment Effectiveness achieved 93.7%, surpassing the 90% benchmark. Performance metrics included 96.1% availability, 97.5% performance rate, and 100% quality rate. Average assembly time decreased to 2.3 hours per unit from the previous week's 2.5 hours through process optimization initiatives.\n\nDOWNTIME ANALYSIS\nPlanned downtime totaled 8.5 hours for scheduled maintenance activities. Unplanned interruptions were minimal at 3.2 hours, primarily attributed to torque converter alignment adjustments (1.8 hours) and pneumatic system pressure fluctuations (1.4 hours). Root cause analysis revealed worn valve seals requiring replacement.\n\nQUALITY ASSURANCE\nQualityReport 4 demonstrates outstanding quality control with 99.8% acceptance rate. Only three units required minor adjustments for gear backlash specifications. All critical safety tests passed without exception, including pressure testing, fluid leak detection, and electronic control module validation.\n\nRESOURCE UTILIZATION\nStaffing levels remained optimal with 94% attendance rate. Material consumption aligned with production volumes, achieving 2.1% reduction in waste compared to target through lean manufacturing practices. Energy consumption decreased 4.3% through improved equipment scheduling.\n\nFUTURE IMPROVEMENTS\n1. Implement automated torque converter positioning system\n2. Upgrade pneumatic system components during next shutdown\n3. Expand cross-training program to maintain flexibility\n\nThe line continues exceeding expectations with sustained quality and efficiency gains."
+    },
+    {
+      "template_id": "production_report",
+      "template_name": "Production Report",
+      "title": "Electronic Component Delta - Daily Production Report (March 15, 2024)",
+      "content": "PRODUCTION EXECUTION SUMMARY\nElectronic Component Delta successfully completed WorkOrder 3 on March 15, 2024, producing 2,834 circuit board assemblies against a daily target of 2,750 units, achieving 103.1% performance. Production maintained consistent throughput across three shifts with effective coordination between assembly and testing stations.\n\nEQUIPMENT PERFORMANCE\nSurface Mount Technology (SMT) lines operated at 97.8% efficiency with pick-and-place machines maintaining precise component placement accuracy. Wave soldering process achieved 99.4% joint quality with minimal defect rates. Automated Optical Inspection (AOI) systems processed 100% of assemblies within cycle time requirements.\n\nDOWNTIME EVENTS\nMinor disruptions totaled 1.3 hours: component feeder jam on Line 2 (35 minutes), reflow oven temperature calibration (28 minutes), and inspection camera lens cleaning (27 minutes). All issues were addressed by shift technicians using established protocols. No external maintenance support required.\n\nQUALITY CONTROL\nQualityReport 3 indicates 98.9% first-pass yield with exceptional electrical testing results. Eleven assemblies required component replacement for incorrect resistor values, traced to supplier batch variation. In-circuit testing achieved 100% pass rate after rework. Functional testing confirmed all units meet automotive-grade reliability standards.\n\nMATERIAL MANAGEMENT\nComponent inventory levels maintained optimal safety stock with zero shortages. Just-in-time delivery schedules aligned perfectly with production requirements. Kitting accuracy reached 99.7% with minimal component waste.\n\nIMPROVEMENT INITIATIVES\n1. Implement enhanced component batch tracking to prevent value mismatches\n2. Schedule preventive maintenance for reflow oven temperature sensors\n3. Optimize feeder mechanisms to reduce jamming frequency\n\nProduction continues meeting automotive industry quality standards while maintaining competitive cycle times and cost effectiveness."
+    },
+    {
+      "template_id": "production_report",
+      "template_name": "Production Report",
+      "title": "Wheel Hub Assembly Echo - Weekly Production Report (March 11-17, 2024)",
+      "content": "WEEKLY PRODUCTION ANALYSIS\nWheel Hub Assembly Echo concluded a productive week with 2,180 hub assemblies manufactured through WorkOrder 5 and WorkOrder 2, representing 109% of the 2,000-unit weekly target. Strong performance across all product variants including passenger car, light truck, and SUV configurations.\n\nOPERATIONAL METRICS\nOverall Equipment Effectiveness reached 91.2%, exceeding the 88% target through improved changeover procedures and enhanced operator training. Machine availability averaged 94.3% while performance efficiency achieved 96.7%. Quality metrics maintained industry-leading standards at 99.9% acceptance rate.\n\nMAINTENANCE AND DOWNTIME\nScheduled maintenance consumed 12.4 hours for bearing press calibration and spindle alignment procedures. Unplanned downtime totaled 6.8 hours: hydraulic cylinder seal replacement (3.5 hours), electrical panel cooling fan failure (2.1 hours), and torque wrench calibration issues (1.2 hours). Maintenance team response times averaged 15 minutes.\n\nQUALITY PERFORMANCE\nQualityReport 5 confirms exceptional quality standards with only two assemblies requiring rework for bearing preload specifications. Dimensional accuracy remained within \u00b10.05mm tolerances for critical measurements. Vibration testing passed 100% of assemblies with values well below automotive industry thresholds. Material traceability maintained complete documentation.\n\nPRODUCTIVITY IMPROVEMENTS\nImplemented new quick-change tooling reduced product changeover time by 18 minutes. Updated work instruction cards improved operator efficiency by 3.2%. Material handling optimization decreased component staging time by 12%.\n\nFORWARD PLANNING\n1. Schedule hydraulic system comprehensive inspection during next maintenance window\n2. Install backup cooling fan for electrical panel reliability\n3. Expand quick-change tooling implementation to remaining stations\n4. Continue operator cross-training program\n\nThe production line demonstrates consistent capability to exceed targets while maintaining automotive quality requirements."
+    }
+  ],
+  "traces": [
+    {
+      "id": "production_scheduling",
+      "task": "Determine optimal scheduling for work order WO-2024-005 on available production lines",
+      "steps": [
+        {
+          "thought": "Assess current production line capacity and availability",
+          "action": "Query production lines, current workload, and maintenance schedules",
+          "observation": "Production Line A is operating at 85% capacity with scheduled maintenance on Friday, while Line B is at 60% capacity and Line C is down for equipment repair until Wednesday."
+        },
+        {
+          "thought": "Check material availability for all required parts",
+          "action": "Verify stock levels against bill of materials requirements",
+          "observation": "All primary materials are in stock with sufficient quantities, but secondary component #M4-7821 shows only 15 units available against the required 45 units, with next delivery scheduled for Tuesday."
+        },
+        {
+          "thought": "Evaluate machine assignments and tooling requirements",
+          "action": "Match work order specifications to capable machines",
+          "observation": "Work order specifications require CNC machining capabilities and specialized tooling set T-300, which is available on Lines A and B but not Line C due to recent tooling configuration changes."
+        },
+        {
+          "thought": "Optimize for due date compliance and line efficiency",
+          "action": "Calculate scheduling options ranked by efficiency and on-time delivery",
+          "observation": "Scheduling analysis shows Line B on Wednesday offers 95% on-time delivery probability with 78% line efficiency, compared to Line A on Thursday with 88% delivery probability but 92% efficiency."
+        }
+      ],
+      "outcome": "Schedule work order WO-2024-1847 on Production Line B starting Wednesday morning, contingent on Tuesday delivery of component #M4-7821, to optimize delivery reliability while maintaining acceptable efficiency levels."
+    },
+    {
+      "id": "supplier_selection",
+      "task": "Select supplier for part ALM-1357-S given quality and lead time requirements",
+      "steps": [
+        {
+          "thought": "Review available suppliers for this part category",
+          "action": "Query approved suppliers and their historical performance",
+          "observation": "Query returned 7 approved suppliers for precision machined aluminum brackets, with Acme Manufacturing and Precision Parts Corp showing 99.2% and 98.8% on-time delivery rates respectively over the past 12 months."
+        },
+        {
+          "thought": "Compare quality ratings and defect rates",
+          "action": "Analyze quality reports linked to each supplier's parts",
+          "observation": "Quality analysis reveals Acme Manufacturing maintains a 0.08% defect rate with ISO 9001 certification, while Precision Parts Corp shows 0.12% defects but has faster corrective action response times averaging 2.1 days versus 3.4 days."
+        },
+        {
+          "thought": "Factor in lead time, cost, and risk diversification",
+          "action": "Rank suppliers by weighted score of quality, cost, and reliability",
+          "observation": "Weighted scoring matrix shows Acme Manufacturing scoring 94.2 points (quality: 38/40, cost: 28/30, reliability: 28.2/30) compared to Precision Parts Corp at 91.6 points, with Acme offering 15% lower unit cost despite slightly longer 14-day lead time."
+        }
+      ],
+      "outcome": "Selected Acme Manufacturing as primary supplier for part AL-BRK-2847 based on superior quality metrics and cost advantage, with Precision Parts Corp designated as secondary supplier for risk mitigation and expedited orders when needed."
+    },
+    {
+      "id": "defect_investigation",
+      "task": "Investigate root cause of quality defects in Transmission Housing batch",
+      "steps": [
+        {
+          "thought": "Review defect details and patterns from quality reports",
+          "action": "Query recent quality reports for this part with fail results",
+          "observation": "Quality reports show 23 transmission housings from batch TH-2024-0847 failed pressure testing with leak rates exceeding 2.5 cc/min, all occurring between November 15-17 with defects concentrated around the bell housing seal groove area."
+        },
+        {
+          "thought": "Trace back through production process and materials",
+          "action": "Follow production chain: machine, line, supplier, raw materials",
+          "observation": "Production tracing reveals all defective units were machined on CNC Cell #3 during second shift operations, using aluminum alloy from supplier lot AL-7075-B4429, with the same cutting tool set that had been in use for 847 cycles without replacement."
+        },
+        {
+          "thought": "Identify common factors across defective units",
+          "action": "Correlate defects with machine, shift, material batch, or operator",
+          "observation": "Correlation analysis identifies that 22 of 23 defective units were produced when cutting tool wear exceeded manufacturer's recommended 800-cycle limit, resulting in inconsistent surface finish and dimensional variance of +0.003\" in the critical seal groove diameter."
+        }
+      ],
+      "outcome": "Root cause identified as excessive cutting tool wear on CNC Cell #3 causing out-of-specification seal groove dimensions; immediate actions include replacing worn tooling, implementing 750-cycle tool change intervals, and scrapping the affected batch with estimated cost impact of $47,000."
+    }
+  ]
+}

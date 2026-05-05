@@ -1,0 +1,229 @@
+{% raw %}"""Gmail connector — imports emails using gws CLI or Google API Python client."""
+
+from __future__ import annotations
+
+import json
+import shutil
+import subprocess
+from typing import Any
+
+
+def _check_gws_cli() -> bool:
+    """Check if the Google Workspace CLI (gws) is available."""
+    return shutil.which("gws") is not None
+
+
+def _run_gws_command(args: list[str]) -> Any:
+    """Run a gws CLI command and return parsed JSON output."""
+    result = subprocess.run(
+        ["gws"] + args + ["--format", "json"],
+        capture_output=True,
+        text=True,
+        timeout=60,
+    )
+    if result.returncode != 0:
+        raise RuntimeError(f"gws command failed: {result.stderr}")
+    return json.loads(result.stdout)
+
+
+class GmailConnector:
+    """Import emails from Gmail.
+
+    Prefers the Google Workspace CLI (gws) if available; falls back to
+    the Python Google API client with OAuth2.
+    """
+
+    def __init__(self):
+        self._use_gws = False
+        self._service = None
+
+    def authenticate(self, credentials: dict[str, str]) -> None:
+        """Authenticate with Gmail.
+
+        If gws CLI is available, no credentials are needed (gws handles auth).
+        Otherwise, provide "client_id" and "client_secret" for OAuth2.
+        """
+        if _check_gws_cli():
+            self._use_gws = True
+            return
+
+        try:
+            from google_auth_oauthlib.flow import InstalledAppFlow
+            from googleapiclient.discovery import build
+        except ImportError:
+            raise ImportError(
+                "google-api-python-client and google-auth-oauthlib are required. "
+                "Install with: pip install google-api-python-client google-auth-oauthlib"
+            )
+
+        client_config = {
+            "installed": {
+                "client_id": credentials["client_id"],
+                "client_secret": credentials["client_secret"],
+                "auth_uri": "https://accounts.google.com/o/oauth2/v2/auth",
+                "token_uri": "https://oauth2.googleapis.com/token",
+                "redirect_uris": ["http://localhost"],
+            }
+        }
+        flow = InstalledAppFlow.from_client_config(
+            client_config,
+            scopes=["https://www.googleapis.com/auth/gmail.readonly"],
+        )
+        creds = flow.run_local_server(port=0)
+        self._service = build("gmail", "v1", credentials=creds)
+
+    def _fetch_via_gws(self, limit: int) -> dict:
+        """Fetch emails using the gws CLI."""
+        entities: dict[str, list[dict]] = {"Person": [], "Email": []}
+        relationships: list[dict] = []
+        documents: list[dict] = []
+        seen_users: set[str] = set()
+
+        try:
+            result = _run_gws_command([
+                "gmail", "+list",
+                "--max-results", str(min(limit, 200)),
+                "--query", "newer_than:30d",
+            ])
+        except RuntimeError:
+            return {"entities": entities, "relationships": relationships, "documents": documents}
+
+        messages = result if isinstance(result, list) else result.get("messages", [])
+
+        for msg_summary in messages[:limit]:
+            msg_id = msg_summary.get("id", "")
+            try:
+                msg = _run_gws_command(["gmail", "+get", "--id", msg_id])
+            except RuntimeError:
+                continue
+
+            subject = ""
+            from_addr = ""
+            date = ""
+            for header in msg.get("payload", {}).get("headers", []):
+                name = header.get("name", "").lower()
+                if name == "subject":
+                    subject = header.get("value", "")
+                elif name == "from":
+                    from_addr = header.get("value", "")
+                elif name == "date":
+                    date = header.get("value", "")
+
+            entities["Email"].append({
+                "name": subject or f"Email {msg_id[:8]}",
+                "message_id": msg_id,
+                "subject": subject,
+                "from_address": from_addr,
+                "date": date,
+                "snippet": msg.get("snippet", ""),
+            })
+
+            if from_addr and from_addr not in seen_users:
+                seen_users.add(from_addr)
+                entities["Person"].append({
+                    "name": from_addr.split("<")[0].strip().strip('"'),
+                    "email": from_addr,
+                    "role": "email-contact",
+                })
+
+            if from_addr:
+                relationships.append({
+                    "type": "SENT",
+                    "source": from_addr.split("<")[0].strip().strip('"'),
+                    "source_label": "Person",
+                    "target": subject or f"Email {msg_id[:8]}",
+                    "target_label": "Email",
+                })
+
+            body = msg.get("snippet", "")
+            if body:
+                documents.append({
+                    "title": subject or f"Email {msg_id[:8]}",
+                    "content": body,
+                    "type": "gmail-email",
+                    "metadata": {"from": from_addr, "date": date},
+                })
+
+        return {"entities": entities, "relationships": relationships, "documents": documents}
+
+    def _fetch_via_api(self, limit: int) -> dict:
+        """Fetch emails using the Python Google API client."""
+        entities: dict[str, list[dict]] = {"Person": [], "Email": []}
+        relationships: list[dict] = []
+        documents: list[dict] = []
+        seen_users: set[str] = set()
+
+        results = self._service.users().messages().list(
+            userId="me",
+            maxResults=min(limit, 200),
+            q="newer_than:30d",
+        ).execute()
+
+        for msg_summary in results.get("messages", []):
+            msg = self._service.users().messages().get(
+                userId="me", id=msg_summary["id"], format="metadata",
+                metadataHeaders=["Subject", "From", "Date"],
+            ).execute()
+
+            subject = ""
+            from_addr = ""
+            date = ""
+            for header in msg.get("payload", {}).get("headers", []):
+                name = header.get("name", "").lower()
+                if name == "subject":
+                    subject = header.get("value", "")
+                elif name == "from":
+                    from_addr = header.get("value", "")
+                elif name == "date":
+                    date = header.get("value", "")
+
+            entities["Email"].append({
+                "name": subject or f"Email {msg['id'][:8]}",
+                "message_id": msg["id"],
+                "subject": subject,
+                "from_address": from_addr,
+                "date": date,
+                "snippet": msg.get("snippet", ""),
+            })
+
+            if from_addr and from_addr not in seen_users:
+                seen_users.add(from_addr)
+                entities["Person"].append({
+                    "name": from_addr.split("<")[0].strip().strip('"'),
+                    "email": from_addr,
+                    "role": "email-contact",
+                })
+
+            if from_addr:
+                relationships.append({
+                    "type": "SENT",
+                    "source": from_addr.split("<")[0].strip().strip('"'),
+                    "source_label": "Person",
+                    "target": subject or f"Email {msg['id'][:8]}",
+                    "target_label": "Email",
+                })
+
+            snippet = msg.get("snippet", "")
+            if snippet:
+                documents.append({
+                    "title": subject or f"Email {msg['id'][:8]}",
+                    "content": snippet,
+                    "type": "gmail-email",
+                    "metadata": {"from": from_addr, "date": date},
+                })
+
+        return {"entities": entities, "relationships": relationships, "documents": documents}
+
+    def fetch(self, **kwargs: Any) -> dict:
+        """Fetch emails from Gmail.
+
+        Returns:
+            dict with keys "entities", "relationships", "documents".
+        """
+        limit = kwargs.get("limit", 200)
+        if self._use_gws:
+            return self._fetch_via_gws(limit)
+        if self._service:
+            return self._fetch_via_api(limit)
+        raise RuntimeError("Call authenticate() first")
+{% endraw %}

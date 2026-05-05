@@ -1,0 +1,2348 @@
+{
+  "domain": "product-management",
+  "entities": {
+    "Person": [
+      {
+        "name": "Sarah Chen",
+        "email": "sarah.chen@technovate.com",
+        "role": "Senior Product Manager",
+        "description": "Experienced product manager specializing in B2B SaaS platforms with 8 years in the industry"
+      },
+      {
+        "name": "Marcus Johnson",
+        "email": "marcus.johnson@innovacorp.io",
+        "role": "UX Researcher",
+        "description": "Lead user researcher with expertise in qualitative and quantitative research methodologies"
+      },
+      {
+        "name": "Priya Patel",
+        "email": "priya.patel@datastream.com",
+        "role": "Product Analytics Manager",
+        "description": "Data-driven product professional focused on growth metrics and user behavior analysis"
+      },
+      {
+        "name": "Ahmed Al-Rashid",
+        "email": "ahmed.alrashid@nexustech.ae",
+        "role": "VP of Product",
+        "description": "Product leader overseeing roadmap strategy and cross-functional team coordination"
+      },
+      {
+        "name": "Elena Rodriguez",
+        "email": "elena.rodriguez@futuresoft.mx",
+        "role": "Product Designer",
+        "description": "Design-focused product professional with expertise in user interface and experience design"
+      }
+    ],
+    "Organization": [
+      {
+        "name": "TechNovate Solutions",
+        "description": "Enterprise software company providing workflow automation tools for mid-market businesses",
+        "industry": "Enterprise Software"
+      },
+      {
+        "name": "DataStream Analytics",
+        "description": "Business intelligence platform helping companies make data-driven decisions",
+        "industry": "Business Intelligence"
+      },
+      {
+        "name": "CloudFirst Technologies",
+        "description": "Cloud infrastructure provider specializing in serverless computing solutions",
+        "industry": "Cloud Computing"
+      },
+      {
+        "name": "FinTech Innovations Ltd",
+        "description": "Financial technology company developing payment processing and digital banking solutions",
+        "industry": "Financial Technology"
+      },
+      {
+        "name": "HealthConnect Systems",
+        "description": "Healthcare technology company building patient management and telehealth platforms",
+        "industry": "Healthcare Technology"
+      }
+    ],
+    "Location": [
+      {
+        "name": "San Francisco Headquarters",
+        "address": "1455 Market Street, Suite 1600, San Francisco, CA 94103",
+        "latitude": 37.7749,
+        "longitude": -122.4194
+      },
+      {
+        "name": "London Office",
+        "address": "25 Old Broad Street, London EC2N 1HN, United Kingdom",
+        "latitude": 51.5074,
+        "longitude": -0.1278
+      },
+      {
+        "name": "Tel Aviv R&D Center",
+        "address": "Rothschild Boulevard 45, Tel Aviv-Yafo 6578403, Israel",
+        "latitude": 32.0853,
+        "longitude": 34.7818
+      },
+      {
+        "name": "Austin Development Hub",
+        "address": "500 W 2nd Street, Austin, TX 78701",
+        "latitude": 30.2672,
+        "longitude": -97.7431
+      },
+      {
+        "name": "Singapore APAC Office",
+        "address": "1 Raffles Place, Tower 2, Singapore 048616",
+        "latitude": 1.2966,
+        "longitude": 103.8512
+      }
+    ],
+    "Event": [
+      {
+        "name": "Q1 Product Planning Workshop",
+        "date": "2024-01-15T09:00:00Z",
+        "description": "Quarterly planning session to align on product priorities and roadmap for Q1 2024"
+      },
+      {
+        "name": "User Research Sprint - Enterprise Customers",
+        "date": "2024-02-05T10:00:00Z",
+        "description": "Two-week research sprint focused on understanding enterprise customer pain points"
+      },
+      {
+        "name": "Product Analytics Review",
+        "date": "2024-02-20T14:00:00Z",
+        "description": "Monthly review of key product metrics and performance indicators"
+      },
+      {
+        "name": "Roadmap Stakeholder Alignment",
+        "date": "2024-03-10T13:00:00Z",
+        "description": "Cross-functional meeting to align stakeholders on product roadmap updates"
+      },
+      {
+        "name": "Feature Discovery Workshop",
+        "date": "2024-03-25T10:00:00Z",
+        "description": "Design thinking workshop to explore new feature concepts for mobile platform"
+      }
+    ],
+    "Object": [
+      {
+        "name": "Product Requirements Document Template",
+        "description": "Standardized template for documenting feature requirements and acceptance criteria"
+      },
+      {
+        "name": "User Story Mapping Board",
+        "description": "Visual representation of user journey and feature prioritization for sprint planning"
+      },
+      {
+        "name": "Analytics Dashboard Configuration",
+        "description": "Custom dashboard setup for tracking key product performance metrics"
+      },
+      {
+        "name": "Research Interview Guide",
+        "description": "Structured interview protocol for conducting user research sessions"
+      },
+      {
+        "name": "Competitive Analysis Framework",
+        "description": "Systematic approach for analyzing competitor features and market positioning"
+      }
+    ],
+    "Feature": [
+      {
+        "feature_id": "FT-2024-001",
+        "name": "Advanced Search Filters",
+        "description": "Enhanced search functionality with multiple filter options and saved search capabilities",
+        "priority": "high",
+        "status": "in_progress",
+        "effort_estimate": "l",
+        "impact_score": 8.5
+      },
+      {
+        "feature_id": "FT-2024-002",
+        "name": "Single Sign-On Integration",
+        "description": "SAML and OAuth2 integration for enterprise customer authentication",
+        "priority": "critical",
+        "status": "defined",
+        "effort_estimate": "xl",
+        "impact_score": 9.2
+      },
+      {
+        "feature_id": "FT-2024-003",
+        "name": "Mobile Push Notifications",
+        "description": "Real-time push notifications for mobile app users with customizable preferences",
+        "priority": "medium",
+        "status": "shipped",
+        "effort_estimate": "m",
+        "impact_score": 7.1
+      },
+      {
+        "feature_id": "FT-2024-004",
+        "name": "Bulk Data Import Tool",
+        "description": "CSV and Excel import functionality for large dataset uploads",
+        "priority": "medium",
+        "status": "discovery",
+        "effort_estimate": "l",
+        "impact_score": 6.8
+      },
+      {
+        "feature_id": "FT-2024-005",
+        "name": "Dark Mode Theme",
+        "description": "Alternative dark theme for improved user experience in low-light environments",
+        "priority": "low",
+        "status": "idea",
+        "effort_estimate": "s",
+        "impact_score": 5.5
+      },
+      {
+        "feature_id": "FT-2024-006",
+        "name": "API Rate Limiting",
+        "description": "Intelligent rate limiting system to prevent API abuse and ensure fair usage",
+        "priority": "high",
+        "status": "in_progress",
+        "effort_estimate": "m",
+        "impact_score": 8.0
+      },
+      {
+        "feature_id": "FT-2024-007",
+        "name": "Collaborative Commenting",
+        "description": "Real-time commenting system for team collaboration on shared documents",
+        "priority": "medium",
+        "status": "defined",
+        "effort_estimate": "l",
+        "impact_score": 7.3
+      },
+      {
+        "feature_id": "FT-2024-008",
+        "name": "Advanced Analytics Widgets",
+        "description": "Customizable analytics widgets for dashboard personalization",
+        "priority": "medium",
+        "status": "shipped",
+        "effort_estimate": "m",
+        "impact_score": 6.9
+      },
+      {
+        "feature_id": "FT-2024-009",
+        "name": "Automated Backup System",
+        "description": "Scheduled automated backups with point-in-time recovery capabilities",
+        "priority": "critical",
+        "status": "in_progress",
+        "effort_estimate": "xl",
+        "impact_score": 9.0
+      },
+      {
+        "feature_id": "FT-2024-010",
+        "name": "Smart Recommendations",
+        "description": "Machine learning-powered content recommendations based on user behavior",
+        "priority": "high",
+        "status": "discovery",
+        "effort_estimate": "xl",
+        "impact_score": 8.7
+      }
+    ],
+    "Epic": [
+      {
+        "epic_id": "EP-2024-001",
+        "name": "Enterprise Security Enhancement",
+        "description": "Comprehensive security improvements including SSO, RBAC, and compliance features",
+        "status": "active",
+        "quarter": "Q1 2024",
+        "theme": "compliance"
+      },
+      {
+        "epic_id": "EP-2024-002",
+        "name": "Mobile Experience Optimization",
+        "description": "Complete mobile app redesign and performance optimization initiative",
+        "status": "active",
+        "quarter": "Q2 2024",
+        "theme": "retention"
+      },
+      {
+        "epic_id": "EP-2024-003",
+        "name": "AI-Powered Analytics",
+        "description": "Integration of machine learning capabilities for predictive analytics and insights",
+        "status": "draft",
+        "quarter": "Q3 2024",
+        "theme": "growth"
+      },
+      {
+        "epic_id": "EP-2024-004",
+        "name": "API Platform Expansion",
+        "description": "Enhanced API functionality and developer tools for third-party integrations",
+        "status": "completed",
+        "quarter": "Q4 2023",
+        "theme": "platform"
+      },
+      {
+        "epic_id": "EP-2024-005",
+        "name": "Premium Tier Features",
+        "description": "Advanced features package for enterprise customers to drive revenue growth",
+        "status": "active",
+        "quarter": "Q1 2024",
+        "theme": "monetization"
+      },
+      {
+        "epic_id": "EP-2024-006",
+        "name": "Infrastructure Scalability",
+        "description": "Backend infrastructure improvements to support 10x user growth",
+        "status": "active",
+        "quarter": "Q2 2024",
+        "theme": "infrastructure"
+      },
+      {
+        "epic_id": "EP-2024-007",
+        "name": "User Onboarding Redesign",
+        "description": "Complete redesign of new user onboarding flow to improve activation rates",
+        "status": "completed",
+        "quarter": "Q4 2023",
+        "theme": "retention"
+      },
+      {
+        "epic_id": "EP-2024-008",
+        "name": "Multi-Tenant Architecture",
+        "description": "Platform architecture upgrade to support enterprise multi-tenancy requirements",
+        "status": "draft",
+        "quarter": "Q3 2024",
+        "theme": "platform"
+      },
+      {
+        "epic_id": "EP-2024-009",
+        "name": "Customer Success Tools",
+        "description": "Built-in tools and analytics to help customers achieve success with the platform",
+        "status": "active",
+        "quarter": "Q2 2024",
+        "theme": "retention"
+      },
+      {
+        "epic_id": "EP-2024-010",
+        "name": "Marketplace Integration",
+        "description": "Third-party app marketplace to extend platform functionality",
+        "status": "cancelled",
+        "quarter": "Q1 2024",
+        "theme": "growth"
+      }
+    ],
+    "UserPersona": [
+      {
+        "persona_id": "UP-001",
+        "name": "Enterprise IT Administrator",
+        "role": "System Administrator",
+        "segment": "enterprise",
+        "pain_points": "Complex security requirements, integration challenges, user management at scale",
+        "goals": "Streamline user provisioning, ensure compliance, maintain system security"
+      },
+      {
+        "persona_id": "UP-002",
+        "name": "Small Business Owner",
+        "role": "Business Owner",
+        "segment": "smb",
+        "pain_points": "Limited technical expertise, budget constraints, time management",
+        "goals": "Improve business efficiency, reduce manual processes, grow revenue"
+      },
+      {
+        "persona_id": "UP-003",
+        "name": "Data Analyst Professional",
+        "role": "Data Analyst",
+        "segment": "enterprise",
+        "pain_points": "Data quality issues, complex reporting requirements, tool fragmentation",
+        "goals": "Generate accurate insights, automate reporting, improve data accessibility"
+      },
+      {
+        "persona_id": "UP-004",
+        "name": "Mobile-First Consumer",
+        "role": "Individual User",
+        "segment": "consumer",
+        "pain_points": "App performance issues, complex interfaces, limited mobile features",
+        "goals": "Quick task completion, seamless mobile experience, social sharing"
+      },
+      {
+        "persona_id": "UP-005",
+        "name": "API Developer",
+        "role": "Software Developer",
+        "segment": "developer",
+        "pain_points": "Poor documentation, rate limits, authentication complexity",
+        "goals": "Build reliable integrations, reduce development time, access comprehensive APIs"
+      },
+      {
+        "persona_id": "UP-006",
+        "name": "Marketing Manager",
+        "role": "Marketing Professional",
+        "segment": "smb",
+        "pain_points": "Limited analytics visibility, campaign tracking difficulties, ROI measurement",
+        "goals": "Optimize campaign performance, track customer journey, improve conversion rates"
+      },
+      {
+        "persona_id": "UP-007",
+        "name": "Enterprise Project Manager",
+        "role": "Project Manager",
+        "segment": "enterprise",
+        "pain_points": "Team collaboration challenges, project visibility issues, resource allocation",
+        "goals": "Improve team productivity, enhance project transparency, meet deadlines"
+      },
+      {
+        "persona_id": "UP-008",
+        "name": "Compliance Officer",
+        "role": "Compliance Manager",
+        "segment": "enterprise",
+        "pain_points": "Regulatory requirements, audit preparation, risk management",
+        "goals": "Ensure regulatory compliance, streamline audit processes, mitigate risks"
+      },
+      {
+        "persona_id": "UP-009",
+        "name": "Customer Support Agent",
+        "role": "Support Representative",
+        "segment": "admin",
+        "pain_points": "Limited access to customer data, complex ticket routing, response time pressure",
+        "goals": "Resolve issues quickly, access relevant information, improve customer satisfaction"
+      },
+      {
+        "persona_id": "UP-010",
+        "name": "Freelance Consultant",
+        "role": "Independent Consultant",
+        "segment": "consumer",
+        "pain_points": "Cost sensitivity, feature complexity, client collaboration needs",
+        "goals": "Deliver client value, manage multiple projects, maintain professional image"
+      }
+    ],
+    "Metric": [
+      {
+        "metric_id": "MET-001",
+        "name": "Monthly Active Users",
+        "metric_type": "north_star",
+        "current_value": 125000.0,
+        "target_value": 150000.0,
+        "unit": "users"
+      },
+      {
+        "metric_id": "MET-002",
+        "name": "Daily Session Duration",
+        "metric_type": "engagement",
+        "current_value": 18.5,
+        "target_value": 22.0,
+        "unit": "minutes"
+      },
+      {
+        "metric_id": "MET-003",
+        "name": "30-Day User Retention",
+        "metric_type": "retention",
+        "current_value": 0.68,
+        "target_value": 0.75,
+        "unit": "percentage"
+      },
+      {
+        "metric_id": "MET-004",
+        "name": "Monthly Recurring Revenue",
+        "metric_type": "revenue",
+        "current_value": 2450000.0,
+        "target_value": 3000000.0,
+        "unit": "USD"
+      },
+      {
+        "metric_id": "MET-005",
+        "name": "Trial to Paid Conversion",
+        "metric_type": "conversion",
+        "current_value": 0.15,
+        "target_value": 0.2,
+        "unit": "percentage"
+      },
+      {
+        "metric_id": "MET-006",
+        "name": "Net Promoter Score",
+        "metric_type": "satisfaction",
+        "current_value": 42.0,
+        "target_value": 50.0,
+        "unit": "score"
+      },
+      {
+        "metric_id": "MET-007",
+        "name": "Feature Adoption Rate",
+        "metric_type": "engagement",
+        "current_value": 0.34,
+        "target_value": 0.45,
+        "unit": "percentage"
+      },
+      {
+        "metric_id": "MET-008",
+        "name": "Customer Acquisition Cost",
+        "metric_type": "revenue",
+        "current_value": 185.0,
+        "target_value": 150.0,
+        "unit": "USD"
+      },
+      {
+        "metric_id": "MET-009",
+        "name": "Page Load Time",
+        "metric_type": "engagement",
+        "current_value": 2.8,
+        "target_value": 2.0,
+        "unit": "seconds"
+      },
+      {
+        "metric_id": "MET-010",
+        "name": "Customer Satisfaction Score",
+        "metric_type": "satisfaction",
+        "current_value": 4.2,
+        "target_value": 4.5,
+        "unit": "rating_5_scale"
+      }
+    ],
+    "Release": [
+      {
+        "release_id": "REL-2024-001",
+        "name": "Winter Security Update",
+        "version": "3.2.0",
+        "release_date": "2024-01-15",
+        "release_type": "major",
+        "status": "released"
+      },
+      {
+        "release_id": "REL-2024-002",
+        "name": "Mobile Performance Patch",
+        "version": "3.2.1",
+        "release_date": "2024-01-28",
+        "release_type": "patch",
+        "status": "released"
+      },
+      {
+        "release_id": "REL-2024-003",
+        "name": "API Enhancement Release",
+        "version": "3.3.0",
+        "release_date": "2024-02-20",
+        "release_type": "minor",
+        "status": "released"
+      },
+      {
+        "release_id": "REL-2024-004",
+        "name": "Critical Security Hotfix",
+        "version": "3.3.1",
+        "release_date": "2024-02-25",
+        "release_type": "hotfix",
+        "status": "released"
+      },
+      {
+        "release_id": "REL-2024-005",
+        "name": "Spring Feature Pack",
+        "version": "3.4.0",
+        "release_date": "2024-03-15",
+        "release_type": "major",
+        "status": "development"
+      },
+      {
+        "release_id": "REL-2024-006",
+        "name": "Analytics Dashboard Beta",
+        "version": "3.4.0-beta.1",
+        "release_date": "2024-03-01",
+        "release_type": "beta",
+        "status": "staging"
+      },
+      {
+        "release_id": "REL-2024-007",
+        "name": "Enterprise Features Update",
+        "version": "3.5.0",
+        "release_date": "2024-04-10",
+        "release_type": "major",
+        "status": "planning"
+      },
+      {
+        "release_id": "REL-2024-008",
+        "name": "UI Refresh Release",
+        "version": "3.6.0",
+        "release_date": "2024-05-15",
+        "release_type": "major",
+        "status": "planning"
+      }
+    ],
+    "Feedback": [
+      {
+        "feedback_id": "FB-2024-001",
+        "title": "Search functionality needs improvement",
+        "feedback_type": "feature_request",
+        "source": "interview",
+        "sentiment": "neutral",
+        "date": "2024-01-12T14:30:00Z",
+        "verbatim": "The current search doesn't find what I'm looking for. I need better filtering options and the ability to save searches.",
+        "name": "Search functionality needs improvement"
+      },
+      {
+        "feedback_id": "FB-2024-002",
+        "title": "Mobile app crashes frequently",
+        "feedback_type": "bug_report",
+        "source": "app_review",
+        "sentiment": "negative",
+        "date": "2024-01-18T09:15:00Z",
+        "verbatim": "App keeps crashing when I try to upload files. Very frustrating. Please fix this ASAP.",
+        "name": "Mobile app crashes frequently"
+      },
+      {
+        "feedback_id": "FB-2024-003",
+        "title": "Love the new dashboard design",
+        "feedback_type": "praise",
+        "source": "survey",
+        "sentiment": "positive",
+        "date": "2024-01-25T16:45:00Z",
+        "verbatim": "The new dashboard is so much cleaner and easier to navigate. Great job on the redesign!",
+        "name": "Love the new dashboard design"
+      },
+      {
+        "feedback_id": "FB-2024-004",
+        "title": "Need bulk import feature for data migration",
+        "feedback_type": "feature_request",
+        "source": "sales_call",
+        "sentiment": "neutral",
+        "date": "2024-02-03T11:00:00Z",
+        "verbatim": "Our team needs to migrate thousands of records. A bulk import feature would save us weeks of manual work.",
+        "name": "Need bulk import feature for data migration"
+      },
+      {
+        "feedback_id": "FB-2024-005",
+        "title": "SSO integration is confusing",
+        "feedback_type": "complaint",
+        "source": "support_ticket",
+        "sentiment": "negative",
+        "date": "2024-02-08T13:20:00Z",
+        "verbatim": "Setting up SSO is way too complicated. The documentation is unclear and the process takes forever.",
+        "name": "SSO integration is confusing"
+      },
+      {
+        "feedback_id": "FB-2024-006",
+        "title": "Suggest adding dark mode theme",
+        "feedback_type": "suggestion",
+        "source": "social_media",
+        "sentiment": "neutral",
+        "date": "2024-02-14T19:30:00Z",
+        "verbatim": "Would love to see a dark mode option for late-night work sessions. My eyes would thank you!",
+        "name": "Suggest adding dark mode theme"
+      },
+      {
+        "feedback_id": "FB-2024-007",
+        "title": "API documentation is excellent",
+        "feedback_type": "praise",
+        "source": "interview",
+        "sentiment": "positive",
+        "date": "2024-02-20T10:15:00Z",
+        "verbatim": "Your API docs are the best I've seen. Clear examples, good error handling documentation. Really helpful for integration.",
+        "name": "API documentation is excellent"
+      },
+      {
+        "feedback_id": "FB-2024-008",
+        "title": "Performance issues during peak hours",
+        "feedback_type": "complaint",
+        "source": "support_ticket",
+        "sentiment": "negative",
+        "date": "2024-02-28T08:45:00Z",
+        "verbatim": "The system becomes really slow during business hours. Pages take forever to load and sometimes timeout completely.",
+        "name": "Performance issues during peak hours"
+      }
+    ],
+    "Objective": [
+      {
+        "objective_id": "OBJ-2024-Q1-001",
+        "name": "Increase user engagement by 25%",
+        "quarter": "Q1 2024",
+        "status": "on_track"
+      },
+      {
+        "objective_id": "OBJ-2024-Q1-002",
+        "name": "Launch enterprise security features",
+        "quarter": "Q1 2024",
+        "status": "achieved"
+      },
+      {
+        "objective_id": "OBJ-2024-Q1-003",
+        "name": "Reduce customer churn by 15%",
+        "quarter": "Q1 2024",
+        "status": "at_risk"
+      },
+      {
+        "objective_id": "OBJ-2024-Q2-001",
+        "name": "Complete mobile app redesign",
+        "quarter": "Q2 2024",
+        "status": "on_track"
+      },
+      {
+        "objective_id": "OBJ-2024-Q2-002",
+        "name": "Achieve 95% API uptime",
+        "quarter": "Q2 2024",
+        "status": "on_track"
+      },
+      {
+        "objective_id": "OBJ-2024-Q2-003",
+        "name": "Launch AI-powered recommendations",
+        "quarter": "Q2 2024",
+        "status": "behind"
+      },
+      {
+        "objective_id": "OBJ-2024-Q3-001",
+        "name": "Expand to European markets",
+        "quarter": "Q3 2024",
+        "status": "on_track"
+      },
+      {
+        "objective_id": "OBJ-2024-Q3-002",
+        "name": "Implement advanced analytics platform",
+        "quarter": "Q3 2024",
+        "status": "on_track"
+      },
+      {
+        "objective_id": "OBJ-2023-Q4-001",
+        "name": "Migrate to cloud infrastructure",
+        "quarter": "Q4 2023",
+        "status": "achieved"
+      },
+      {
+        "objective_id": "OBJ-2023-Q4-002",
+        "name": "Achieve SOC 2 compliance certification",
+        "quarter": "Q4 2023",
+        "status": "achieved"
+      }
+    ]
+  },
+  "relationships": [
+    {
+      "type": "WORKS_FOR",
+      "source_label": "Person",
+      "source_name": "Sarah Chen",
+      "target_label": "Organization",
+      "target_name": "TechNovate Solutions"
+    },
+    {
+      "type": "WORKS_FOR",
+      "source_label": "Person",
+      "source_name": "Marcus Johnson",
+      "target_label": "Organization",
+      "target_name": "CloudFirst Technologies"
+    },
+    {
+      "type": "WORKS_FOR",
+      "source_label": "Person",
+      "source_name": "Marcus Johnson",
+      "target_label": "Organization",
+      "target_name": "DataStream Analytics"
+    },
+    {
+      "type": "WORKS_FOR",
+      "source_label": "Person",
+      "source_name": "Marcus Johnson",
+      "target_label": "Organization",
+      "target_name": "TechNovate Solutions"
+    },
+    {
+      "type": "WORKS_FOR",
+      "source_label": "Person",
+      "source_name": "Priya Patel",
+      "target_label": "Organization",
+      "target_name": "FinTech Innovations Ltd"
+    },
+    {
+      "type": "WORKS_FOR",
+      "source_label": "Person",
+      "source_name": "Priya Patel",
+      "target_label": "Organization",
+      "target_name": "DataStream Analytics"
+    },
+    {
+      "type": "WORKS_FOR",
+      "source_label": "Person",
+      "source_name": "Priya Patel",
+      "target_label": "Organization",
+      "target_name": "HealthConnect Systems"
+    },
+    {
+      "type": "WORKS_FOR",
+      "source_label": "Person",
+      "source_name": "Ahmed Al-Rashid",
+      "target_label": "Organization",
+      "target_name": "FinTech Innovations Ltd"
+    },
+    {
+      "type": "WORKS_FOR",
+      "source_label": "Person",
+      "source_name": "Ahmed Al-Rashid",
+      "target_label": "Organization",
+      "target_name": "DataStream Analytics"
+    },
+    {
+      "type": "WORKS_FOR",
+      "source_label": "Person",
+      "source_name": "Elena Rodriguez",
+      "target_label": "Organization",
+      "target_name": "HealthConnect Systems"
+    },
+    {
+      "type": "WORKS_FOR",
+      "source_label": "Person",
+      "source_name": "Elena Rodriguez",
+      "target_label": "Organization",
+      "target_name": "FinTech Innovations Ltd"
+    },
+    {
+      "type": "WORKS_FOR",
+      "source_label": "Person",
+      "source_name": "Elena Rodriguez",
+      "target_label": "Organization",
+      "target_name": "DataStream Analytics"
+    },
+    {
+      "type": "LOCATED_AT",
+      "source_label": "Organization",
+      "source_name": "TechNovate Solutions",
+      "target_label": "Location",
+      "target_name": "Singapore APAC Office"
+    },
+    {
+      "type": "LOCATED_AT",
+      "source_label": "Organization",
+      "source_name": "DataStream Analytics",
+      "target_label": "Location",
+      "target_name": "San Francisco Headquarters"
+    },
+    {
+      "type": "LOCATED_AT",
+      "source_label": "Organization",
+      "source_name": "DataStream Analytics",
+      "target_label": "Location",
+      "target_name": "Singapore APAC Office"
+    },
+    {
+      "type": "LOCATED_AT",
+      "source_label": "Organization",
+      "source_name": "DataStream Analytics",
+      "target_label": "Location",
+      "target_name": "Tel Aviv R&D Center"
+    },
+    {
+      "type": "LOCATED_AT",
+      "source_label": "Organization",
+      "source_name": "CloudFirst Technologies",
+      "target_label": "Location",
+      "target_name": "Tel Aviv R&D Center"
+    },
+    {
+      "type": "LOCATED_AT",
+      "source_label": "Organization",
+      "source_name": "CloudFirst Technologies",
+      "target_label": "Location",
+      "target_name": "Austin Development Hub"
+    },
+    {
+      "type": "LOCATED_AT",
+      "source_label": "Organization",
+      "source_name": "FinTech Innovations Ltd",
+      "target_label": "Location",
+      "target_name": "London Office"
+    },
+    {
+      "type": "LOCATED_AT",
+      "source_label": "Organization",
+      "source_name": "FinTech Innovations Ltd",
+      "target_label": "Location",
+      "target_name": "Austin Development Hub"
+    },
+    {
+      "type": "LOCATED_AT",
+      "source_label": "Organization",
+      "source_name": "FinTech Innovations Ltd",
+      "target_label": "Location",
+      "target_name": "Tel Aviv R&D Center"
+    },
+    {
+      "type": "LOCATED_AT",
+      "source_label": "Organization",
+      "source_name": "HealthConnect Systems",
+      "target_label": "Location",
+      "target_name": "London Office"
+    },
+    {
+      "type": "PARTICIPATED_IN",
+      "source_label": "Person",
+      "source_name": "Sarah Chen",
+      "target_label": "Event",
+      "target_name": "Feature Discovery Workshop"
+    },
+    {
+      "type": "PARTICIPATED_IN",
+      "source_label": "Person",
+      "source_name": "Sarah Chen",
+      "target_label": "Event",
+      "target_name": "Q1 Product Planning Workshop"
+    },
+    {
+      "type": "PARTICIPATED_IN",
+      "source_label": "Person",
+      "source_name": "Marcus Johnson",
+      "target_label": "Event",
+      "target_name": "Product Analytics Review"
+    },
+    {
+      "type": "PARTICIPATED_IN",
+      "source_label": "Person",
+      "source_name": "Marcus Johnson",
+      "target_label": "Event",
+      "target_name": "Roadmap Stakeholder Alignment"
+    },
+    {
+      "type": "PARTICIPATED_IN",
+      "source_label": "Person",
+      "source_name": "Priya Patel",
+      "target_label": "Event",
+      "target_name": "User Research Sprint - Enterprise Customers"
+    },
+    {
+      "type": "PARTICIPATED_IN",
+      "source_label": "Person",
+      "source_name": "Priya Patel",
+      "target_label": "Event",
+      "target_name": "Q1 Product Planning Workshop"
+    },
+    {
+      "type": "PARTICIPATED_IN",
+      "source_label": "Person",
+      "source_name": "Ahmed Al-Rashid",
+      "target_label": "Event",
+      "target_name": "User Research Sprint - Enterprise Customers"
+    },
+    {
+      "type": "PARTICIPATED_IN",
+      "source_label": "Person",
+      "source_name": "Elena Rodriguez",
+      "target_label": "Event",
+      "target_name": "Product Analytics Review"
+    },
+    {
+      "type": "PARTICIPATED_IN",
+      "source_label": "Person",
+      "source_name": "Elena Rodriguez",
+      "target_label": "Event",
+      "target_name": "Roadmap Stakeholder Alignment"
+    },
+    {
+      "type": "PARTICIPATED_IN",
+      "source_label": "Person",
+      "source_name": "Elena Rodriguez",
+      "target_label": "Event",
+      "target_name": "User Research Sprint - Enterprise Customers"
+    },
+    {
+      "type": "REQUESTED_BY",
+      "source_label": "Feature",
+      "source_name": "Advanced Search Filters",
+      "target_label": "UserPersona",
+      "target_name": "Marketing Manager"
+    },
+    {
+      "type": "REQUESTED_BY",
+      "source_label": "Feature",
+      "source_name": "Advanced Search Filters",
+      "target_label": "UserPersona",
+      "target_name": "Mobile-First Consumer"
+    },
+    {
+      "type": "REQUESTED_BY",
+      "source_label": "Feature",
+      "source_name": "Advanced Search Filters",
+      "target_label": "UserPersona",
+      "target_name": "Customer Support Agent"
+    },
+    {
+      "type": "REQUESTED_BY",
+      "source_label": "Feature",
+      "source_name": "Single Sign-On Integration",
+      "target_label": "UserPersona",
+      "target_name": "Mobile-First Consumer"
+    },
+    {
+      "type": "REQUESTED_BY",
+      "source_label": "Feature",
+      "source_name": "Single Sign-On Integration",
+      "target_label": "UserPersona",
+      "target_name": "Data Analyst Professional"
+    },
+    {
+      "type": "REQUESTED_BY",
+      "source_label": "Feature",
+      "source_name": "Mobile Push Notifications",
+      "target_label": "UserPersona",
+      "target_name": "Data Analyst Professional"
+    },
+    {
+      "type": "REQUESTED_BY",
+      "source_label": "Feature",
+      "source_name": "Mobile Push Notifications",
+      "target_label": "UserPersona",
+      "target_name": "Mobile-First Consumer"
+    },
+    {
+      "type": "REQUESTED_BY",
+      "source_label": "Feature",
+      "source_name": "Mobile Push Notifications",
+      "target_label": "UserPersona",
+      "target_name": "Small Business Owner"
+    },
+    {
+      "type": "REQUESTED_BY",
+      "source_label": "Feature",
+      "source_name": "Bulk Data Import Tool",
+      "target_label": "UserPersona",
+      "target_name": "Marketing Manager"
+    },
+    {
+      "type": "REQUESTED_BY",
+      "source_label": "Feature",
+      "source_name": "Bulk Data Import Tool",
+      "target_label": "UserPersona",
+      "target_name": "Freelance Consultant"
+    },
+    {
+      "type": "REQUESTED_BY",
+      "source_label": "Feature",
+      "source_name": "Bulk Data Import Tool",
+      "target_label": "UserPersona",
+      "target_name": "Compliance Officer"
+    },
+    {
+      "type": "REQUESTED_BY",
+      "source_label": "Feature",
+      "source_name": "Dark Mode Theme",
+      "target_label": "UserPersona",
+      "target_name": "Data Analyst Professional"
+    },
+    {
+      "type": "REQUESTED_BY",
+      "source_label": "Feature",
+      "source_name": "Dark Mode Theme",
+      "target_label": "UserPersona",
+      "target_name": "Small Business Owner"
+    },
+    {
+      "type": "REQUESTED_BY",
+      "source_label": "Feature",
+      "source_name": "API Rate Limiting",
+      "target_label": "UserPersona",
+      "target_name": "Mobile-First Consumer"
+    },
+    {
+      "type": "REQUESTED_BY",
+      "source_label": "Feature",
+      "source_name": "API Rate Limiting",
+      "target_label": "UserPersona",
+      "target_name": "Customer Support Agent"
+    },
+    {
+      "type": "REQUESTED_BY",
+      "source_label": "Feature",
+      "source_name": "Collaborative Commenting",
+      "target_label": "UserPersona",
+      "target_name": "Compliance Officer"
+    },
+    {
+      "type": "REQUESTED_BY",
+      "source_label": "Feature",
+      "source_name": "Advanced Analytics Widgets",
+      "target_label": "UserPersona",
+      "target_name": "Freelance Consultant"
+    },
+    {
+      "type": "REQUESTED_BY",
+      "source_label": "Feature",
+      "source_name": "Advanced Analytics Widgets",
+      "target_label": "UserPersona",
+      "target_name": "Data Analyst Professional"
+    },
+    {
+      "type": "REQUESTED_BY",
+      "source_label": "Feature",
+      "source_name": "Automated Backup System",
+      "target_label": "UserPersona",
+      "target_name": "Data Analyst Professional"
+    },
+    {
+      "type": "REQUESTED_BY",
+      "source_label": "Feature",
+      "source_name": "Automated Backup System",
+      "target_label": "UserPersona",
+      "target_name": "Enterprise IT Administrator"
+    },
+    {
+      "type": "REQUESTED_BY",
+      "source_label": "Feature",
+      "source_name": "Automated Backup System",
+      "target_label": "UserPersona",
+      "target_name": "Small Business Owner"
+    },
+    {
+      "type": "REQUESTED_BY",
+      "source_label": "Feature",
+      "source_name": "Smart Recommendations",
+      "target_label": "UserPersona",
+      "target_name": "Marketing Manager"
+    },
+    {
+      "type": "PRIORITIZED_IN",
+      "source_label": "Feature",
+      "source_name": "Advanced Search Filters",
+      "target_label": "Epic",
+      "target_name": "Multi-Tenant Architecture"
+    },
+    {
+      "type": "PRIORITIZED_IN",
+      "source_label": "Feature",
+      "source_name": "Advanced Search Filters",
+      "target_label": "Epic",
+      "target_name": "API Platform Expansion"
+    },
+    {
+      "type": "PRIORITIZED_IN",
+      "source_label": "Feature",
+      "source_name": "Advanced Search Filters",
+      "target_label": "Epic",
+      "target_name": "Infrastructure Scalability"
+    },
+    {
+      "type": "PRIORITIZED_IN",
+      "source_label": "Feature",
+      "source_name": "Single Sign-On Integration",
+      "target_label": "Epic",
+      "target_name": "Enterprise Security Enhancement"
+    },
+    {
+      "type": "PRIORITIZED_IN",
+      "source_label": "Feature",
+      "source_name": "Single Sign-On Integration",
+      "target_label": "Epic",
+      "target_name": "Marketplace Integration"
+    },
+    {
+      "type": "PRIORITIZED_IN",
+      "source_label": "Feature",
+      "source_name": "Single Sign-On Integration",
+      "target_label": "Epic",
+      "target_name": "Infrastructure Scalability"
+    },
+    {
+      "type": "PRIORITIZED_IN",
+      "source_label": "Feature",
+      "source_name": "Mobile Push Notifications",
+      "target_label": "Epic",
+      "target_name": "Multi-Tenant Architecture"
+    },
+    {
+      "type": "PRIORITIZED_IN",
+      "source_label": "Feature",
+      "source_name": "Mobile Push Notifications",
+      "target_label": "Epic",
+      "target_name": "API Platform Expansion"
+    },
+    {
+      "type": "PRIORITIZED_IN",
+      "source_label": "Feature",
+      "source_name": "Bulk Data Import Tool",
+      "target_label": "Epic",
+      "target_name": "AI-Powered Analytics"
+    },
+    {
+      "type": "PRIORITIZED_IN",
+      "source_label": "Feature",
+      "source_name": "Bulk Data Import Tool",
+      "target_label": "Epic",
+      "target_name": "Customer Success Tools"
+    },
+    {
+      "type": "PRIORITIZED_IN",
+      "source_label": "Feature",
+      "source_name": "Dark Mode Theme",
+      "target_label": "Epic",
+      "target_name": "Customer Success Tools"
+    },
+    {
+      "type": "PRIORITIZED_IN",
+      "source_label": "Feature",
+      "source_name": "Dark Mode Theme",
+      "target_label": "Epic",
+      "target_name": "Mobile Experience Optimization"
+    },
+    {
+      "type": "PRIORITIZED_IN",
+      "source_label": "Feature",
+      "source_name": "API Rate Limiting",
+      "target_label": "Epic",
+      "target_name": "Infrastructure Scalability"
+    },
+    {
+      "type": "PRIORITIZED_IN",
+      "source_label": "Feature",
+      "source_name": "API Rate Limiting",
+      "target_label": "Epic",
+      "target_name": "API Platform Expansion"
+    },
+    {
+      "type": "PRIORITIZED_IN",
+      "source_label": "Feature",
+      "source_name": "Collaborative Commenting",
+      "target_label": "Epic",
+      "target_name": "API Platform Expansion"
+    },
+    {
+      "type": "PRIORITIZED_IN",
+      "source_label": "Feature",
+      "source_name": "Collaborative Commenting",
+      "target_label": "Epic",
+      "target_name": "Infrastructure Scalability"
+    },
+    {
+      "type": "PRIORITIZED_IN",
+      "source_label": "Feature",
+      "source_name": "Collaborative Commenting",
+      "target_label": "Epic",
+      "target_name": "Customer Success Tools"
+    },
+    {
+      "type": "PRIORITIZED_IN",
+      "source_label": "Feature",
+      "source_name": "Advanced Analytics Widgets",
+      "target_label": "Epic",
+      "target_name": "API Platform Expansion"
+    },
+    {
+      "type": "PRIORITIZED_IN",
+      "source_label": "Feature",
+      "source_name": "Advanced Analytics Widgets",
+      "target_label": "Epic",
+      "target_name": "Customer Success Tools"
+    },
+    {
+      "type": "PRIORITIZED_IN",
+      "source_label": "Feature",
+      "source_name": "Automated Backup System",
+      "target_label": "Epic",
+      "target_name": "Mobile Experience Optimization"
+    },
+    {
+      "type": "PRIORITIZED_IN",
+      "source_label": "Feature",
+      "source_name": "Automated Backup System",
+      "target_label": "Epic",
+      "target_name": "Marketplace Integration"
+    },
+    {
+      "type": "PRIORITIZED_IN",
+      "source_label": "Feature",
+      "source_name": "Automated Backup System",
+      "target_label": "Epic",
+      "target_name": "Infrastructure Scalability"
+    },
+    {
+      "type": "PRIORITIZED_IN",
+      "source_label": "Feature",
+      "source_name": "Smart Recommendations",
+      "target_label": "Epic",
+      "target_name": "Mobile Experience Optimization"
+    },
+    {
+      "type": "PRIORITIZED_IN",
+      "source_label": "Feature",
+      "source_name": "Smart Recommendations",
+      "target_label": "Epic",
+      "target_name": "Marketplace Integration"
+    },
+    {
+      "type": "PRIORITIZED_IN",
+      "source_label": "Feature",
+      "source_name": "Smart Recommendations",
+      "target_label": "Epic",
+      "target_name": "Multi-Tenant Architecture"
+    },
+    {
+      "type": "MEASURED_BY",
+      "source_label": "Feature",
+      "source_name": "Advanced Search Filters",
+      "target_label": "Metric",
+      "target_name": "Monthly Active Users"
+    },
+    {
+      "type": "MEASURED_BY",
+      "source_label": "Feature",
+      "source_name": "Single Sign-On Integration",
+      "target_label": "Metric",
+      "target_name": "Customer Satisfaction Score"
+    },
+    {
+      "type": "MEASURED_BY",
+      "source_label": "Feature",
+      "source_name": "Single Sign-On Integration",
+      "target_label": "Metric",
+      "target_name": "30-Day User Retention"
+    },
+    {
+      "type": "MEASURED_BY",
+      "source_label": "Feature",
+      "source_name": "Single Sign-On Integration",
+      "target_label": "Metric",
+      "target_name": "Customer Acquisition Cost"
+    },
+    {
+      "type": "MEASURED_BY",
+      "source_label": "Feature",
+      "source_name": "Mobile Push Notifications",
+      "target_label": "Metric",
+      "target_name": "Customer Acquisition Cost"
+    },
+    {
+      "type": "MEASURED_BY",
+      "source_label": "Feature",
+      "source_name": "Bulk Data Import Tool",
+      "target_label": "Metric",
+      "target_name": "Daily Session Duration"
+    },
+    {
+      "type": "MEASURED_BY",
+      "source_label": "Feature",
+      "source_name": "Bulk Data Import Tool",
+      "target_label": "Metric",
+      "target_name": "30-Day User Retention"
+    },
+    {
+      "type": "MEASURED_BY",
+      "source_label": "Feature",
+      "source_name": "Bulk Data Import Tool",
+      "target_label": "Metric",
+      "target_name": "Feature Adoption Rate"
+    },
+    {
+      "type": "MEASURED_BY",
+      "source_label": "Feature",
+      "source_name": "Dark Mode Theme",
+      "target_label": "Metric",
+      "target_name": "Daily Session Duration"
+    },
+    {
+      "type": "MEASURED_BY",
+      "source_label": "Feature",
+      "source_name": "Dark Mode Theme",
+      "target_label": "Metric",
+      "target_name": "Net Promoter Score"
+    },
+    {
+      "type": "MEASURED_BY",
+      "source_label": "Feature",
+      "source_name": "API Rate Limiting",
+      "target_label": "Metric",
+      "target_name": "Net Promoter Score"
+    },
+    {
+      "type": "MEASURED_BY",
+      "source_label": "Feature",
+      "source_name": "API Rate Limiting",
+      "target_label": "Metric",
+      "target_name": "Trial to Paid Conversion"
+    },
+    {
+      "type": "MEASURED_BY",
+      "source_label": "Feature",
+      "source_name": "Collaborative Commenting",
+      "target_label": "Metric",
+      "target_name": "Monthly Recurring Revenue"
+    },
+    {
+      "type": "MEASURED_BY",
+      "source_label": "Feature",
+      "source_name": "Collaborative Commenting",
+      "target_label": "Metric",
+      "target_name": "Page Load Time"
+    },
+    {
+      "type": "MEASURED_BY",
+      "source_label": "Feature",
+      "source_name": "Collaborative Commenting",
+      "target_label": "Metric",
+      "target_name": "Customer Satisfaction Score"
+    },
+    {
+      "type": "MEASURED_BY",
+      "source_label": "Feature",
+      "source_name": "Advanced Analytics Widgets",
+      "target_label": "Metric",
+      "target_name": "Net Promoter Score"
+    },
+    {
+      "type": "MEASURED_BY",
+      "source_label": "Feature",
+      "source_name": "Automated Backup System",
+      "target_label": "Metric",
+      "target_name": "Feature Adoption Rate"
+    },
+    {
+      "type": "MEASURED_BY",
+      "source_label": "Feature",
+      "source_name": "Automated Backup System",
+      "target_label": "Metric",
+      "target_name": "Page Load Time"
+    },
+    {
+      "type": "MEASURED_BY",
+      "source_label": "Feature",
+      "source_name": "Automated Backup System",
+      "target_label": "Metric",
+      "target_name": "30-Day User Retention"
+    },
+    {
+      "type": "MEASURED_BY",
+      "source_label": "Feature",
+      "source_name": "Smart Recommendations",
+      "target_label": "Metric",
+      "target_name": "Trial to Paid Conversion"
+    },
+    {
+      "type": "MEASURED_BY",
+      "source_label": "Feature",
+      "source_name": "Smart Recommendations",
+      "target_label": "Metric",
+      "target_name": "Feature Adoption Rate"
+    },
+    {
+      "type": "MEASURED_BY",
+      "source_label": "Feature",
+      "source_name": "Smart Recommendations",
+      "target_label": "Metric",
+      "target_name": "30-Day User Retention"
+    },
+    {
+      "type": "PART_OF_RELEASE",
+      "source_label": "Feature",
+      "source_name": "Advanced Search Filters",
+      "target_label": "Release",
+      "target_name": "Spring Feature Pack"
+    },
+    {
+      "type": "PART_OF_RELEASE",
+      "source_label": "Feature",
+      "source_name": "Advanced Search Filters",
+      "target_label": "Release",
+      "target_name": "API Enhancement Release"
+    },
+    {
+      "type": "PART_OF_RELEASE",
+      "source_label": "Feature",
+      "source_name": "Advanced Search Filters",
+      "target_label": "Release",
+      "target_name": "Winter Security Update"
+    },
+    {
+      "type": "PART_OF_RELEASE",
+      "source_label": "Feature",
+      "source_name": "Single Sign-On Integration",
+      "target_label": "Release",
+      "target_name": "Winter Security Update"
+    },
+    {
+      "type": "PART_OF_RELEASE",
+      "source_label": "Feature",
+      "source_name": "Single Sign-On Integration",
+      "target_label": "Release",
+      "target_name": "Critical Security Hotfix"
+    },
+    {
+      "type": "PART_OF_RELEASE",
+      "source_label": "Feature",
+      "source_name": "Single Sign-On Integration",
+      "target_label": "Release",
+      "target_name": "UI Refresh Release"
+    },
+    {
+      "type": "PART_OF_RELEASE",
+      "source_label": "Feature",
+      "source_name": "Mobile Push Notifications",
+      "target_label": "Release",
+      "target_name": "Winter Security Update"
+    },
+    {
+      "type": "PART_OF_RELEASE",
+      "source_label": "Feature",
+      "source_name": "Mobile Push Notifications",
+      "target_label": "Release",
+      "target_name": "Analytics Dashboard Beta"
+    },
+    {
+      "type": "PART_OF_RELEASE",
+      "source_label": "Feature",
+      "source_name": "Mobile Push Notifications",
+      "target_label": "Release",
+      "target_name": "UI Refresh Release"
+    },
+    {
+      "type": "PART_OF_RELEASE",
+      "source_label": "Feature",
+      "source_name": "Bulk Data Import Tool",
+      "target_label": "Release",
+      "target_name": "UI Refresh Release"
+    },
+    {
+      "type": "PART_OF_RELEASE",
+      "source_label": "Feature",
+      "source_name": "Dark Mode Theme",
+      "target_label": "Release",
+      "target_name": "UI Refresh Release"
+    },
+    {
+      "type": "PART_OF_RELEASE",
+      "source_label": "Feature",
+      "source_name": "Dark Mode Theme",
+      "target_label": "Release",
+      "target_name": "API Enhancement Release"
+    },
+    {
+      "type": "PART_OF_RELEASE",
+      "source_label": "Feature",
+      "source_name": "API Rate Limiting",
+      "target_label": "Release",
+      "target_name": "Critical Security Hotfix"
+    },
+    {
+      "type": "PART_OF_RELEASE",
+      "source_label": "Feature",
+      "source_name": "API Rate Limiting",
+      "target_label": "Release",
+      "target_name": "Analytics Dashboard Beta"
+    },
+    {
+      "type": "PART_OF_RELEASE",
+      "source_label": "Feature",
+      "source_name": "API Rate Limiting",
+      "target_label": "Release",
+      "target_name": "Spring Feature Pack"
+    },
+    {
+      "type": "PART_OF_RELEASE",
+      "source_label": "Feature",
+      "source_name": "Collaborative Commenting",
+      "target_label": "Release",
+      "target_name": "Mobile Performance Patch"
+    },
+    {
+      "type": "PART_OF_RELEASE",
+      "source_label": "Feature",
+      "source_name": "Collaborative Commenting",
+      "target_label": "Release",
+      "target_name": "Spring Feature Pack"
+    },
+    {
+      "type": "PART_OF_RELEASE",
+      "source_label": "Feature",
+      "source_name": "Advanced Analytics Widgets",
+      "target_label": "Release",
+      "target_name": "Mobile Performance Patch"
+    },
+    {
+      "type": "PART_OF_RELEASE",
+      "source_label": "Feature",
+      "source_name": "Automated Backup System",
+      "target_label": "Release",
+      "target_name": "UI Refresh Release"
+    },
+    {
+      "type": "PART_OF_RELEASE",
+      "source_label": "Feature",
+      "source_name": "Automated Backup System",
+      "target_label": "Release",
+      "target_name": "Spring Feature Pack"
+    },
+    {
+      "type": "PART_OF_RELEASE",
+      "source_label": "Feature",
+      "source_name": "Smart Recommendations",
+      "target_label": "Release",
+      "target_name": "Critical Security Hotfix"
+    },
+    {
+      "type": "PART_OF_RELEASE",
+      "source_label": "Feature",
+      "source_name": "Smart Recommendations",
+      "target_label": "Release",
+      "target_name": "Analytics Dashboard Beta"
+    },
+    {
+      "type": "PART_OF_RELEASE",
+      "source_label": "Feature",
+      "source_name": "Smart Recommendations",
+      "target_label": "Release",
+      "target_name": "Winter Security Update"
+    },
+    {
+      "type": "DEPENDS_ON",
+      "source_label": "Feature",
+      "source_name": "Advanced Search Filters",
+      "target_label": "Feature",
+      "target_name": "Automated Backup System"
+    },
+    {
+      "type": "DEPENDS_ON",
+      "source_label": "Feature",
+      "source_name": "Single Sign-On Integration",
+      "target_label": "Feature",
+      "target_name": "Advanced Analytics Widgets"
+    },
+    {
+      "type": "DEPENDS_ON",
+      "source_label": "Feature",
+      "source_name": "Single Sign-On Integration",
+      "target_label": "Feature",
+      "target_name": "Bulk Data Import Tool"
+    },
+    {
+      "type": "DEPENDS_ON",
+      "source_label": "Feature",
+      "source_name": "Mobile Push Notifications",
+      "target_label": "Feature",
+      "target_name": "Dark Mode Theme"
+    },
+    {
+      "type": "DEPENDS_ON",
+      "source_label": "Feature",
+      "source_name": "Bulk Data Import Tool",
+      "target_label": "Feature",
+      "target_name": "Smart Recommendations"
+    },
+    {
+      "type": "DEPENDS_ON",
+      "source_label": "Feature",
+      "source_name": "Bulk Data Import Tool",
+      "target_label": "Feature",
+      "target_name": "Advanced Search Filters"
+    },
+    {
+      "type": "DEPENDS_ON",
+      "source_label": "Feature",
+      "source_name": "Bulk Data Import Tool",
+      "target_label": "Feature",
+      "target_name": "Mobile Push Notifications"
+    },
+    {
+      "type": "DEPENDS_ON",
+      "source_label": "Feature",
+      "source_name": "Dark Mode Theme",
+      "target_label": "Feature",
+      "target_name": "Bulk Data Import Tool"
+    },
+    {
+      "type": "DEPENDS_ON",
+      "source_label": "Feature",
+      "source_name": "Dark Mode Theme",
+      "target_label": "Feature",
+      "target_name": "Single Sign-On Integration"
+    },
+    {
+      "type": "DEPENDS_ON",
+      "source_label": "Feature",
+      "source_name": "Dark Mode Theme",
+      "target_label": "Feature",
+      "target_name": "Advanced Analytics Widgets"
+    },
+    {
+      "type": "DEPENDS_ON",
+      "source_label": "Feature",
+      "source_name": "API Rate Limiting",
+      "target_label": "Feature",
+      "target_name": "Advanced Search Filters"
+    },
+    {
+      "type": "DEPENDS_ON",
+      "source_label": "Feature",
+      "source_name": "API Rate Limiting",
+      "target_label": "Feature",
+      "target_name": "Advanced Analytics Widgets"
+    },
+    {
+      "type": "DEPENDS_ON",
+      "source_label": "Feature",
+      "source_name": "Collaborative Commenting",
+      "target_label": "Feature",
+      "target_name": "Dark Mode Theme"
+    },
+    {
+      "type": "DEPENDS_ON",
+      "source_label": "Feature",
+      "source_name": "Collaborative Commenting",
+      "target_label": "Feature",
+      "target_name": "Advanced Analytics Widgets"
+    },
+    {
+      "type": "DEPENDS_ON",
+      "source_label": "Feature",
+      "source_name": "Collaborative Commenting",
+      "target_label": "Feature",
+      "target_name": "API Rate Limiting"
+    },
+    {
+      "type": "DEPENDS_ON",
+      "source_label": "Feature",
+      "source_name": "Advanced Analytics Widgets",
+      "target_label": "Feature",
+      "target_name": "API Rate Limiting"
+    },
+    {
+      "type": "DEPENDS_ON",
+      "source_label": "Feature",
+      "source_name": "Automated Backup System",
+      "target_label": "Feature",
+      "target_name": "Smart Recommendations"
+    },
+    {
+      "type": "DEPENDS_ON",
+      "source_label": "Feature",
+      "source_name": "Automated Backup System",
+      "target_label": "Feature",
+      "target_name": "Collaborative Commenting"
+    },
+    {
+      "type": "DEPENDS_ON",
+      "source_label": "Feature",
+      "source_name": "Smart Recommendations",
+      "target_label": "Feature",
+      "target_name": "Collaborative Commenting"
+    },
+    {
+      "type": "DEPENDS_ON",
+      "source_label": "Feature",
+      "source_name": "Smart Recommendations",
+      "target_label": "Feature",
+      "target_name": "Advanced Search Filters"
+    },
+    {
+      "type": "DEPENDS_ON",
+      "source_label": "Feature",
+      "source_name": "Smart Recommendations",
+      "target_label": "Feature",
+      "target_name": "Mobile Push Notifications"
+    },
+    {
+      "type": "ADDRESSES",
+      "source_label": "Feature",
+      "source_name": "Advanced Search Filters",
+      "target_label": "Feedback",
+      "target_name": "Suggest adding dark mode theme"
+    },
+    {
+      "type": "ADDRESSES",
+      "source_label": "Feature",
+      "source_name": "Advanced Search Filters",
+      "target_label": "Feedback",
+      "target_name": "API documentation is excellent"
+    },
+    {
+      "type": "ADDRESSES",
+      "source_label": "Feature",
+      "source_name": "Single Sign-On Integration",
+      "target_label": "Feedback",
+      "target_name": "Suggest adding dark mode theme"
+    },
+    {
+      "type": "ADDRESSES",
+      "source_label": "Feature",
+      "source_name": "Single Sign-On Integration",
+      "target_label": "Feedback",
+      "target_name": "Need bulk import feature for data migration"
+    },
+    {
+      "type": "ADDRESSES",
+      "source_label": "Feature",
+      "source_name": "Single Sign-On Integration",
+      "target_label": "Feedback",
+      "target_name": "Search functionality needs improvement"
+    },
+    {
+      "type": "ADDRESSES",
+      "source_label": "Feature",
+      "source_name": "Mobile Push Notifications",
+      "target_label": "Feedback",
+      "target_name": "Love the new dashboard design"
+    },
+    {
+      "type": "ADDRESSES",
+      "source_label": "Feature",
+      "source_name": "Mobile Push Notifications",
+      "target_label": "Feedback",
+      "target_name": "API documentation is excellent"
+    },
+    {
+      "type": "ADDRESSES",
+      "source_label": "Feature",
+      "source_name": "Bulk Data Import Tool",
+      "target_label": "Feedback",
+      "target_name": "Love the new dashboard design"
+    },
+    {
+      "type": "ADDRESSES",
+      "source_label": "Feature",
+      "source_name": "Bulk Data Import Tool",
+      "target_label": "Feedback",
+      "target_name": "Suggest adding dark mode theme"
+    },
+    {
+      "type": "ADDRESSES",
+      "source_label": "Feature",
+      "source_name": "Bulk Data Import Tool",
+      "target_label": "Feedback",
+      "target_name": "Performance issues during peak hours"
+    },
+    {
+      "type": "ADDRESSES",
+      "source_label": "Feature",
+      "source_name": "Dark Mode Theme",
+      "target_label": "Feedback",
+      "target_name": "SSO integration is confusing"
+    },
+    {
+      "type": "ADDRESSES",
+      "source_label": "Feature",
+      "source_name": "Dark Mode Theme",
+      "target_label": "Feedback",
+      "target_name": "Suggest adding dark mode theme"
+    },
+    {
+      "type": "ADDRESSES",
+      "source_label": "Feature",
+      "source_name": "Dark Mode Theme",
+      "target_label": "Feedback",
+      "target_name": "Search functionality needs improvement"
+    },
+    {
+      "type": "ADDRESSES",
+      "source_label": "Feature",
+      "source_name": "API Rate Limiting",
+      "target_label": "Feedback",
+      "target_name": "Performance issues during peak hours"
+    },
+    {
+      "type": "ADDRESSES",
+      "source_label": "Feature",
+      "source_name": "Collaborative Commenting",
+      "target_label": "Feedback",
+      "target_name": "SSO integration is confusing"
+    },
+    {
+      "type": "ADDRESSES",
+      "source_label": "Feature",
+      "source_name": "Collaborative Commenting",
+      "target_label": "Feedback",
+      "target_name": "Need bulk import feature for data migration"
+    },
+    {
+      "type": "ADDRESSES",
+      "source_label": "Feature",
+      "source_name": "Collaborative Commenting",
+      "target_label": "Feedback",
+      "target_name": "API documentation is excellent"
+    },
+    {
+      "type": "ADDRESSES",
+      "source_label": "Feature",
+      "source_name": "Advanced Analytics Widgets",
+      "target_label": "Feedback",
+      "target_name": "Performance issues during peak hours"
+    },
+    {
+      "type": "ADDRESSES",
+      "source_label": "Feature",
+      "source_name": "Advanced Analytics Widgets",
+      "target_label": "Feedback",
+      "target_name": "Suggest adding dark mode theme"
+    },
+    {
+      "type": "ADDRESSES",
+      "source_label": "Feature",
+      "source_name": "Advanced Analytics Widgets",
+      "target_label": "Feedback",
+      "target_name": "SSO integration is confusing"
+    },
+    {
+      "type": "ADDRESSES",
+      "source_label": "Feature",
+      "source_name": "Automated Backup System",
+      "target_label": "Feedback",
+      "target_name": "Mobile app crashes frequently"
+    },
+    {
+      "type": "ADDRESSES",
+      "source_label": "Feature",
+      "source_name": "Automated Backup System",
+      "target_label": "Feedback",
+      "target_name": "Suggest adding dark mode theme"
+    },
+    {
+      "type": "ADDRESSES",
+      "source_label": "Feature",
+      "source_name": "Smart Recommendations",
+      "target_label": "Feedback",
+      "target_name": "API documentation is excellent"
+    },
+    {
+      "type": "CONTRIBUTES_TO",
+      "source_label": "Epic",
+      "source_name": "Enterprise Security Enhancement",
+      "target_label": "Objective",
+      "target_name": "Achieve 95% API uptime"
+    },
+    {
+      "type": "CONTRIBUTES_TO",
+      "source_label": "Epic",
+      "source_name": "Enterprise Security Enhancement",
+      "target_label": "Objective",
+      "target_name": "Launch enterprise security features"
+    },
+    {
+      "type": "CONTRIBUTES_TO",
+      "source_label": "Epic",
+      "source_name": "Enterprise Security Enhancement",
+      "target_label": "Objective",
+      "target_name": "Complete mobile app redesign"
+    },
+    {
+      "type": "CONTRIBUTES_TO",
+      "source_label": "Epic",
+      "source_name": "Mobile Experience Optimization",
+      "target_label": "Objective",
+      "target_name": "Migrate to cloud infrastructure"
+    },
+    {
+      "type": "CONTRIBUTES_TO",
+      "source_label": "Epic",
+      "source_name": "Mobile Experience Optimization",
+      "target_label": "Objective",
+      "target_name": "Complete mobile app redesign"
+    },
+    {
+      "type": "CONTRIBUTES_TO",
+      "source_label": "Epic",
+      "source_name": "AI-Powered Analytics",
+      "target_label": "Objective",
+      "target_name": "Increase user engagement by 25%"
+    },
+    {
+      "type": "CONTRIBUTES_TO",
+      "source_label": "Epic",
+      "source_name": "API Platform Expansion",
+      "target_label": "Objective",
+      "target_name": "Launch AI-powered recommendations"
+    },
+    {
+      "type": "CONTRIBUTES_TO",
+      "source_label": "Epic",
+      "source_name": "API Platform Expansion",
+      "target_label": "Objective",
+      "target_name": "Migrate to cloud infrastructure"
+    },
+    {
+      "type": "CONTRIBUTES_TO",
+      "source_label": "Epic",
+      "source_name": "Premium Tier Features",
+      "target_label": "Objective",
+      "target_name": "Migrate to cloud infrastructure"
+    },
+    {
+      "type": "CONTRIBUTES_TO",
+      "source_label": "Epic",
+      "source_name": "Infrastructure Scalability",
+      "target_label": "Objective",
+      "target_name": "Implement advanced analytics platform"
+    },
+    {
+      "type": "CONTRIBUTES_TO",
+      "source_label": "Epic",
+      "source_name": "User Onboarding Redesign",
+      "target_label": "Objective",
+      "target_name": "Achieve 95% API uptime"
+    },
+    {
+      "type": "CONTRIBUTES_TO",
+      "source_label": "Epic",
+      "source_name": "User Onboarding Redesign",
+      "target_label": "Objective",
+      "target_name": "Expand to European markets"
+    },
+    {
+      "type": "CONTRIBUTES_TO",
+      "source_label": "Epic",
+      "source_name": "User Onboarding Redesign",
+      "target_label": "Objective",
+      "target_name": "Reduce customer churn by 15%"
+    },
+    {
+      "type": "CONTRIBUTES_TO",
+      "source_label": "Epic",
+      "source_name": "Multi-Tenant Architecture",
+      "target_label": "Objective",
+      "target_name": "Achieve SOC 2 compliance certification"
+    },
+    {
+      "type": "CONTRIBUTES_TO",
+      "source_label": "Epic",
+      "source_name": "Multi-Tenant Architecture",
+      "target_label": "Objective",
+      "target_name": "Reduce customer churn by 15%"
+    },
+    {
+      "type": "CONTRIBUTES_TO",
+      "source_label": "Epic",
+      "source_name": "Customer Success Tools",
+      "target_label": "Objective",
+      "target_name": "Migrate to cloud infrastructure"
+    },
+    {
+      "type": "CONTRIBUTES_TO",
+      "source_label": "Epic",
+      "source_name": "Customer Success Tools",
+      "target_label": "Objective",
+      "target_name": "Launch AI-powered recommendations"
+    },
+    {
+      "type": "CONTRIBUTES_TO",
+      "source_label": "Epic",
+      "source_name": "Marketplace Integration",
+      "target_label": "Objective",
+      "target_name": "Increase user engagement by 25%"
+    },
+    {
+      "type": "CONTRIBUTES_TO",
+      "source_label": "Epic",
+      "source_name": "Marketplace Integration",
+      "target_label": "Objective",
+      "target_name": "Achieve 95% API uptime"
+    },
+    {
+      "type": "SUBMITTED_BY",
+      "source_label": "Feedback",
+      "source_name": "Search functionality needs improvement",
+      "target_label": "UserPersona",
+      "target_name": "Small Business Owner"
+    },
+    {
+      "type": "SUBMITTED_BY",
+      "source_label": "Feedback",
+      "source_name": "Search functionality needs improvement",
+      "target_label": "UserPersona",
+      "target_name": "API Developer"
+    },
+    {
+      "type": "SUBMITTED_BY",
+      "source_label": "Feedback",
+      "source_name": "Search functionality needs improvement",
+      "target_label": "UserPersona",
+      "target_name": "Enterprise IT Administrator"
+    },
+    {
+      "type": "SUBMITTED_BY",
+      "source_label": "Feedback",
+      "source_name": "Mobile app crashes frequently",
+      "target_label": "UserPersona",
+      "target_name": "Enterprise Project Manager"
+    },
+    {
+      "type": "SUBMITTED_BY",
+      "source_label": "Feedback",
+      "source_name": "Mobile app crashes frequently",
+      "target_label": "UserPersona",
+      "target_name": "Enterprise IT Administrator"
+    },
+    {
+      "type": "SUBMITTED_BY",
+      "source_label": "Feedback",
+      "source_name": "Love the new dashboard design",
+      "target_label": "UserPersona",
+      "target_name": "Small Business Owner"
+    },
+    {
+      "type": "SUBMITTED_BY",
+      "source_label": "Feedback",
+      "source_name": "Need bulk import feature for data migration",
+      "target_label": "UserPersona",
+      "target_name": "Mobile-First Consumer"
+    },
+    {
+      "type": "SUBMITTED_BY",
+      "source_label": "Feedback",
+      "source_name": "Need bulk import feature for data migration",
+      "target_label": "UserPersona",
+      "target_name": "API Developer"
+    },
+    {
+      "type": "SUBMITTED_BY",
+      "source_label": "Feedback",
+      "source_name": "Need bulk import feature for data migration",
+      "target_label": "UserPersona",
+      "target_name": "Marketing Manager"
+    },
+    {
+      "type": "SUBMITTED_BY",
+      "source_label": "Feedback",
+      "source_name": "SSO integration is confusing",
+      "target_label": "UserPersona",
+      "target_name": "Small Business Owner"
+    },
+    {
+      "type": "SUBMITTED_BY",
+      "source_label": "Feedback",
+      "source_name": "SSO integration is confusing",
+      "target_label": "UserPersona",
+      "target_name": "Customer Support Agent"
+    },
+    {
+      "type": "SUBMITTED_BY",
+      "source_label": "Feedback",
+      "source_name": "SSO integration is confusing",
+      "target_label": "UserPersona",
+      "target_name": "Mobile-First Consumer"
+    },
+    {
+      "type": "SUBMITTED_BY",
+      "source_label": "Feedback",
+      "source_name": "Suggest adding dark mode theme",
+      "target_label": "UserPersona",
+      "target_name": "Customer Support Agent"
+    },
+    {
+      "type": "SUBMITTED_BY",
+      "source_label": "Feedback",
+      "source_name": "API documentation is excellent",
+      "target_label": "UserPersona",
+      "target_name": "Small Business Owner"
+    },
+    {
+      "type": "SUBMITTED_BY",
+      "source_label": "Feedback",
+      "source_name": "API documentation is excellent",
+      "target_label": "UserPersona",
+      "target_name": "Customer Support Agent"
+    },
+    {
+      "type": "SUBMITTED_BY",
+      "source_label": "Feedback",
+      "source_name": "Performance issues during peak hours",
+      "target_label": "UserPersona",
+      "target_name": "Customer Support Agent"
+    },
+    {
+      "type": "SUBMITTED_BY",
+      "source_label": "Feedback",
+      "source_name": "Performance issues during peak hours",
+      "target_label": "UserPersona",
+      "target_name": "Enterprise IT Administrator"
+    }
+  ],
+  "documents": [
+    {
+      "template_id": "prd",
+      "template_name": "Product Requirements Document",
+      "title": "PRD: Advanced Search Filters - Enterprise Security Enhancement",
+      "content": "PRODUCT REQUIREMENTS DOCUMENT\n\nFeature: Advanced Search Filters (Priority: High)\nEpic: Enterprise Security Enhancement\nTarget Persona: Enterprise IT Administrator\n\nPROBLEM STATEMENT\nEnterprise IT Administrators currently struggle to efficiently locate specific security events, user activities, and system configurations within our platform. The existing basic search functionality requires manual filtering through thousands of results, leading to delayed incident response times and inefficient security audits.\n\nUSER STORIES\n- As an Enterprise IT Administrator, I want to filter search results by date range, user role, and security event type so that I can quickly identify potential security threats\n- As an Enterprise IT Administrator, I want to save custom filter combinations so that I can reuse common search patterns during routine security reviews\n- As an Enterprise IT Administrator, I want to export filtered search results so that I can generate compliance reports for auditors\n\nREQUIREMENTS\nFunctional:\n- Multi-criteria filtering including date/time ranges, user roles, event types, and severity levels\n- Custom filter preset creation and management\n- Real-time search results with progressive loading\n- Export functionality supporting CSV and PDF formats\n- Search result sorting by relevance, date, and custom criteria\n\nNon-Functional:\n- Search results must load within 3 seconds for datasets up to 1M records\n- Support concurrent searches by up to 50 administrators\n- Maintain search history for 90 days\n\nSUCCESS METRICS\n- Reduce average search completion time by 60%\n- Increase Monthly Active Users among enterprise accounts by 25%\n- Achieve 80% adoption rate of custom filter presets within 30 days\n\nOPEN QUESTIONS\n- Should we implement machine learning-powered search suggestions?\n- What level of granular permissions should we apply to search filters?\n- How should we handle search performance for datasets exceeding 1M records?"
+    },
+    {
+      "template_id": "prd",
+      "template_name": "Product Requirements Document",
+      "title": "PRD: Single Sign-On Integration - Enterprise Security Enhancement",
+      "content": "PRODUCT REQUIREMENTS DOCUMENT\n\nFeature: Single Sign-On Integration (Priority: Critical)\nEpic: Enterprise Security Enhancement\nTarget Persona: Enterprise IT Administrator\n\nPROBLEM STATEMENT\nEnterprise customers face significant security risks and administrative overhead due to fragmented authentication systems. Enterprise IT Administrators report spending 15+ hours weekly managing user credentials, password resets, and access provisioning across multiple systems. This creates security vulnerabilities and reduces operational efficiency.\n\nUSER STORIES\n- As an Enterprise IT Administrator, I want to integrate our corporate identity provider with the platform so that employees can access the system using existing credentials\n- As an Enterprise IT Administrator, I want to automatically provision and deprovision user accounts based on Active Directory groups so that access management aligns with organizational changes\n- As an Enterprise IT Administrator, I want to enforce multi-factor authentication through our SSO provider so that we maintain consistent security policies\n\nREQUIREMENTS\nFunctional:\n- Support for SAML 2.0 and OpenID Connect protocols\n- Integration with major identity providers (Azure AD, Okta, Auth0, Google Workspace)\n- Automated user provisioning and deprovisioning via SCIM protocol\n- Role mapping from identity provider groups to platform permissions\n- Session management and timeout configuration\n- Audit logging for all SSO authentication events\n\nNon-Functional:\n- Authentication response time under 2 seconds\n- 99.9% SSO service availability\n- Support for organizations with up to 10,000 users\n- GDPR and SOC 2 compliance for identity data handling\n\nSUCCESS METRICS\n- Achieve 90% Trial to Paid Conversion rate for enterprise prospects requesting SSO\n- Reduce customer support tickets related to authentication by 70%\n- Increase Monthly Recurring Revenue from enterprise accounts by 40%\n\nOPEN QUESTIONS\n- Should we support legacy LDAP integration for older enterprise systems?\n- What pricing model should we implement for SSO functionality?\n- How should we handle SSO failures and fallback authentication?"
+    },
+    {
+      "template_id": "prd",
+      "template_name": "Product Requirements Document",
+      "title": "PRD: Mobile Push Notifications - Mobile Experience Optimization",
+      "content": "PRODUCT REQUIREMENTS DOCUMENT\n\nFeature: Mobile Push Notifications (Priority: High)\nEpic: Mobile Experience Optimization\nTarget Persona: Mobile-First Consumer\n\nPROBLEM STATEMENT\nMobile-First Consumers currently miss critical updates and time-sensitive information when not actively using the application. This results in decreased user engagement, missed opportunities, and poor user experience. Analytics show 40% of mobile users abandon the app after missing important notifications, directly impacting our 30-Day User Retention rates.\n\nUSER STORIES\n- As a Mobile-First Consumer, I want to receive push notifications for important account updates so that I stay informed about critical changes\n- As a Mobile-First Consumer, I want to customize which types of notifications I receive so that I only get relevant information\n- As a Mobile-First Consumer, I want to snooze notifications so that I can be reminded about important items at a more convenient time\n- As a Mobile-First Consumer, I want notifications to deep-link to relevant app sections so that I can quickly take action\n\nREQUIREMENTS\nFunctional:\n- Rich push notifications with images, actions, and custom sounds\n- Granular notification preferences by category and frequency\n- Scheduled and recurring notification support\n- Deep-linking to specific app screens and content\n- Notification snooze functionality with custom time intervals\n- Delivery tracking and read receipts\n- Notification history and management interface\n\nNon-Functional:\n- Support for iOS 14+ and Android 8+ devices\n- 95% notification delivery rate within 30 seconds\n- Personalization engine processing under 100ms\n- Support for multiple languages and time zones\n\nSUCCESS METRICS\n- Increase Daily Session Duration by 35%\n- Improve 30-Day User Retention to 65%\n- Achieve 80% opt-in rate for push notifications\n- Reduce app abandonment rate by 25%\n\nOPEN QUESTIONS\n- Should we implement AI-powered notification timing optimization?\n- What frequency limits should we enforce to prevent notification fatigue?\n- How should we handle notifications for users across multiple time zones?"
+    },
+    {
+      "template_id": "prd",
+      "template_name": "Product Requirements Document",
+      "title": "PRD: Bulk Data Import Tool - Premium Tier Features",
+      "content": "PRODUCT REQUIREMENTS DOCUMENT\n\nFeature: Bulk Data Import Tool (Priority: Medium)\nEpic: Premium Tier Features\nTarget Persona: Data Analyst Professional\n\nPROBLEM STATEMENT\nData Analyst Professionals frequently need to import large datasets from various sources but are currently limited to manual, row-by-row data entry or basic CSV uploads. This creates significant bottlenecks in their workflow, with analysts reporting up to 8 hours per week spent on data preparation instead of analysis. The lack of robust import capabilities prevents enterprise customers from fully leveraging our platform.\n\nUSER STORIES\n- As a Data Analyst Professional, I want to import data from multiple file formats (CSV, Excel, JSON) so that I can work with data from various sources\n- As a Data Analyst Professional, I want to map imported columns to existing fields so that I can maintain data consistency\n- As a Data Analyst Professional, I want to validate data during import so that I can identify and resolve errors before they affect my analysis\n- As a Data Analyst Professional, I want to schedule recurring imports so that I can automate regular data updates\n\nREQUIREMENTS\nFunctional:\n- Support for CSV, Excel (.xlsx, .xls), JSON, and XML file formats\n- Interactive column mapping interface with data type validation\n- Data transformation rules (formatting, calculations, concatenation)\n- Import preview with error detection and correction suggestions\n- Batch processing with progress tracking and failure recovery\n- Scheduled imports with email notifications\n- Import history and rollback capabilities\n- API endpoints for programmatic imports\n\nNon-Functional:\n- Support files up to 100MB in size\n- Process up to 1M records per import job\n- Complete imports within 5 minutes for files under 10MB\n- 99.5% data accuracy with comprehensive error reporting\n\nSUCCESS METRICS\n- Increase Monthly Recurring Revenue from premium subscribers by 30%\n- Achieve 70% feature adoption among Data Analyst Professional users\n- Reduce customer onboarding time by 50%\n\nOPEN QUESTIONS\n- Should we implement real-time data source connections (databases, APIs)?\n- What pricing structure should we use for bulk import volume limits?\n- How should we handle data privacy and encryption for sensitive imports?"
+    },
+    {
+      "template_id": "prd",
+      "template_name": "Product Requirements Document",
+      "title": "PRD: Dark Mode Theme - Mobile Experience Optimization",
+      "content": "PRODUCT REQUIREMENTS DOCUMENT\n\nFeature: Dark Mode Theme (Priority: Low)\nEpic: Mobile Experience Optimization\nTarget Persona: Mobile-First Consumer\n\nPROBLEM STATEMENT\nMobile-First Consumers increasingly expect dark mode support as a standard feature, particularly for applications used during evening hours or in low-light environments. User feedback indicates 60% of mobile users prefer dark interfaces for reduced eye strain and battery conservation. The absence of this feature creates a suboptimal user experience and positions our app behind competitors offering theme customization.\n\nUSER STORIES\n- As a Mobile-First Consumer, I want to toggle between light and dark themes so that I can use the app comfortably in different lighting conditions\n- As a Mobile-First Consumer, I want the app to automatically switch themes based on my device settings so that it integrates seamlessly with my overall device experience\n- As a Mobile-First Consumer, I want dark mode to reduce battery consumption so that I can use the app longer on a single charge\n- As a Mobile-First Consumer, I want all app screens and components to support dark mode so that I have a consistent visual experience\n\nREQUIREMENTS\nFunctional:\n- Complete dark theme coverage for all UI components and screens\n- Manual theme toggle in app settings\n- Automatic theme switching based on device system settings\n- Smooth transition animations between light and dark modes\n- Theme preference persistence across app sessions\n- Accessibility compliance with contrast ratios for dark theme\n- Support for themed app icons and splash screens\n\nNon-Functional:\n- Theme switching must complete within 500ms\n- Dark mode should reduce battery consumption by 15-20% on OLED displays\n- Maintain WCAG 2.1 AA accessibility standards for color contrast\n- Consistent visual hierarchy across both themes\n\nSUCCESS METRICS\n- Achieve 45% dark mode adoption rate within 60 days of launch\n- Increase Daily Session Duration during evening hours (6 PM - 12 AM) by 20%\n- Improve app store ratings related to user interface by 0.3 stars\n- Increase Monthly Active Users retention by 8%\n\nOPEN QUESTIONS\n- Should we offer additional theme variations beyond light and dark?\n- How should we handle user-generated content visibility in dark mode?\n- Should we implement automatic theme scheduling based on sunrise/sunset times?"
+    },
+    {
+      "template_id": "roadmap_update",
+      "template_name": "Roadmap Update",
+      "title": "Q3 Roadmap Update: Enterprise Security Enhancement",
+      "content": "Enterprise Security Enhancement (Q3 2024)\n\nTheme: Strengthening security infrastructure to meet enterprise compliance requirements\n\nProgress Update:\nOur Enterprise Security Enhancement epic continues to progress on schedule for the Winter Security Update release. The Single Sign-On Integration feature has completed development and is currently in QA testing with expected deployment by month-end. Advanced Search Filters have been delivered ahead of schedule and are now available in the staging environment.\n\nKey Metrics Performance:\n- 30-Day User Retention improved by 8% following initial security improvements\n- Trial to Paid Conversion increased 12% as enterprise prospects show higher confidence in our security posture\n- Monthly Active Users grew 6% month-over-month, driven by enterprise customer expansion\n\nRisks and Mitigation:\nWe've identified a potential delay in compliance certification that could impact Q4 enterprise deals. Our security team is working with external auditors to expedite the review process. Additionally, integration complexity with legacy enterprise systems may require additional development cycles.\n\nNext Quarter Outlook:\nQ4 will focus on completing the Winter Security Update deployment and gathering enterprise customer feedback. We'll begin planning for advanced threat detection capabilities and enhanced audit logging features. The security foundation established this quarter positions us well for targeting Fortune 500 prospects in 2025.\n\nExpected Impact:\nSuccessful completion will unlock an estimated $2M ARR pipeline and position our product as enterprise-ready, significantly expanding our addressable market in the security-conscious enterprise segment."
+    },
+    {
+      "template_id": "roadmap_update",
+      "template_name": "Roadmap Update",
+      "title": "Q2 Roadmap Update: Mobile Experience Optimization",
+      "content": "Mobile Experience Optimization (Q2 2024)\n\nTheme: Delivering a best-in-class mobile experience to drive user engagement and retention\n\nProgress Update:\nThe Mobile Experience Optimization epic has achieved significant milestones this quarter. Mobile Push Notifications successfully launched in the Mobile Performance Patch and are showing strong adoption. Dark Mode Theme implementation is 75% complete with UI/UX validation ongoing. Performance optimizations have reduced app load times by 40%.\n\nKey Metrics Performance:\n- Daily Session Duration on mobile increased 35% following push notification implementation\n- Monthly Active Users on mobile devices grew 18% quarter-over-quarter\n- Monthly Recurring Revenue from mobile-primary users increased 22%\n- App store ratings improved from 3.2 to 4.1 stars\n\nRisks and Mitigation:\nDark Mode Theme integration has revealed accessibility concerns that require additional design iteration. We've brought in a specialist accessibility consultant to ensure compliance. iOS App Store review process may extend deployment timeline by 1-2 weeks.\n\nNext Quarter Outlook:\nQ3 will complete Dark Mode Theme rollout and focus on advanced mobile features including offline functionality and enhanced gesture controls. We'll also begin work on tablet optimization to capture the growing mobile professional user segment.\n\nExpected Impact:\nCompleted mobile optimization will position us competitively against mobile-first solutions and is projected to increase mobile user retention by 25% while driving 15% growth in mobile Monthly Recurring Revenue through improved user experience and engagement."
+    },
+    {
+      "template_id": "roadmap_update",
+      "template_name": "Roadmap Update",
+      "title": "Q4 Roadmap Update: AI-Powered Analytics",
+      "content": "AI-Powered Analytics (Q4 2024)\n\nTheme: Leveraging artificial intelligence to provide intelligent insights and predictive analytics\n\nProgress Update:\nOur AI-Powered Analytics epic has reached crucial development milestones for the Spring Feature Pack release. Core machine learning infrastructure is deployed and processing historical data. The Bulk Data Import Tool integration is 90% complete, enabling seamless data ingestion for AI model training. Preliminary testing shows 85% accuracy in predictive trend analysis.\n\nKey Metrics Performance:\n- Trial to Paid Conversion increased 28% among users who engaged with AI features in beta\n- Daily Session Duration for AI feature users averages 45% longer than standard users\n- Monthly Active Users in the AI beta program show 95% retention rates\n- Premium tier interest increased 40% following AI capability demonstrations\n\nRisks and Mitigation:\nModel training requires more computational resources than initially projected, potentially impacting operational costs by 15%. We're exploring cloud optimization strategies and tiered processing approaches. Data privacy compliance reviews are ongoing with legal team input.\n\nNext Quarter Outlook:\nQ1 2025 will focus on AI feature refinement based on beta feedback and preparation for general availability. We'll expand AI capabilities to include automated report generation and anomaly detection. Integration with Premium Tier Features will be prioritized to drive revenue growth.\n\nExpected Impact:\nAI-powered analytics will differentiate our platform in the competitive landscape and is projected to increase Premium Tier Features adoption by 60%, contributing an estimated $1.5M to Monthly Recurring Revenue within six months of full release."
+    },
+    {
+      "template_id": "roadmap_update",
+      "template_name": "Roadmap Update",
+      "title": "Q1 Roadmap Update: API Platform Expansion",
+      "content": "API Platform Expansion (Q1 2024)\n\nTheme: Building a comprehensive API ecosystem to enable third-party integrations and platform extensibility\n\nProgress Update:\nThe API Platform Expansion epic has made substantial progress toward the API Enhancement Release. Core API infrastructure has been redesigned for improved scalability and developer experience. Rate limiting and authentication frameworks are complete. Developer documentation portal is in final review stages with technical writing team.\n\nKey Metrics Performance:\n- Monthly Active Users of API endpoints increased 150% as beta partners integrated\n- Daily Session Duration for integrated users shows 60% improvement over standalone usage\n- Trial to Paid Conversion for API-integrated prospects reached 45%, significantly above baseline\n- Developer portal registrations exceeded 500 within first month of beta launch\n\nRisks and Mitigation:\nAPI versioning strategy requires careful planning to avoid breaking existing integrations. We've implemented comprehensive backward compatibility testing. Third-party partner integration timelines vary significantly, potentially affecting launch coordination. Regular partner check-ins have been established to maintain alignment.\n\nNext Quarter Outlook:\nQ2 will focus on expanding API capabilities and onboarding strategic integration partners. Webhook support and real-time data streaming will be prioritized. We'll also begin development of API marketplace features to enable community-driven integrations.\n\nExpected Impact:\nSuccessful API platform launch will establish our product as a central hub in customer workflows, increasing customer stickiness and enabling new revenue streams through API usage tiers. Projected impact includes 30% improvement in 30-Day User Retention and access to new customer segments through partner channels."
+    },
+    {
+      "template_id": "roadmap_update",
+      "template_name": "Roadmap Update",
+      "title": "Q3 Roadmap Update: Premium Tier Features",
+      "content": "Premium Tier Features (Q3 2024)\n\nTheme: Delivering high-value capabilities that drive subscription revenue growth and customer expansion\n\nProgress Update:\nPremium Tier Features development is progressing strongly for inclusion in the Spring Feature Pack. Advanced Search Filters have been enhanced with premium-only capabilities including custom field indexing and saved search templates. Integration with AI-Powered Analytics is 60% complete, creating a compelling premium value proposition.\n\nKey Metrics Performance:\n- Monthly Recurring Revenue from premium subscribers grew 42% quarter-over-quarter\n- Trial to Paid Conversion for premium tier reached 38%, up from 24% last quarter\n- Monthly Active Users in premium tier show 89% retention compared to 67% for standard tier\n- Average revenue per user (ARPU) increased 33% with premium feature adoption\n\nRisks and Mitigation:\nFeature complexity may impact user adoption if not properly onboarded. We're developing guided tutorial flows and dedicated premium support channels. Pricing strategy requires careful validation to avoid customer churn while maximizing revenue potential.\n\nNext Quarter Outlook:\nQ4 will focus on premium feature refinement and expansion of enterprise-grade capabilities. Integration with Enterprise Security Enhancement will create a comprehensive premium offering. We'll also launch premium-only early access programs for upcoming AI features.\n\nExpected Impact:\nSuccessful premium tier expansion will significantly improve unit economics and customer lifetime value. Projected outcomes include reaching $500K in monthly premium Monthly Recurring Revenue and establishing a sustainable growth model that supports continued product innovation and market expansion efforts."
+    },
+    {
+      "template_id": "user_interview_notes",
+      "template_name": "User Interview Notes",
+      "title": "User Interview Notes - Sarah Chen (Enterprise IT Administrator)",
+      "content": "**Interview Date:** March 15, 2024\n**Participant:** Sarah Chen, Enterprise IT Administrator at TechCorp Solutions\n**Duration:** 45 minutes\n**Interviewer:** Alex Rodriguez, Product Manager\n\n**Key Pain Points Discussed:**\n- User access management across multiple systems\n- Complex onboarding processes for new employees\n- Security compliance requirements\n\n**Notable Quotes:**\n\"Our biggest headache is managing user permissions across 15 different applications. When someone joins or leaves, it's a nightmare to update everything manually.\"\n\n\"The Single Sign-On Integration looks promising, but honestly, the current setup is confusing. My team spent 3 hours just trying to configure the SAML settings.\"\n\n**Key Insights:**\n- Current SSO implementation lacks clear documentation and intuitive UI\n- Enterprise customers need centralized user management dashboard\n- Security audit trails are critical for compliance reporting\n\n**Feature Requests:**\n1. Simplified SSO configuration wizard\n2. Bulk user provisioning capabilities\n3. Advanced Search Filters for user management (mentioned this would save 2-3 hours weekly)\n4. Integration with Active Directory and Okta\n\n**Behavioral Observations:**\n- Frequently referenced security best practices\n- Showed frustration when discussing manual processes\n- Appreciated detailed technical specifications\n\n**Follow-up Actions:**\n- Send SSO configuration guide draft for feedback\n- Schedule technical deep-dive session with engineering team\n- Explore integration partnerships with identity providers\n\n**Priority Level:** High - represents 40% of enterprise customer segment"
+    },
+    {
+      "template_id": "user_interview_notes",
+      "template_name": "User Interview Notes",
+      "title": "User Interview Notes - Marcus Thompson (Small Business Owner)",
+      "content": "**Interview Date:** March 18, 2024\n**Participant:** Marcus Thompson, Owner of Thompson's Marketing Agency\n**Duration:** 35 minutes\n**Interviewer:** Jenny Wu, UX Researcher\n\n**Key Pain Points Discussed:**\n- Limited technical resources and IT support\n- Need for cost-effective solutions\n- Time constraints for learning new tools\n\n**Notable Quotes:**\n\"I don't have an IT department - it's just me and my assistant trying to figure this stuff out. When the mobile app crashes frequently, we lose potential clients.\"\n\n\"The Bulk Data Import Tool would be a game-changer for migrating our client database, but I need something that works without requiring a computer science degree.\"\n\n**Key Insights:**\n- Small businesses prioritize simplicity and reliability over advanced features\n- Mobile stability is crucial for on-the-go business operations\n- Cost considerations drive most technology decisions\n- Self-service support resources are essential\n\n**Feature Requests:**\n1. One-click data migration wizard\n2. Mobile app stability improvements (critical priority)\n3. Video tutorials and guided onboarding\n4. Simplified pricing tiers\n\n**Behavioral Observations:**\n- Constantly multitasking during interview\n- Asked about pricing multiple times\n- Preferred visual demonstrations over technical explanations\n\n**Follow-up Actions:**\n- Create simplified onboarding flow prototype\n- Investigate mobile app crash reports for his device type\n- Develop small business-specific documentation\n- Consider freemium pricing model\n\n**Priority Level:** Medium - growing segment with high retention potential"
+    },
+    {
+      "template_id": "user_interview_notes",
+      "template_name": "User Interview Notes",
+      "title": "User Interview Notes - Dr. Amanda Foster (Data Analyst Professional)",
+      "content": "**Interview Date:** March 20, 2024\n**Participant:** Dr. Amanda Foster, Senior Data Analyst at HealthMetrics Inc.\n**Duration:** 50 minutes\n**Interviewer:** David Park, Senior Product Manager\n\n**Key Pain Points Discussed:**\n- Complex data analysis workflows\n- Large dataset management challenges\n- Reporting and visualization limitations\n\n**Notable Quotes:**\n\"I love the new dashboard design - it's finally showing the metrics that actually matter. But I need Advanced Search Filters to slice through our 2TB dataset efficiently.\"\n\n\"The search functionality needs improvement desperately. I spend 30% of my time just trying to locate specific data points instead of analyzing them.\"\n\n**Key Insights:**\n- Power users require granular control over data filtering and search\n- Performance with large datasets is a critical differentiator\n- Visual design improvements are appreciated but functionality is priority\n- Integration with statistical software packages is highly valued\n\n**Feature Requests:**\n1. Advanced query builder with SQL-like capabilities\n2. Enhanced search functionality with regex support\n3. Export capabilities for R and Python\n4. Custom dashboard widgets\n5. Dark Mode Theme for extended work sessions\n\n**Technical Requirements:**\n- Support for datasets >1TB\n- Sub-second search response times\n- API endpoints for data extraction\n\n**Follow-up Actions:**\n- Arrange technical architecture review meeting\n- Share wireframes for advanced search interface\n- Investigate integration with Jupyter notebooks\n- Beta test program invitation\n\n**Priority Level:** High - influences purchasing decisions for enterprise accounts"
+    },
+    {
+      "template_id": "user_interview_notes",
+      "template_name": "User Interview Notes",
+      "title": "User Interview Notes - Tyler Rodriguez (Mobile-First Consumer)",
+      "content": "**Interview Date:** March 22, 2024\n**Participant:** Tyler Rodriguez, College Student and Part-time Freelancer\n**Duration:** 30 minutes\n**Interviewer:** Lisa Chang, Mobile Product Manager\n\n**Key Pain Points Discussed:**\n- Heavy mobile usage patterns\n- Preference for instant notifications\n- Limited desktop/laptop access\n\n**Notable Quotes:**\n\"I literally do everything on my phone. When I can't access a feature on mobile, I just forget about it and move on to something else.\"\n\n\"Mobile Push Notifications would be perfect - I need to know immediately when clients respond or when deadlines are approaching.\"\n\n**Key Insights:**\n- Mobile app is primary (often only) interface for this user segment\n- Push notifications drive engagement and task completion\n- Feature parity between mobile and web is expected\n- Dark Mode Theme is highly desired for late-night usage\n\n**Usage Patterns:**\n- 85% mobile, 15% web usage\n- Peak activity: 7-9 PM and 11 PM-1 AM\n- Prefers swipe gestures over tapping\n- Shares content frequently via social media\n\n**Feature Requests:**\n1. Real-time Mobile Push Notifications\n2. Dark Mode Theme (mentioned 3 times)\n3. Offline functionality\n4. Social sharing integration\n5. Voice commands for basic tasks\n\n**Follow-up Actions:**\n- Review mobile analytics for similar usage patterns\n- Design notification preference settings\n- Test dark mode implementation\n- Explore progressive web app features\n\n**Priority Level:** Medium-High - represents future growth segment"
+    },
+    {
+      "template_id": "user_interview_notes",
+      "template_name": "User Interview Notes",
+      "title": "User Interview Notes - Kevin Nakamura (API Developer)",
+      "content": "**Interview Date:** March 25, 2024\n**Participant:** Kevin Nakamura, Senior Backend Developer at CloudSync Technologies\n**Duration:** 55 minutes\n**Interviewer:** Rachel Kim, Technical Product Manager\n\n**Key Pain Points Discussed:**\n- API documentation quality and completeness\n- Rate limiting and performance constraints\n- Authentication and security implementation\n\n**Notable Quotes:**\n\"The Bulk Data Import Tool API endpoints are exactly what we needed, but the documentation is incomplete. I had to reverse-engineer half the parameters.\"\n\n\"Rate limits are too restrictive for our use case. We're processing 50,000 records daily and hitting the ceiling constantly.\"\n\n**Technical Pain Points:**\n- Inconsistent API response formats\n- Limited webhook support\n- Missing pagination on large data sets\n- Insufficient error handling documentation\n\n**Feature Requests:**\n1. Comprehensive API documentation with code examples\n2. Webhook integration for real-time updates\n3. GraphQL endpoint option\n4. SDK development for popular languages\n5. Improved rate limiting with burst capabilities\n\n**Integration Challenges:**\n- Current REST API structure doesn't align with their microservices architecture\n- Need for batch operations to reduce API calls\n- Authentication token refresh process is cumbersome\n\n**Follow-up Actions:**\n- Review API documentation gaps with technical writing team\n- Evaluate rate limiting policies for enterprise customers\n- Schedule technical architecture discussion\n- Provide beta access to new webhook features\n- Connect with developer relations team\n\n**Priority Level:** Critical - developer experience drives platform adoption"
+    },
+    {
+      "template_id": "sprint_review",
+      "template_name": "Sprint Review",
+      "title": "Sprint Review - Winter Security Update (v2.4.1)",
+      "content": "Sprint Review Summary - Winter Security Update Release\n\nCompleted Features:\n\n\u2022 Single Sign-On Integration: Successfully implemented SAML 2.0 and OAuth 2.0 protocols with enterprise identity providers. Demo showcased seamless login flow with Microsoft Azure AD and Okta integrations.\n\n\u2022 Advanced Search Filters: Delivered comprehensive filtering capabilities including date ranges, user roles, and custom field filtering. Performance testing shows 40% improvement in search result relevance.\n\nDemo Highlights:\nThe SSO integration demo received positive stakeholder feedback, particularly the automatic role mapping functionality. The Advanced Search Filters demo highlighted the intuitive UI design and real-time filter suggestions that significantly enhance user experience.\n\nMetric Impacts:\n\u2022 Monthly Active Users: Projected 12% increase due to reduced login friction\n\u2022 Daily Session Duration: Expected 8% improvement from enhanced search capabilities\n\u2022 30-Day User Retention: Target 15% uplift from improved user onboarding via SSO\n\nTechnical Achievements:\n- Zero-downtime deployment successfully executed\n- Security vulnerability assessments passed with no critical findings\n- Load testing confirmed system stability under 3x normal traffic\n\nCarry-over Items:\n\u2022 Multi-factor authentication enhancement (moved to next sprint due to vendor API limitations)\n\u2022 Search analytics dashboard (requires additional backend optimization)\n\u2022 SSO audit logging improvements (pending compliance team review)\n\nNext Sprint Focus:\nPriority shifts to Mobile Performance Patch development, with emphasis on reducing app startup times and optimizing memory usage. The team will also address the carried-over MFA enhancements to complete the security initiative."
+    },
+    {
+      "template_id": "sprint_review",
+      "template_name": "Sprint Review",
+      "title": "Sprint Review - Mobile Performance Patch (v1.8.3)",
+      "content": "Sprint Review Summary - Mobile Performance Patch Release\n\nCompleted Features:\n\n\u2022 Mobile Push Notifications: Implemented rich push notification system with personalized content delivery and smart timing algorithms. Successfully integrated with both iOS and Android platforms.\n\n\u2022 Dark Mode Theme: Delivered comprehensive dark theme across all mobile interfaces with automatic system-based switching and user preference controls.\n\nDemo Highlights:\nThe push notification demo showcased intelligent notification batching and user engagement analytics. Dark mode implementation received excellent feedback from beta users, with particular praise for the seamless transition animations and consistent brand styling across all screens.\n\nMetric Impacts:\n\u2022 Daily Session Duration: Achieved 22% increase following dark mode implementation in beta\n\u2022 30-Day User Retention: Push notifications driving 18% improvement in user re-engagement\n\u2022 Monthly Active Users: 9% growth attributed to enhanced mobile experience\n\nPerformance Improvements:\n- App startup time reduced by 35% through optimized asset loading\n- Memory usage decreased by 28% via efficient caching mechanisms\n- Crash rate reduced from 0.8% to 0.2% across all devices\n\nCarry-over Items:\n\u2022 Push notification A/B testing framework (requires additional analytics infrastructure)\n\u2022 Dark mode accessibility improvements (pending WCAG compliance audit)\n\u2022 Notification scheduling for different time zones (complex backend requirements identified)\n\nUser Feedback:\nBeta testers reported significantly improved battery life with dark mode and appreciated the non-intrusive push notification design. App store ratings increased from 4.2 to 4.6 stars during the beta period.\n\nNext Sprint Preparation:\nTeam transitions to API Enhancement Release with focus on GraphQL implementation and rate limiting improvements."
+    },
+    {
+      "template_id": "sprint_review",
+      "template_name": "Sprint Review",
+      "title": "Sprint Review - API Enhancement Release (v3.1.0)",
+      "content": "Sprint Review Summary - API Enhancement Release\n\nCompleted Features:\n\n\u2022 Bulk Data Import Tool: Delivered enterprise-grade CSV and JSON import functionality with real-time progress tracking, error handling, and rollback capabilities. Supports files up to 100MB with intelligent data validation.\n\n\u2022 Advanced Search Filters: Extended API endpoints with sophisticated filtering, sorting, and pagination capabilities. Implemented GraphQL support for flexible query optimization.\n\nDemo Highlights:\nThe bulk import demo impressed stakeholders with its intuitive error reporting and preview functionality before final commit. API enhancements showed 60% reduction in query response times and demonstrated backward compatibility with existing integrations.\n\nMetric Impacts:\n\u2022 Monthly Recurring Revenue: Expected 8% increase from enterprise bulk import feature adoption\n\u2022 Trial to Paid Conversion: API improvements targeting 12% uplift through better developer experience\n\u2022 Daily Session Duration: Faster search results contributing to 5% improvement\n\nTechnical Achievements:\n- API rate limiting implemented with tiered access controls\n- Comprehensive OpenAPI 3.0 documentation published\n- 99.9% uptime maintained during deployment\n- Database query optimization reduced server costs by 15%\n\nDeveloper Experience Improvements:\n- New SDK released for Python and Node.js\n- Interactive API explorer added to developer portal\n- Webhook reliability improved with automatic retry mechanisms\n\nCarry-over Items:\n\u2022 Real-time import progress WebSocket implementation (requires infrastructure scaling)\n\u2022 API versioning strategy for legacy endpoints (stakeholder alignment needed)\n\u2022 Bulk export functionality (scope expansion requested post-demo)\n\nPartner Feedback:\nIntegration partners reported significantly improved developer onboarding experience. Two major enterprise prospects accelerated their evaluation timelines following API demo sessions.\n\nNext Sprint Focus:\nTransition to Spring Feature Pack development with emphasis on user interface modernization."
+    },
+    {
+      "template_id": "sprint_review",
+      "template_name": "Sprint Review",
+      "title": "Sprint Review - Critical Security Hotfix (v2.4.2)",
+      "content": "Sprint Review Summary - Critical Security Hotfix\n\nCompleted Features:\n\n\u2022 Single Sign-On Integration: Emergency patch addressing authentication bypass vulnerability discovered in production. Implemented additional token validation and session management hardening.\n\n\u2022 Advanced Search Filters: Security enhancement preventing potential SQL injection through malformed filter parameters. Added comprehensive input sanitization and parameterized queries.\n\nDemo Highlights:\nSecurity team demonstrated the vulnerability remediation and new monitoring capabilities. Penetration testing results showed successful mitigation of all identified attack vectors with no performance degradation.\n\nCritical Fixes Implemented:\n- JWT token validation strengthened with enhanced signature verification\n- Database query parameterization across all search endpoints\n- Rate limiting applied to authentication attempts\n- Audit logging enhanced for security event tracking\n\nMetric Impacts:\n\u2022 30-Day User Retention: Maintained stability at 87% despite security concerns\n\u2022 Monthly Active Users: No significant impact due to rapid hotfix deployment\n\u2022 Daily Session Duration: Remained consistent with pre-incident levels\n\nIncident Response Timeline:\n- Vulnerability identified: Tuesday 2:15 PM\n- Emergency team assembled: Tuesday 2:30 PM\n- Fix deployed to staging: Tuesday 8:45 PM\n- Production deployment: Wednesday 6:00 AM\n- All systems verified secure: Wednesday 10:30 AM\n\nCompliance & Communication:\n- Security advisory issued to all enterprise customers within 24 hours\n- Regulatory compliance team confirmed no data breach occurred\n- Customer success team conducted proactive outreach to key accounts\n\nCarry-over Items:\n\u2022 Comprehensive security audit of remaining authentication flows (scheduled for next sprint)\n\u2022 Automated vulnerability scanning pipeline implementation\n\u2022 Security incident response procedure documentation update\n\nLessons Learned:\nImproved security testing protocols implemented in CI/CD pipeline. Additional security code review checkpoint added for authentication-related changes."
+    },
+    {
+      "template_id": "sprint_review",
+      "template_name": "Sprint Review",
+      "title": "Sprint Review - Spring Feature Pack (v3.2.0)",
+      "content": "Sprint Review Summary - Spring Feature Pack Release\n\nCompleted Features:\n\n\u2022 Dark Mode Theme: Comprehensive UI overhaul with system-wide dark theme implementation, including accessibility compliance and user preference persistence across all platforms.\n\n\u2022 Mobile Push Notifications: Advanced notification system with smart segmentation, optimal timing algorithms, and rich media support for enhanced user engagement.\n\n\u2022 Bulk Data Import Tool: Production-ready enterprise import functionality with advanced validation, progress tracking, and comprehensive error reporting.\n\nDemo Highlights:\nThe integrated feature demo showcased seamless user experience across all touchpoints. Dark mode received unanimous positive feedback for its professional appearance and reduced eye strain. Push notification segmentation demonstrated 40% higher engagement rates compared to broadcast messaging.\n\nMetric Impacts:\n\u2022 Monthly Active Users: Achieved 16% growth quarter-over-quarter\n\u2022 Trial to Paid Conversion: Improved 14% due to enhanced onboarding via push notifications\n\u2022 Monthly Recurring Revenue: 11% increase driven by enterprise bulk import adoption\n\u2022 Daily Session Duration: 19% improvement attributed to dark mode user preference\n\nFeature Adoption Metrics:\n- Dark mode enabled by 73% of users within first week\n- Push notification opt-in rate: 68% (industry average: 45%)\n- Bulk import tool used by 89% of enterprise accounts\n\nUser Experience Improvements:\n- App performance scores increased by 25% on mobile devices\n- Customer support tickets reduced by 32% due to improved UX\n- User satisfaction scores improved from 4.1 to 4.7\n\nCarry-over Items:\n\u2022 Push notification automation workflows (requires marketing team integration)\n\u2022 Dark mode customization options (user research needed for color preferences)\n\u2022 Import scheduling functionality (enterprise feature request)\n\nNext Quarter Roadmap:\nFocus shifts to API Enhancement Release with GraphQL implementation and advanced analytics dashboard development. Team capacity allocated for technical debt reduction and performance optimization initiatives."
+    },
+    {
+      "template_id": "feature_spec",
+      "template_name": "Feature Specification",
+      "title": "Feature Specification: Advanced Search Filters",
+      "content": "Feature: Advanced Search Filters\nPriority: High | Effort: 5 story points\nEpic: Premium Tier Features\n\nOverview:\nImplement comprehensive filtering capabilities enabling Data Analyst Professionals and Enterprise IT Administrators to refine search results using multiple criteria including date ranges, content types, user roles, and custom field values.\n\nFunctional Requirements:\n- Multi-select dropdown filters for categories, tags, and status values\n- Date range picker with preset options (last 7 days, 30 days, custom range)\n- Text-based filtering for titles, descriptions, and metadata\n- Advanced boolean operators (AND, OR, NOT) for complex queries\n- Filter persistence across user sessions\n- Real-time result count updates as filters are applied\n\nTechnical Requirements:\n- RESTful API endpoints supporting filter parameters\n- Client-side debouncing for search input (300ms delay)\n- Elasticsearch integration for performant full-text search\n- Filter state management using URL parameters for shareability\n\nEdge Cases:\n- Handle empty result sets with appropriate messaging\n- Manage filter combinations that produce no results\n- Address performance degradation with large datasets (>100k records)\n- Handle special characters and escape sequences in search terms\n\nDependencies:\n- Search index optimization must be completed first\n- User permission system integration required\n- Analytics tracking implementation for filter usage metrics\n\nAcceptance Criteria:\n- Users can apply multiple filters simultaneously\n- Search results update within 2 seconds of filter modification\n- Filter state persists when sharing URLs\n- Mobile responsive design maintains full functionality\n- Accessibility compliance (WCAG 2.1 AA) for screen readers\n- Filter usage tracked for product analytics"
+    },
+    {
+      "template_id": "feature_spec",
+      "template_name": "Feature Specification",
+      "title": "Feature Specification: Single Sign-On Integration",
+      "content": "Feature: Single Sign-On Integration\nPriority: Critical | Effort: 8 story points\nEpic: Enterprise Security Enhancement\n\nOverview:\nIntegrate SAML 2.0 and OAuth 2.0 SSO capabilities to enable Enterprise IT Administrators to manage user access through existing identity providers, reducing password fatigue and improving security posture.\n\nFunctional Requirements:\n- Support for major identity providers (Okta, Azure AD, Google Workspace, Auth0)\n- Automatic user provisioning and de-provisioning based on IdP groups\n- Role mapping from IdP attributes to application permissions\n- Just-in-time (JIT) user creation with configurable attribute mapping\n- Admin dashboard for SSO configuration and monitoring\n- Fallback authentication for emergency access\n\nTechnical Requirements:\n- SAML 2.0 assertion consumption service (ACS) endpoint\n- OAuth 2.0/OpenID Connect authorization code flow\n- Secure token validation and signature verification\n- Session management with configurable timeout policies\n- Audit logging for all authentication events\n\nEdge Cases:\n- Handle IdP downtime with graceful degradation\n- Manage user account conflicts between SSO and local accounts\n- Address certificate expiration and rotation scenarios\n- Handle malformed SAML assertions without system compromise\n\nDependencies:\n- User management system refactoring required\n- Security audit and penetration testing scheduled\n- Legal review for data processing agreements\n- Infrastructure scaling for increased authentication load\n\nAcceptance Criteria:\n- Authentication completes within 5 seconds\n- 99.9% uptime for SSO endpoints\n- Zero password storage for SSO users\n- Comprehensive audit trail maintained\n- Support for 10+ concurrent IdP configurations\n- Emergency admin access maintains 15-minute response time"
+    },
+    {
+      "template_id": "feature_spec",
+      "template_name": "Feature Specification",
+      "title": "Feature Specification: Mobile Push Notifications",
+      "content": "Feature: Mobile Push Notifications\nPriority: Medium | Effort: 6 story points\nEpic: Mobile Experience Optimization\n\nOverview:\nImplement intelligent push notification system targeting Mobile-First Consumers with personalized, actionable messages to increase engagement and retention while respecting user preferences and platform guidelines.\n\nFunctional Requirements:\n- Real-time notifications for critical updates, mentions, and deadlines\n- User-configurable notification preferences by category and frequency\n- Rich notifications with action buttons (approve, dismiss, view)\n- Scheduled notifications for reminders and follow-ups\n- Notification history and management within app\n- Deep linking to relevant application sections\n\nTechnical Requirements:\n- Firebase Cloud Messaging (FCM) integration for Android\n- Apple Push Notification service (APNs) for iOS\n- Device token management and registration\n- Message queuing system for delivery reliability\n- A/B testing framework for notification optimization\n- Analytics tracking for open rates and engagement\n\nEdge Cases:\n- Handle notification delivery failures and retry logic\n- Manage device token expiration and renewal\n- Address notification limits imposed by operating systems\n- Handle app uninstalls and token cleanup\n- Manage time zone differences for scheduled notifications\n\nDependencies:\n- Mobile app release cycle coordination\n- Server infrastructure scaling for message volume\n- User permission flow implementation\n- Analytics dashboard integration\n\nAcceptance Criteria:\n- 95% delivery success rate within 30 seconds\n- User opt-out respected immediately\n- Notifications display correctly across iOS 14+ and Android 10+\n- Battery impact remains under 2% of total usage\n- Rich notification actions work reliably\n- Deep links resolve to correct in-app destinations\n- Notification preferences sync across devices"
+    },
+    {
+      "template_id": "feature_spec",
+      "template_name": "Feature Specification",
+      "title": "Feature Specification: Bulk Data Import Tool",
+      "content": "Feature: Bulk Data Import Tool\nPriority: Medium | Effort: 7 story points\nEpic: API Platform Expansion\n\nOverview:\nDevelop comprehensive data import functionality enabling Small Business Owners and Data Analyst Professionals to efficiently migrate existing data through CSV, Excel, and JSON formats with validation, error handling, and progress tracking.\n\nFunctional Requirements:\n- Support for multiple file formats (CSV, XLSX, JSON) up to 50MB\n- Field mapping interface with auto-detection capabilities\n- Data validation with detailed error reporting\n- Batch processing with progress indicators\n- Preview functionality before final import\n- Import history and rollback capabilities\n- Duplicate detection and merge strategies\n\nTechnical Requirements:\n- Asynchronous processing using background job queues\n- Chunk-based file processing for memory efficiency\n- Database transaction management for data integrity\n- Rate limiting to prevent system overload\n- Comprehensive logging for troubleshooting\n- RESTful API endpoints for programmatic access\n\nEdge Cases:\n- Handle corrupted or malformed files gracefully\n- Manage memory constraints with very large datasets\n- Address partial import failures with recovery options\n- Handle encoding issues (UTF-8, UTF-16, Latin-1)\n- Manage concurrent import operations by same user\n\nDependencies:\n- Background job processing infrastructure\n- File storage system with virus scanning\n- Database performance optimization\n- User notification system integration\n- API Developer documentation updates\n\nAcceptance Criteria:\n- Process 10,000 records within 5 minutes\n- Clear error messages for validation failures\n- Import progress visible in real-time\n- 99% data accuracy maintained during import\n- Rollback completes within 2 minutes\n- Support for custom field mappings\n- Comprehensive import summary report generated"
+    },
+    {
+      "template_id": "feature_spec",
+      "template_name": "Feature Specification",
+      "title": "Feature Specification: Dark Mode Theme",
+      "content": "Feature: Dark Mode Theme\nPriority: Low | Effort: 4 story points\nEpic: Premium Tier Features\n\nOverview:\nImplement system-wide dark theme option catering to Mobile-First Consumer preferences for reduced eye strain during extended usage, with automatic switching based on system preferences and manual override capabilities.\n\nFunctional Requirements:\n- Toggle switch in user settings for theme selection\n- Automatic theme switching based on system preferences\n- Scheduled theme switching (light during day, dark at night)\n- Consistent color palette across all interface components\n- Proper contrast ratios for accessibility compliance\n- Theme preference persistence across sessions and devices\n\nTechnical Requirements:\n- CSS custom property system for dynamic color switching\n- Theme context provider in React/Vue component architecture\n- Local storage and user profile synchronization\n- Image and icon asset variants for dark theme\n- Color palette optimization for OLED displays\n- Performance optimization for smooth theme transitions\n\nEdge Cases:\n- Handle theme switching during active user sessions\n- Manage third-party component compatibility\n- Address print styles and email templates\n- Handle browser compatibility issues with CSS variables\n- Manage theme conflicts with user-generated content\n\nDependencies:\n- Design system updates with dark mode specifications\n- Icon library expansion for theme variants\n- Accessibility audit for color contrast compliance\n- Quality assurance testing across devices and browsers\n\nAcceptance Criteria:\n- Theme switches instantly without page reload\n- All text maintains WCAG AA contrast ratios (4.5:1)\n- User preference syncs across all logged-in devices\n- System preference detection works on all supported platforms\n- No visual artifacts during theme transitions\n- Battery life improvement measurable on OLED devices\n- Scheduled switching accuracy within 1-minute tolerance"
+    }
+  ],
+  "traces": [
+    {
+      "id": "feature_prioritization",
+      "task": "Decide whether to prioritize Automated Backup System for the upcoming sprint",
+      "steps": [
+        {
+          "thought": "Assess user demand and feedback volume for this feature",
+          "action": "Query feedback items that this feature addresses and their sentiment",
+          "observation": "Analysis of 847 user feedback items shows 23% mention data loss concerns and backup functionality, with an average sentiment score of -2.1 indicating high frustration levels. Support tickets related to data recovery have increased 34% over the past quarter, representing our second-highest volume category."
+        },
+        {
+          "thought": "Evaluate impact on key metrics and strategic objectives",
+          "action": "Check which metrics this feature affects and projected improvement",
+          "observation": "The automated backup system would directly impact user retention (projected +8% improvement) and reduce support costs by an estimated $180K annually. This feature aligns with our Q3 strategic pillar of 'Trust & Reliability' and could help achieve our 99.9% data durability SLA target."
+        },
+        {
+          "thought": "Consider effort, dependencies, and team capacity",
+          "action": "Review effort estimate, dependency chain, and current sprint load",
+          "observation": "Engineering estimates 13 story points across 3 sprints with dependencies on the new cloud storage infrastructure currently in development by the Platform team. Current sprint capacity shows 18 available points after accounting for committed bug fixes and the authentication refactor."
+        },
+        {
+          "thought": "Compare against competing features for the same release",
+          "action": "Rank all candidate features by impact-to-effort ratio",
+          "observation": "Automated backup ranks 3rd out of 8 candidate features with an impact-to-effort ratio of 2.8, behind the mobile app performance optimization (3.1) but ahead of the advanced search functionality (2.2). The feature scores highest on risk mitigation but lower on immediate user acquisition potential."
+        }
+      ],
+      "outcome": "Decision: Prioritize the Automated Backup System for the upcoming sprint given the strong user demand, clear business impact on retention and cost savings, and acceptable effort requirements. We'll coordinate closely with the Platform team on dependencies and plan for a phased rollout starting with premium users."
+    },
+    {
+      "id": "release_go_no_go",
+      "task": "Determine if Critical Security Hotfix is ready to ship",
+      "steps": [
+        {
+          "thought": "Check feature completion status for all planned items",
+          "action": "Query all features in this release and their current status",
+          "observation": "All 3 planned security features are complete: authentication bypass fix (100%), privilege escalation patch (100%), and input validation hardening (100%), with code reviews approved by security team."
+        },
+        {
+          "thought": "Evaluate quality signals and regression risk",
+          "action": "Review bug reports and test coverage for release features",
+          "observation": "Zero critical or high-severity bugs reported in staging environment over 48-hour soak period, with 94% test coverage including new security-focused regression tests and penetration testing validation complete."
+        },
+        {
+          "thought": "Assess metric baselines and rollback plan readiness",
+          "action": "Verify monitoring dashboards and rollback procedures",
+          "observation": "Production monitoring dashboards show all security metrics baseline established, automated rollback scripts tested successfully in staging, and incident response team on standby with 15-minute rollback capability confirmed."
+        }
+      ],
+      "outcome": "Critical Security Hotfix approved for immediate production deployment with go-live scheduled for 2 AM EST maintenance window, given complete feature readiness, clean quality signals, and robust rollback preparedness."
+    },
+    {
+      "id": "persona_investment",
+      "task": "Determine investment level for Freelance Consultant persona in Qthe relevant criteria",
+      "steps": [
+        {
+          "thought": "Analyze current engagement and retention for this segment",
+          "action": "Query metrics tied to this persona's features",
+          "observation": "Current engagement metrics show the Enterprise Admin persona has a 78% monthly active usage rate but retention drops to 62% after month 6, primarily due to workflow inefficiencies in bulk user management features."
+        },
+        {
+          "thought": "Review outstanding feedback and unmet needs",
+          "action": "Aggregate feedback from this persona segment",
+          "observation": "Feedback analysis reveals 43% of Enterprise Admin users consistently request advanced role-based permissions and automated compliance reporting, with 67% indicating these gaps significantly impact their operational efficiency."
+        },
+        {
+          "thought": "Compare revenue potential vs investment required",
+          "action": "Estimate ROI of persona-targeted features",
+          "observation": "ROI analysis indicates investing $2.8M in Enterprise Admin features could generate $8.4M additional ARR over 18 months, representing a 3.0x return with moderate technical complexity and 6-month development timeline."
+        }
+      ],
+      "outcome": "Recommend high investment level ($2.8M) for Enterprise Admin persona in Q3, prioritizing advanced permissions and compliance features given strong ROI potential and clear user demand that directly addresses retention challenges."
+    }
+  ]
+}
