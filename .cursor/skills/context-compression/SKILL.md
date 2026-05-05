@@ -1,6 +1,6 @@
 ---
 name: context-compression
-description: This skill should be used when the user asks to "compress context", "summarize conversation history", "implement compaction", "reduce token usage", or mentions context compression, structured summarization, tokens-per-task optimization, or long-running agent sessions exceeding context limits.
+description: This skill should be used when the user asks to "compress context", "summarize conversation history", "implement compaction", "reduce token usage" or mentions context compression, structured summarization, tokens-per-task optimization or long-running agent sessions exceeding context limits.
 ---
 
 # Context Compression Strategies
@@ -20,17 +20,17 @@ Activate this skill when:
 
 Context compression trades token savings against information loss. Select from three production-ready approaches based on session characteristics:
 
-1. **Anchored Iterative Summarization**: Implement this for long-running sessions where file tracking matters. Maintain structured, persistent summaries with explicit sections for session intent, file modifications, decisions, and next steps. When compression triggers, summarize only the newly-truncated span and merge with the existing summary rather than regenerating from scratch. This prevents drift that accumulates when summaries are regenerated wholesale — each regeneration risks losing details the model considers low-priority but the task requires. Structure forces preservation because dedicated sections act as checklists the summarizer must populate, catching silent information loss.
+1. **Anchored Iterative Summarization**: Implement this for long-running sessions where file tracking matters. Maintain structured, persistent summaries with explicit sections for session intent, file modifications, decisions and next steps. When compression triggers, summarize only the newly-truncated span and merge with the existing summary rather than regenerating from scratch. This prevents drift that accumulates when summaries are regenerated wholesale - each regeneration risks losing details the model considers low-priority but the task requires. Structure forces preservation because dedicated sections act as checklists the summarizer must populate, catching silent information loss.
 
 2. **Opaque Compression**: Reserve this for short sessions where re-fetching costs are low and maximum token savings are required. It produces compressed representations optimized for reconstruction fidelity, achieving 99%+ compression ratios but sacrificing interpretability entirely. The tradeoff matters: there is no way to verify what was preserved without running probe-based evaluation, so never use this when debugging or artifact tracking is critical.
 
-3. **Regenerative Full Summary**: Use this when summary readability is critical and sessions have clear phase boundaries. It generates detailed structured summaries on each compression trigger. The weakness is cumulative detail loss across repeated cycles — each full regeneration is a fresh pass that may deprioritize details preserved in earlier summaries.
+3. **Regenerative Full Summary**: Use this when summary readability is critical and sessions have clear phase boundaries. It generates detailed structured summaries on each compression trigger. The weakness is cumulative detail loss across repeated cycles - each full regeneration is a fresh pass that may deprioritize details preserved in earlier summaries.
 
 ## Detailed Topics
 
 ### Optimize for Tokens-Per-Task, Not Tokens-Per-Request
 
-Measure total tokens consumed from task start to completion, not tokens per individual request. When compression drops file paths, error messages, or decision rationale, the agent must re-explore, re-read files, and re-derive conclusions — wasting far more tokens than the compression saved. A strategy saving 0.5% more tokens per request but causing 20% more re-fetching costs more overall. Track re-fetching frequency as the primary quality signal: if the agent repeatedly asks to re-read files it already processed, compression is too aggressive.
+Measure total tokens consumed from task start to completion, not tokens per individual request. When compression drops file paths, error messages or decision rationale, the agent must re-explore, re-read files and re-derive conclusions - wasting far more tokens than the compression saved. A strategy saving 0.5% more tokens per request but causing 20% more re-fetching costs more overall. Track re-fetching frequency as the primary quality signal: if the agent repeatedly asks to re-read files it already processed, compression is too aggressive.
 
 ### Solve the Artifact Trail Problem First
 
@@ -71,7 +71,7 @@ Build structured summaries with explicit sections that prevent silent informatio
 3. Update documentation
 ```
 
-Adapt sections to the agent's domain. A debugging agent needs "Root Cause" and "Error Messages"; a migration agent needs "Source Schema" and "Target Schema." The structure matters more than the specific sections — any explicit schema outperforms freeform summarization.
+Adapt sections to the agent's domain. A debugging agent needs "Root Cause" and "Error Messages"; a migration agent needs "Source Schema" and "Target Schema." The structure matters more than the specific sections - any explicit schema outperforms freeform summarization.
 
 ### Choose Compression Triggers Strategically
 
@@ -84,7 +84,7 @@ When to trigger compression matters as much as how to compress. Select a trigger
 | Importance-based | Compress low-relevance sections first | Complex but preserves signal |
 | Task-boundary | Compress at logical task completions | Clean summaries but unpredictable timing |
 
-Default to sliding window with structured summaries for coding agents — it provides the best balance of predictability and quality. Use task-boundary triggers when sessions have clear phase transitions (e.g., research then implementation then testing).
+Default to sliding window with structured summaries for coding agents - it provides the best balance of predictability and quality. Use task-boundary triggers when sessions have clear phase transitions (e.g., research then implementation then testing).
 
 ### Evaluate Compression with Probes, Not Metrics
 
@@ -103,7 +103,7 @@ Use probe-based evaluation: after compression, pose questions that test whether 
 
 Evaluate compression quality for coding agents across these dimensions. Accuracy shows the largest variation between methods (0.6 point gap), making it the strongest discriminator. Artifact trail is universally weak (2.2-2.5), confirming it needs specialized handling beyond general summarization.
 
-1. **Accuracy**: Are technical details correct — file paths, function names, error codes?
+1. **Accuracy**: Are technical details correct - file paths, function names, error codes?
 2. **Context Awareness**: Does the response reflect current conversation state?
 3. **Artifact Trail**: Does the agent know which files were read or modified?
 4. **Completeness**: Does the response address all parts of the question?
@@ -116,15 +116,15 @@ Evaluate compression quality for coding agents across these dimensions. Accuracy
 
 For codebases or agent systems exceeding context windows, compress through three sequential phases. Each phase narrows context so the next phase operates within budget.
 
-1. **Research Phase**: Explore architecture diagrams, documentation, and key interfaces. Compress exploration into a structured analysis of components, dependencies, and boundaries. Output: a single research document that replaces raw exploration.
+1. **Research Phase**: Explore architecture diagrams, documentation and key interfaces. Compress exploration into a structured analysis of components, dependencies and boundaries. Output: a single research document that replaces raw exploration.
 
-2. **Planning Phase**: Convert the research document into an implementation specification with function signatures, type definitions, and data flow. A 5M-token codebase compresses to approximately 2,000 words of specification at this stage.
+2. **Planning Phase**: Convert the research document into an implementation specification with function signatures, type definitions and data flow. A 5M-token codebase compresses to approximately 2,000 words of specification at this stage.
 
 3. **Implementation Phase**: Execute against the specification. Context stays focused on the spec plus active working files, not raw codebase exploration. This phase rarely needs further compression because the spec is already compact.
 
 ### Use Example Artifacts as Compression Seeds
 
-When provided with a manual migration example or reference PR, use it as a template to understand the target pattern rather than exploring the codebase from scratch. The example reveals constraints static analysis cannot surface: which invariants must hold, which services break on changes, and what a clean implementation looks like.
+When provided with a manual migration example or reference PR, use it as a template to understand the target pattern rather than exploring the codebase from scratch. The example reveals constraints static analysis cannot surface: which invariants must hold, which services break on changes and what a clean implementation looks like.
 
 This matters most when the agent cannot distinguish essential complexity (business requirements) from accidental complexity (legacy workarounds). The example artifact encodes that distinction implicitly, saving tokens that would otherwise go to trial-and-error exploration.
 
@@ -132,9 +132,9 @@ This matters most when the agent cannot distinguish essential complexity (busine
 
 1. Define explicit summary sections matching the agent's domain (debugging, migration, feature development)
 2. On first compression trigger, summarize the truncated history into those sections
-3. On subsequent compressions, summarize only newly truncated content — do not re-summarize the existing summary
+3. On subsequent compressions, summarize only newly truncated content - do not re-summarize the existing summary
 4. Merge new information into existing sections rather than regenerating them, deduplicating by file path and decision identity
-5. Tag which information came from which compression cycle — this enables debugging when summaries drift
+5. Tag which information came from which compression cycle - this enables debugging when summaries drift
 
 ### Select the Right Approach for the Session Profile
 
@@ -161,7 +161,7 @@ This matters most when the agent cannot distinguish essential complexity (busine
 | Regenerative | 98.7% | 3.44 | Good quality, moderate compression |
 | Opaque | 99.3% | 3.35 | Best compression, quality loss |
 
-The 0.7% additional tokens retained by structured summarization buys 0.35 quality points — a significant gap when compounded over multiple compression cycles. For any task where re-fetching costs exist, this tradeoff favors structured approaches.
+The 0.7% additional tokens retained by structured summarization buys 0.35 quality points - a significant gap when compounded over multiple compression cycles. For any task where re-fetching costs exist, this tradeoff favors structured approaches.
 
 ## Examples
 
@@ -209,7 +209,7 @@ Good response (structured summarization):
 Poor response (aggressive compression):
 > "We were debugging an authentication issue. The login was failing. We fixed some configuration problems."
 
-The structured response preserves endpoint, error code, and root cause. The aggressive response loses all technical detail.
+The structured response preserves endpoint, error code and root cause. The aggressive response loses all technical detail.
 
 ## Guidelines
 
@@ -224,19 +224,19 @@ The structured response preserves endpoint, error code, and root cause. The aggr
 
 ## Gotchas
 
-1. **Never compress tool definitions or schemas**: Compressing function call schemas, API specs, or tool definitions destroys agent functionality entirely. The agent cannot invoke tools whose parameter names or types have been summarized away. Treat tool definitions as immutable anchors that bypass compression.
+1. **Never compress tool definitions or schemas**: Compressing function call schemas, API specs or tool definitions destroys agent functionality entirely. The agent cannot invoke tools whose parameter names or types have been summarized away. Treat tool definitions as immutable anchors that bypass compression.
 
-2. **Compressed summaries hallucinate facts**: When an LLM summarizes conversation history, it may introduce plausible-sounding details that never appeared in the original. Always validate compressed output against source material before discarding originals — especially for file paths, error codes, and numeric values that the summarizer may "round" or fabricate.
+2. **Compressed summaries hallucinate facts**: When an LLM summarizes conversation history, it may introduce plausible-sounding details that never appeared in the original. Always validate compressed output against source material before discarding originals - especially for file paths, error codes and numeric values that the summarizer may "round" or fabricate.
 
-3. **Compression breaks artifact references**: File paths, commit SHAs, variable names, and code snippets get paraphrased or dropped during compression. A summary saying "updated the config file" when the agent needs `config/redis.ts` causes re-exploration. Preserve identifiers verbatim in dedicated sections rather than embedding them in prose.
+3. **Compression breaks artifact references**: File paths, commit SHAs, variable names and code snippets get paraphrased or dropped during compression. A summary saying "updated the config file" when the agent needs `config/redis.ts` causes re-exploration. Preserve identifiers verbatim in dedicated sections rather than embedding them in prose.
 
-4. **Early turns contain irreplaceable constraints**: The first few turns of a session often contain task setup, user constraints, and architectural decisions that cannot be re-derived. Protect early turns from compression or extract their constraints into a persistent preamble that survives all compression cycles.
+4. **Early turns contain irreplaceable constraints**: The first few turns of a session often contain task setup, user constraints and architectural decisions that cannot be re-derived. Protect early turns from compression or extract their constraints into a persistent preamble that survives all compression cycles.
 
 5. **Aggressive ratios compound across cycles**: A 95% compression ratio seems safe once, but applying it repeatedly compounds losses. After three cycles at 95%, only 0.0125% of original tokens remain. Calibrate ratios assuming multiple compression cycles, not a single pass.
 
-6. **Code and prose need different compression**: Prose compresses well because natural language is redundant. Code does not — removing a single token from a function signature or import path can make it useless. Apply domain-specific compression strategies: summarize prose sections aggressively while preserving code blocks and structured data verbatim.
+6. **Code and prose need different compression**: Prose compresses well because natural language is redundant. Code does not - removing a single token from a function signature or import path can make it useless. Apply domain-specific compression strategies: summarize prose sections aggressively while preserving code blocks and structured data verbatim.
 
-7. **Probe-based evaluation gives false confidence**: Probes can pass despite critical information being lost, because the probes test only what they ask about. A probe set that checks file names but not function signatures will miss signature loss. Design probes to cover all six evaluation dimensions, and rotate probe sets across evaluation runs to avoid blind spots.
+7. **Probe-based evaluation gives false confidence**: Probes can pass despite critical information being lost, because the probes test only what they ask about. A probe set that checks file names but not function signatures will miss signature loss. Design probes to cover all six evaluation dimensions and rotate probe sets across evaluation runs to avoid blind spots.
 
 ## Integration
 
@@ -250,7 +250,7 @@ This skill connects to several others in the collection:
 ## References
 
 Internal reference:
-- [Evaluation Framework Reference](./references/evaluation-framework.md) - Read when: building or calibrating a probe-based evaluation pipeline, or when needing scoring rubrics and LLM judge configuration for compression quality assessment
+- [Evaluation Framework Reference](./references/evaluation-framework.md) - Read when: building or calibrating a probe-based evaluation pipeline or when needing scoring rubrics and LLM judge configuration for compression quality assessment
 
 Related skills in this collection:
 - context-degradation - Read when: diagnosing why agent performance drops over long sessions, before applying compression as a mitigation

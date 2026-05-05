@@ -2,7 +2,7 @@
 name: memory-systems
 description: >
   Guides implementation of agent memory systems, compares production frameworks
-  (Mem0, Zep/Graphiti, Letta, LangMem, Cognee), and designs persistence architectures
+  (Mem0, Zep/Graphiti, Letta, LangMem, Cognee) and designs persistence architectures
   for cross-session knowledge retention. Use when the user asks to "implement
   agent memory", "persist state across sessions", "build knowledge graph for agents",
   "track entities over time", "add long-term memory", "choose a memory framework",
@@ -26,7 +26,7 @@ Activate this skill when:
 
 ## Core Concepts
 
-Think of memory as a spectrum from volatile context window to persistent storage. Default to the simplest layer that meets retrieval needs, because benchmark evidence shows **tool complexity matters less than reliable retrieval** — Letta's filesystem agents scored 74% on LoCoMo using basic file operations, beating Mem0's specialized tools at 68.5%. Add structure (graphs, temporal validity) only when retrieval quality degrades or the agent needs multi-hop reasoning, relationship traversal, or time-travel queries.
+Think of memory as a spectrum from volatile context window to persistent storage. Default to the simplest layer that meets retrieval needs, because benchmark evidence shows **tool complexity matters less than reliable retrieval** - Letta's filesystem agents scored 74% on LoCoMo using basic file operations, beating Mem0's specialized tools at 68.5%. Add structure (graphs, temporal validity) only when retrieval quality degrades or the agent needs multi-hop reasoning, relationship traversal or time-travel queries.
 
 ## Detailed Topics
 
@@ -43,7 +43,7 @@ Select a framework based on the dominant retrieval pattern the agent requires. U
 | **LangMem** | Memory tools for LangGraph workflows | Teams already on LangGraph | Tightly coupled to LangGraph |
 | **File-system** | Plain files with naming conventions | Simple agents, prototyping | No semantic search, no relationships |
 
-Choose Zep/Graphiti when the agent needs bi-temporal modeling (tracking both when events occurred and when they were ingested) because its three-tier knowledge graph (episode, semantic entity, community subgraphs) excels at temporal queries. Choose Mem0 when the priority is fast time-to-production with managed infrastructure. Choose Letta when the agent needs deep self-introspection through its Agent Development Environment. Choose Cognee when the agent must build dense multi-layer semantic graphs — it layers text chunks and entity types as nodes with detailed relationship edges, and every core piece (ingestion, entity extraction, post-processing, retrieval) is customizable.
+Choose Zep/Graphiti when the agent needs bi-temporal modeling (tracking both when events occurred and when they were ingested) because its three-tier knowledge graph (episode, semantic entity, community subgraphs) excels at temporal queries. Choose Mem0 when the priority is fast time-to-production with managed infrastructure. Choose Letta when the agent needs deep self-introspection through its Agent Development Environment. Choose Cognee when the agent must build dense multi-layer semantic graphs - it layers text chunks and entity types as nodes with detailed relationship edges and every core piece (ingestion, entity extraction, post-processing, retrieval) is customizable.
 
 **Benchmark Performance Comparison**
 
@@ -51,15 +51,15 @@ Consult these benchmarks to set expectations, but treat them as signals for spec
 
 | System | DMR Accuracy | LoCoMo | HotPotQA (multi-hop) | Latency |
 |--------|-------------|--------|---------------------|---------|
-| Cognee | — | — | Highest on EM, F1, Correctness | Variable |
-| Zep (Temporal KG) | 94.8% | — | Mid-range across metrics | 2.58s |
-| Letta (filesystem) | — | 74.0% | — | — |
-| Mem0 | — | 68.5% | Lowest across metrics | — |
-| MemGPT | 93.4% | — | — | Variable |
-| GraphRAG | ~75-85% | — | — | Variable |
-| Vector RAG baseline | ~60-70% | — | — | Fast |
+| Cognee | - | - | Highest on EM, F1, Correctness | Variable |
+| Zep (Temporal KG) | 94.8% | - | Mid-range across metrics | 2.58s |
+| Letta (filesystem) | - | 74.0% | - | - |
+| Mem0 | - | 68.5% | Lowest across metrics | - |
+| MemGPT | 93.4% | - | - | Variable |
+| GraphRAG | ~75-85% | - | - | Variable |
+| Vector RAG baseline | ~60-70% | - | - | Fast |
 
-Key takeaways: Zep achieves up to 18.5% accuracy improvement on LongMemEval while reducing latency by 90%. Cognee outperformed Mem0, Graphiti, and LightRAG on HotPotQA multi-hop reasoning benchmarks across Exact Match, F1, and human-like correctness metrics. Letta's filesystem-based agents achieved 74% on LoCoMo using basic file operations, confirming that reliable retrieval beats tool sophistication.
+Key takeaways: Zep achieves up to 18.5% accuracy improvement on LongMemEval while reducing latency by 90%. Cognee outperformed Mem0, Graphiti and LightRAG on HotPotQA multi-hop reasoning benchmarks across Exact Match, F1 and human-like correctness metrics. Letta's filesystem-based agents achieved 74% on LoCoMo using basic file operations, confirming that reliable retrieval beats tool sophistication.
 
 ### Memory Layers (Decision Points)
 
@@ -67,9 +67,9 @@ Pick the shallowest memory layer that satisfies the persistence requirement. Eac
 
 | Layer | Persistence | Implementation | When to Use |
 |-------|------------|----------------|-------------|
-| **Working** | Context window only | Scratchpad in system prompt | Always — optimize with attention-favored positions |
+| **Working** | Context window only | Scratchpad in system prompt | Always - optimize with attention-favored positions |
 | **Short-term** | Session-scoped | File-system, in-memory cache | Intermediate tool results, conversation state |
-| **Long-term** | Cross-session | Key-value store → graph DB | User preferences, domain knowledge, entity registries |
+| **Long-term** | Cross-session | Key-value store -> graph DB | User preferences, domain knowledge, entity registries |
 | **Entity** | Cross-session | Entity registry + properties | Maintaining identity ("John Doe" = same person across conversations) |
 | **Temporal KG** | Cross-session + history | Graph with validity intervals | Facts that change over time, time-travel queries, preventing context clash |
 
@@ -84,11 +84,11 @@ Match the retrieval strategy to the query shape. Semantic search handles direct 
 | **Temporal** (validity filter) | Facts change over time | Requires validity metadata |
 | **Hybrid** (semantic + keyword + graph) | Best overall accuracy | Most infrastructure |
 
-Zep's hybrid approach achieves 90% latency reduction (2.58s vs 28.9s) by retrieving only relevant subgraphs. Cognee implements hybrid retrieval through its 14 search modes — each mode combines different strategies from its three-store architecture (graph, vector, relational), letting agents select the retrieval strategy that fits the query type rather than using a one-size-fits-all approach.
+Zep's hybrid approach achieves 90% latency reduction (2.58s vs 28.9s) by retrieving only relevant subgraphs. Cognee implements hybrid retrieval through its 14 search modes - each mode combines different strategies from its three-store architecture (graph, vector, relational), letting agents select the retrieval strategy that fits the query type rather than using a one-size-fits-all approach.
 
 ### Memory Consolidation
 
-Run consolidation periodically to prevent unbounded growth, because unchecked memory accumulation degrades retrieval quality over time. **Invalidate but do not discard** — preserving history matters for temporal queries that need to reconstruct past states. Trigger consolidation on memory count thresholds, degraded retrieval quality, or scheduled intervals. See [Implementation Reference](./references/implementation.md) for working consolidation code.
+Run consolidation periodically to prevent unbounded growth, because unchecked memory accumulation degrades retrieval quality over time. **Invalidate but do not discard** - preserving history matters for temporal queries that need to reconstruct past states. Trigger consolidation on memory count thresholds, degraded retrieval quality or scheduled intervals. See [Implementation Reference](./references/implementation.md) for working consolidation code.
 
 ## Practical Guidance
 
@@ -98,7 +98,7 @@ Run consolidation periodically to prevent unbounded growth, because unchecked me
 
 1. **Prototype**: Use file-system memory. Store facts as structured JSON with timestamps. This validates agent behavior before committing to infrastructure.
 2. **Scale**: Move to Mem0 or a vector store with metadata when the agent needs semantic search and multi-tenant isolation, because file-based lookup cannot handle similarity queries.
-3. **Complex reasoning**: Add Zep/Graphiti when the agent needs relationship traversal, temporal validity, or cross-session synthesis. Graphiti uses structured ties with generic relations, keeping graphs simple and easy to reason about; Cognee builds denser multi-layer semantic graphs with detailed relationship edges — choose based on whether the agent needs temporal bi-modeling (Graphiti) or richer interconnected knowledge structures (Cognee).
+3. **Complex reasoning**: Add Zep/Graphiti when the agent needs relationship traversal, temporal validity or cross-session synthesis. Graphiti uses structured ties with generic relations, keeping graphs simple and easy to reason about; Cognee builds denser multi-layer semantic graphs with detailed relationship edges - choose based on whether the agent needs temporal bi-modeling (Graphiti) or richer interconnected knowledge structures (Cognee).
 4. **Full control**: Use Letta or Cognee when the agent must self-manage its own memory with deep introspection, because these frameworks expose memory operations as first-class agent actions.
 
 ### Integration with Context
@@ -136,7 +136,7 @@ graph.create_temporal_relationship(
     rel_type="LIVES_AT",
     target_id=address_node,
     valid_from=datetime(2024, 1, 15),
-    valid_until=datetime(2024, 9, 1),  # moved out
+    valid_until=datetime(2024, 9, 1), # moved out
 )
 
 # Query: Where did user live on March 1, 2024?
@@ -171,7 +171,7 @@ results = await cognee.search(
 1. Start with file-system memory; add complexity only when retrieval quality demands it
 2. Track temporal validity for any fact that can change over time
 3. Use hybrid retrieval (semantic + keyword + graph) for best accuracy
-4. Consolidate memories periodically — invalidate but don't discard
+4. Consolidate memories periodically - invalidate but don't discard
 5. Design for retrieval failure: always have a fallback when memory lookup returns nothing
 6. Consider privacy implications of persistent memory (retention policies, deletion rights)
 7. Benchmark your memory system against LoCoMo or LongMemEval before and after changes
@@ -185,7 +185,7 @@ results = await cognee.search(
 4. **No consolidation strategy**: Unbounded memory growth degrades retrieval quality over time. Set memory count thresholds or scheduled intervals to trigger consolidation.
 5. **Embedding model mismatch**: Writing memories with one embedding model and reading with another produces poor retrieval because vector spaces are not interchangeable. Pin a single embedding model for each memory store and re-embed all entries if the model changes.
 6. **Graph schema rigidity**: Over-structured graph schemas (rigid node types, fixed relationship labels) break when the domain evolves. Prefer generic relation types and flexible property bags so new entity kinds do not require schema migrations.
-7. **Stale memory poisoning**: Old memories that contradict the current state corrupt agent behavior silently. Implement expiry policies or confidence decay so the agent deprioritizes aged facts, and surface contradictions explicitly when detected.
+7. **Stale memory poisoning**: Old memories that contradict the current state corrupt agent behavior silently. Implement expiry policies or confidence decay so the agent deprioritizes aged facts and surface contradictions explicitly when detected.
 8. **Memory-context mismatch**: Retrieving memories that are topically related but contextually wrong (e.g., a memory about "Python" the snake when the agent is discussing Python the language). Mitigate by including session or domain metadata in memory entries and filtering on it during retrieval.
 
 ## Integration
@@ -199,7 +199,7 @@ This skill builds on context-fundamentals. It connects to:
 ## References
 
 Internal references:
-- [Implementation Reference](./references/implementation.md) - Read when: implementing vector stores, property graphs, temporal queries, or memory consolidation logic from scratch
+- [Implementation Reference](./references/implementation.md) - Read when: implementing vector stores, property graphs, temporal queries or memory consolidation logic from scratch
 
 Related skills in this collection:
 - context-fundamentals - Read when: designing the context layer that memory feeds into

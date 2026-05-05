@@ -1,5 +1,5 @@
 ---
-description: Plan-first workflow — plan before coding, use subagents for hard problems, verify before marking complete
+description: Plan-first workflow - plan before coding, use subagents for hard problems, verify before marking complete
 alwaysApply: true
 ---
 
@@ -11,7 +11,7 @@ Before writing or editing any code:
 - Break the task into discrete steps using the TodoWrite tool
 - Identify which files will be affected
 - Flag any risks or dependencies between steps
-- If requirements are ambiguous, ask the user — don't guess
+- If requirements are ambiguous, ask the user - don't guess
 
 ## 2. Use Subagents for Difficult Problems
 
@@ -21,7 +21,7 @@ When a task involves:
 - Large refactors touching 5+ files
 - Research-heavy questions about architecture or libraries
 
-Launch a Task subagent (explore, generalPurpose, or shell) to handle it. Prefer parallel subagents when investigating independent areas.
+Launch a Task subagent (explore, generalPurpose or shell) to handle it. Prefer parallel subagents when investigating independent areas.
 
 ## 3. Never Mark a Task Complete Without Verification
 
@@ -37,7 +37,7 @@ If verification fails, fix the issue before marking complete.
 Log the task and outcome in `.cursor/rules/logs/tasks.md` using this format:
 
 ```
-## [Date] — [Short description]
+## [Date] - [Short description]
 - **What**: What was done
 - **Files changed**: List of files
 - **Verified**: How it was verified

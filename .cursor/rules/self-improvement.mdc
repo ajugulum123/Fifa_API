@@ -1,5 +1,5 @@
 ---
-description: Self-improvement loop — log accomplishments and mistakes to reduce error rate over time
+description: Self-improvement loop - log accomplishments and mistakes to reduce error rate over time
 alwaysApply: true
 ---
 
@@ -12,7 +12,7 @@ alwaysApply: true
 Append to `.cursor/rules/logs/accomplishments.md`:
 
 ```
-## [Date] — [Short description]
+## [Date] - [Short description]
 - What was accomplished
 - Techniques or patterns that worked well
 - Reusable knowledge for future tasks
@@ -20,10 +20,10 @@ Append to `.cursor/rules/logs/accomplishments.md`:
 
 ### Log Mistakes
 
-When something goes wrong — wrong file edited, broken deploy, missed requirement — append to `.cursor/rules/logs/mistakes.md`:
+When something goes wrong - wrong file edited, broken deploy, missed requirement - append to `.cursor/rules/logs/mistakes.md`:
 
 ```
-## [Date] — [What went wrong]
+## [Date] - [What went wrong]
 - **Root cause**: Why it happened
 - **Fix**: How it was resolved
 - **Prevention**: How to avoid this in the future

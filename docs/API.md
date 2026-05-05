@@ -1,6 +1,6 @@
-# FIFA GraphQL API — Usage Guide
+# FIFA GraphQL API - Usage Guide
 
-Practical reference for calling the API: endpoint info, auth flow, example queries and mutations, error codes, and configuration.
+Practical reference for calling the API: endpoint info, auth flow, example queries and mutations, error codes and configuration.
 
 > For the **why** behind the schema, see [`SCHEMA_DESIGN.md`](./SCHEMA_DESIGN.md).
 > For the canonical types, see [`../graphql/schema.graphql`](../graphql/schema.graphql).
@@ -13,10 +13,10 @@ Practical reference for calling the API: endpoint info, auth flow, example queri
 |---|---|
 | **GraphQL** | `https://localhost:4443/graphql` |
 | **Health check** | `https://localhost:4443/health` |
-| **HTTP→HTTPS redirect** | `http://localhost:4080` (308 redirect) |
+| **HTTP->HTTPS redirect** | `http://localhost:4080` (308 redirect) |
 | **Sandbox UI** | Open the GraphQL endpoint in a browser |
 
-All requests use `POST` with `Content-Type: application/json`. Self-signed certificates in development cause a browser warning — accept it once.
+All requests use `POST` with `Content-Type: application/json`. Self-signed certificates in development cause a browser warning - accept it once.
 
 ---
 
@@ -26,8 +26,8 @@ All requests use `POST` with `Content-Type: application/json`. Self-signed certi
 
 | Role | Read players/clubs | Mutate players | Create ADMIN users |
 |---|:---:|:---:|:---:|
-| `ADMIN` | ✅ | ✅ | ✅ |
-| `USER` | ✅ | ❌ `FORBIDDEN` | ❌ `FORBIDDEN` |
+| `ADMIN` | | | |
+| `USER` | | `FORBIDDEN` | `FORBIDDEN` |
 
 Anonymous (no token) requests can read public queries but get `UNAUTHORIZED` on protected mutations.
 
@@ -36,17 +36,17 @@ Anonymous (no token) requests can read public queries but get `UNAUTHORIZED` on 
 | Token | Lifetime | Purpose | Storage |
 |---|---|---|---|
 | **Access** | 15 min (default) | Sent on every request as `Authorization: Bearer <token>` | Memory or session cookie |
-| **Refresh** | 7 days (default) | Used once to get a new access + refresh token pair | HttpOnly cookie or secure storage — **never** localStorage |
+| **Refresh** | 7 days (default) | Used once to get a new access + refresh token pair | HttpOnly cookie or secure storage - **never** localStorage |
 
 Refresh tokens are **single-use**: every refresh rotates to a new token and immediately revokes the old one server-side. A replayed refresh token returns `UNAUTHORIZED`.
 
 ### Auth flow at a glance
 
 ```text
-1. login(input)            → { accessToken, refreshToken, user }
-2. (any request)           → header: Authorization: Bearer <accessToken>
-3. accessToken expires     → refreshToken(token: <refreshToken>) → new pair
-4. logout(refreshToken)    → server revokes the refresh token
+1. login(input) -> { accessToken, refreshToken, user }
+2. (any request) -> header: Authorization: Bearer <accessToken>
+3. accessToken expires -> refreshToken(token: <refreshToken>) -> new pair
+4. logout(refreshToken) -> server revokes the refresh token
 ```
 
 ---
@@ -68,7 +68,7 @@ mutation {
     }
     user { id username role }
     errors { message code }
-    meta   { httpStatus code statusMessage }
+    meta { httpStatus code statusMessage }
   }
 }
 ```
@@ -126,7 +126,7 @@ mutation {
 query {
   players(
     filter: { countries: ["Brazil"] }
-    sort:   [{ field: OVERALL_RATING, direction: DESC }]
+    sort: [{ field: OVERALL_RATING, direction: DESC }]
     pagination: { first: 5 }
   ) {
     edges {
@@ -138,7 +138,7 @@ query {
         age
         overallRating
         technical { finishing dribbling shortPassing }
-        physical  { sprintSpeed stamina }
+        physical { sprintSpeed stamina }
       }
     }
     pageInfo { hasNextPage endCursor }
@@ -147,7 +147,7 @@ query {
 }
 ```
 
-### Pagination — fetch the next page
+### Pagination - fetch the next page
 
 ```graphql
 query {
@@ -164,12 +164,12 @@ query {
 query {
   players(
     filter: {
-      age:        { min: 21, max: 28 }
-      heightCm:   { min: 180 }
+      age: { min: 21, max: 28 }
+      heightCm: { min: 180 }
       marketValue:{ min: 5000000 }
-      technical:  { finishing: { min: 80 } }
+      technical: { finishing: { min: 80 } }
     }
-    sort:       [{ field: MARKET_VALUE, direction: DESC }]
+    sort: [{ field: MARKET_VALUE, direction: DESC }]
     pagination: { first: 10 }
   ) {
     edges { node { name club marketValue overallRating } }
@@ -185,7 +185,7 @@ query {
   player(id: "abc-123") {
     player { name club overallRating }
     errors { message code }
-    meta   { httpStatus code }
+    meta { httpStatus code }
   }
 }
 ```
@@ -196,8 +196,8 @@ query {
 query {
   topPlayers(
     category: TECHNICAL
-    limit:    10
-    filter:   { countries: ["Argentina"] }
+    limit: 10
+    filter: { countries: ["Argentina"] }
   ) {
     name
     club
@@ -213,7 +213,7 @@ query {
 query {
   clubs(
     filter: { country: "Spain" }
-    sort:   [{ field: AVERAGE_OVERALL_RATING, direction: DESC }]
+    sort: [{ field: AVERAGE_OVERALL_RATING, direction: DESC }]
     pagination: { first: 10 }
   ) {
     edges {
@@ -248,20 +248,20 @@ query {
 mutation {
   createPlayer(input: {
     name: "Test Player"
-    age:  25
+    age: 25
     country: "Brazil"
-    club:    "Chelsea"
+    club: "Chelsea"
     heightCm: 180
     weightKg: 75
     marketValue: 1000000
-    technical: { /* full skill object — see schema for fields */ }
-    defensive: { /* … */ }
-    physical:  { /* … */ }
-    goalkeeper:{ /* … */ }
+    technical: { /* full skill object - see schema for fields */ }
+    defensive: { /* ... */ }
+    physical: { /* ... */ }
+    goalkeeper:{ /* ... */ }
   }) {
     player { id name overallRating }
     errors { message code field }
-    meta   { httpStatus code }
+    meta { httpStatus code }
   }
 }
 ```
@@ -276,7 +276,7 @@ mutation {
   ) {
     player { id age club }
     errors { message code field }
-    meta   { httpStatus code }
+    meta { httpStatus code }
   }
 }
 ```
@@ -288,7 +288,7 @@ mutation {
   deletePlayer(id: "abc-123") {
     deletedPlayerId
     errors { message code }
-    meta   { httpStatus code }
+    meta { httpStatus code }
   }
 }
 ```
@@ -317,15 +317,15 @@ Every response includes a `meta` object with HTTP-status semantics in-band:
 
 | Category | Code | HTTP |
 |---|---|:---:|
-| **2xx — Success** | `OK` | 200 |
+| **2xx - Success** | `OK` | 200 |
 | | `CREATED` | 201 |
 | | `ACCEPTED` | 202 |
 | | `NO_CONTENT` | 204 |
-| **3xx — Redirection** | `MOVED_PERMANENTLY` | 301 |
+| **3xx - Redirection** | `MOVED_PERMANENTLY` | 301 |
 | | `FOUND` | 302 |
 | | `SEE_OTHER` | 303 |
 | | `NOT_MODIFIED` | 304 |
-| **4xx — Client error** | `BAD_REQUEST` | 400 |
+| **4xx - Client error** | `BAD_REQUEST` | 400 |
 | | `UNAUTHORIZED` | 401 |
 | | `FORBIDDEN` | 403 |
 | | `NOT_FOUND` | 404 |
@@ -333,7 +333,7 @@ Every response includes a `meta` object with HTTP-status semantics in-band:
 | | `GONE` | 410 |
 | | `UNPROCESSABLE_ENTITY` | 422 |
 | | `TOO_MANY_REQUESTS` | 429 |
-| **5xx — Server error** | `INTERNAL_SERVER_ERROR` | 500 |
+| **5xx - Server error** | `INTERNAL_SERVER_ERROR` | 500 |
 | | `NOT_IMPLEMENTED` | 501 |
 | | `BAD_GATEWAY` | 502 |
 | | `SERVICE_UNAVAILABLE` | 503 |
@@ -358,8 +358,8 @@ All knobs live in `.env` (see `.env.example` for the template).
 | `RATE_LIMIT_MAX` | `100` | Max requests per window per IP |
 | `GRAPHQL_DEPTH_LIMIT` | `6` | Reject queries deeper than this |
 | `GRAPHQL_INTROSPECTION` | `true` | Disable in production |
-| `JWT_ACCESS_SECRET` | — | **Required.** 64+ random hex bytes |
-| `JWT_REFRESH_SECRET` | — | **Required.** Different from access secret |
+| `JWT_ACCESS_SECRET` | - | **Required.** 64+ random hex bytes |
+| `JWT_REFRESH_SECRET` | - | **Required.** Different from access secret |
 | `JWT_ACCESS_EXPIRES_IN` | `15m` | ms-format string |
 | `JWT_REFRESH_EXPIRES_IN` | `7d` | ms-format string |
 | `ADMIN_USERNAME` | `admin` | Seed user created at startup |
@@ -398,7 +398,7 @@ curl -sk -X POST https://localhost:4443/graphql \
 
 ```bash
 curl -sk https://localhost:4443/health
-# → {"status":"ok"}
+# -> {"status":"ok"}
 ```
 
 ---

@@ -1,11 +1,11 @@
 ---
 name: hosted-agents
-description: This skill should be used when the user asks to "build background agent", "create hosted coding agent", "set up sandboxed execution", "implement multiplayer agent", or mentions background agents, sandboxed VMs, agent infrastructure, Modal sandboxes, self-spawning agents, or remote coding environments.
+description: This skill should be used when the user asks to "build background agent", "create hosted coding agent", "set up sandboxed execution", "implement multiplayer agent" or mentions background agents, sandboxed VMs, agent infrastructure, Modal sandboxes, self-spawning agents or remote coding environments.
 ---
 
 # Hosted Agent Infrastructure
 
-Hosted agents run in remote sandboxed environments rather than on local machines. When designed well, they provide unlimited concurrency, consistent execution environments, and multiplayer collaboration. The critical insight is that session speed should be limited only by model provider time-to-first-token, with all infrastructure setup completed before the user starts their session.
+Hosted agents run in remote sandboxed environments rather than on local machines. When designed well, they provide unlimited concurrency, consistent execution environments and multiplayer collaboration. The critical insight is that session speed should be limited only by model provider time-to-first-token, with all infrastructure setup completed before the user starts their session.
 
 ## When to Activate
 
@@ -19,16 +19,16 @@ Activate this skill when:
 
 ## Core Concepts
 
-Move agent execution to remote sandboxed environments to eliminate the fundamental limits of local execution: resource contention, environment inconsistency, and single-user constraints. Remote sandboxes unlock unlimited concurrency, reproducible environments, and collaborative workflows because each session gets its own isolated compute with a known-good environment image.
+Move agent execution to remote sandboxed environments to eliminate the fundamental limits of local execution: resource contention, environment inconsistency and single-user constraints. Remote sandboxes unlock unlimited concurrency, reproducible environments and collaborative workflows because each session gets its own isolated compute with a known-good environment image.
 
-Design the architecture in three layers because each layer scales independently. Build sandbox infrastructure for isolated execution, an API layer for state management and client coordination, and client interfaces for user interaction across platforms. Keep these layers cleanly separated so sandbox changes do not ripple into clients.
+Design the architecture in three layers because each layer scales independently. Build sandbox infrastructure for isolated execution, an API layer for state management and client coordination and client interfaces for user interaction across platforms. Keep these layers cleanly separated so sandbox changes do not ripple into clients.
 
 ## Detailed Topics
 
 ### Sandbox Infrastructure
 
 **The Core Challenge**
-Eliminate sandbox spin-up latency because users perceive anything over a few seconds as broken. Development environments require cloning repositories, installing dependencies, and running build steps -- do all of this before the user ever submits a prompt.
+Eliminate sandbox spin-up latency because users perceive anything over a few seconds as broken. Development environments require cloning repositories, installing dependencies and running build steps -- do all of this before the user ever submits a prompt.
 
 **Image Registry Pattern**
 Pre-build environment images on a regular cadence (every 30 minutes works well) because this makes synchronization with the latest code a fast delta rather than a full clone. Include in each image:
@@ -103,7 +103,7 @@ Build tools that allow agents to spawn new sessions because frontier models are 
 - Parallel subtask execution for large changes
 - Multiple smaller PRs from one major task
 
-Expose three primitives: start a new session with specified parameters, read status of any session (check-in capability), and continue main work while sub-sessions run in parallel.
+Expose three primitives: start a new session with specified parameters, read status of any session (check-in capability) and continue main work while sub-sessions run in parallel.
 
 **Prompt Engineering for Self-Spawning**
 Engineer prompts that guide when agents should spawn sub-sessions rather than doing work inline:
@@ -133,7 +133,7 @@ Build a single state system that synchronizes across all clients (chat interface
 ### Multiplayer Support
 
 **Why Multiplayer Matters**
-Design for multiplayer from day one because it is nearly free to add with proper synchronization architecture, and it unlocks high-value workflows:
+Design for multiplayer from day one because it is nearly free to add with proper synchronization architecture and it unlocks high-value workflows:
 - Teaching non-engineers to use AI effectively
 - Live QA sessions with multiple team members
 - Real-time PR review with immediate changes
@@ -237,7 +237,7 @@ This skill builds on multi-agent-patterns for agent coordination and tool-design
 ## References
 
 Internal reference:
-- [Infrastructure Patterns](./references/infrastructure-patterns.md) - Read when: implementing sandbox lifecycle, image builds, or warm pool logic for the first time
+- [Infrastructure Patterns](./references/infrastructure-patterns.md) - Read when: implementing sandbox lifecycle, image builds or warm pool logic for the first time
 
 Related skills in this collection:
 - multi-agent-patterns - Read when: designing self-spawning or supervisor coordination patterns

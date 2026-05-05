@@ -1,22 +1,22 @@
 ---
 name: bdi-mental-states
-description: This skill should be used when the user asks to "model agent mental states", "implement BDI architecture", "create belief-desire-intention models", "transform RDF to beliefs", "build cognitive agent", or mentions BDI ontology, mental state modeling, rational agency, or neuro-symbolic AI integration.
+description: This skill should be used when the user asks to "model agent mental states", "implement BDI architecture", "create belief-desire-intention models", "transform RDF to beliefs", "build cognitive agent" or mentions BDI ontology, mental state modeling, rational agency or neuro-symbolic AI integration.
 ---
 
 # BDI Mental State Modeling
 
-Transform external RDF context into agent mental states (beliefs, desires, intentions) using formal BDI ontology patterns. This skill enables agents to reason about context through cognitive architecture, supporting deliberative reasoning, explainability, and semantic interoperability within multi-agent systems.
+Transform external RDF context into agent mental states (beliefs, desires, intentions) using formal BDI ontology patterns. This skill enables agents to reason about context through cognitive architecture, supporting deliberative reasoning, explainability and semantic interoperability within multi-agent systems.
 
 ## When to Activate
 
 Activate this skill when:
 - Processing external RDF context into agent beliefs about world states
-- Modeling rational agency with perception, deliberation, and action cycles
+- Modeling rational agency with perception, deliberation and action cycles
 - Enabling explainability through traceable reasoning chains
 - Implementing BDI frameworks (SEMAS, JADE, JADEX)
 - Augmenting LLMs with formal cognitive structures (Logic Augmented Generation)
 - Coordinating mental states across multi-agent platforms
-- Tracking temporal evolution of beliefs, desires, and intentions
+- Tracking temporal evolution of beliefs, desires and intentions
 - Linking motivational states to action plans
 
 ## Core Concepts
@@ -37,7 +37,7 @@ Separate mental states into two ontological categories because BDI reasoning req
 
 ### Cognitive Chain Pattern
 
-Wire beliefs, desires, and intentions into directed chains using bidirectional properties (`motivates`/`isMotivatedBy`, `fulfils`/`isFulfilledBy`) because this enables both forward reasoning (what should the agent do?) and backward tracing (why did the agent act?):
+Wire beliefs, desires and intentions into directed chains using bidirectional properties (`motivates`/`isMotivatedBy`, `fulfils`/`isFulfilledBy`) because this enables both forward reasoning (what should the agent do?) and backward tracing (why did the agent act?):
 
 ```turtle
 :Belief_store_open a bdi:Belief ;
@@ -74,7 +74,7 @@ Always ground mental states in world state references rather than free-text desc
 
 ### Goal-Directed Planning
 
-Connect intentions to plans via `bdi:specifies`, and decompose plans into ordered task sequences using `bdi:precedes`, because this separation allows plan reuse across different intentions while keeping execution order explicit:
+Connect intentions to plans via `bdi:specifies` and decompose plans into ordered task sequences using `bdi:precedes`, because this separation allows plan reuse across different intentions while keeping execution order explicit:
 
 ```turtle
 :Intention_I1 bdi:specifies :Plan_P1 .
@@ -92,7 +92,7 @@ Connect intentions to plans via `bdi:specifies`, and decompose plans into ordere
 
 Implement Triples-to-Beliefs-to-Triples as a bidirectional pipeline because agents must both consume external RDF context and produce new RDF assertions. Structure every T2B2T implementation in two explicit phases:
 
-**Phase 1: Triples-to-Beliefs** -- Translate incoming RDF triples into belief instances. Use `bdi:triggers` to connect the external world state to a `BeliefProcess`, and `bdi:generates` to produce the resulting belief. This preserves provenance from source data through to internal cognition:
+**Phase 1: Triples-to-Beliefs** -- Translate incoming RDF triples into belief instances. Use `bdi:triggers` to connect the external world state to a `BeliefProcess` and `bdi:generates` to produce the resulting belief. This preserves provenance from source data through to internal cognition:
 ```turtle
 :WorldState_notification a bdi:WorldState ;
     rdfs:comment "Push notification: Payment request $250" ;
@@ -168,7 +168,7 @@ SELECT ?mentalState WHERE {
 
 ## Compositional Mental Entities
 
-Decompose complex beliefs into constituent parts using `bdi:hasPart` relations, because monolithic beliefs force full replacement on partial updates. Structure composite beliefs so that each sub-belief can be independently updated, queried, or invalidated:
+Decompose complex beliefs into constituent parts using `bdi:hasPart` relations, because monolithic beliefs force full replacement on partial updates. Structure composite beliefs so that each sub-belief can be independently updated, queried or invalidated:
 
 ```turtle
 :Belief_meeting a bdi:Belief ;
@@ -273,7 +273,7 @@ SELECT ?task ?nextTask WHERE {
 
 4. **Implicit justifications**: Always link mental entities to explicit `Justification` instances. Unjustified mental states cannot be audited or traced.
 
-5. **Direct intention-to-action mapping**: Intentions specify plans which contain tasks; actions execute tasks. Skipping the plan layer removes the ability to reuse, reorder, or share execution strategies.
+5. **Direct intention-to-action mapping**: Intentions specify plans which contain tasks; actions execute tasks. Skipping the plan layer removes the ability to reuse, reorder or share execution strategies.
 
 6. **Ontology over-complexity**: Start with 5-10 core classes and properties (Belief, Desire, Intention, WorldState, Plan, plus key relations). Expanding the ontology prematurely inflates prompt context and slows SPARQL queries without improving reasoning quality.
 
@@ -294,12 +294,12 @@ Internal references:
 - [BDI Ontology Core](./references/bdi-ontology-core.md) - Read when: implementing BDI class hierarchies or defining ontology properties from scratch
 - [RDF Examples](./references/rdf-examples.md) - Read when: writing Turtle serializations of mental states or debugging triple structure
 - [SPARQL Competency Queries](./references/sparql-competency.md) - Read when: validating an implementation against competency questions or building custom queries
-- [Framework Integration](./references/framework-integration.md) - Read when: deploying BDI models to SEMAS, JADE, or LAG pipelines
+- [Framework Integration](./references/framework-integration.md) - Read when: deploying BDI models to SEMAS, JADE or LAG pipelines
 
 Primary sources:
-- Zuppiroli et al. "The Belief-Desire-Intention Ontology" (2025) — Read when: implementing formal BDI class hierarchies or validating ontology alignment
-- Rao & Georgeff "BDI agents: From theory to practice" (1995) — Read when: understanding the theoretical foundations of practical reasoning agents
-- Bratman "Intention, plans, and practical reason" (1987) — Read when: grounding implementation decisions in the philosophical basis of intentionality
+- Zuppiroli et al. "The Belief-Desire-Intention Ontology" (2025) - Read when: implementing formal BDI class hierarchies or validating ontology alignment
+- Rao & Georgeff "BDI agents: From theory to practice" (1995) - Read when: understanding the theoretical foundations of practical reasoning agents
+- Bratman "Intention, plans and practical reason" (1987) - Read when: grounding implementation decisions in the philosophical basis of intentionality
 
 ---
 

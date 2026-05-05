@@ -1,15 +1,15 @@
 /**
  * resolvers/helpers.ts
  * Pure helpers shared by multiple resolver modules:
- *   • Auth guards: requireAuth, requireRole
- *   • Token issuance: issueTokenPair
- *   • Player list utilities: allPlayers, applyFilter, applySort, paginateWithCursors
+ * • Auth guards: requireAuth, requireRole
+ * • Token issuance: issueTokenPair
+ * • Player list utilities: allPlayers, applyFilter, applySort, paginateWithCursors
  *
  * Keeping these here lets each resolver module stay focused on its domain.
  */
 
 import { v4 as uuidv4 } from 'uuid';
-import { Player }       from '../data/loadPlayers';
+import { Player } from '../data/loadPlayers';
 import { buildMeta, buildError } from '../utils/meta';
 import {
   signAccessToken, signRefreshToken,
@@ -21,9 +21,9 @@ import {
   type PublicUser, type UserRole,
 } from '../auth/userStore';
 
-// ─────────────────────────────────────────────────────────────────────────────
+//
 // Auth guards
-// ─────────────────────────────────────────────────────────────────────────────
+//
 
 /** Returns an UNAUTHORIZED payload if currentUser is null, else null. */
 export function requireAuth(currentUser: PublicUser | null) {
@@ -31,7 +31,7 @@ export function requireAuth(currentUser: PublicUser | null) {
     return {
       player: null,
       errors: [buildError('UNAUTHORIZED', 'You must be logged in to perform this action.')],
-      meta:   buildMeta('UNAUTHORIZED'),
+      meta: buildMeta('UNAUTHORIZED'),
     };
   }
   return null;
@@ -52,27 +52,27 @@ export function requireRole(currentUser: PublicUser, allowedRoles: UserRole[]) {
   return null;
 }
 
-// ─────────────────────────────────────────────────────────────────────────────
+//
 // Token issuance
-// ─────────────────────────────────────────────────────────────────────────────
+//
 
 /** Builds an access + refresh token pair and registers the refresh JTI. */
 export function issueTokenPair(user: PublicUser) {
-  const jti          = uuidv4();
-  const accessToken  = signAccessToken({ sub: user.id, username: user.username, role: user.role });
+  const jti = uuidv4();
+  const accessToken = signAccessToken({ sub: user.id, username: user.username, role: user.role });
   const refreshToken = signRefreshToken(user.id, jti);
   registerRefreshJti(jti);
   return {
     accessToken,
     refreshToken,
-    accessTokenExpiresIn:  expiresInToSeconds(ACCESS_EXPIRES_IN  as string),
+    accessTokenExpiresIn: expiresInToSeconds(ACCESS_EXPIRES_IN as string),
     refreshTokenExpiresIn: expiresInToSeconds(REFRESH_EXPIRES_IN as string),
   };
 }
 
-// ─────────────────────────────────────────────────────────────────────────────
+//
 // Player list utilities
-// ─────────────────────────────────────────────────────────────────────────────
+//
 
 export function allPlayers(store: Map<string, Player>): Player[] {
   return Array.from(store.values());
@@ -121,7 +121,7 @@ export function applyFilter(
     }
     if (filter.technical && !skillRangeMatch(p.technical, filter.technical)) return false;
     if (filter.defensive && !skillRangeMatch(p.defensive, filter.defensive)) return false;
-    if (filter.physical && !skillRangeMatch(p.physical, filter.physical))    return false;
+    if (filter.physical && !skillRangeMatch(p.physical, filter.physical)) return false;
     if (filter.goalkeeper && !skillRangeMatch(p.goalkeeper, filter.goalkeeper)) return false;
     return true;
   });
@@ -138,48 +138,48 @@ function skillRangeMatch(group: object, ranges: unknown): boolean {
   return true;
 }
 
-// Sort field map — single source of truth for player sortable fields
+// Sort field map - single source of truth for player sortable fields
 const PLAYER_SORT_FIELDS: Record<string, (p: Player) => number | string> = {
-  NAME:               (p) => p.name,
-  AGE:                (p) => p.age,
-  HEIGHT_CM:          (p) => p.heightCm,
-  WEIGHT_KG:          (p) => p.weightKg,
-  MARKET_VALUE:       (p) => p.marketValue ?? 0,
-  OVERALL_RATING:     (p) => p.overallRating,
-  BALL_CONTROL:       (p) => p.technical.ballControl,
-  DRIBBLING:          (p) => p.technical.dribbling,
+  NAME: (p) => p.name,
+  AGE: (p) => p.age,
+  HEIGHT_CM: (p) => p.heightCm,
+  WEIGHT_KG: (p) => p.weightKg,
+  MARKET_VALUE: (p) => p.marketValue ?? 0,
+  OVERALL_RATING: (p) => p.overallRating,
+  BALL_CONTROL: (p) => p.technical.ballControl,
+  DRIBBLING: (p) => p.technical.dribbling,
   ATTACKING_POSITION: (p) => p.technical.attackingPosition,
-  FINISHING:          (p) => p.technical.finishing,
-  SHOT_POWER:         (p) => p.technical.shotPower,
-  LONG_SHOTS:         (p) => p.technical.longShots,
-  VOLLEYS:            (p) => p.technical.volleys,
-  CURVE:              (p) => p.technical.curve,
+  FINISHING: (p) => p.technical.finishing,
+  SHOT_POWER: (p) => p.technical.shotPower,
+  LONG_SHOTS: (p) => p.technical.longShots,
+  VOLLEYS: (p) => p.technical.volleys,
+  CURVE: (p) => p.technical.curve,
   FREE_KICK_ACCURACY: (p) => p.technical.freeKickAccuracy,
-  PENALTIES:          (p) => p.technical.penalties,
-  CROSSING:           (p) => p.technical.crossing,
-  SHORT_PASSING:      (p) => p.technical.shortPassing,
-  LONG_PASSING:       (p) => p.technical.longPassing,
-  VISION:             (p) => p.technical.vision,
-  MARKING:            (p) => p.defensive.marking ?? 0,
-  SLIDE_TACKLE:       (p) => p.defensive.slideTackle,
-  STANDING_TACKLE:    (p) => p.defensive.standingTackle,
-  INTERCEPTIONS:      (p) => p.defensive.interceptions,
-  AGGRESSION:         (p) => p.defensive.aggression,
-  ACCELERATION:       (p) => p.physical.acceleration,
-  SPRINT_SPEED:       (p) => p.physical.sprintSpeed,
-  AGILITY:            (p) => p.physical.agility,
-  BALANCE:            (p) => p.physical.balance,
-  STAMINA:            (p) => p.physical.stamina,
-  STRENGTH:           (p) => p.physical.strength,
-  JUMPING:            (p) => p.physical.jumping,
-  HEADING:            (p) => p.physical.heading,
-  REACTIONS:          (p) => p.physical.reactions,
-  COMPOSURE:          (p) => p.physical.composure,
-  GK_POSITIONING:     (p) => p.goalkeeper.positioning,
-  GK_DIVING:          (p) => p.goalkeeper.diving,
-  GK_HANDLING:        (p) => p.goalkeeper.handling,
-  GK_KICKING:         (p) => p.goalkeeper.kicking,
-  GK_REFLEXES:        (p) => p.goalkeeper.reflexes,
+  PENALTIES: (p) => p.technical.penalties,
+  CROSSING: (p) => p.technical.crossing,
+  SHORT_PASSING: (p) => p.technical.shortPassing,
+  LONG_PASSING: (p) => p.technical.longPassing,
+  VISION: (p) => p.technical.vision,
+  MARKING: (p) => p.defensive.marking ?? 0,
+  SLIDE_TACKLE: (p) => p.defensive.slideTackle,
+  STANDING_TACKLE: (p) => p.defensive.standingTackle,
+  INTERCEPTIONS: (p) => p.defensive.interceptions,
+  AGGRESSION: (p) => p.defensive.aggression,
+  ACCELERATION: (p) => p.physical.acceleration,
+  SPRINT_SPEED: (p) => p.physical.sprintSpeed,
+  AGILITY: (p) => p.physical.agility,
+  BALANCE: (p) => p.physical.balance,
+  STAMINA: (p) => p.physical.stamina,
+  STRENGTH: (p) => p.physical.strength,
+  JUMPING: (p) => p.physical.jumping,
+  HEADING: (p) => p.physical.heading,
+  REACTIONS: (p) => p.physical.reactions,
+  COMPOSURE: (p) => p.physical.composure,
+  GK_POSITIONING: (p) => p.goalkeeper.positioning,
+  GK_DIVING: (p) => p.goalkeeper.diving,
+  GK_HANDLING: (p) => p.goalkeeper.handling,
+  GK_KICKING: (p) => p.goalkeeper.kicking,
+  GK_REFLEXES: (p) => p.goalkeeper.reflexes,
 };
 
 /** Stable multi-key sort. Falls through to the next key on tie. */
@@ -202,31 +202,31 @@ export function applySort(
   });
 }
 
-// ─────────────────────────────────────────────────────────────────────────────
-// Pagination — Relay-style cursor connection
-// ─────────────────────────────────────────────────────────────────────────────
+//
+// Pagination - Relay-style cursor connection
+//
 
 interface PaginationArgs {
-  first?:  number;
-  after?:  string;
-  last?:   number;
+  first?: number;
+  after?: string;
+  last?: number;
   before?: string;
 }
 
 interface PaginatedResult<T> {
   edges: { cursor: string; node: T }[];
   pageInfo: {
-    hasNextPage:     boolean;
+    hasNextPage: boolean;
     hasPreviousPage: boolean;
-    startCursor:     string | null;
-    endCursor:       string | null;
+    startCursor: string | null;
+    endCursor: string | null;
   };
   totalCount: number;
 }
 
 /**
  * Cursor-based pagination over an in-memory array.
- * Cursors are simply base64-encoded indices — opaque to the client.
+ * Cursors are simply base64-encoded indices - opaque to the client.
  * Caps `first` at 100 to bound response size.
  */
 export function paginateWithCursors<T>(
@@ -234,8 +234,8 @@ export function paginateWithCursors<T>(
   pagination: PaginationArgs | null | undefined
 ): PaginatedResult<T> {
   const totalCount = items.length;
-  const first      = pagination?.first ?? 20;
-  const maxFirst   = Math.min(first, 100);
+  const first = pagination?.first ?? 20;
+  const maxFirst = Math.min(first, 100);
 
   let startIdx = 0;
   if (pagination?.after) {
@@ -245,11 +245,11 @@ export function paginateWithCursors<T>(
   if (pagination?.before) {
     const beforeIdx = parseInt(Buffer.from(pagination.before, 'base64').toString('utf8'), 10);
     const end = isNaN(beforeIdx) ? items.length : beforeIdx;
-    startIdx  = Math.max(0, end - (pagination.last ?? 20));
+    startIdx = Math.max(0, end - (pagination.last ?? 20));
   }
 
   const sliced = items.slice(startIdx, startIdx + maxFirst);
-  const edges  = sliced.map((node, i) => ({
+  const edges = sliced.map((node, i) => ({
     cursor: Buffer.from(String(startIdx + i)).toString('base64'),
     node,
   }));
@@ -257,10 +257,10 @@ export function paginateWithCursors<T>(
   return {
     edges,
     pageInfo: {
-      hasNextPage:     startIdx + maxFirst < totalCount,
+      hasNextPage: startIdx + maxFirst < totalCount,
       hasPreviousPage: startIdx > 0,
-      startCursor:     edges[0]?.cursor ?? null,
-      endCursor:       edges[edges.length - 1]?.cursor ?? null,
+      startCursor: edges[0]?.cursor ?? null,
+      endCursor: edges[edges.length - 1]?.cursor ?? null,
     },
     totalCount,
   };

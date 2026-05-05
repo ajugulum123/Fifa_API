@@ -1,11 +1,11 @@
 ---
 name: advanced-evaluation
-description: This skill should be used when the user asks to "implement LLM-as-judge", "compare model outputs", "create evaluation rubrics", "mitigate evaluation bias", or mentions direct scoring, pairwise comparison, position bias, evaluation pipelines, or automated quality assessment.
+description: This skill should be used when the user asks to "implement LLM-as-judge", "compare model outputs", "create evaluation rubrics", "mitigate evaluation bias" or mentions direct scoring, pairwise comparison, position bias, evaluation pipelines or automated quality assessment.
 ---
 
 # Advanced Evaluation
 
-This skill covers production-grade techniques for evaluating LLM outputs using LLMs as judges. It synthesizes research from academic papers, industry practices, and practical implementation experience into actionable patterns for building reliable evaluation systems.
+This skill covers production-grade techniques for evaluating LLM outputs using LLMs as judges. It synthesizes research from academic papers, industry practices and practical implementation experience into actionable patterns for building reliable evaluation systems.
 
 **Key insight**: LLM-as-a-Judge is not a single technique but a family of approaches, each suited to different evaluation contexts. Choosing the right approach and mitigating known biases is the core competency this skill develops.
 
@@ -27,9 +27,9 @@ Activate this skill when:
 
 Select between two primary approaches based on whether ground truth exists:
 
-**Direct Scoring** — Use when objective criteria exist (factual accuracy, instruction following, toxicity). A single LLM rates one response on a defined scale. Achieves moderate-to-high reliability for well-defined criteria. Watch for score calibration drift and inconsistent scale interpretation.
+**Direct Scoring** - Use when objective criteria exist (factual accuracy, instruction following, toxicity). A single LLM rates one response on a defined scale. Achieves moderate-to-high reliability for well-defined criteria. Watch for score calibration drift and inconsistent scale interpretation.
 
-**Pairwise Comparison** — Use for subjective preferences (tone, style, persuasiveness). An LLM compares two responses and selects the better one. Achieves higher human-judge agreement than direct scoring for preference tasks (Zheng et al., 2023). Watch for position bias and length bias.
+**Pairwise Comparison** - Use for subjective preferences (tone, style, persuasiveness). An LLM compares two responses and selects the better one. Achieves higher human-judge agreement than direct scoring for preference tasks (Zheng et al., 2023). Watch for position bias and length bias.
 
 ### The Bias Landscape
 
@@ -62,7 +62,7 @@ Prioritize systematic disagreement patterns over absolute agreement rates becaus
 
 ### Direct Scoring Implementation
 
-Build direct scoring with three components: clear criteria, a calibrated scale, and structured output format.
+Build direct scoring with three components: clear criteria, a calibrated scale and structured output format.
 
 **Criteria Definition Pattern**:
 ```
@@ -71,7 +71,7 @@ Description: [What this criterion measures]
 Weight: [Relative importance, 0-1]
 ```
 
-**Scale Calibration** — Choose scale granularity based on rubric detail:
+**Scale Calibration** - Choose scale granularity based on rubric detail:
 - 1-3: Binary with neutral option, lowest cognitive load
 - 1-5: Standard Likert, best balance of granularity and reliability
 - 1-10: Use only with detailed per-level rubrics because calibration is harder
@@ -100,7 +100,7 @@ For each criterion:
 4. Suggest one specific improvement
 
 ## Output Format
-Respond with structured JSON containing scores, justifications, and summary.
+Respond with structured JSON containing scores, justifications and summary.
 ```
 
 Always require justification before the score in all scoring prompts because research shows this improves reliability by 15-25% compared to score-first approaches.
@@ -142,10 +142,10 @@ You are an expert evaluator comparing two AI responses.
 3. Determine overall winner with confidence level
 
 ## Output Format
-JSON with per-criterion comparison, overall winner, confidence (0-1), and reasoning.
+JSON with per-criterion comparison, overall winner, confidence (0-1) and reasoning.
 ```
 
-**Confidence Calibration** — Map confidence to position consistency:
+**Confidence Calibration** - Map confidence to position consistency:
 - Both passes agree: confidence = average of individual confidences
 - Passes disagree: confidence = 0.5, verdict = TIE
 
@@ -165,7 +165,7 @@ Generate rubrics to reduce evaluation variance by 40-60% compared to open-ended 
 - **Balanced**: Typical production expectations
 - **Strict**: High standards for safety-critical or high-stakes evaluation
 
-Adapt rubrics to the domain — use domain-specific terminology. A code readability rubric mentions variables, functions, and comments. A medical accuracy rubric references clinical terminology and evidence standards.
+Adapt rubrics to the domain - use domain-specific terminology. A code readability rubric mentions variables, functions and comments. A medical accuracy rubric references clinical terminology and evidence standards.
 
 ## Practical Guidance
 
@@ -180,11 +180,11 @@ Apply this decision tree:
 ```
 Is there an objective ground truth?
 +-- Yes -> Direct Scoring
-|   Examples: factual accuracy, instruction following, format compliance
+| Examples: factual accuracy, instruction following, format compliance
 |
 +-- No -> Is it a preference or quality judgment?
     +-- Yes -> Pairwise Comparison
-    |   Examples: tone, style, persuasiveness, creativity
+    | Examples: tone, style, persuasiveness, creativity
     |
     +-- No -> Consider reference-based evaluation
         Examples: summarization (compare to source), translation (compare to reference)

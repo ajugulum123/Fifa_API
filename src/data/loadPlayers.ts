@@ -4,79 +4,79 @@
  * used as the in-memory data store for all resolvers.
  */
 
-import fs   from 'fs';
+import fs from 'fs';
 import path from 'path';
 import { v4 as uuidv4 } from 'uuid';
 
-// ─────────────────────────────────────────────────────────────────────────────
+//
 // Types that mirror the GraphQL schema exactly
-// ─────────────────────────────────────────────────────────────────────────────
+//
 
 export interface TechnicalSkills {
-  ballControl:       number;
-  dribbling:         number;
+  ballControl: number;
+  dribbling: number;
   attackingPosition: number;
-  finishing:         number;
-  shotPower:         number;
-  longShots:         number;
-  volleys:           number;
-  curve:             number;
-  freeKickAccuracy:  number;
-  penalties:         number;
-  crossing:          number;
-  shortPassing:      number;
-  longPassing:       number;
-  vision:            number;
+  finishing: number;
+  shotPower: number;
+  longShots: number;
+  volleys: number;
+  curve: number;
+  freeKickAccuracy: number;
+  penalties: number;
+  crossing: number;
+  shortPassing: number;
+  longPassing: number;
+  vision: number;
 }
 
 export interface DefensiveSkills {
-  marking:        number | null;
-  slideTackle:    number;
+  marking: number | null;
+  slideTackle: number;
   standingTackle: number;
-  interceptions:  number;
-  aggression:     number;
+  interceptions: number;
+  aggression: number;
 }
 
 export interface PhysicalAttributes {
   acceleration: number;
-  sprintSpeed:  number;
-  agility:      number;
-  balance:      number;
-  stamina:      number;
-  strength:     number;
-  jumping:      number;
-  heading:      number;
-  reactions:    number;
-  composure:    number;
+  sprintSpeed: number;
+  agility: number;
+  balance: number;
+  stamina: number;
+  strength: number;
+  jumping: number;
+  heading: number;
+  reactions: number;
+  composure: number;
 }
 
 export interface GoalkeeperSkills {
   positioning: number;
-  diving:      number;
-  handling:    number;
-  kicking:     number;
-  reflexes:    number;
+  diving: number;
+  handling: number;
+  kicking: number;
+  reflexes: number;
 }
 
 export interface Player {
-  id:            string;
-  name:          string;
-  country:       string;
-  club:          string;
-  age:           number;
-  heightCm:      number;
-  weightKg:      number;
-  marketValue:   number | null;
+  id: string;
+  name: string;
+  country: string;
+  club: string;
+  age: number;
+  heightCm: number;
+  weightKg: number;
+  marketValue: number | null;
   overallRating: number;
-  technical:     TechnicalSkills;
-  defensive:     DefensiveSkills;
-  physical:      PhysicalAttributes;
-  goalkeeper:    GoalkeeperSkills;
+  technical: TechnicalSkills;
+  defensive: DefensiveSkills;
+  physical: PhysicalAttributes;
+  goalkeeper: GoalkeeperSkills;
 }
 
-// ─────────────────────────────────────────────────────────────────────────────
+//
 // Helpers
-// ─────────────────────────────────────────────────────────────────────────────
+//
 
 function int(raw: string): number {
   const n = parseInt(raw.trim(), 10);
@@ -89,7 +89,7 @@ function nullableInt(raw: string): number | null {
   return isNaN(n) ? null : n;
 }
 
-/** Parses "$1.400.000" or "$975.00" → number (USD float). */
+/** Parses "$1.400.000" or "$975.00" -> number (USD float). */
 function parseCurrency(raw: string): number | null {
   if (!raw.trim()) return null;
   // Remove $, thousands dots, then parse
@@ -133,9 +133,9 @@ function computeOverall(
   return Math.round(techAvg * 0.45 + defAvg * 0.25 + physAvg * 0.30);
 }
 
-// ─────────────────────────────────────────────────────────────────────────────
+//
 // Parser
-// ─────────────────────────────────────────────────────────────────────────────
+//
 
 /**
  * Parses the CSV synchronously and returns a Map<id, Player>.
@@ -148,14 +148,14 @@ export function loadPlayers(csvPath: string): Map<string, Player> {
     throw new Error(`CSV not found at ${absolutePath}`);
   }
 
-  const raw  = fs.readFileSync(absolutePath, { encoding: 'latin1' });
+  const raw = fs.readFileSync(absolutePath, { encoding: 'latin1' });
   const lines = raw.split('\n').filter(Boolean);
   const store = new Map<string, Player>();
 
   // Skip header row (index 0)
   for (let i = 1; i < lines.length; i++) {
     const cols = lines[i].split(',');
-    if (cols.length < 41) continue;   // skip malformed rows
+    if (cols.length < 41) continue; // skip malformed rows
 
     const [
       player, country, height, weight, age, club,
@@ -169,60 +169,60 @@ export function loadPlayers(csvPath: string): Map<string, Player> {
     ] = cols;
 
     const technical: TechnicalSkills = {
-      ballControl:       int(ball_control),
-      dribbling:         int(dribbling),
+      ballControl: int(ball_control),
+      dribbling: int(dribbling),
       attackingPosition: int(att_position),
-      finishing:         int(finishing),
-      shotPower:         int(shot_power),
-      longShots:         int(long_shots),
-      volleys:           int(volleys),
-      curve:             int(curve),
-      freeKickAccuracy:  int(fk_acc),
-      penalties:         int(penalties),
-      crossing:          int(crossing),
-      shortPassing:      int(short_pass),
-      longPassing:       int(long_pass),
-      vision:            int(vision),
+      finishing: int(finishing),
+      shotPower: int(shot_power),
+      longShots: int(long_shots),
+      volleys: int(volleys),
+      curve: int(curve),
+      freeKickAccuracy: int(fk_acc),
+      penalties: int(penalties),
+      crossing: int(crossing),
+      shortPassing: int(short_pass),
+      longPassing: int(long_pass),
+      vision: int(vision),
     };
 
     const defensive: DefensiveSkills = {
-      marking:        nullableInt(marking),
-      slideTackle:    int(slide_tackle),
+      marking: nullableInt(marking),
+      slideTackle: int(slide_tackle),
       standingTackle: int(stand_tackle),
-      interceptions:  int(interceptions),
-      aggression:     int(aggression),
+      interceptions: int(interceptions),
+      aggression: int(aggression),
     };
 
     const physical: PhysicalAttributes = {
       acceleration: int(acceleration),
-      sprintSpeed:  int(sprint_speed),
-      agility:      int(agility),
-      balance:      int(balance),
-      stamina:      int(stamina),
-      strength:     int(strength),
-      jumping:      int(jumping),
-      heading:      int(heading),
-      reactions:    int(reactions),
-      composure:    int(composure),
+      sprintSpeed: int(sprint_speed),
+      agility: int(agility),
+      balance: int(balance),
+      stamina: int(stamina),
+      strength: int(strength),
+      jumping: int(jumping),
+      heading: int(heading),
+      reactions: int(reactions),
+      composure: int(composure),
     };
 
     const goalkeeper: GoalkeeperSkills = {
       positioning: int(gk_positioning),
-      diving:      int(gk_diving),
-      handling:    int(gk_handling),
-      kicking:     int(gk_kicking),
-      reflexes:    int(gk_reflexes),
+      diving: int(gk_diving),
+      handling: int(gk_handling),
+      kicking: int(gk_kicking),
+      reflexes: int(gk_reflexes),
     };
 
     const p: Player = {
-      id:            uuidv4(),
-      name:          player.trim(),
-      country:       country.trim(),
-      club:          club.trim(),
-      age:           int(age),
-      heightCm:      int(height),
-      weightKg:      int(weight),
-      marketValue:   parseCurrency(value ?? ''),
+      id: uuidv4(),
+      name: player.trim(),
+      country: country.trim(),
+      club: club.trim(),
+      age: int(age),
+      heightCm: int(height),
+      weightKg: int(weight),
+      marketValue: parseCurrency(value ?? ''),
       overallRating: computeOverall(technical, defensive, physical, goalkeeper),
       technical,
       defensive,

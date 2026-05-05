@@ -1,11 +1,11 @@
 ---
 name: project-development
-description: This skill should be used when the user asks to "start an LLM project", "design batch pipeline", "evaluate task-model fit", "structure agent project", or mentions pipeline architecture, agent-assisted development, cost estimation, or choosing between LLM and traditional approaches.
+description: This skill should be used when the user asks to "start an LLM project", "design batch pipeline", "evaluate task-model fit", "structure agent project" or mentions pipeline architecture, agent-assisted development, cost estimation or choosing between LLM and traditional approaches.
 ---
 
 # Project Development Methodology
 
-This skill covers the principles for identifying tasks suited to LLM processing, designing effective project architectures, and iterating rapidly using agent-assisted development. The methodology applies whether building a batch processing pipeline, a multi-agent research system, or an interactive agent application.
+This skill covers the principles for identifying tasks suited to LLM processing, designing effective project architectures and iterating rapidly using agent-assisted development. The methodology applies whether building a batch processing pipeline, a multi-agent research system or an interactive agent application.
 
 ## When to Activate
 
@@ -28,7 +28,7 @@ Evaluate task-model fit before writing any code, because building automation on 
 | Characteristic | Rationale |
 |----------------|-----------|
 | Synthesis across sources | LLMs combine information from multiple inputs better than rule-based alternatives |
-| Subjective judgment with rubrics | Grading, evaluation, and classification with criteria map naturally to language reasoning |
+| Subjective judgment with rubrics | Grading, evaluation and classification with criteria map naturally to language reasoning |
 | Natural language output | When the goal is human-readable text, LLMs deliver it natively |
 | Error tolerance | Individual failures do not break the overall system, so LLM non-determinism is acceptable |
 | Batch processing | No conversational state required between items, which keeps context clean |
@@ -38,7 +38,7 @@ Evaluate task-model fit before writing any code, because building automation on 
 
 | Characteristic | Rationale |
 |----------------|-----------|
-| Precise computation | Math, counting, and exact algorithms are unreliable in language models |
+| Precise computation | Math, counting and exact algorithms are unreliable in language models |
 | Real-time requirements | LLM latency is too high for sub-second responses |
 | Perfect accuracy requirements | Hallucination risk makes 100% accuracy impossible |
 | Proprietary data dependence | The model lacks necessary context and cannot acquire it from prompts alone |
@@ -47,7 +47,7 @@ Evaluate task-model fit before writing any code, because building automation on 
 
 ### The Manual Prototype Step
 
-Always validate task-model fit with a manual test before investing in automation. Copy one representative input into the model interface, evaluate the output quality, and use the result to answer these questions:
+Always validate task-model fit with a manual test before investing in automation. Copy one representative input into the model interface, evaluate the output quality and use the result to answer these questions:
 
 - Does the model have the knowledge required for this task?
 - Can the model produce output in the format needed?
@@ -77,7 +77,7 @@ acquire -> prepare -> process -> parse -> render
 4. **Parse**: Extract structured data from LLM outputs
 5. **Render**: Generate final outputs (reports, files, visualizations)
 
-Stages 1, 2, 4, and 5 are deterministic. Stage 3 is non-deterministic and expensive. Maintain this separation because it allows re-running the expensive LLM stage only when necessary, while iterating quickly on parsing and rendering.
+Stages 1, 2, 4 and 5 are deterministic. Stage 3 is non-deterministic and expensive. Maintain this separation because it allows re-running the expensive LLM stage only when necessary, while iterating quickly on parsing and rendering.
 
 ### File System as State Machine
 
@@ -85,10 +85,10 @@ Use the file system to track pipeline state rather than databases or in-memory s
 
 ```
 data/{id}/
-  raw.json         # acquire stage complete
-  prompt.md        # prepare stage complete
-  response.md      # process stage complete
-  parsed.json      # parse stage complete
+  raw.json # acquire stage complete
+  prompt.md # prepare stage complete
+  response.md # process stage complete
+  parsed.json # parse stage complete
 ```
 
 Check if an item needs processing by checking whether the output file exists. Re-run a stage by deleting its output file and downstream files. Debug by reading the intermediate files directly. This pattern works because each directory is independent, enabling simple parallelization and trivial caching.
@@ -100,9 +100,9 @@ Design prompts for structured, parseable outputs because prompt design directly 
 1. **Section markers**: Explicit headers or prefixes that parsers can match on
 2. **Format examples**: Show exactly what output should look like
 3. **Rationale disclosure**: State "I will be parsing this programmatically" so the model prioritizes format compliance
-4. **Constrained values**: Enumerated options, score ranges, and fixed formats
+4. **Constrained values**: Enumerated options, score ranges and fixed formats
 
-Build parsers that handle LLM output variations gracefully, because LLMs do not follow instructions perfectly. Use regex patterns flexible enough for minor formatting variations, provide sensible defaults when sections are missing, and log parsing failures for review rather than crashing.
+Build parsers that handle LLM output variations gracefully, because LLMs do not follow instructions perfectly. Use regex patterns flexible enough for minor formatting variations, provide sensible defaults when sections are missing and log parsing failures for review rather than crashing.
 
 ### Agent-Assisted Development
 
@@ -122,15 +122,15 @@ Estimate LLM processing costs before starting, because token costs compound quic
 Total cost = (items x tokens_per_item x price_per_token) + API overhead
 ```
 
-For batch processing, estimate input tokens per item (prompt + context), estimate output tokens per item (typical response length), multiply by item count, and add 20-30% buffer for retries and failures.
+For batch processing, estimate input tokens per item (prompt + context), estimate output tokens per item (typical response length), multiply by item count and add 20-30% buffer for retries and failures.
 
-Track actual costs during development. If costs exceed estimates significantly, reduce context length through truncation, use smaller models for simpler items, cache and reuse partial results, or add parallel processing to reduce wall-clock time.
+Track actual costs during development. If costs exceed estimates significantly, reduce context length through truncation, use smaller models for simpler items, cache and reuse partial results or add parallel processing to reduce wall-clock time.
 
 ## Detailed Topics
 
 ### Choosing Single vs Multi-Agent Architecture
 
-Default to single-agent pipelines for batch processing with independent items, because they are simpler to manage, cheaper to run, and easier to debug. Escalate to multi-agent architectures only when one of these conditions holds:
+Default to single-agent pipelines for batch processing with independent items, because they are simpler to manage, cheaper to run and easier to debug. Escalate to multi-agent architectures only when one of these conditions holds:
 
 - Parallel exploration of different aspects is required
 - The task exceeds single context window capacity
@@ -153,7 +153,7 @@ Vercel's d0 agent achieved 100% success rate (up from 80%) by reducing from 17 s
 - More time is spent maintaining scaffolding than improving outcomes
 
 **Add complexity when:**
-- The underlying data is messy, inconsistent, or poorly documented
+- The underlying data is messy, inconsistent or poorly documented
 - The domain requires specialized knowledge the model lacks
 - Safety constraints require limiting agent capabilities
 - Operations are truly complex and benefit from structured workflows
@@ -177,7 +177,7 @@ Follow this template in order, because each step validates assumptions before th
 
 1. **Task Analysis**
    - Define the input and desired output explicitly
-   - Classify: synthesis, generation, classification, or analysis
+   - Classify: synthesis, generation, classification or analysis
    - Set an acceptable error rate based on business impact
    - Estimate the value per successful completion to justify costs
 
@@ -248,10 +248,10 @@ See [Case Studies](./references/case-studies.md) for detailed analysis.
 
 1. **Skipping manual validation**: Building automation before verifying the model can do the task wastes significant time when the approach is fundamentally flawed. Always run one representative example through the model interface first.
 2. **Monolithic pipelines**: Combining all stages into one script makes debugging and iteration difficult. Separate stages with persistent intermediate outputs so each can be re-run independently.
-3. **Over-constraining the model**: Adding guardrails, pre-filtering, and validation logic that the model could handle on its own reduces performance. Test whether scaffolding helps or hurts before keeping it.
+3. **Over-constraining the model**: Adding guardrails, pre-filtering and validation logic that the model could handle on its own reduces performance. Test whether scaffolding helps or hurts before keeping it.
 4. **Ignoring costs until production**: Token costs compound quickly at scale. Estimate and track from the beginning to avoid budget surprises that force architectural rework.
 5. **Perfect parsing requirements**: Expecting LLMs to follow format instructions perfectly leads to brittle systems. Build robust parsers that handle variations and log failures for review.
-6. **Premature optimization**: Adding caching, parallelization, and optimization before the basic pipeline works correctly wastes effort on code that may be discarded during iteration.
+6. **Premature optimization**: Adding caching, parallelization and optimization before the basic pipeline works correctly wastes effort on code that may be discarded during iteration.
 7. **Model version lock-in**: Building pipelines that only work with one specific model version creates fragile systems. Test across model generations and abstract the LLM call layer so models can be swapped without rewriting pipeline logic.
 8. **Evaluation-less deployment**: Shipping agent pipelines without measuring output quality means regressions go undetected. Define quality metrics during development and run evaluation checks before and after every model or prompt change.
 
@@ -268,7 +268,7 @@ This skill connects to:
 
 Internal references:
 - [Case Studies](./references/case-studies.md) - Read when: evaluating architecture tradeoffs or reviewing real-world pipeline implementations (Karpathy HN Capsule, Vercel d0, Manus patterns)
-- [Pipeline Patterns](./references/pipeline-patterns.md) - Read when: designing a new pipeline stage layout, choosing caching strategies, or debugging stage boundaries
+- [Pipeline Patterns](./references/pipeline-patterns.md) - Read when: designing a new pipeline stage layout, choosing caching strategies or debugging stage boundaries
 
 Related skills in this collection:
 - tool-design - Tool architecture and reduction patterns

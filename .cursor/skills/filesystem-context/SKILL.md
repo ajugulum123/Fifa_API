@@ -1,11 +1,11 @@
 ---
 name: filesystem-context
-description: This skill should be used when the user asks to "offload context to files", "implement dynamic context discovery", "use filesystem for agent memory", "reduce context window bloat", or mentions file-based context management, tool output persistence, agent scratch pads, or just-in-time context loading.
+description: This skill should be used when the user asks to "offload context to files", "implement dynamic context discovery", "use filesystem for agent memory", "reduce context window bloat" or mentions file-based context management, tool output persistence, agent scratch pads or just-in-time context loading.
 ---
 
 # Filesystem-Based Context Engineering
 
-Use the filesystem as the primary overflow layer for agent context because context windows are limited while tasks often require more information than fits in a single window. Files let agents store, retrieve, and update an effectively unlimited amount of context through a single interface.
+Use the filesystem as the primary overflow layer for agent context because context windows are limited while tasks often require more information than fits in a single window. Files let agents store, retrieve and update an effectively unlimited amount of context through a single interface.
 
 Prefer dynamic context discovery -- pulling relevant context on demand -- over static inclusion, because static context consumes tokens regardless of relevance and crowds out space for task-specific information.
 
@@ -45,7 +45,7 @@ Accept the trade-off: dynamic discovery requires the model to recognize when it 
 
 Redirect large tool outputs to files instead of returning them directly to context, because a single web search or database query can dump thousands of tokens into message history where they persist for the entire conversation.
 
-Write the output to a scratch file, extract a compact summary, and return a file reference. The agent then uses targeted retrieval (grep for patterns, read with line ranges) to access only what it needs.
+Write the output to a scratch file, extract a compact summary and return a file reference. The agent then uses targeted retrieval (grep for patterns, read with line ranges) to access only what it needs.
 
 ```python
 def handle_tool_output(output: str, threshold: int = 2000) -> str:
@@ -112,7 +112,7 @@ Store skills as files and include only skill names with brief descriptions in st
 Available skills (load with read_file when relevant):
 - database-optimization: Query tuning and indexing strategies
 - api-design: REST/GraphQL best practices
-- testing-strategies: Unit, integration, and e2e testing patterns
+- testing-strategies: Unit, integration and e2e testing patterns
 ```
 
 Load the full skill file (e.g., `skills/database-optimization/SKILL.md`) only when the current task requires it. This converts O(n) static token cost into O(1) per task.
@@ -123,8 +123,8 @@ Persist terminal output to files automatically and use grep for selective retrie
 
 ```
 terminals/
-  1.txt    # Terminal session 1 output
-  2.txt    # Terminal session 2 output
+  1.txt # Terminal session 1 output
+  2.txt # Terminal session 2 output
 ```
 
 Query with targeted grep (`grep -A 5 "error" terminals/1.txt`) instead of loading entire terminal histories into context.
@@ -145,14 +145,14 @@ Guard this pattern with validation because self-modification can accumulate inco
 
 ### Filesystem Search Techniques
 
-Combine `ls`/`list_dir`, `glob`, `grep`, and `read_file` with line ranges for context discovery, because models are specifically trained on filesystem traversal and this combination often outperforms semantic search for technical content where structural patterns are clear.
+Combine `ls`/`list_dir`, `glob`, `grep` and `read_file` with line ranges for context discovery, because models are specifically trained on filesystem traversal and this combination often outperforms semantic search for technical content where structural patterns are clear.
 
 - `ls` / `list_dir`: Discover directory structure
 - `glob`: Find files matching patterns (e.g., `**/*.py`)
 - `grep`: Search file contents, returns matching lines with context
 - `read_file` with ranges: Read specific sections without loading entire files
 
-Use filesystem search for structural and exact-match queries, and semantic search for conceptual queries. Combine both for comprehensive discovery.
+Use filesystem search for structural and exact-match queries and semantic search for conceptual queries. Combine both for comprehensive discovery.
 
 ## Practical Guidance
 
@@ -178,14 +178,14 @@ Apply filesystem patterns when the situation matches these criteria, because the
 Structure files for agent discoverability, because agents navigate by listing and reading directory names:
 ```
 project/
-  scratch/           # Temporary working files
-    tool_outputs/    # Large tool results
-    plans/           # Active plans and checklists
-  memory/            # Persistent learned information
+  scratch/ # Temporary working files
+    tool_outputs/ # Large tool results
+    plans/ # Active plans and checklists
+  memory/ # Persistent learned information
     preferences.yaml # User preferences
-    patterns.md      # Learned patterns
-  skills/            # Loadable skill definitions
-  agents/            # Sub-agent workspaces
+    patterns.md # Learned patterns
+  skills/ # Loadable skill definitions
+  agents/ # Sub-agent workspaces
 ```
 
 Use consistent naming conventions and include timestamps or IDs in scratch files for disambiguation.
@@ -249,7 +249,7 @@ Result: Agent can search history file to recover details lost in summarization
 4. **Glob pattern false matches**: Overly broad patterns (e.g., `**/*`) pull irrelevant files into context, wasting tokens and confusing the model. Scope globs to specific directories and extensions.
 5. **File size assumptions**: Reading a file without checking size can dump 100K+ tokens into context in a single tool call. Check file size before reading; use line-range reads for large files.
 6. **Missing file existence checks**: Agents assume files exist from prior turns, but they may have been deleted or moved. Always guard reads with existence checks and handle missing-file errors gracefully.
-7. **Scratch pad format drift**: Unstructured scratch pads become unparseable after many writes because format conventions erode over successive appends. Define and enforce a schema (YAML, JSON, or structured markdown) from the first write.
+7. **Scratch pad format drift**: Unstructured scratch pads become unparseable after many writes because format conventions erode over successive appends. Define and enforce a schema (YAML, JSON or structured markdown) from the first write.
 8. **Hardcoded absolute paths**: Break when repositories are checked out at different locations or when running in containers. Use relative paths from the project root or resolve paths dynamically.
 
 ## Integration
@@ -265,7 +265,7 @@ This skill connects to:
 ## References
 
 Internal reference:
-- [Implementation Patterns](./references/implementation-patterns.md) - Read when: implementing scratch pad, plan persistence, or tool output offloading and need concrete code beyond the inline examples
+- [Implementation Patterns](./references/implementation-patterns.md) - Read when: implementing scratch pad, plan persistence or tool output offloading and need concrete code beyond the inline examples
 
 Related skills in this collection:
 - context-optimization - Read when: applying token reduction techniques alongside filesystem offloading
@@ -273,9 +273,9 @@ Related skills in this collection:
 - multi-agent-patterns - Read when: designing agent coordination with shared file workspaces
 
 External resources:
-- LangChain Deep Agents — Read when: implementing filesystem-based context patterns in LangChain/LangGraph pipelines
-- Cursor context discovery — Read when: studying how production IDEs implement dynamic context loading
-- Anthropic Agent Skills specification — Read when: building skills that leverage filesystem progressive disclosure
+- LangChain Deep Agents - Read when: implementing filesystem-based context patterns in LangChain/LangGraph pipelines
+- Cursor context discovery - Read when: studying how production IDEs implement dynamic context loading
+- Anthropic Agent Skills specification - Read when: building skills that leverage filesystem progressive disclosure
 
 ---
 

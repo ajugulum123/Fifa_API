@@ -8,8 +8,8 @@
 #   bash certs/generate-dev-certs.sh
 #
 # Output:
-#   certs/server.key  — RSA-4096 private key
-#   certs/server.crt  — Self-signed X.509 certificate (valid 365 days)
+#   certs/server.key  - RSA-4096 private key
+#   certs/server.crt  - Self-signed X.509 certificate (valid 365 days)
 #
 # Production:
 #   Do NOT use this script in production. Use one of:
@@ -26,7 +26,7 @@ CERT_FILE="$SCRIPT_DIR/server.crt"
 DAYS=365
 BITS=4096
 
-# ── Checks ───────────────────────────────────────────────────────────────────
+# ----- Checks ---------------------------------------------------------------
 if ! command -v openssl &>/dev/null; then
   echo "ERROR: openssl is not installed. Install it and retry." >&2
   exit 1
@@ -40,13 +40,13 @@ if [[ -f "$KEY_FILE" || -f "$CERT_FILE" ]]; then
   [[ "$confirm" =~ ^[Yy]$ ]] || { echo "Aborted."; exit 0; }
 fi
 
-# ── Generate ─────────────────────────────────────────────────────────────────
+# ----- Generate -------------------------------------------------------------
 echo ""
-echo "Generating $BITS-bit RSA private key…"
+echo "Generating $BITS-bit RSA private key..."
 openssl genrsa -out "$KEY_FILE" $BITS 2>/dev/null
-chmod 600 "$KEY_FILE"   # owner-read-only — protect the private key
+chmod 600 "$KEY_FILE"   # owner-read-only - protect the private key
 
-echo "Generating self-signed certificate (valid $DAYS days)…"
+echo "Generating self-signed certificate (valid $DAYS days)..."
 openssl req -new -x509 \
   -key  "$KEY_FILE" \
   -out  "$CERT_FILE" \
@@ -61,7 +61,7 @@ echo "  Private key : $KEY_FILE"
 echo "  Certificate : $CERT_FILE"
 echo ""
 echo "NOTE: This is a SELF-SIGNED certificate."
-echo "      Your browser will show a security warning — this is expected in dev."
+echo "      Your browser will show a security warning - this is expected in dev."
 echo "      To trust it locally on macOS:"
 echo "        sudo security add-trusted-cert -d -r trustRoot -k /Library/Keychains/System.keychain $CERT_FILE"
 echo "      To trust it locally on Ubuntu/Debian:"

@@ -1,7 +1,7 @@
 /**
  * meta.ts
  * Helpers that produce OperationMeta objects matching the schema's
- * OperationMeta type.  Every resolver calls one of these functions
+ * OperationMeta type. Every resolver calls one of these functions
  * so the httpStatus / code / category / statusMessage fields are
  * always consistent.
  */
@@ -21,57 +21,57 @@ export type ErrorCode =
   | 'SERVICE_UNAVAILABLE' | 'GATEWAY_TIMEOUT';
 
 export interface OperationMeta {
-  httpStatus:        number;
-  code:              ErrorCode;
-  category:          ErrorCategory;
-  statusMessage:     string;
-  timestamp:         string;
-  redirectTarget?:   string;
+  httpStatus: number;
+  code: ErrorCode;
+  category: ErrorCategory;
+  statusMessage: string;
+  timestamp: string;
+  redirectTarget?: string;
   retryAfterSeconds?: number;
 }
 
 export interface UserError {
-  message:         string;
-  field?:          string | null;
-  code:            ErrorCode;
-  category:        ErrorCategory;
+  message: string;
+  field?: string | null;
+  code: ErrorCode;
+  category: ErrorCategory;
   redirectTarget?: string | null;
 }
 
-// ─────────────────────────────────────────────────────────────────────────────
-// HTTP status → metadata mapping
-// ─────────────────────────────────────────────────────────────────────────────
+//
+// HTTP status -> metadata mapping
+//
 
 const STATUS_MAP: Record<ErrorCode, { httpStatus: number; category: ErrorCategory; statusMessage: string }> = {
   // 2xx
-  OK:                    { httpStatus: 200, category: 'SUCCESS',      statusMessage: 'OK' },
-  CREATED:               { httpStatus: 201, category: 'SUCCESS',      statusMessage: 'Created' },
-  ACCEPTED:              { httpStatus: 202, category: 'SUCCESS',      statusMessage: 'Accepted' },
-  NO_CONTENT:            { httpStatus: 204, category: 'SUCCESS',      statusMessage: 'No Content' },
+  OK: { httpStatus: 200, category: 'SUCCESS', statusMessage: 'OK' },
+  CREATED: { httpStatus: 201, category: 'SUCCESS', statusMessage: 'Created' },
+  ACCEPTED: { httpStatus: 202, category: 'SUCCESS', statusMessage: 'Accepted' },
+  NO_CONTENT: { httpStatus: 204, category: 'SUCCESS', statusMessage: 'No Content' },
   // 3xx
-  MOVED_PERMANENTLY:     { httpStatus: 301, category: 'REDIRECTION',  statusMessage: 'Moved Permanently' },
-  TEMPORARY_REDIRECT:    { httpStatus: 307, category: 'REDIRECTION',  statusMessage: 'Temporary Redirect' },
-  PERMANENT_REDIRECT:    { httpStatus: 308, category: 'REDIRECTION',  statusMessage: 'Permanent Redirect' },
+  MOVED_PERMANENTLY: { httpStatus: 301, category: 'REDIRECTION', statusMessage: 'Moved Permanently' },
+  TEMPORARY_REDIRECT: { httpStatus: 307, category: 'REDIRECTION', statusMessage: 'Temporary Redirect' },
+  PERMANENT_REDIRECT: { httpStatus: 308, category: 'REDIRECTION', statusMessage: 'Permanent Redirect' },
   // 4xx
-  BAD_REQUEST:           { httpStatus: 400, category: 'CLIENT_ERROR', statusMessage: 'Bad Request' },
-  UNAUTHORIZED:          { httpStatus: 401, category: 'CLIENT_ERROR', statusMessage: 'Unauthorized' },
-  FORBIDDEN:             { httpStatus: 403, category: 'CLIENT_ERROR', statusMessage: 'Forbidden' },
-  NOT_FOUND:             { httpStatus: 404, category: 'CLIENT_ERROR', statusMessage: 'Not Found' },
-  CONFLICT:              { httpStatus: 409, category: 'CLIENT_ERROR', statusMessage: 'Conflict' },
-  GONE:                  { httpStatus: 410, category: 'CLIENT_ERROR', statusMessage: 'Gone' },
-  UNPROCESSABLE_ENTITY:  { httpStatus: 422, category: 'CLIENT_ERROR', statusMessage: 'Unprocessable Entity' },
-  TOO_MANY_REQUESTS:     { httpStatus: 429, category: 'CLIENT_ERROR', statusMessage: 'Too Many Requests' },
+  BAD_REQUEST: { httpStatus: 400, category: 'CLIENT_ERROR', statusMessage: 'Bad Request' },
+  UNAUTHORIZED: { httpStatus: 401, category: 'CLIENT_ERROR', statusMessage: 'Unauthorized' },
+  FORBIDDEN: { httpStatus: 403, category: 'CLIENT_ERROR', statusMessage: 'Forbidden' },
+  NOT_FOUND: { httpStatus: 404, category: 'CLIENT_ERROR', statusMessage: 'Not Found' },
+  CONFLICT: { httpStatus: 409, category: 'CLIENT_ERROR', statusMessage: 'Conflict' },
+  GONE: { httpStatus: 410, category: 'CLIENT_ERROR', statusMessage: 'Gone' },
+  UNPROCESSABLE_ENTITY: { httpStatus: 422, category: 'CLIENT_ERROR', statusMessage: 'Unprocessable Entity' },
+  TOO_MANY_REQUESTS: { httpStatus: 429, category: 'CLIENT_ERROR', statusMessage: 'Too Many Requests' },
   // 5xx
   INTERNAL_SERVER_ERROR: { httpStatus: 500, category: 'SERVER_ERROR', statusMessage: 'Internal Server Error' },
-  NOT_IMPLEMENTED:       { httpStatus: 501, category: 'SERVER_ERROR', statusMessage: 'Not Implemented' },
-  BAD_GATEWAY:           { httpStatus: 502, category: 'SERVER_ERROR', statusMessage: 'Bad Gateway' },
-  SERVICE_UNAVAILABLE:   { httpStatus: 503, category: 'SERVER_ERROR', statusMessage: 'Service Unavailable' },
-  GATEWAY_TIMEOUT:       { httpStatus: 504, category: 'SERVER_ERROR', statusMessage: 'Gateway Timeout' },
+  NOT_IMPLEMENTED: { httpStatus: 501, category: 'SERVER_ERROR', statusMessage: 'Not Implemented' },
+  BAD_GATEWAY: { httpStatus: 502, category: 'SERVER_ERROR', statusMessage: 'Bad Gateway' },
+  SERVICE_UNAVAILABLE: { httpStatus: 503, category: 'SERVER_ERROR', statusMessage: 'Service Unavailable' },
+  GATEWAY_TIMEOUT: { httpStatus: 504, category: 'SERVER_ERROR', statusMessage: 'Gateway Timeout' },
 };
 
-// ─────────────────────────────────────────────────────────────────────────────
+//
 // Factory functions
-// ─────────────────────────────────────────────────────────────────────────────
+//
 
 export function buildMeta(
   code: ErrorCode,
@@ -84,7 +84,7 @@ export function buildMeta(
     category,
     statusMessage,
     timestamp: new Date().toISOString(),
-    ...(extras?.redirectTarget    ? { redirectTarget:    extras.redirectTarget    } : {}),
+    ...(extras?.redirectTarget ? { redirectTarget: extras.redirectTarget } : {}),
     ...(extras?.retryAfterSeconds ? { retryAfterSeconds: extras.retryAfterSeconds } : {}),
   };
 }
@@ -100,14 +100,14 @@ export function buildError(
     message,
     code,
     category,
-    ...(field          ? { field }          : { field: null }),
-    ...(redirectTarget ? { redirectTarget }  : {}),
+    ...(field ? { field } : { field: null }),
+    ...(redirectTarget ? { redirectTarget } : {}),
   };
 }
 
-// ─────────────────────────────────────────────────────────────────────────────
+//
 // Validator helpers used by mutation resolvers
-// ─────────────────────────────────────────────────────────────────────────────
+//
 
 export function validateSkillRange(
   value: number | null | undefined,

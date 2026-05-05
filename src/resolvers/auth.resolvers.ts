@@ -1,12 +1,12 @@
 /**
  * resolvers/auth.resolvers.ts
  * GraphQL resolvers for authentication and identity:
- *   Query.me
- *   Mutation.register / login / refreshToken / logout
+ * Query.me
+ * Mutation.register / login / refreshToken / logout
  */
 
 import { buildMeta, buildError } from '../utils/meta';
-import { verifyRefreshToken }    from '../auth/jwt';
+import { verifyRefreshToken } from '../auth/jwt';
 import {
   createUser, authenticateUser, findUserById,
   isRefreshJtiActive, revokeRefreshJti,
@@ -16,13 +16,13 @@ import { issueTokenPair } from './helpers';
 import type { GqlContext } from '../types/context';
 
 export const authQueries = {
-  /** Returns the caller decoded from their access token, or UNAUTHORIZED. */
+  /** Returns the caller decoded from their access token or UNAUTHORIZED. */
   me(_: unknown, __: unknown, { currentUser }: GqlContext) {
     if (!currentUser) {
       return {
-        user:   null,
+        user: null,
         errors: [buildError('UNAUTHORIZED', 'No valid access token provided.')],
-        meta:   buildMeta('UNAUTHORIZED'),
+        meta: buildMeta('UNAUTHORIZED'),
       };
     }
     return { user: currentUser, errors: [], meta: buildMeta('OK') };
@@ -41,20 +41,20 @@ export const authMutations = {
   ) {
     const requestedRole: UserRole = input.role ?? 'USER';
 
-    // Privilege escalation check — only an existing ADMIN can create another ADMIN
+    // Privilege escalation check - only an existing ADMIN can create another ADMIN
     if (requestedRole === 'ADMIN') {
       if (!currentUser) {
         return {
           tokenPair: null, user: null,
           errors: [buildError('UNAUTHORIZED', 'You must be logged in to create an ADMIN account.')],
-          meta:   buildMeta('UNAUTHORIZED'),
+          meta: buildMeta('UNAUTHORIZED'),
         };
       }
       if (currentUser.role !== 'ADMIN') {
         return {
           tokenPair: null, user: null,
           errors: [buildError('FORBIDDEN', 'Only an ADMIN can grant the ADMIN role.')],
-          meta:   buildMeta('FORBIDDEN'),
+          meta: buildMeta('FORBIDDEN'),
         };
       }
     }
@@ -65,7 +65,7 @@ export const authMutations = {
       return {
         tokenPair: null, user: null,
         errors: [buildError(code, result.error)],
-        meta:   buildMeta(code),
+        meta: buildMeta(code),
       };
     }
 
@@ -82,9 +82,9 @@ export const authMutations = {
     if (!user) {
       return {
         tokenPair: null, user: null,
-        // Intentionally vague — never reveal whether the username exists
+        // Intentionally vague - never reveal whether the username exists
         errors: [buildError('UNAUTHORIZED', 'Invalid username or password.')],
-        meta:   buildMeta('UNAUTHORIZED'),
+        meta: buildMeta('UNAUTHORIZED'),
       };
     }
     const tokenPair = issueTokenPair(user);
@@ -104,7 +104,7 @@ export const authMutations = {
       return {
         tokenPair: null, user: null,
         errors: [buildError('UNAUTHORIZED', msg)],
-        meta:   buildMeta('UNAUTHORIZED'),
+        meta: buildMeta('UNAUTHORIZED'),
       };
     }
 
@@ -114,7 +114,7 @@ export const authMutations = {
       return {
         tokenPair: null, user: null,
         errors: [buildError('UNAUTHORIZED', 'Refresh token has already been used or revoked.')],
-        meta:   buildMeta('UNAUTHORIZED'),
+        meta: buildMeta('UNAUTHORIZED'),
       };
     }
 
@@ -123,7 +123,7 @@ export const authMutations = {
       return {
         tokenPair: null, user: null,
         errors: [buildError('NOT_FOUND', 'User account no longer exists.')],
-        meta:   buildMeta('NOT_FOUND'),
+        meta: buildMeta('NOT_FOUND'),
       };
     }
 
@@ -138,8 +138,8 @@ export const authMutations = {
     if (!result.ok) {
       return {
         success: false,
-        errors:  [buildError('UNAUTHORIZED', 'Invalid or expired refresh token.')],
-        meta:    buildMeta('UNAUTHORIZED'),
+        errors: [buildError('UNAUTHORIZED', 'Invalid or expired refresh token.')],
+        meta: buildMeta('UNAUTHORIZED'),
       };
     }
 
@@ -147,8 +147,8 @@ export const authMutations = {
     if (!revoked) {
       return {
         success: false,
-        errors:  [buildError('NOT_FOUND', 'Refresh token not found or already revoked.')],
-        meta:    buildMeta('NOT_FOUND'),
+        errors: [buildError('NOT_FOUND', 'Refresh token not found or already revoked.')],
+        meta: buildMeta('NOT_FOUND'),
       };
     }
 

@@ -1,48 +1,48 @@
 /**
  * resolvers/clubs.resolvers.ts
  * GraphQL resolvers for the ClubSummary type and country listing.
- *   Query.clubs
- *   Query.countries
+ * Query.clubs
+ * Query.countries
  *
- * Clubs are aggregated on the fly from the player store — there is no
+ * Clubs are aggregated on the fly from the player store - there is no
  * persistent Club entity, which keeps the schema flat and avoids
  * circular references.
  */
 
-import { Player }                      from '../data/loadPlayers';
-import { buildMeta }                   from '../utils/meta';
-import { paginateWithCursors }         from './helpers';
-import type { GqlContext }             from '../types/context';
+import { Player } from '../data/loadPlayers';
+import { buildMeta } from '../utils/meta';
+import { paginateWithCursors } from './helpers';
+import type { GqlContext } from '../types/context';
 
 export interface ClubFilter {
   nameContains?: string;
-  country?:      string;
-  playerCount?:  { min?: number; max?: number };
+  country?: string;
+  playerCount?: { min?: number; max?: number };
 }
 
 export interface ClubSort {
-  field:     string;
+  field: string;
   direction: string;
 }
 
 export interface ClubSummary {
-  name:                 string;
-  country:              string;
-  playerCount:          number;
-  averageAge:           number;
+  name: string;
+  country: string;
+  playerCount: number;
+  averageAge: number;
   averageOverallRating: number;
 }
 
 export const clubQueries = {
   /**
    * Aggregates the player store into ClubSummary rows, then applies
-   * filtering, sorting, and pagination.
+   * filtering, sorting and pagination.
    */
   clubs(
     _: unknown,
     { filter, sort, pagination }: {
-      filter?:     ClubFilter;
-      sort?:       ClubSort;
+      filter?: ClubFilter;
+      sort?: ClubSort;
       pagination?: { first?: number; after?: string };
     },
     { playerStore }: GqlContext
@@ -89,9 +89,9 @@ export const clubQueries = {
   },
 };
 
-// ─────────────────────────────────────────────────────────────────────────────
+//
 // Local helpers
-// ─────────────────────────────────────────────────────────────────────────────
+//
 
 function aggregateClubs(store: Map<string, Player>): ClubSummary[] {
   const map = new Map<string, { country: string; players: Player[] }>();
@@ -102,8 +102,8 @@ function aggregateClubs(store: Map<string, Player>): ClubSummary[] {
   return Array.from(map.entries()).map(([name, { country, players }]) => ({
     name,
     country,
-    playerCount:          players.length,
-    averageAge:           players.reduce((s, p) => s + p.age, 0) / players.length,
+    playerCount: players.length,
+    averageAge: players.reduce((s, p) => s + p.age, 0) / players.length,
     averageOverallRating: players.reduce((s, p) => s + p.overallRating, 0) / players.length,
   }));
 }

@@ -2,7 +2,7 @@ node_modules/
 dist/
 .env
 
-# TLS private keys — NEVER commit
+# TLS private keys - NEVER commit
 certs/*.key
 certs/*.crt
 certs/*.pem

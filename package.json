@@ -1,7 +1,7 @@
 {
   "name": "fifa-graphql-api",
   "version": "1.0.0",
-  "description": "FIFA Player Stats — GraphQL API served over HTTPS",
+  "description": "FIFA Player Stats - GraphQL API served over HTTPS",
   "main": "dist/server.js",
   "scripts": {
     "build": "tsc --project tsconfig.json",

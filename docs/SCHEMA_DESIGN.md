@@ -1,4 +1,4 @@
-# GraphQL Schema Design — FIFA Player Stats
+# GraphQL Schema Design - FIFA Player Stats
 
 ## Dataset at a glance
 
@@ -9,7 +9,7 @@
 | Columns | 41 (name, country, height, weight, age, club, 34 skill ints, value) |
 | Countries | 135 |
 | Clubs | 684 |
-| Ages | 17 – 41 |
+| Ages | 17 - 41 |
 
 ---
 
@@ -17,8 +17,8 @@
 
 ### 1. Why GraphQL over REST here?
 
-With 34+ stats per player a REST endpoint always over-fetches — a caller wanting
-only `name`, `club`, and `finishing` gets all 41 columns. GraphQL lets each client
+With 34+ stats per player a REST endpoint always over-fetches - a caller wanting
+only `name`, `club` and `finishing` gets all 41 columns. GraphQL lets each client
 describe exactly the fields it needs, reducing payload size and making the contract
 explicit in the query itself.
 
@@ -26,7 +26,7 @@ explicit in the query itself.
 
 ### 2. Skill stats: grouped value-objects, not a flat 34-field type
 
-The 34 skill attributes were split into four **value-object types** — not separate
+The 34 skill attributes were split into four **value-object types** - not separate
 entities:
 
 | Type | Fields | Notes |
@@ -37,7 +37,7 @@ entities:
 | `GoalkeeperSkills` | 5 fields | Low values for outfielders |
 
 **Why value-objects and not separate entities?**
-- They have no identity of their own — they only exist attached to a `Player`.
+- They have no identity of their own - they only exist attached to a `Player`.
 - No top-level query exposes them, so there is no risk of an N+1 resolver chain.
 - A caller who only needs goalkeeper stats fetches `player { goalkeeper { ... } }`
   without touching the other 29 fields.
@@ -49,12 +49,12 @@ entities:
 The most common source of runaway depth is bidirectional edges:
 
 ```
-# AVOIDED — this creates a cycle
+# AVOIDED - this creates a cycle
 type Player {
-  club: Club!        # Player → Club
+  club: Club! # Player -> Club
 }
 type Club {
-  players: [Player!] # Club → Player → Club → Player → ...
+  players: [Player!] # Club -> Player -> Club -> Player -> ...
 }
 ```
 
@@ -74,17 +74,17 @@ from any query root:
 
 ```
 Query (1)
-  └─ players (2)
-       └─ edges.node : Player (3)
-            └─ technical : TechnicalSkills (4)
-                 └─ ballControl : Int  ← scalar, depth stops (5)
+   players (2)
+        edges.node : Player (3)
+             technical : TechnicalSkills (4)
+                  ballControl : Int <- scalar, depth stops (5)
 ```
 
 The server should enforce `graphql-depth-limit` at **6** to give a safe margin.
 
 ---
 
-### 4. Query depth limits — implementation note
+### 4. Query depth limits - implementation note
 
 Install and apply at server startup (Node / Apollo example):
 
@@ -98,13 +98,13 @@ const server = new ApolloServer({
 ```
 
 A depth of 6 covers the deepest legitimate path:
-`Query → Connection → edges → node → SkillGroup → scalar`
+`Query -> Connection -> edges -> node -> SkillGroup -> scalar`
 
 Any query exceeding 6 levels is rejected before execution.
 
 ---
 
-### 5. Pagination — Relay cursor connections
+### 5. Pagination - Relay cursor connections
 
 Plain `[Player!]!` lists are avoided everywhere because with 5,682 rows an
 unbounded query would return megabytes. Every list is wrapped in a `Connection`
@@ -112,8 +112,8 @@ type following the Relay spec:
 
 ```graphql
 type PlayerConnection {
-  edges:    [PlayerEdge!]!
-  pageInfo: PageInfo!   # hasNextPage, totalCount, start/endCursor
+  edges: [PlayerEdge!]!
+  pageInfo: PageInfo! # hasNextPage, totalCount, start/endCursor
 }
 ```
 
@@ -140,10 +140,10 @@ Raw CSV names were renamed to be self-documenting:
 
 ### 7. Input types for mutations
 
-All multi-field mutations accept a single **Input type** — never loose argument
-lists — so:
+All multi-field mutations accept a single **Input type** - never loose argument
+lists - so:
 - Additions of new fields are non-breaking changes to the input type.
-- Clients can store, validate, and reuse the input object.
+- Clients can store, validate and reuse the input object.
 - `CreatePlayerInput` makes every skill required (complete records on creation).
 - `UpdatePlayerInput` makes every field optional (partial patch semantics).
 
@@ -156,7 +156,7 @@ Mutations return `PlayerPayload`, not a raw `Player`. This follows the
 
 ```graphql
 type PlayerPayload {
-  player: Player        # null on failure
+  player: Player # null on failure
   errors: [UserError!]! # empty on success
 }
 ```
@@ -164,15 +164,15 @@ type PlayerPayload {
 This means:
 - Callers always get HTTP 200.
 - Validation errors (e.g. `age` out of range) are surfaced as structured
-  `UserError` objects with a `field` path — not thrown as top-level GraphQL errors.
+  `UserError` objects with a `field` path - not thrown as top-level GraphQL errors.
 - The response shape is consistent and easy to handle in any client.
 
 ---
 
-### 9. `overallRating` — computed field
+### 9. `overallRating` - computed field
 
 The CSV has no single "overall" column. `overallRating` is a server-computed
-aggregate (e.g. weighted average across `technical`, `defensive`, and `physical`
+aggregate (e.g. weighted average across `technical`, `defensive` and `physical`
 skill groups). This gives callers a sorting/filtering handle without exposing the
 raw computation formula in the schema.
 
@@ -182,30 +182,30 @@ raw computation formula in the schema.
 
 ```
 graphql/
-├── schema.graphql       # single-file SDL schema (source of truth)
-└── SCHEMA_DESIGN.md     # this document
+ schema.graphql # single-file SDL schema (source of truth)
+ SCHEMA_DESIGN.md # this document
 ```
 
 For implementation, a suggested layout with a Node/TypeScript server:
 
 ```
 graphql/
-├── schema.graphql
-├── resolvers/
-│   ├── query/
-│   │   ├── player.ts
-│   │   ├── players.ts
-│   │   ├── topPlayers.ts
-│   │   ├── clubs.ts
-│   │   └── countries.ts
-│   ├── mutation/
-│   │   ├── createPlayer.ts
-│   │   ├── updatePlayer.ts
-│   │   └── deletePlayer.ts
-│   └── Player/          # field-level resolvers for computed fields
-│       └── overallRating.ts
-├── loaders/
-│   └── playerLoader.ts  # DataLoader for batching
-└── types/
-    └── generated.ts     # codegen output from schema.graphql
+ schema.graphql
+ resolvers/
+    query/
+       player.ts
+       players.ts
+       topPlayers.ts
+       clubs.ts
+       countries.ts
+    mutation/
+       createPlayer.ts
+       updatePlayer.ts
+       deletePlayer.ts
+    Player/ # field-level resolvers for computed fields
+        overallRating.ts
+ loaders/
+    playerLoader.ts # DataLoader for batching
+ types/
+     generated.ts # codegen output from schema.graphql
 ```

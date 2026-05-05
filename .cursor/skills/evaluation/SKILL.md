@@ -1,11 +1,11 @@
 ---
 name: evaluation
-description: This skill should be used when the user asks to "evaluate agent performance", "build test framework", "measure agent quality", "create evaluation rubrics", or mentions LLM-as-judge, multi-dimensional evaluation, agent testing, or quality gates for agent pipelines.
+description: This skill should be used when the user asks to "evaluate agent performance", "build test framework", "measure agent quality", "create evaluation rubrics" or mentions LLM-as-judge, multi-dimensional evaluation, agent testing or quality gates for agent pipelines.
 ---
 
 # Evaluation Methods for Agent Systems
 
-Evaluate agent systems differently from traditional software because agents make dynamic decisions, are non-deterministic between runs, and often lack single correct answers. Build evaluation frameworks that account for these characteristics, provide actionable feedback, catch regressions, and validate that context engineering choices achieve intended effects.
+Evaluate agent systems differently from traditional software because agents make dynamic decisions, are non-deterministic between runs and often lack single correct answers. Build evaluation frameworks that account for these characteristics, provide actionable feedback, catch regressions and validate that context engineering choices achieve intended effects.
 
 ## When to Activate
 
@@ -22,9 +22,9 @@ Activate this skill when:
 
 Focus evaluation on outcomes rather than execution paths, because agents may find alternative valid routes to goals. Judge whether the agent achieves the right outcome via a reasonable process, not whether it followed a specific sequence of steps.
 
-Use multi-dimensional rubrics instead of single scores because one number hides critical failures in specific dimensions. Capture factual accuracy, completeness, citation accuracy, source quality, and tool efficiency as separate dimensions, then weight them for the use case.
+Use multi-dimensional rubrics instead of single scores because one number hides critical failures in specific dimensions. Capture factual accuracy, completeness, citation accuracy, source quality and tool efficiency as separate dimensions, then weight them for the use case.
 
-Deploy LLM-as-judge for scalable evaluation across large test sets while supplementing with human review to catch edge cases, hallucinations, and subtle biases that automated evaluation misses.
+Deploy LLM-as-judge for scalable evaluation across large test sets while supplementing with human review to catch edge cases, hallucinations and subtle biases that automated evaluation misses.
 
 **Performance Drivers: The 95% Finding**
 
@@ -51,11 +51,11 @@ Design evaluations that tolerate path variation because agents may take complete
 
 **Test Context-Dependent Failures**
 
-Evaluate across a range of complexity levels and interaction lengths because agent failures often depend on context in subtle ways. An agent might succeed on simple queries but fail on complex ones, work well with one tool set but fail with another, or degrade after extended interaction as context accumulates. Include simple, medium, complex, and very complex test cases to surface these patterns.
+Evaluate across a range of complexity levels and interaction lengths because agent failures often depend on context in subtle ways. An agent might succeed on simple queries but fail on complex ones, work well with one tool set but fail with another or degrade after extended interaction as context accumulates. Include simple, medium, complex and very complex test cases to surface these patterns.
 
 **Score Composite Quality Dimensions Separately**
 
-Break agent quality into separate dimensions (factual accuracy, completeness, coherence, tool efficiency, process quality) and score each independently because an agent might score high on accuracy but low on efficiency, or vice versa. Then compute weighted aggregates tuned to use-case priorities. This approach reveals which dimensions need improvement rather than averaging away the signal.
+Break agent quality into separate dimensions (factual accuracy, completeness, coherence, tool efficiency, process quality) and score each independently because an agent might score high on accuracy but low on efficiency or vice versa. Then compute weighted aggregates tuned to use-case priorities. This approach reveals which dimensions need improvement rather than averaging away the signal.
 
 ### Evaluation Rubric Design
 
@@ -71,17 +71,17 @@ Define rubrics covering key dimensions with descriptive levels from excellent to
 
 **Convert Rubrics to Numeric Scores**
 
-Map dimension assessments to numeric scores (0.0 to 1.0), apply per-dimension weights, and calculate weighted overall scores. Set passing thresholds based on use-case requirements, typically 0.7 for general use and 0.9 for high-stakes applications. Store individual dimension scores alongside the aggregate because the breakdown drives targeted improvement.
+Map dimension assessments to numeric scores (0.0 to 1.0), apply per-dimension weights and calculate weighted overall scores. Set passing thresholds based on use-case requirements, typically 0.7 for general use and 0.9 for high-stakes applications. Store individual dimension scores alongside the aggregate because the breakdown drives targeted improvement.
 
 ### Evaluation Methodologies
 
 **Use LLM-as-Judge for Scale**
 
-Build LLM-based evaluation prompts that include: clear task description, the agent output under test, ground truth when available, an evaluation scale with explicit level descriptions, and a request for structured judgment with reasoning. LLM judges provide consistent, scalable evaluation across large test sets. Use a different model family than the agent being evaluated to avoid self-enhancement bias.
+Build LLM-based evaluation prompts that include: clear task description, the agent output under test, ground truth when available, an evaluation scale with explicit level descriptions and a request for structured judgment with reasoning. LLM judges provide consistent, scalable evaluation across large test sets. Use a different model family than the agent being evaluated to avoid self-enhancement bias.
 
 **Supplement with Human Evaluation**
 
-Route edge cases, unusual queries, and a random sample of production traffic to human reviewers because humans notice hallucinated answers, system failures, and subtle biases that automated evaluation misses. Track patterns across human reviews to identify systematic issues and feed findings back into automated evaluation criteria.
+Route edge cases, unusual queries and a random sample of production traffic to human reviewers because humans notice hallucinated answers, system failures and subtle biases that automated evaluation misses. Track patterns across human reviews to identify systematic issues and feed findings back into automated evaluation criteria.
 
 **Apply End-State Evaluation for Stateful Agents**
 
@@ -91,7 +91,7 @@ For agents that mutate persistent state (files, databases, configurations), eval
 
 **Select Representative Samples**
 
-Start with small samples (20-30 cases) during early development when changes have dramatic impacts and low-hanging fruit is abundant. Scale to 50+ cases for reliable signal as the system matures. Sample from real usage patterns, add known edge cases, and ensure coverage across complexity levels.
+Start with small samples (20-30 cases) during early development when changes have dramatic impacts and low-hanging fruit is abundant. Scale to 50+ cases for reliable signal as the system matures. Sample from real usage patterns, add known edge cases and ensure coverage across complexity levels.
 
 **Stratify by Complexity**
 
@@ -107,7 +107,7 @@ Report scores per stratum alongside overall scores to reveal where the agent act
 
 **Validate Context Strategies Systematically**
 
-Run agents with different context strategies on the same test set and compare quality scores, token usage, and efficiency metrics. This isolates the effect of context engineering from other variables and prevents anecdote-driven decisions.
+Run agents with different context strategies on the same test set and compare quality scores, token usage and efficiency metrics. This isolates the effect of context engineering from other variables and prevents anecdote-driven decisions.
 
 **Run Degradation Tests**
 
@@ -117,7 +117,7 @@ Test how context degradation affects performance by running agents at different 
 
 **Build Automated Evaluation Pipelines**
 
-Integrate evaluation into the development workflow so evaluations run automatically on agent changes. Track results over time, compare versions, and block deployments that regress on key metrics.
+Integrate evaluation into the development workflow so evaluations run automatically on agent changes. Track results over time, compare versions and block deployments that regress on key metrics.
 
 **Monitor Production Quality**
 
@@ -188,7 +188,7 @@ test_set = [
     },
     {
         "name": "research_synthesis",
-        "input": "Research emerging AI technologies, evaluate their potential impact, and recommend adoption strategy",
+        "input": "Research emerging AI technologies, evaluate their potential impact and recommend adoption strategy",
         "complexity": "very_complex",
         "description": "Extended interaction, deep reasoning, synthesis"
     }
@@ -208,14 +208,14 @@ test_set = [
 
 ## Gotchas
 
-1. **Overfitting evals to specific code paths**: Tests pass but the agent fails on slight input variations. Write eval criteria against outcomes and semantics, not surface patterns, and rotate test inputs periodically.
+1. **Overfitting evals to specific code paths**: Tests pass but the agent fails on slight input variations. Write eval criteria against outcomes and semantics, not surface patterns and rotate test inputs periodically.
 2. **LLM-judge self-enhancement bias**: Models rate their own outputs higher than independent judges do. Use a different model family as the evaluation judge than the model being evaluated.
 3. **Test set contamination**: Eval examples leak into training data or prompt templates, inflating scores. Keep eval sets versioned and separate from any data used in prompts or fine-tuning.
 4. **Metric gaming**: Optimizing for the metric rather than actual quality produces agents that score well but disappoint users. Cross-validate automated metrics against human judgments regularly.
-5. **Single-dimension scoring**: One aggregate number hides critical failures in specific dimensions. Always report per-dimension scores alongside the overall score, and fail the eval if any single dimension falls below its minimum threshold.
+5. **Single-dimension scoring**: One aggregate number hides critical failures in specific dimensions. Always report per-dimension scores alongside the overall score and fail the eval if any single dimension falls below its minimum threshold.
 6. **Eval set too small**: Fewer than 50 examples produces unreliable signal with high variance between runs. Scale the eval set to at least 50 cases and report confidence intervals.
 7. **Not stratifying by difficulty**: Easy examples inflate overall scores, masking failures on hard cases. Report scores per complexity stratum and weight the overall score to prevent easy-case dominance.
-8. **Treating eval as one-time**: Evaluation must be continuous, not a launch gate. Agent quality drifts as models update, tools change, and usage patterns evolve. Run evals on every change and on a regular production cadence.
+8. **Treating eval as one-time**: Evaluation must be continuous, not a launch gate. Agent quality drifts as models update, tools change and usage patterns evolve. Run evals on every change and on a regular production cadence.
 
 ## Integration
 
@@ -231,7 +231,7 @@ This skill connects to all other skills as a cross-cutting concern:
 ## References
 
 Internal reference:
-- [Metrics Reference](./references/metrics.md) - Read when: designing specific evaluation metrics, choosing scoring scales, or implementing weighted rubric calculations
+- [Metrics Reference](./references/metrics.md) - Read when: designing specific evaluation metrics, choosing scoring scales or implementing weighted rubric calculations
 
 Internal skills:
 - All other skills connect to evaluation for quality measurement
@@ -239,7 +239,7 @@ Internal skills:
 External resources:
 - LLM evaluation benchmarks - Read when: selecting or building benchmark suites for agent comparison
 - Agent evaluation research papers - Read when: adopting new evaluation methodologies or validating current approach
-- Production monitoring practices - Read when: setting up alerting, dashboards, or sampling strategies for live systems
+- Production monitoring practices - Read when: setting up alerting, dashboards or sampling strategies for live systems
 
 ---
 
