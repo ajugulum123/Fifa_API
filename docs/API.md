@@ -26,8 +26,8 @@ All requests use `POST` with `Content-Type: application/json`. Self-signed certi
 
 | Role | Read players/clubs | Mutate players | Create ADMIN users |
 |---|:---:|:---:|:---:|
-| `ADMIN` | | | |
-| `USER` | | `FORBIDDEN` | `FORBIDDEN` |
+| `ADMIN` | ✅ | ✅ | ✅ |
+| `USER` | ✅ | `FORBIDDEN` | `FORBIDDEN` |
 
 Anonymous (no token) requests can read public queries but get `UNAUTHORIZED` on protected mutations.
 
