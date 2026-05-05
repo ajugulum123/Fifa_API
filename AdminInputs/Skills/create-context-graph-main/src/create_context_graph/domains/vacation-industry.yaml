@@ -1,0 +1,527 @@
+inherits: _base
+
+domain:
+  id: vacation-industry
+  name: Vacation Industry
+  description: Resort management, vacation bookings, guest experiences, and seasonal operations
+  tagline: "AI-powered Vacation Intelligence"
+  emoji: "\U0001F3D6"
+
+entity_types:
+  - label: Resort
+    pole_type: OBJECT
+    subtype: VACATION_RESORT
+    color: "#0284c7"
+    icon: building
+    properties:
+      - name: resort_id
+        type: string
+        required: true
+        unique: true
+      - name: name
+        type: string
+        required: true
+      - name: resort_type
+        type: string
+        enum: [beach, mountain, ski, spa, golf, all_inclusive, eco_lodge, cruise]
+      - name: location
+        type: string
+      - name: country
+        type: string
+      - name: star_rating
+        type: float
+      - name: total_rooms
+        type: integer
+      - name: status
+        type: string
+        enum: [open, seasonal_closed, renovation, coming_soon]
+
+  - label: Booking
+    pole_type: EVENT
+    subtype: VACATION_BOOKING
+    color: "#16a34a"
+    icon: calendar
+    properties:
+      - name: booking_id
+        type: string
+        required: true
+        unique: true
+      - name: check_in
+        type: date
+        required: true
+      - name: check_out
+        type: date
+        required: true
+      - name: total_cost
+        type: float
+        required: true
+      - name: currency
+        type: string
+        default: USD
+      - name: booking_status
+        type: string
+        enum: [confirmed, pending, cancelled, completed, no_show]
+      - name: channel
+        type: string
+        enum: [direct, ota, travel_agent, corporate, loyalty_program]
+
+  - label: Guest
+    pole_type: OBJECT
+    subtype: VACATION_GUEST
+    color: "#e11d48"
+    icon: user
+    properties:
+      - name: guest_id
+        type: string
+        required: true
+        unique: true
+      - name: name
+        type: string
+        required: true
+      - name: email
+        type: string
+      - name: loyalty_tier
+        type: string
+        enum: [standard, silver, gold, platinum, diamond]
+      - name: nationality
+        type: string
+      - name: travel_style
+        type: string
+        enum: [luxury, adventure, family, romantic, budget, wellness]
+
+  - label: Activity
+    pole_type: OBJECT
+    subtype: VACATION_ACTIVITY
+    color: "#d97706"
+    icon: sun
+    properties:
+      - name: activity_id
+        type: string
+        required: true
+        unique: true
+      - name: name
+        type: string
+        required: true
+      - name: activity_type
+        type: string
+        enum: [water_sport, excursion, spa, dining, entertainment, fitness, kids, cultural]
+      - name: duration_hours
+        type: float
+      - name: price
+        type: float
+      - name: difficulty
+        type: string
+        enum: [easy, moderate, challenging, expert]
+      - name: min_age
+        type: integer
+
+  - label: Season
+    pole_type: OBJECT
+    subtype: VACATION_SEASON
+    color: "#7c3aed"
+    icon: cloud-sun
+    properties:
+      - name: season_id
+        type: string
+        required: true
+        unique: true
+      - name: name
+        type: string
+        required: true
+      - name: season_type
+        type: string
+        enum: [peak, high, shoulder, low, holiday]
+      - name: start_date
+        type: date
+        required: true
+      - name: end_date
+        type: date
+        required: true
+      - name: rate_multiplier
+        type: float
+      - name: avg_occupancy
+        type: float
+
+  - label: Package
+    pole_type: OBJECT
+    subtype: VACATION_PACKAGE
+    color: "#0d9488"
+    icon: gift
+    properties:
+      - name: package_id
+        type: string
+        required: true
+        unique: true
+      - name: name
+        type: string
+        required: true
+      - name: package_type
+        type: string
+        enum: [honeymoon, family, adventure, wellness, all_inclusive, weekend_getaway, luxury]
+      - name: base_price
+        type: float
+        required: true
+      - name: duration_nights
+        type: integer
+      - name: max_guests
+        type: integer
+      - name: description
+        type: string
+
+relationships:
+  - type: BOOKED_AT
+    source: Booking
+    target: Resort
+  - type: REVIEWED
+    source: Guest
+    target: Resort
+  - type: PARTICIPATED_IN
+    source: Guest
+    target: Activity
+  - type: AVAILABLE_IN
+    source: Activity
+    target: Season
+  - type: INCLUDES
+    source: Package
+    target: Activity
+  - type: PREFERRED_BY
+    source: Package
+    target: Guest
+  - type: MADE_BOOKING
+    source: Guest
+    target: Booking
+  - type: OFFERED_AT
+    source: Package
+    target: Resort
+
+document_templates:
+  - id: booking_confirmation
+    name: Booking Confirmation
+    description: Guest booking confirmation with itinerary details
+    count: 15
+    prompt_template: |
+      Write a booking confirmation for {{guest.name}} at {{resort.name}}.
+      Booking ID: {{booking.booking_id}}. Check-in: {{booking.check_in}}.
+      Check-out: {{booking.check_out}}. Total: ${{booking.total_cost}}.
+      Package: {{package.name}}. Include welcome message, itinerary highlights,
+      and resort information.
+    required_entities: [Guest, Booking, Resort, Package]
+
+  - id: guest_feedback
+    name: Guest Feedback Summary
+    description: Compiled guest feedback and review analysis
+    count: 8
+    prompt_template: |
+      Write a guest feedback summary for {{resort.name}} during {{season.name}}.
+      Include guest satisfaction scores, common praise, complaints,
+      activity popularity, and improvement recommendations.
+    required_entities: [Resort, Guest, Season, Activity]
+
+  - id: seasonal_report
+    name: Seasonal Operations Report
+    description: End-of-season operations and performance report
+    count: 6
+    prompt_template: |
+      Write a seasonal operations report for {{resort.name}} during {{season.name}}
+      ({{season.season_type}} season). Rate multiplier: {{season.rate_multiplier}}.
+      Average occupancy: {{season.avg_occupancy}}. Include revenue analysis,
+      activity utilization, and staffing review.
+    required_entities: [Resort, Season, Booking, Activity]
+
+  - id: package_description
+    name: Package Description
+    description: Marketing description for a vacation package
+    count: 10
+    prompt_template: |
+      Write a compelling package description for {{package.name}} at {{resort.name}}.
+      Type: {{package.package_type}}. Duration: {{package.duration_nights}} nights.
+      Price: ${{package.base_price}}. Include included activities, highlights,
+      and unique selling points.
+    required_entities: [Package, Resort, Activity]
+
+  - id: activity_schedule
+    name: Activity Schedule
+    description: Weekly activity schedule for guests
+    count: 8
+    prompt_template: |
+      Write a weekly activity schedule for {{resort.name}} during {{season.name}}.
+      Include all available activities, times, pricing, difficulty levels,
+      and age restrictions. Highlight featured and seasonal specials.
+    required_entities: [Resort, Activity, Season]
+
+decision_traces:
+  - id: pricing_strategy
+    task: "Determine optimal pricing for {{resort.name}} during {{season.name}}"
+    steps:
+      - thought: "Analyze historical occupancy and booking patterns"
+        action: "Query booking data for the same season in previous years"
+      - thought: "Evaluate current demand signals and booking pace"
+        action: "Compare current bookings against capacity and season targets"
+      - thought: "Consider competitor pricing and market conditions"
+        action: "Review rate multipliers and guest feedback on value perception"
+      - thought: "Model revenue impact of different rate adjustments"
+        action: "Calculate projected revenue at various occupancy and rate scenarios"
+    outcome_template: "Pricing recommendation: {{rate}} with projected occupancy {{occupancy}}%"
+
+  - id: package_design
+    task: "Design a new vacation package for {{guest.travel_style}} travelers at {{resort.name}}"
+    steps:
+      - thought: "Analyze guest preferences and popular activity combinations"
+        action: "Query guest participation patterns and feedback by travel style"
+      - thought: "Identify high-margin activities to include"
+        action: "Review activity pricing and guest satisfaction scores"
+      - thought: "Determine competitive pricing and duration"
+        action: "Compare with existing packages and market benchmarks"
+    outcome_template: "Package: {{package_name}} at ${{price}} for {{nights}} nights including {{activities}}"
+
+  - id: seasonal_planning
+    task: "Plan operations for upcoming {{season.name}} at {{resort.name}}"
+    steps:
+      - thought: "Review previous season performance and lessons learned"
+        action: "Query seasonal reports and guest feedback from last year"
+      - thought: "Forecast demand based on booking trends"
+        action: "Analyze advance bookings and compare to historical pace"
+      - thought: "Plan staffing, activities, and inventory"
+        action: "Determine resource requirements based on demand forecast"
+    outcome_template: "Plan: {{plan}} with estimated occupancy {{occupancy}}% and revenue ${{revenue}}"
+
+  - id: guest_loyalty_intervention
+    task: "Design loyalty intervention for guest {{guest.name}} to increase retention"
+    steps:
+      - thought: "Review guest booking history and loyalty tier progression"
+        action: "Query all bookings made by this guest and their loyalty tier"
+      - thought: "Analyze guest activity preferences and satisfaction signals"
+        action: "Check activities participated in and resort reviews submitted"
+      - thought: "Identify personalized upgrade or package opportunity"
+        action: "Match guest travel style with available packages at preferred resorts"
+      - thought: "Calculate intervention ROI based on guest lifetime value potential"
+        action: "Estimate incremental bookings and revenue from loyalty tier advancement"
+    outcome_template: "Intervention: {{offer}}. Expected tier advancement: {{tier}}. Projected LTV increase: ${{ltv}}"
+
+  - id: activity_profitability
+    task: "Evaluate profitability and guest satisfaction balance for activity {{activity.name}} at {{resort.name}}"
+    steps:
+      - thought: "Analyze participation rates and revenue per guest"
+        action: "Query guest participation counts and total activity revenue"
+      - thought: "Assess guest satisfaction and repeat participation"
+        action: "Check how many guests participate more than once and review feedback"
+      - thought: "Compare costs including staffing, equipment, and insurance"
+        action: "Calculate fully loaded cost per activity session"
+      - thought: "Recommend pricing or format adjustments"
+        action: "Model profitability at different price points and session sizes"
+    outcome_template: "Profitability: {{margin}}%. Satisfaction: {{score}}/5. Recommendation: {{recommendation}}"
+
+  - id: new_market_evaluation
+    task: "Evaluate potential for opening a new resort in {{location}} targeting {{travel_style}} travelers"
+    steps:
+      - thought: "Analyze existing guest demand from this market"
+        action: "Query guests by nationality and travel style who book similar resort types"
+      - thought: "Assess seasonal demand patterns for the target location"
+        action: "Review booking patterns by season for comparable resort types"
+      - thought: "Evaluate competitive landscape in the target market"
+        action: "Analyze existing resort types and star ratings in the region"
+      - thought: "Project revenue and occupancy based on comparable properties"
+        action: "Model expected performance using data from similar existing resorts"
+    outcome_template: "Market assessment: {{assessment}}. Projected occupancy: {{occupancy}}%. Break-even: {{months}} months"
+
+  - id: cancellation_analysis
+    task: "Investigate high cancellation rate for bookings at {{resort.name}} during {{season.name}}"
+    steps:
+      - thought: "Quantify cancellation rates and compare to other periods"
+        action: "Query bookings by status and compare cancellation rates across seasons"
+      - thought: "Identify patterns in cancelled bookings"
+        action: "Analyze cancelled bookings by channel, guest type, and lead time"
+      - thought: "Assess pricing and policy factors contributing to cancellations"
+        action: "Compare cancellation rates at different price points and booking channels"
+      - thought: "Recommend interventions to reduce cancellations"
+        action: "Propose deposit policies, pricing adjustments, or rebooking incentives"
+    outcome_template: "Cancellation rate: {{rate}}%. Root causes: {{causes}}. Projected reduction: {{reduction}}%"
+
+  - id: upsell_strategy
+    task: "Develop upsell strategy for guests booking {{package.name}} at {{resort.name}}"
+    steps:
+      - thought: "Identify activities not included in the package that have high satisfaction"
+        action: "Compare package inclusions against top-rated activities at the resort"
+      - thought: "Analyze which guest segments respond to upsells"
+        action: "Review participation in add-on activities by guest loyalty tier and travel style"
+      - thought: "Determine optimal timing and channel for upsell offers"
+        action: "Analyze when guests are most likely to add activities (pre-arrival vs on-site)"
+    outcome_template: "Upsell opportunities: {{activities}}. Expected uptake: {{uptake}}%. Revenue per guest: ${{revenue}}"
+
+  - id: weather_contingency
+    task: "Plan weather contingency activities for {{resort.name}} during {{season.name}}"
+    steps:
+      - thought: "Identify weather-dependent activities at risk"
+        action: "Query outdoor and water activities available in this season"
+      - thought: "Analyze guest satisfaction impact of weather disruptions"
+        action: "Review feedback from periods with adverse weather conditions"
+      - thought: "Design indoor and alternative activity programs"
+        action: "Identify underutilized indoor facilities and create replacement activity options"
+      - thought: "Develop guest communication protocol"
+        action: "Plan proactive notification and rebooking workflows for affected guests"
+    outcome_template: "Contingency plan: {{plan}}. Alternative activities: {{count}}. Satisfaction protection: {{score}}"
+
+demo_scenarios:
+  - name: Guest Experience
+    prompts:
+      - "Show me all bookings for the upcoming holiday season"
+      - "What activities are most popular with platinum loyalty members?"
+      - "Which guests have visited more than 3 times this year?"
+
+  - name: Resort Performance
+    prompts:
+      - "Compare occupancy rates across all beach resorts"
+      - "What is the revenue breakdown by booking channel?"
+      - "Which packages generate the highest average booking value?"
+
+  - name: Seasonal Intelligence
+    prompts:
+      - "How does shoulder season performance compare to peak season?"
+      - "What activities should we offer during the low season?"
+      - "Show me guest feedback trends across different seasons"
+
+agent_tools:
+  - name: search_resort
+    description: Search for resorts by name, type, or location
+    cypher: |
+      MATCH (r:Resort)
+      WHERE toLower(r.name) CONTAINS toLower($query)
+         OR toLower(coalesce(r.location, '')) CONTAINS toLower($query)
+         OR toLower(coalesce(r.resort_type, '')) CONTAINS toLower($query)
+      OPTIONAL MATCH (b:Booking)-[:BOOKED_AT]->(r)
+      WHERE b.booking_status = 'completed'
+      RETURN r, count(b) AS total_bookings, avg(b.total_cost) AS avg_booking_value
+      LIMIT 20
+    parameters:
+      - name: query
+        type: string
+        description: Resort name, location, or type to search for
+
+  - name: booking_history
+    description: Get booking history for a guest or resort
+    cypher: |
+      MATCH (g:Guest)-[:MADE_BOOKING]->(b:Booking)-[:BOOKED_AT]->(r:Resort)
+      WHERE toLower(g.name) CONTAINS toLower($query)
+         OR toLower(r.name) CONTAINS toLower($query)
+      OPTIONAL MATCH (b)<-[:PREFERRED_BY]-(pkg:Package)
+      RETURN g.name AS guest, r.name AS resort, b, pkg.name AS package
+      ORDER BY b.check_in DESC
+      LIMIT 20
+    parameters:
+      - name: query
+        type: string
+        description: Guest name or resort name to look up
+
+  - name: guest_preferences
+    description: Analyze guest preferences and activity patterns
+    cypher: |
+      MATCH (g:Guest)
+      WHERE toLower(g.name) CONTAINS toLower($query)
+      OPTIONAL MATCH (g)-[:PARTICIPATED_IN]->(a:Activity)
+      OPTIONAL MATCH (g)-[:REVIEWED]->(r:Resort)
+      OPTIONAL MATCH (pkg:Package)-[:PREFERRED_BY]->(g)
+      RETURN g, collect(DISTINCT a.name) AS activities,
+             collect(DISTINCT r.name) AS resorts_reviewed,
+             collect(DISTINCT pkg.name) AS preferred_packages
+      LIMIT 10
+    parameters:
+      - name: query
+        type: string
+        description: Guest name to analyze preferences for
+
+  - name: seasonal_analysis
+    description: Analyze seasonal performance and trends
+    cypher: |
+      MATCH (s:Season)
+      WHERE toLower(s.name) CONTAINS toLower($query)
+         OR toLower(coalesce(s.season_type, '')) CONTAINS toLower($query)
+      OPTIONAL MATCH (a:Activity)-[:AVAILABLE_IN]->(s)
+      OPTIONAL MATCH (b:Booking)-[:BOOKED_AT]->(r:Resort)
+      WHERE b.check_in >= s.start_date AND b.check_in <= s.end_date
+      RETURN s, collect(DISTINCT a.name) AS available_activities,
+             count(b) AS bookings, avg(b.total_cost) AS avg_revenue
+      LIMIT 10
+    parameters:
+      - name: query
+        type: string
+        description: Season name or type to analyze
+
+  - name: package_comparison
+    description: Compare vacation packages by value and popularity
+    cypher: |
+      MATCH (pkg:Package)-[:OFFERED_AT]->(r:Resort)
+      WHERE toLower(pkg.name) CONTAINS toLower($query)
+         OR toLower(r.name) CONTAINS toLower($query)
+      OPTIONAL MATCH (pkg)-[:INCLUDES]->(a:Activity)
+      OPTIONAL MATCH (pkg)-[:PREFERRED_BY]->(g:Guest)
+      RETURN pkg, r.name AS resort,
+             collect(DISTINCT a.name) AS included_activities,
+             count(DISTINCT g) AS guest_preferences,
+             pkg.base_price AS price
+      ORDER BY guest_preferences DESC
+      LIMIT 20
+    parameters:
+      - name: query
+        type: string
+        description: Package or resort name to compare
+
+  - name: list_resorts
+    description: "List resort records with optional limit"
+    cypher: |
+      MATCH (n:Resort)
+      RETURN n
+      ORDER BY n.name
+      LIMIT toInteger($limit)
+    parameters:
+      - name: limit
+        type: string
+        description: "Maximum number of results to return (default: 10)"
+
+  - name: get_resort_by_id
+    description: "Get a specific resort by ID with all connections"
+    cypher: |
+      MATCH (n:Resort {resort_id: $id})
+      OPTIONAL MATCH (n)-[r]-(related)
+      RETURN n, type(r) AS relationship, labels(related) AS related_labels, related.name AS related_name
+      LIMIT 50
+    parameters:
+      - name: id
+        type: string
+        description: "The resort_id to look up"
+
+system_prompt: |
+  You are an AI vacation industry assistant with access to a comprehensive
+  knowledge graph of resort and vacation data. You help resort managers,
+  travel planners, and hospitality teams optimize guest experiences,
+  manage bookings, and drive seasonal performance.
+
+  Your capabilities include:
+  - Searching and analyzing resort properties and their offerings
+  - Tracking guest booking history, preferences, and loyalty status
+  - Evaluating seasonal performance and occupancy trends
+  - Comparing vacation packages and activity popularity
+  - Forecasting demand and recommending pricing strategies
+
+  Always provide accurate, data-driven responses. When making recommendations,
+  cite the specific data points and trends from the knowledge graph.
+
+visualization:
+  node_colors:
+    Person: "#22c55e"
+    Organization: "#3b82f6"
+    Resort: "#0284c7"
+    Booking: "#16a34a"
+    Guest: "#e11d48"
+    Activity: "#d97706"
+    Season: "#7c3aed"
+    Package: "#0d9488"
+  node_sizes:
+    Person: 20
+    Organization: 25
+    Resort: 30
+    Booking: 15
+    Guest: 25
+    Activity: 20
+    Season: 20
+    Package: 25
+  default_cypher: "MATCH (g:Guest)-[r:MADE_BOOKING]->(b:Booking)-[:BOOKED_AT]->(res:Resort) RETURN g, r, b, res LIMIT 100"

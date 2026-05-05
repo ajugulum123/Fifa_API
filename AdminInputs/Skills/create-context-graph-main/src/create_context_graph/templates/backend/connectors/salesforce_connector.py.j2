@@ -1,0 +1,141 @@
+{% raw %}"""Salesforce connector — imports accounts, contacts, and opportunities."""
+
+from __future__ import annotations
+
+from typing import Any
+
+
+class SalesforceConnector:
+    """Import data from Salesforce CRM using simple-salesforce."""
+
+    def __init__(self):
+        self._sf = None
+
+    def authenticate(self, credentials: dict[str, str]) -> None:
+        """Authenticate with Salesforce.
+
+        Args:
+            credentials: dict with keys "username", "password",
+                         "security_token", and optional "domain"
+                         ("login" for production, "test" for sandbox).
+        """
+        try:
+            from simple_salesforce import Salesforce
+        except ImportError:
+            raise ImportError(
+                "simple-salesforce is required for the Salesforce connector. "
+                "Install it with: pip install simple-salesforce"
+            )
+
+        self._sf = Salesforce(
+            username=credentials["username"],
+            password=credentials["password"],
+            security_token=credentials.get("security_token", ""),
+            domain=credentials.get("domain", "login"),
+        )
+
+    def fetch(self, **kwargs: Any) -> dict:
+        """Fetch accounts, contacts, and opportunities.
+
+        Returns:
+            dict with keys "entities", "relationships", "documents".
+        """
+        if not self._sf:
+            raise RuntimeError("Call authenticate() first")
+
+        limit = kwargs.get("limit", 100)
+        entities: dict[str, list[dict]] = {
+            "Person": [],
+            "Account": [],
+            "Opportunity": [],
+        }
+        relationships: list[dict] = []
+        documents: list[dict] = []
+
+        # Accounts
+        account_query = (
+            "SELECT Id, Name, Industry, Type, Description, Website "
+            "FROM Account ORDER BY LastModifiedDate DESC "
+            f"LIMIT {limit}"
+        )
+        accounts = self._sf.query(account_query)
+        for record in accounts.get("records", []):
+            entities["Account"].append({
+                "name": record.get("Name", ""),
+                "account_id": record.get("Id", ""),
+                "industry": record.get("Industry", ""),
+                "type": record.get("Type", ""),
+                "website": record.get("Website", ""),
+                "description": record.get("Description", ""),
+            })
+
+        # Contacts
+        contact_query = (
+            "SELECT Id, FirstName, LastName, Email, Title, AccountId, Account.Name "
+            "FROM Contact ORDER BY LastModifiedDate DESC "
+            f"LIMIT {limit}"
+        )
+        contacts = self._sf.query(contact_query)
+        for record in contacts.get("records", []):
+            name = f"{record.get('FirstName', '')} {record.get('LastName', '')}".strip()
+            entities["Person"].append({
+                "name": name,
+                "email": record.get("Email", ""),
+                "role": record.get("Title", ""),
+                "description": f"Salesforce contact: {name}",
+            })
+
+            account = record.get("Account")
+            if account and account.get("Name"):
+                relationships.append({
+                    "type": "WORKS_FOR",
+                    "source": name,
+                    "source_label": "Person",
+                    "target": account["Name"],
+                    "target_label": "Account",
+                })
+
+        # Opportunities
+        opp_query = (
+            "SELECT Id, Name, StageName, Amount, CloseDate, AccountId, "
+            "Account.Name, Description "
+            "FROM Opportunity ORDER BY LastModifiedDate DESC "
+            f"LIMIT {limit}"
+        )
+        opps = self._sf.query(opp_query)
+        for record in opps.get("records", []):
+            entities["Opportunity"].append({
+                "name": record.get("Name", ""),
+                "opportunity_id": record.get("Id", ""),
+                "stage": record.get("StageName", ""),
+                "amount": record.get("Amount"),
+                "close_date": record.get("CloseDate", ""),
+            })
+
+            account = record.get("Account")
+            if account and account.get("Name"):
+                relationships.append({
+                    "type": "OPPORTUNITY_FOR",
+                    "source": record.get("Name", ""),
+                    "source_label": "Opportunity",
+                    "target": account["Name"],
+                    "target_label": "Account",
+                })
+
+            if record.get("Description"):
+                documents.append({
+                    "title": f"Opportunity: {record.get('Name', '')}",
+                    "content": record["Description"],
+                    "type": "salesforce-opportunity",
+                    "metadata": {
+                        "stage": record.get("StageName", ""),
+                        "amount": record.get("Amount"),
+                    },
+                })
+
+        return {
+            "entities": entities,
+            "relationships": relationships,
+            "documents": documents,
+        }
+{% endraw %}

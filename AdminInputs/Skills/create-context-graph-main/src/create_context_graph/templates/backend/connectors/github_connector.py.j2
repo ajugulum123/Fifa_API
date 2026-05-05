@@ -1,0 +1,193 @@
+{% raw %}"""GitHub connector — imports issues, PRs, commits, and contributors."""
+
+from __future__ import annotations
+
+from typing import Any
+
+
+class GitHubConnector:
+    """Import data from a GitHub repository using PyGithub."""
+
+    def __init__(self):
+        self._client = None
+        self._repo = None
+
+    def authenticate(self, credentials: dict[str, str]) -> None:
+        """Authenticate with GitHub.
+
+        Args:
+            credentials: dict with keys "token" (personal access token)
+                         and "repo" (owner/repo string).
+        """
+        try:
+            from github import Github
+        except ImportError:
+            raise ImportError(
+                "PyGithub is required for the GitHub connector. "
+                "Install it with: pip install PyGithub"
+            )
+
+        self._client = Github(credentials["token"])
+        self._repo = self._client.get_repo(credentials["repo"])
+
+    def fetch(self, **kwargs: Any) -> dict:
+        """Fetch issues, PRs, commits, and contributors.
+
+        Returns:
+            dict with keys "entities", "relationships", "documents".
+        """
+        if not self._repo:
+            raise RuntimeError("Call authenticate() first")
+
+        limit = kwargs.get("limit", 100)
+        entities: dict[str, list[dict]] = {
+            "Person": [],
+            "Organization": [],
+            "Repository": [],
+            "Issue": [],
+            "PullRequest": [],
+            "Commit": [],
+        }
+        relationships: list[dict] = []
+        documents: list[dict] = []
+        seen_users: set[str] = set()
+
+        repo = self._repo
+
+        # Repository entity
+        entities["Repository"].append({
+            "name": repo.full_name,
+            "description": repo.description or "",
+            "url": repo.html_url,
+            "language": repo.language or "",
+            "stars": repo.stargazers_count,
+        })
+
+        # Organization
+        if repo.organization:
+            entities["Organization"].append({
+                "name": repo.organization.login,
+                "description": repo.organization.name or repo.organization.login,
+            })
+            relationships.append({
+                "type": "BELONGS_TO",
+                "source": repo.full_name,
+                "source_label": "Repository",
+                "target": repo.organization.login,
+                "target_label": "Organization",
+            })
+
+        def _add_user(user) -> str:
+            if user and user.login not in seen_users:
+                seen_users.add(user.login)
+                entities["Person"].append({
+                    "name": user.name or user.login,
+                    "email": user.email or "",
+                    "role": "contributor",
+                    "description": f"GitHub user @{user.login}",
+                })
+            return user.login if user else "unknown"
+
+        # Issues
+        for issue in repo.get_issues(state="all", sort="updated", direction="desc")[:limit]:
+            if issue.pull_request:
+                continue
+            user_name = _add_user(issue.user)
+            entities["Issue"].append({
+                "name": issue.title,
+                "issue_number": issue.number,
+                "state": issue.state,
+                "created_at": issue.created_at.isoformat() if issue.created_at else "",
+                "labels": ",".join(l.name for l in issue.labels),
+            })
+            relationships.append({
+                "type": "OPENED",
+                "source": user_name,
+                "source_label": "Person",
+                "target": issue.title,
+                "target_label": "Issue",
+            })
+            if issue.body:
+                documents.append({
+                    "title": f"Issue #{issue.number}: {issue.title}",
+                    "content": issue.body,
+                    "type": "github-issue",
+                    "metadata": {
+                        "number": issue.number,
+                        "state": issue.state,
+                        "author": user_name,
+                    },
+                })
+
+        # Pull Requests
+        for pr in repo.get_pulls(state="all", sort="updated", direction="desc")[:limit]:
+            user_name = _add_user(pr.user)
+            entities["PullRequest"].append({
+                "name": pr.title,
+                "pr_number": pr.number,
+                "state": pr.state,
+                "merged": pr.merged,
+                "created_at": pr.created_at.isoformat() if pr.created_at else "",
+            })
+            relationships.append({
+                "type": "OPENED",
+                "source": user_name,
+                "source_label": "Person",
+                "target": pr.title,
+                "target_label": "PullRequest",
+            })
+            if pr.body:
+                documents.append({
+                    "title": f"PR #{pr.number}: {pr.title}",
+                    "content": pr.body,
+                    "type": "github-pr",
+                    "metadata": {
+                        "number": pr.number,
+                        "state": pr.state,
+                        "merged": pr.merged,
+                        "author": user_name,
+                    },
+                })
+
+        # Recent commits
+        for commit in repo.get_commits()[:min(limit, 50)]:
+            author_name = "unknown"
+            if commit.author:
+                author_name = _add_user(commit.author)
+            entities["Commit"].append({
+                "name": commit.sha[:8],
+                "message": commit.commit.message.split("\n")[0],
+                "sha": commit.sha,
+                "date": commit.commit.author.date.isoformat() if commit.commit.author.date else "",
+            })
+            relationships.append({
+                "type": "COMMITTED",
+                "source": author_name,
+                "source_label": "Person",
+                "target": commit.sha[:8],
+                "target_label": "Commit",
+            })
+            relationships.append({
+                "type": "COMMITTED_TO",
+                "source": commit.sha[:8],
+                "source_label": "Commit",
+                "target": repo.full_name,
+                "target_label": "Repository",
+            })
+
+        # CONTRIBUTED_TO relationships for all users
+        for user in seen_users:
+            relationships.append({
+                "type": "CONTRIBUTED_TO",
+                "source": user,
+                "source_label": "Person",
+                "target": repo.full_name,
+                "target_label": "Repository",
+            })
+
+        return {
+            "entities": entities,
+            "relationships": relationships,
+            "documents": documents,
+        }
+{% endraw %}

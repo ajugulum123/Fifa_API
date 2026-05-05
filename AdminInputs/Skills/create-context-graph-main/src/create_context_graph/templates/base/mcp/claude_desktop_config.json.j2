@@ -1,0 +1,15 @@
+{
+  "mcpServers": {
+    "{{ project_slug }}-memory": {
+      "command": "uv",
+      "args": [
+        "run",
+        "--directory", "./backend",
+        "python", "-m", "neo4j_agent_memory.mcp.server",
+        "--neo4j-uri", "${NEO4J_URI}",
+        "--neo4j-password", "${NEO4J_PASSWORD}",
+        "--profile", "{{ mcp_profile }}"
+      ]
+    }
+  }
+}

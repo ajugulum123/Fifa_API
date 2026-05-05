@@ -1,0 +1,71 @@
+#!/usr/bin/env node
+
+/**
+ * create-context-graph — npm wrapper
+ *
+ * This is a thin shim that delegates to the Python CLI.
+ * It tries (in order): uvx, pipx, python3 -m
+ */
+
+import { execFileSync, execSync } from "child_process";
+
+const args = process.argv.slice(2);
+
+function tryRun(command, commandArgs) {
+  try {
+    execFileSync(command, commandArgs, { stdio: "inherit" });
+    return true;
+  } catch (err) {
+    if (err.status !== null) {
+      // Command ran but exited with non-zero — propagate exit code
+      process.exit(err.status);
+    }
+    return false; // Command not found
+  }
+}
+
+function commandExists(cmd) {
+  try {
+    execSync(`which ${cmd}`, { stdio: "ignore" });
+    return true;
+  } catch {
+    return false;
+  }
+}
+
+// Try uvx (preferred — uses uv's ephemeral environment)
+if (commandExists("uvx")) {
+  if (tryRun("uvx", ["create-context-graph", ...args])) {
+    process.exit(0);
+  }
+}
+
+// Try pipx
+if (commandExists("pipx")) {
+  if (tryRun("pipx", ["run", "create-context-graph", ...args])) {
+    process.exit(0);
+  }
+}
+
+// Try python3 -m (package installed globally or in active venv)
+if (commandExists("python3")) {
+  if (tryRun("python3", ["-m", "create_context_graph", ...args])) {
+    process.exit(0);
+  }
+}
+
+// Nothing worked
+console.error(`
+  create-context-graph requires Python 3.11+
+
+  Install uv (recommended):
+    curl -LsSf https://astral.sh/uv/install.sh | sh
+
+  Then run:
+    uvx create-context-graph
+
+  Or install directly:
+    pip install create-context-graph
+    create-context-graph
+`);
+process.exit(1);

@@ -128,25 +128,32 @@ npm run dev
 
 ```
 FIFA_API/
+├── docs/
+│   ├── API.md                       # End-to-end API usage guide
+│   └── SCHEMA_DESIGN.md             # Schema design rationale
 ├── graphql/
-│   ├── schema.graphql        # Source of truth for the GraphQL schema
-│   └── SCHEMA_DESIGN.md      # Design rationale (why each choice was made)
+│   └── schema.graphql               # Source of truth for the GraphQL schema
+├── dataset/
+│   └── player_stats.csv             # Source dataset (5,682 rows × 41 cols)
 ├── src/
-│   ├── server.ts             # HTTPS + Apollo bootstrap
+│   ├── server.ts                    # HTTPS + Apollo bootstrap
 │   ├── auth/
-│   │   ├── jwt.ts            # Access/refresh token sign + verify
-│   │   └── userStore.ts      # In-memory users + revocation set
+│   │   ├── jwt.ts                   # Access/refresh token sign + verify
+│   │   └── userStore.ts             # In-memory users + revocation set
 │   ├── data/
-│   │   └── loadPlayers.ts    # CSV → Player domain objects
+│   │   └── loadPlayers.ts           # CSV → Player domain objects
 │   ├── resolvers/
-│   │   └── index.ts          # Query + Mutation resolvers
+│   │   ├── index.ts                 # Composes the three resolver modules
+│   │   ├── auth.resolvers.ts        # me, register, login, refreshToken, logout
+│   │   ├── players.resolvers.ts     # player(s), topPlayers, create/update/delete
+│   │   ├── clubs.resolvers.ts       # clubs, countries
+│   │   └── helpers.ts               # Auth guards, token issuance, filter/sort/paginate
+│   ├── types/
+│   │   └── context.ts               # Shared GqlContext interface
 │   └── utils/
-│       └── meta.ts           # OperationMeta + UserError builders
-├── certs/                    # Dev TLS material (generated locally, not committed)
-├── srcData/
-│   └── player_stats.csv      # Source dataset (5,682 rows × 41 cols)
-├── README.md                 # ← you are here
-└── API.md                    # End-to-end API usage guide
+│       └── meta.ts                  # OperationMeta + UserError builders
+├── certs/                           # Dev TLS material (generated locally, not committed)
+└── README.md                        # ← you are here
 ```
 
 ---
@@ -155,8 +162,8 @@ FIFA_API/
 
 | Doc | Read this when… |
 |---|---|
-| **[API.md](./API.md)** | You want to call the API — auth flow, example queries/mutations, error codes, env vars. |
-| **[graphql/SCHEMA_DESIGN.md](./graphql/SCHEMA_DESIGN.md)** | You want to understand *why* the schema is shaped the way it is. |
+| **[docs/API.md](./docs/API.md)** | You want to call the API — auth flow, example queries/mutations, error codes, env vars. |
+| **[docs/SCHEMA_DESIGN.md](./docs/SCHEMA_DESIGN.md)** | You want to understand *why* the schema is shaped the way it is. |
 | **[graphql/schema.graphql](./graphql/schema.graphql)** | You need the canonical schema definition. |
 
 ---

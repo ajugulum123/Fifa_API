@@ -1,0 +1,160 @@
+{% raw %}"""Data import script — fetches data from connected SaaS services.
+
+Usage:
+    python scripts/import_data.py
+    python scripts/import_data.py --ingest  # Also ingest into Neo4j
+"""
+
+from __future__ import annotations
+
+import json
+import sys
+from pathlib import Path
+
+{% endraw %}{% for conn in saas_connectors %}{% if conn == 'github' %}{% raw %}
+from app.connectors.github_connector import GitHubConnector
+{% endraw %}{% elif conn == 'notion' %}{% raw %}
+from app.connectors.notion_connector import NotionConnector
+{% endraw %}{% elif conn == 'jira' %}{% raw %}
+from app.connectors.jira_connector import JiraConnector
+{% endraw %}{% elif conn == 'slack' %}{% raw %}
+from app.connectors.slack_connector import SlackConnector
+{% endraw %}{% elif conn == 'gmail' %}{% raw %}
+from app.connectors.gmail_connector import GmailConnector
+{% endraw %}{% elif conn == 'gcal' %}{% raw %}
+from app.connectors.gcal_connector import GCalConnector
+{% endraw %}{% elif conn == 'salesforce' %}{% raw %}
+from app.connectors.salesforce_connector import SalesforceConnector
+{% endraw %}{% elif conn == 'linear' %}{% raw %}
+from app.connectors.linear_connector import LinearConnector
+{% endraw %}{% elif conn == 'google-workspace' %}{% raw %}
+from app.connectors.google_workspace_connector import GoogleWorkspaceConnector
+{% endraw %}{% elif conn == 'claude-code' %}{% raw %}
+from app.connectors.claude_code_connector import ClaudeCodeConnector
+{% endraw %}{% endif %}{% endfor %}
+{% raw %}
+from app.config import settings
+
+
+def main():
+    """Run all configured connectors and write results to fixtures.json."""
+    ingest = "--ingest" in sys.argv
+    data_dir = Path(__file__).parent.parent.parent / "data"
+    fixture_path = data_dir / "fixtures.json"
+
+    all_entities: dict[str, list[dict]] = {}
+    all_relationships: list[dict] = []
+    all_documents: list[dict] = []
+
+    connectors = []
+{% endraw %}
+{% for conn in saas_connectors %}
+{% if conn == 'github' %}{% raw %}
+    if settings.github_token and settings.github_repo:
+        connectors.append(("GitHub", GitHubConnector(), {
+            "token": settings.github_token,
+            "repo": settings.github_repo,
+        }))
+{% endraw %}{% elif conn == 'notion' %}{% raw %}
+    if settings.notion_token:
+        connectors.append(("Notion", NotionConnector(), {
+            "token": settings.notion_token,
+        }))
+{% endraw %}{% elif conn == 'jira' %}{% raw %}
+    if settings.jira_url and settings.jira_email and settings.jira_token:
+        connectors.append(("Jira", JiraConnector(), {
+            "url": settings.jira_url,
+            "email": settings.jira_email,
+            "token": settings.jira_token,
+            "project": settings.jira_project,
+        }))
+{% endraw %}{% elif conn == 'slack' %}{% raw %}
+    if settings.slack_token:
+        connectors.append(("Slack", SlackConnector(), {
+            "token": settings.slack_token,
+            "channels": settings.slack_channels or "all",
+        }))
+{% endraw %}{% elif conn == 'gmail' %}{% raw %}
+    connectors.append(("Gmail", GmailConnector(), {}))
+{% endraw %}{% elif conn == 'gcal' %}{% raw %}
+    connectors.append(("Google Calendar", GCalConnector(), {}))
+{% endraw %}{% elif conn == 'salesforce' %}{% raw %}
+    if settings.salesforce_username and settings.salesforce_password:
+        connectors.append(("Salesforce", SalesforceConnector(), {
+            "username": settings.salesforce_username,
+            "password": settings.salesforce_password,
+            "security_token": settings.salesforce_security_token or "",
+            "domain": settings.salesforce_domain or "login",
+        }))
+{% endraw %}{% elif conn == 'linear' %}{% raw %}
+    if settings.linear_api_key:
+        connectors.append(("Linear", LinearConnector(), {
+            "api_key": settings.linear_api_key,
+            "team_key": settings.linear_team or "",
+        }))
+{% endraw %}{% elif conn == 'google-workspace' %}{% raw %}
+    connectors.append(("Google Workspace", GoogleWorkspaceConnector(), {
+        "client_id": getattr(settings, "google_client_id", "") or "",
+        "client_secret": getattr(settings, "google_client_secret", "") or "",
+        "folder_id": getattr(settings, "gws_folder_id", "") or "",
+    }))
+{% endraw %}{% elif conn == 'claude-code' %}{% raw %}
+    # Claude Code connector reads local files — no credentials needed
+    connectors.append(("Claude Code", ClaudeCodeConnector(), {
+        "scope": getattr(settings, "claude_code_scope", "current"),
+        "since": getattr(settings, "claude_code_since", None),
+        "max_sessions": getattr(settings, "claude_code_max_sessions", None),
+        "content_mode": getattr(settings, "claude_code_content_mode", None),
+        "base_path": getattr(settings, "claude_code_base_path", None),
+    }))
+{% endraw %}{% endif %}
+{% endfor %}
+{% raw %}
+    for name, connector, creds in connectors:
+        try:
+            print(f"Connecting to {name}...")
+            connector.authenticate(creds)
+            print(f"Fetching data from {name}...")
+            data = connector.fetch()
+
+            for label, items in data.entities.items():
+                all_entities.setdefault(label, []).extend(items)
+            all_relationships.extend(data.relationships)
+            all_documents.extend(data.documents)
+
+            entity_count = sum(len(v) for v in data.entities.values())
+            print(f"  ✓ {name}: {entity_count} entities, {len(data.documents)} documents")
+        except Exception as e:
+            print(f"  ⚠ {name}: {e}")
+
+    # Write results
+    result = {
+        "entities": all_entities,
+        "relationships": all_relationships,
+        "documents": all_documents,
+    }
+    fixture_path.parent.mkdir(parents=True, exist_ok=True)
+    fixture_path.write_text(json.dumps(result, indent=2, default=str))
+    print(f"\nImported data written to {fixture_path}")
+
+    if ingest:
+        print("\nIngesting into Neo4j...")
+        # Use the app's existing Neo4j client
+        from app.context_graph_client import get_driver
+
+        driver = get_driver()
+        # Basic ingestion - create nodes and relationships
+        with driver.session() as session:
+            for label, items in all_entities.items():
+                for item in items:
+                    props = ", ".join(f"{k}: ${k}" for k in item.keys())
+                    session.run(
+                        f"MERGE (n:{label} {{name: $name}}) SET n += {{{props}}}",
+                        **item,
+                    )
+            print(f"  ✓ Ingested {sum(len(v) for v in all_entities.values())} entities")
+
+
+if __name__ == "__main__":
+    main()
+{% endraw %}

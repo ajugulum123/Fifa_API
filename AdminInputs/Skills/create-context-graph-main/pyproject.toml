@@ -1,0 +1,78 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "create-context-graph"
+version = "0.9.0"
+description = "Interactive CLI scaffolding tool for domain-specific context graph applications"
+readme = "README.md"
+license = "Apache-2.0"
+requires-python = ">=3.11"
+authors = [
+    { name = "William Lyon" },
+]
+keywords = ["neo4j", "context-graph", "ai-agent", "scaffolding", "cli"]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Environment :: Console",
+    "Intended Audience :: Developers",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Topic :: Software Development :: Code Generators",
+]
+dependencies = [
+    "click>=8.1",
+    "questionary>=2.0",
+    "rich>=13.0",
+    "jinja2>=3.1",
+    "pyyaml>=6.0",
+    "pydantic>=2.0",
+    "neo4j>=5.20",
+]
+
+[project.optional-dependencies]
+generate = [
+    "anthropic>=0.30",
+    "openai>=1.0",
+]
+ingest = [
+    "neo4j-agent-memory[spacy,gliner]>=0.0.5",
+]
+connectors = [
+    "PyGithub>=2.0",
+    "notion-client>=2.0",
+    "atlassian-python-api>=3.40",
+    "slack-sdk>=3.20",
+    "google-api-python-client>=2.100",
+    "google-auth-oauthlib>=1.0",
+    "simple-salesforce>=1.12",
+]
+dev = [
+    "pytest>=8.0",
+    "pytest-cov>=5.0",
+    "pytest-asyncio>=0.24",
+]
+all = [
+    "create-context-graph[generate,ingest,connectors]",
+]
+
+[project.scripts]
+create-context-graph = "create_context_graph.cli:main"
+
+[project.urls]
+Homepage = "https://github.com/neo4j-labs/create-context-graph"
+Repository = "https://github.com/neo4j-labs/create-context-graph"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/create_context_graph"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+asyncio_mode = "auto"
+markers = [
+    "slow: marks tests as slow (run with --slow)",
+    "integration: marks tests requiring Neo4j (run with --integration)",
+]

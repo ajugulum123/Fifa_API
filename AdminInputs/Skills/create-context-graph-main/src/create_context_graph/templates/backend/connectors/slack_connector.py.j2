@@ -1,0 +1,154 @@
+{% raw %}"""Slack connector — imports channels, messages, and users."""
+
+from __future__ import annotations
+
+from typing import Any
+
+
+class SlackConnector:
+    """Import data from a Slack workspace using slack-sdk."""
+
+    def __init__(self):
+        self._client = None
+        self._channel_filter = "all"
+
+    def authenticate(self, credentials: dict[str, str]) -> None:
+        """Authenticate with Slack.
+
+        Args:
+            credentials: dict with keys "token" (Bot OAuth token, xoxb-...)
+                         and optional "channels" (comma-separated or "all").
+        """
+        try:
+            from slack_sdk import WebClient
+        except ImportError:
+            raise ImportError(
+                "slack-sdk is required for the Slack connector. "
+                "Install it with: pip install slack-sdk"
+            )
+
+        self._client = WebClient(token=credentials["token"])
+        self._channel_filter = credentials.get("channels", "all")
+
+    def fetch(self, **kwargs: Any) -> dict:
+        """Fetch channels, messages, and users.
+
+        Returns:
+            dict with keys "entities", "relationships", "documents".
+        """
+        if not self._client:
+            raise RuntimeError("Call authenticate() first")
+
+        limit = kwargs.get("limit", 200)
+        entities: dict[str, list[dict]] = {
+            "Person": [],
+            "Channel": [],
+            "Message": [],
+        }
+        relationships: list[dict] = []
+        documents: list[dict] = []
+        seen_users: set[str] = set()
+
+        def _resolve_user(user_id: str) -> str:
+            if user_id in seen_users:
+                return user_id
+            try:
+                resp = self._client.users_info(user=user_id)
+                user = resp.get("user", {})
+                name = user.get("real_name") or user.get("name", user_id)
+                seen_users.add(user_id)
+                entities["Person"].append({
+                    "name": name,
+                    "email": user.get("profile", {}).get("email", ""),
+                    "role": "slack-user",
+                    "description": user.get("profile", {}).get("title", ""),
+                })
+                return name
+            except Exception:
+                seen_users.add(user_id)
+                return user_id
+
+        # Get channels
+        channels_resp = self._client.conversations_list(
+            types="public_channel",
+            limit=200,
+        )
+        channels = channels_resp.get("channels", [])
+
+        # Filter channels if specified
+        if self._channel_filter and self._channel_filter != "all":
+            filter_names = {c.strip() for c in self._channel_filter.split(",")}
+            channels = [c for c in channels if c.get("name") in filter_names]
+
+        for channel in channels:
+            channel_name = channel.get("name", "")
+            channel_id = channel.get("id", "")
+
+            entities["Channel"].append({
+                "name": channel_name,
+                "channel_id": channel_id,
+                "topic": channel.get("topic", {}).get("value", ""),
+                "purpose": channel.get("purpose", {}).get("value", ""),
+                "member_count": channel.get("num_members", 0),
+            })
+
+            # Get messages
+            try:
+                history = self._client.conversations_history(
+                    channel=channel_id,
+                    limit=min(limit, 200),
+                )
+            except Exception:
+                continue
+
+            for msg in history.get("messages", []):
+                text = msg.get("text", "")
+                if not text or msg.get("subtype"):
+                    continue  # Skip system messages
+
+                user_id = msg.get("user", "unknown")
+                user_name = _resolve_user(user_id)
+                ts = msg.get("ts", "")
+
+                entities["Message"].append({
+                    "name": text[:80],
+                    "text": text,
+                    "timestamp": ts,
+                    "thread_ts": msg.get("thread_ts", ""),
+                    "reply_count": msg.get("reply_count", 0),
+                })
+
+                relationships.append({
+                    "type": "POSTED_IN",
+                    "source": text[:80],
+                    "source_label": "Message",
+                    "target": channel_name,
+                    "target_label": "Channel",
+                })
+                relationships.append({
+                    "type": "SENT_BY",
+                    "source": text[:80],
+                    "source_label": "Message",
+                    "target": user_name,
+                    "target_label": "Person",
+                })
+
+                # Longer messages become documents
+                if len(text) > 100:
+                    documents.append({
+                        "title": f"#{channel_name}: {text[:60]}...",
+                        "content": text,
+                        "type": "slack-message",
+                        "metadata": {
+                            "channel": channel_name,
+                            "author": user_name,
+                            "timestamp": ts,
+                        },
+                    })
+
+        return {
+            "entities": entities,
+            "relationships": relationships,
+            "documents": documents,
+        }
+{% endraw %}

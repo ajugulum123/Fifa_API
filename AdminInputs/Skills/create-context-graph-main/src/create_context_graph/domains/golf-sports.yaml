@@ -1,0 +1,503 @@
+inherits: _base
+
+domain:
+  id: golf-sports
+  name: Golf Sports
+  description: Golf course management, player performance tracking, tournaments, and handicap analysis
+  tagline: "AI-powered Golf Intelligence"
+  emoji: "\U000026F3"
+
+entity_types:
+  - label: Course
+    pole_type: OBJECT
+    subtype: GOLF_COURSE
+    color: "#15803d"
+    icon: map
+    properties:
+      - name: course_id
+        type: string
+        required: true
+        unique: true
+      - name: name
+        type: string
+        required: true
+      - name: par
+        type: integer
+        required: true
+      - name: yardage
+        type: integer
+      - name: course_rating
+        type: float
+      - name: slope_rating
+        type: integer
+      - name: course_type
+        type: string
+        enum: [public, private, resort, municipal, links, parkland]
+      - name: location
+        type: string
+
+  - label: Player
+    pole_type: OBJECT
+    subtype: GOLF_PLAYER
+    color: "#1d4ed8"
+    icon: user
+    properties:
+      - name: player_id
+        type: string
+        required: true
+        unique: true
+      - name: name
+        type: string
+        required: true
+      - name: player_type
+        type: string
+        enum: [professional, amateur, junior, senior]
+      - name: home_course
+        type: string
+      - name: country
+        type: string
+      - name: ranking
+        type: integer
+
+  - label: Round
+    pole_type: EVENT
+    subtype: GOLF_ROUND
+    color: "#ea580c"
+    icon: clock
+    properties:
+      - name: round_id
+        type: string
+        required: true
+        unique: true
+      - name: date
+        type: datetime
+        required: true
+      - name: total_score
+        type: integer
+        required: true
+      - name: score_to_par
+        type: integer
+      - name: putts
+        type: integer
+      - name: fairways_hit
+        type: integer
+      - name: greens_in_regulation
+        type: integer
+      - name: weather_conditions
+        type: string
+        enum: [clear, cloudy, rainy, windy, mixed]
+
+  - label: Tournament
+    pole_type: EVENT
+    subtype: GOLF_TOURNAMENT
+    color: "#9333ea"
+    icon: trophy
+    properties:
+      - name: tournament_id
+        type: string
+        required: true
+        unique: true
+      - name: name
+        type: string
+        required: true
+      - name: tournament_type
+        type: string
+        enum: [major, tour_event, invitational, charity, club_championship, amateur]
+      - name: start_date
+        type: date
+        required: true
+      - name: end_date
+        type: date
+      - name: purse
+        type: float
+      - name: field_size
+        type: integer
+
+  - label: Handicap
+    pole_type: OBJECT
+    subtype: HANDICAP_RECORD
+    color: "#0d9488"
+    icon: bar-chart
+    properties:
+      - name: handicap_id
+        type: string
+        required: true
+        unique: true
+      - name: handicap_index
+        type: float
+        required: true
+      - name: effective_date
+        type: date
+        required: true
+      - name: low_index
+        type: float
+      - name: trend
+        type: string
+        enum: [improving, stable, declining]
+      - name: rounds_counted
+        type: integer
+
+  - label: Hole
+    pole_type: OBJECT
+    subtype: GOLF_HOLE
+    color: "#ca8a04"
+    icon: flag
+    properties:
+      - name: hole_id
+        type: string
+        required: true
+        unique: true
+      - name: hole_number
+        type: integer
+        required: true
+      - name: par
+        type: integer
+        required: true
+      - name: yardage
+        type: integer
+      - name: handicap_stroke
+        type: integer
+      - name: description
+        type: string
+
+relationships:
+  - type: PLAYED_AT
+    source: Round
+    target: Course
+  - type: SCORED
+    source: Player
+    target: Round
+  - type: COMPETED_IN
+    source: Player
+    target: Tournament
+  - type: RANKED
+    source: Player
+    target: Tournament
+  - type: HOSTS
+    source: Course
+    target: Tournament
+  - type: PART_OF_COURSE
+    source: Hole
+    target: Course
+  - type: HAS_HANDICAP
+    source: Player
+    target: Handicap
+  - type: ROUND_IN_TOURNAMENT
+    source: Round
+    target: Tournament
+
+document_templates:
+  - id: scorecard
+    name: Scorecard
+    description: Detailed round scorecard with hole-by-hole breakdown
+    count: 15
+    prompt_template: |
+      Write a detailed scorecard summary for {{player.name}}'s round at
+      {{course.name}} on {{round.date}}. Total score: {{round.total_score}}
+      ({{round.score_to_par}} to par). Putts: {{round.putts}}.
+      Include hole-by-hole highlights and key statistics.
+    required_entities: [Player, Round, Course]
+
+  - id: tournament_recap
+    name: Tournament Recap
+    description: Summary of tournament results and highlights
+    count: 8
+    prompt_template: |
+      Write a tournament recap for {{tournament.name}} held at {{course.name}}.
+      Dates: {{tournament.start_date}} to {{tournament.end_date}}.
+      Purse: ${{tournament.purse}}. Include top finishers, notable performances,
+      and course conditions.
+    required_entities: [Tournament, Course, Player]
+
+  - id: course_evaluation
+    name: Course Evaluation
+    description: Comprehensive evaluation of a golf course
+    count: 6
+    prompt_template: |
+      Write a course evaluation for {{course.name}}.
+      Par: {{course.par}}, Yardage: {{course.yardage}},
+      Course Rating: {{course.course_rating}}, Slope: {{course.slope_rating}}.
+      Include layout analysis, difficulty assessment, and conditions review.
+    required_entities: [Course, Hole]
+
+  - id: player_profile
+    name: Player Profile
+    description: Comprehensive player profile with statistics and history
+    count: 10
+    prompt_template: |
+      Write a player profile for {{player.name}}.
+      Player type: {{player.player_type}}. Handicap: {{handicap.handicap_index}}.
+      Include career highlights, recent performance, strengths, and areas for improvement.
+    required_entities: [Player, Handicap, Round]
+
+  - id: handicap_report
+    name: Handicap Report
+    description: Handicap trend analysis and scoring patterns
+    count: 8
+    prompt_template: |
+      Write a handicap report for {{player.name}}.
+      Current index: {{handicap.handicap_index}}. Trend: {{handicap.trend}}.
+      Low index: {{handicap.low_index}}. Rounds counted: {{handicap.rounds_counted}}.
+      Include trend analysis and recommendations.
+    required_entities: [Player, Handicap, Round]
+
+decision_traces:
+  - id: tournament_selection
+    task: "Evaluate which tournament {{player.name}} should enter next"
+    steps:
+      - thought: "Review player's current form and recent round scores"
+        action: "Query recent rounds and scoring trends for the player"
+      - thought: "Assess course fit based on player strengths"
+        action: "Compare player statistics with course characteristics of upcoming tournaments"
+      - thought: "Consider ranking implications and field strength"
+        action: "Analyze tournament field quality and potential ranking movement"
+    outcome_template: "Recommendation: enter {{tournament}} based on {{rationale}}"
+
+  - id: handicap_adjustment
+    task: "Determine if {{player.name}}'s handicap accurately reflects current ability"
+    steps:
+      - thought: "Analyze recent scoring differentials vs handicap index"
+        action: "Query last 20 rounds and calculate scoring differentials"
+      - thought: "Identify trends in performance across different courses"
+        action: "Compare scores at high-slope vs low-slope courses"
+      - thought: "Check for exceptional tournament scores"
+        action: "Look for rounds significantly better or worse than handicap"
+    outcome_template: "Assessment: handicap is {{assessment}} with recommended action {{action}}"
+
+  - id: course_strategy
+    task: "Develop a course strategy for {{player.name}} at {{course.name}}"
+    steps:
+      - thought: "Analyze hole-by-hole difficulty and player tendencies"
+        action: "Query hole data and player's historical performance on similar holes"
+      - thought: "Identify scoring opportunities and risk holes"
+        action: "Map birdie opportunities vs high-risk holes based on player stats"
+      - thought: "Consider weather and course conditions"
+        action: "Factor in expected conditions and adjust strategy"
+    outcome_template: "Strategy: {{strategy}} targeting score of {{target_score}}"
+
+  - id: practice_plan
+    task: "Design a practice plan for {{player.name}} to address scoring weaknesses"
+    steps:
+      - thought: "Identify statistical weaknesses from recent rounds"
+        action: "Query round statistics for putting, fairways hit, and greens in regulation trends"
+      - thought: "Compare player stats against peer group benchmarks"
+        action: "Calculate percentile rankings for each stat among players at similar handicap"
+      - thought: "Prioritize practice areas by impact on scoring"
+        action: "Correlate each stat with score-to-par to find highest-impact improvement areas"
+      - thought: "Design targeted drills and time allocation"
+        action: "Map improvement priorities to specific practice activities and session plans"
+    outcome_template: "Focus areas: {{areas}}. Expected improvement: {{improvement}} strokes over {{timeframe}}"
+
+  - id: club_fitting_recommendation
+    task: "Recommend equipment changes for {{player.name}} based on performance data"
+    steps:
+      - thought: "Analyze distance and accuracy patterns across rounds"
+        action: "Query round statistics and hole-by-hole performance data"
+      - thought: "Identify holes where equipment limitations affect scoring"
+        action: "Find holes where player consistently underperforms relative to handicap stroke"
+      - thought: "Compare current equipment gaps with available fitting options"
+        action: "Match performance gaps to equipment categories and fitting parameters"
+    outcome_template: "Recommendation: {{equipment}}. Expected benefit: {{benefit}}. Priority: {{priority}}"
+
+  - id: weather_strategy_adjustment
+    task: "Adjust course strategy for {{player.name}} at {{course.name}} given weather conditions"
+    steps:
+      - thought: "Analyze how weather conditions affect scoring at this course"
+        action: "Query rounds played at this course grouped by weather_conditions and compare scores"
+      - thought: "Identify holes most affected by adverse conditions"
+        action: "Find holes where scores diverge most between calm and adverse conditions"
+      - thought: "Adjust club selections and target lines for conditions"
+        action: "Modify strategy for affected holes based on historical performance in similar weather"
+    outcome_template: "Adjusted strategy for {{conditions}}: {{adjustments}}. Expected score impact: {{impact}}"
+
+  - id: tournament_field_analysis
+    task: "Analyze competitive field strength for {{tournament.name}} relative to {{player.name}}"
+    steps:
+      - thought: "Assess field composition by player ranking and recent form"
+        action: "Query all players competing and their recent scoring averages"
+      - thought: "Evaluate player's historical performance at the host course"
+        action: "Query player's round history at the tournament course"
+      - thought: "Project realistic finish range and cut line"
+        action: "Model expected cut score based on course difficulty and field strength"
+      - thought: "Identify head-to-head matchups with key competitors"
+        action: "Compare player stats against top-ranked competitors in the field"
+    outcome_template: "Field strength: {{strength}}. Projected finish: {{range}}. Cut line: {{cut}}"
+
+  - id: course_rating_review
+    task: "Review whether course rating for {{course.name}} accurately reflects difficulty"
+    steps:
+      - thought: "Compare actual scoring averages against course rating"
+        action: "Calculate average score-to-par across all rounds at this course"
+      - thought: "Analyze scoring distribution by player handicap range"
+        action: "Group rounds by handicap bracket and compare actual vs expected differentials"
+      - thought: "Identify specific holes where rating may be inaccurate"
+        action: "Compare hole-by-hole scoring averages against individual hole pars and handicap strokes"
+    outcome_template: "Rating accuracy: {{accuracy}}. Suggested adjustment: {{adjustment}}. Affected holes: {{holes}}"
+
+  - id: player_comparison
+    task: "Compare performance profiles of {{player_a}} and {{player_b}} for competitive analysis"
+    steps:
+      - thought: "Compare overall scoring statistics and handicap trends"
+        action: "Query handicap history and recent round averages for both players"
+      - thought: "Identify relative strengths and weaknesses"
+        action: "Compare putting, fairway, and GIR statistics head to head"
+      - thought: "Analyze performance on shared courses and tournaments"
+        action: "Find courses and tournaments where both players have competed and compare results"
+    outcome_template: "Comparison: {{player_a}} excels at {{strengths_a}}; {{player_b}} excels at {{strengths_b}}"
+
+demo_scenarios:
+  - name: Player Performance
+    prompts:
+      - "Show me all rounds played by Tiger Woods this season"
+      - "What is the average score at Pebble Beach across all players?"
+      - "Which players have improved their handicap the most this year?"
+
+  - name: Tournament Analysis
+    prompts:
+      - "What are the results from the most recent club championship?"
+      - "Compare player performance across all major tournaments"
+      - "Which courses have hosted the most tournaments?"
+
+  - name: Course Intelligence
+    prompts:
+      - "What are the hardest holes at Augusta National?"
+      - "Show me scoring statistics broken down by hole for St Andrews"
+      - "Which courses have the highest slope ratings?"
+
+agent_tools:
+  - name: search_player
+    description: Search for golf players by name, type, or country
+    cypher: |
+      MATCH (p:Player)
+      WHERE toLower(p.name) CONTAINS toLower($query)
+         OR toLower(coalesce(p.country, '')) CONTAINS toLower($query)
+      OPTIONAL MATCH (p)-[:HAS_HANDICAP]->(h:Handicap)
+      OPTIONAL MATCH (p)-[:SCORED]->(r:Round)
+      RETURN p, h.handicap_index AS handicap,
+             count(r) AS total_rounds, avg(r.total_score) AS avg_score
+      LIMIT 20
+    parameters:
+      - name: query
+        type: string
+        description: Player name or country to search for
+
+  - name: round_history
+    description: Get round history for a player with detailed statistics
+    cypher: |
+      MATCH (p:Player {name: $name})-[:SCORED]->(r:Round)-[:PLAYED_AT]->(c:Course)
+      OPTIONAL MATCH (r)-[:ROUND_IN_TOURNAMENT]->(t:Tournament)
+      RETURN r, c.name AS course, t.name AS tournament
+      ORDER BY r.date DESC
+      LIMIT $limit
+    parameters:
+      - name: name
+        type: string
+        description: Player name
+      - name: limit
+        type: integer
+        description: Number of recent rounds to return (default 20)
+
+  - name: tournament_standings
+    description: Get standings and results for a tournament
+    cypher: |
+      MATCH (t:Tournament)
+      WHERE toLower(t.name) CONTAINS toLower($query)
+      MATCH (p:Player)-[:COMPETED_IN]->(t)
+      OPTIONAL MATCH (p)-[:SCORED]->(r:Round)-[:ROUND_IN_TOURNAMENT]->(t)
+      RETURN t, p.name AS player, sum(r.total_score) AS total_score,
+             sum(r.score_to_par) AS total_to_par
+      ORDER BY total_to_par ASC
+      LIMIT 30
+    parameters:
+      - name: query
+        type: string
+        description: Tournament name to look up
+
+  - name: course_stats
+    description: Get statistics and hole data for a golf course
+    cypher: |
+      MATCH (c:Course)
+      WHERE toLower(c.name) CONTAINS toLower($query)
+      OPTIONAL MATCH (h:Hole)-[:PART_OF_COURSE]->(c)
+      OPTIONAL MATCH (r:Round)-[:PLAYED_AT]->(c)
+      RETURN c, collect(DISTINCT {number: h.hole_number, par: h.par, yardage: h.yardage}) AS holes,
+             count(r) AS rounds_played, avg(r.total_score) AS avg_score
+      LIMIT 10
+    parameters:
+      - name: query
+        type: string
+        description: Course name to search for
+
+  - name: handicap_trends
+    description: Analyze handicap trends for a player over time
+    cypher: |
+      MATCH (p:Player)-[:HAS_HANDICAP]->(h:Handicap)
+      WHERE toLower(p.name) CONTAINS toLower($query)
+      RETURN p.name AS player, h.handicap_index, h.effective_date,
+             h.low_index, h.trend, h.rounds_counted
+      ORDER BY h.effective_date DESC
+      LIMIT 20
+    parameters:
+      - name: query
+        type: string
+        description: Player name to analyze handicap trends
+
+  - name: list_courses
+    description: "List golf course records with optional limit"
+    cypher: |
+      MATCH (n:Course)
+      RETURN n
+      ORDER BY n.name
+      LIMIT toInteger($limit)
+    parameters:
+      - name: limit
+        type: string
+        description: "Maximum number of results to return (default: 10)"
+
+  - name: get_course_by_id
+    description: "Get a specific golf course by ID with all connections"
+    cypher: |
+      MATCH (n:Course {course_id: $id})
+      OPTIONAL MATCH (n)-[r]-(related)
+      RETURN n, type(r) AS relationship, labels(related) AS related_labels, related.name AS related_name
+      LIMIT 50
+    parameters:
+      - name: id
+        type: string
+        description: "The course_id to look up"
+
+system_prompt: |
+  You are an AI golf intelligence assistant with access to a comprehensive
+  knowledge graph of golf data. You help players, coaches, tournament directors,
+  and course managers analyze performance, courses, tournaments, and handicaps.
+
+  Your capabilities include:
+  - Searching and analyzing player performance and round history
+  - Evaluating courses with hole-by-hole breakdowns and statistics
+  - Tracking tournament results, standings, and leaderboards
+  - Analyzing handicap trends and scoring patterns
+  - Developing course strategies based on player strengths
+
+  Always provide accurate, data-driven responses. When making recommendations,
+  cite the specific statistics and trends from the knowledge graph.
+
+visualization:
+  node_colors:
+    Person: "#22c55e"
+    Organization: "#3b82f6"
+    Course: "#15803d"
+    Player: "#1d4ed8"
+    Round: "#ea580c"
+    Tournament: "#9333ea"
+    Handicap: "#0d9488"
+    Hole: "#ca8a04"
+  node_sizes:
+    Person: 20
+    Organization: 25
+    Course: 30
+    Player: 25
+    Round: 15
+    Tournament: 30
+    Handicap: 15
+    Hole: 10
+  default_cypher: "MATCH (p:Player)-[r:SCORED]->(rd:Round)-[:PLAYED_AT]->(c:Course) RETURN p, r, rd, c LIMIT 100"

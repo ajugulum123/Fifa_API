@@ -1,0 +1,542 @@
+inherits: _base
+
+domain:
+  id: gaming
+  name: Gaming
+  description: Player management, game economy, quest tracking, and community analytics
+  tagline: "AI-powered Game Intelligence"
+  emoji: "\U0001F3AE"
+
+entity_types:
+  - label: Player
+    pole_type: OBJECT
+    subtype: GAME_USER
+    color: "#2563eb"
+    icon: gamepad
+    properties:
+      - name: player_id
+        type: string
+        required: true
+        unique: true
+      - name: username
+        type: string
+        required: true
+        unique: true
+      - name: level
+        type: integer
+        required: true
+      - name: join_date
+        type: date
+      - name: play_time_hours
+        type: float
+      - name: region
+        type: string
+        enum: [na, eu, asia, oceania, sa, africa]
+      - name: status
+        type: string
+        enum: [active, inactive, banned, suspended]
+
+  - label: Character
+    pole_type: OBJECT
+    subtype: GAME_CHARACTER
+    color: "#7c3aed"
+    icon: shield
+    properties:
+      - name: character_id
+        type: string
+        required: true
+        unique: true
+      - name: name
+        type: string
+        required: true
+      - name: character_class
+        type: string
+        enum: [warrior, mage, rogue, healer, ranger, paladin, necromancer]
+      - name: level
+        type: integer
+        required: true
+      - name: experience_points
+        type: integer
+      - name: health
+        type: integer
+      - name: power_rating
+        type: float
+
+  - label: Item
+    pole_type: OBJECT
+    subtype: GAME_ITEM
+    color: "#d97706"
+    icon: sword
+    properties:
+      - name: item_id
+        type: string
+        required: true
+        unique: true
+      - name: name
+        type: string
+        required: true
+      - name: item_type
+        type: string
+        enum: [weapon, armor, consumable, material, cosmetic, mount, pet]
+      - name: rarity
+        type: string
+        enum: [common, uncommon, rare, epic, legendary, mythic]
+      - name: level_requirement
+        type: integer
+      - name: gold_value
+        type: integer
+      - name: stats_bonus
+        type: string
+
+  - label: Quest
+    pole_type: EVENT
+    subtype: GAME_QUEST
+    color: "#dc2626"
+    icon: map
+    properties:
+      - name: quest_id
+        type: string
+        required: true
+        unique: true
+      - name: name
+        type: string
+        required: true
+      - name: description
+        type: string
+      - name: quest_type
+        type: string
+        enum: [main_story, side_quest, daily, weekly, raid, pvp, event]
+      - name: difficulty
+        type: string
+        enum: [easy, normal, hard, heroic, mythic]
+      - name: experience_reward
+        type: integer
+      - name: gold_reward
+        type: integer
+
+  - label: Guild
+    pole_type: OBJECT
+    subtype: GAME_ORGANIZATION
+    color: "#059669"
+    icon: users
+    properties:
+      - name: guild_id
+        type: string
+        required: true
+        unique: true
+      - name: name
+        type: string
+        required: true
+        unique: true
+      - name: level
+        type: integer
+      - name: member_count
+        type: integer
+      - name: founded_date
+        type: date
+      - name: faction
+        type: string
+        enum: [alliance, horde, neutral]
+      - name: rank
+        type: integer
+
+  - label: Achievement
+    pole_type: EVENT
+    subtype: GAME_MILESTONE
+    color: "#f472b6"
+    icon: trophy
+    properties:
+      - name: achievement_id
+        type: string
+        required: true
+        unique: true
+      - name: name
+        type: string
+        required: true
+      - name: description
+        type: string
+      - name: category
+        type: string
+        enum: [combat, exploration, crafting, social, pvp, collection, story]
+      - name: points
+        type: integer
+      - name: rarity_pct
+        type: float
+
+relationships:
+  - type: PLAYS
+    source: Player
+    target: Character
+  - type: COMPLETED
+    source: Character
+    target: Quest
+  - type: EQUIPPED
+    source: Character
+    target: Item
+  - type: TRADED_WITH
+    source: Player
+    target: Player
+  - type: MEMBER_OF
+    source: Player
+    target: Guild
+  - type: UNLOCKED
+    source: Character
+    target: Achievement
+  - type: REWARDS
+    source: Quest
+    target: Item
+  - type: OWNS
+    source: Character
+    target: Item
+
+document_templates:
+  - id: quest_log
+    name: Quest Log
+    description: Detailed quest storylines and completion logs
+    count: 12
+    prompt_template: |
+      Write a quest log entry for quest "{{quest.name}}" ({{quest.quest_type}},
+      {{quest.difficulty}} difficulty) completed by {{character.name}}
+      (Level {{character.level}} {{character.character_class}}).
+      Include narrative, objectives, challenges encountered,
+      and rewards earned: {{quest.experience_reward}} XP, {{quest.gold_reward}} gold.
+    required_entities: [Quest, Character, Item]
+
+  - id: patch_notes
+    name: Patch Notes
+    description: Game update and balance change documentation
+    count: 6
+    prompt_template: |
+      Write patch notes for a game update affecting {{item.item_type}} items
+      and {{quest.quest_type}} quests. Include balance changes to
+      {{character.character_class}} class, new items added,
+      quest adjustments, and bug fixes.
+    required_entities: [Item, Quest, Character, Achievement]
+
+  - id: guild_communication
+    name: Guild Communication
+    description: Guild announcements, strategies, and communications
+    count: 8
+    prompt_template: |
+      Write a guild announcement from the leaders of {{guild.name}}
+      regarding upcoming raid on quest "{{quest.name}}" ({{quest.difficulty}}).
+      Include strategy discussion, role assignments for {{character.character_class}}
+      classes, required gear level, and scheduling details.
+    required_entities: [Guild, Quest, Character, Player]
+
+  - id: player_report
+    name: Player Report
+    description: Player behavior reports and moderation documentation
+    count: 6
+    prompt_template: |
+      Write a player behavior report for {{player.username}} ({{player.player_id}}).
+      Account status: {{player.status}}. Play time: {{player.play_time_hours}} hours.
+      Include activity summary, trade history, reported incidents,
+      and moderation recommendation.
+    required_entities: [Player, Character, Guild]
+
+  - id: balance_analysis
+    name: Balance Analysis
+    description: Game economy and class balance analysis reports
+    count: 6
+    prompt_template: |
+      Write a game balance analysis for the {{character.character_class}} class.
+      Include win rates, popular item builds, quest completion rates
+      by difficulty, and comparison with other classes.
+      Item economy impact: {{item.rarity}} tier pricing trends.
+    required_entities: [Character, Item, Quest, Achievement]
+
+decision_traces:
+  - id: balance_adjustment
+    task: "Evaluate whether {{character.character_class}} class needs balance adjustment"
+    steps:
+      - thought: "Analyze class performance metrics across content types"
+        action: "Query quest completion rates and PvP win rates by class"
+      - thought: "Compare item utilization and build diversity"
+        action: "Check equipped items and popular builds per class"
+      - thought: "Assess player sentiment and community feedback"
+        action: "Review player reports and achievement unlock rates"
+      - thought: "Model impact of proposed adjustments"
+        action: "Simulate stat changes and estimate new performance ranges"
+    outcome_template: "Balance decision: {{decision}} — {{rationale}}"
+
+  - id: economy_intervention
+    task: "Determine if gold inflation requires market intervention"
+    steps:
+      - thought: "Analyze gold supply trends and sink effectiveness"
+        action: "Query gold rewards, trade volumes, and gold drains"
+      - thought: "Check item pricing trends on the player market"
+        action: "Review trade history for price inflation signals"
+      - thought: "Evaluate impact on new vs veteran player experience"
+        action: "Compare purchasing power across player level brackets"
+    outcome_template: "Economy action: {{action}} with expected impact {{impact}}"
+
+  - id: event_design
+    task: "Design a limited-time event for player engagement boost"
+    steps:
+      - thought: "Identify current engagement weak points and player dropoff"
+        action: "Query player activity trends and inactive account rates"
+      - thought: "Review success metrics from previous events"
+        action: "Analyze past event quests, participation, and retention impact"
+      - thought: "Select appropriate rewards and difficulty tuning"
+        action: "Check item rarity distribution and achievement unlock gaps"
+    outcome_template: "Event design: {{event}} targeting {{audience}} with {{rewards}}"
+
+  - id: loot_distribution
+    task: "Determine fair loot distribution for {{item.name}} ({{item.rarity}}) after raid quest {{quest.name}}"
+    steps:
+      - thought: "Identify all characters who participated in the quest"
+        action: "Query characters who completed the quest and their class/level"
+      - thought: "Check each character's existing inventory for the item or similar items"
+        action: "Query OWNS and EQUIPPED relationships for participating characters against the item type"
+      - thought: "Evaluate contribution and need based on class and level"
+        action: "Compare character power ratings, levels, and class-appropriate item synergies"
+      - thought: "Apply guild loot rules if participants are guild members"
+        action: "Check guild membership of participating players and guild rank/policies"
+    outcome_template: "Loot awarded to: {{character.name}}. Method: {{method}}. Rationale: {{rationale}}"
+
+  - id: quest_difficulty_scaling
+    task: "Adjust difficulty scaling for quest {{quest.name}} ({{quest.difficulty}}) based on completion data"
+    steps:
+      - thought: "Analyze completion rates across player level brackets"
+        action: "Query characters who completed the quest grouped by level range and class"
+      - thought: "Identify classes that over-perform or under-perform on this quest"
+        action: "Compare completion rates and attempt counts by character class"
+      - thought: "Evaluate reward-to-difficulty ratio against similar quests"
+        action: "Compare experience and gold rewards with other quests of the same difficulty tier"
+      - thought: "Recommend specific tuning adjustments"
+        action: "Check achievement unlock rates for quest-related achievements to gauge difficulty perception"
+    outcome_template: "Scaling adjustment: {{adjustment}}. Target completion rate: {{target_pct}}%. Changes: {{changes}}"
+
+  - id: player_matchmaking
+    task: "Create balanced matchmaking for PvP event involving {{player.username}} in {{player.region}} region"
+    steps:
+      - thought: "Assess the player's character roster and power ratings"
+        action: "Query characters played by the player, their levels, classes, and power ratings"
+      - thought: "Find potential opponents with similar skill profiles"
+        action: "Search active players in the same region with characters of comparable level and power rating"
+      - thought: "Balance team composition for class diversity"
+        action: "Check character class distribution among matched players to ensure varied matchups"
+    outcome_template: "Match created: {{match_id}}. Players: {{player_count}}. Balance score: {{balance_score}}"
+
+  - id: guild_conflict_resolution
+    task: "Resolve resource conflict between {{guild.name}} and a rival guild over quest {{quest.name}}"
+    steps:
+      - thought: "Assess both guilds' current standings and member activity"
+        action: "Query guild levels, member counts, ranks, and recent quest completions"
+      - thought: "Review trade history between guild members for existing relationships"
+        action: "Check TRADED_WITH relationships between players of the two guilds"
+      - thought: "Evaluate quest participation and contribution from each guild"
+        action: "Count characters from each guild who completed or attempted the contested quest"
+      - thought: "Propose resolution based on fairness metrics"
+        action: "Compare guild ranks, member engagement levels, and historical quest completion data"
+    outcome_template: "Resolution: {{resolution}}. Primary access: {{guild.name}}. Terms: {{terms}}"
+
+  - id: economy_balancing
+    task: "Rebalance gold economy around {{item.item_type}} items in the {{item.rarity}} tier"
+    steps:
+      - thought: "Analyze current gold value distribution for items in this tier"
+        action: "Query all items of the specified type and rarity, check gold values and ownership counts"
+      - thought: "Measure gold generation vs gold sinks for active players"
+        action: "Compare quest gold rewards with item gold values and trade volumes"
+      - thought: "Identify items that are significantly over- or under-valued"
+        action: "Find items with high owned count but low gold value, or low owned count with high value"
+      - thought: "Model impact of proposed price adjustments on player progression"
+        action: "Check level requirements and equipped counts to gauge impact on different player brackets"
+    outcome_template: "Adjustments: {{item_count}} items repriced. Gold sink change: {{sink_change}}%. Impact: {{impact}}"
+
+  - id: achievement_validation
+    task: "Validate integrity of achievement {{achievement.name}} unlock patterns"
+    steps:
+      - thought: "Analyze unlock distribution across player segments"
+        action: "Query characters who unlocked the achievement, grouped by level, class, and guild membership"
+      - thought: "Check for anomalous unlock patterns suggesting exploits"
+        action: "Identify clusters of unlocks in short time windows or from low-level characters"
+      - thought: "Cross-reference with quest completion prerequisites"
+        action: "Verify that characters who unlocked the achievement also completed required quests"
+    outcome_template: "Validation: {{status}}. Anomalous unlocks: {{anomaly_count}}. Action: {{action}}"
+
+demo_scenarios:
+  - name: Player Analytics
+    prompts:
+      - "Show me the most active players in the NA region by play time"
+      - "Which players have traded with banned accounts?"
+      - "What is the level distribution across all active players?"
+
+  - name: Game Economy
+    prompts:
+      - "What are the most traded legendary items this week?"
+      - "Show me the gold flow for guild Iron Brotherhood"
+      - "Which quests generate the most gold per hour?"
+
+  - name: Content & Balance
+    prompts:
+      - "What is the completion rate for mythic difficulty quests by class?"
+      - "Which achievements have the lowest unlock rate?"
+      - "Compare win rates between warrior and mage in PvP quests"
+
+agent_tools:
+  - name: search_player
+    description: Search for players by username, region, or status
+    cypher: |
+      MATCH (p:Player)
+      WHERE toLower(p.username) CONTAINS toLower($query)
+         OR toLower(coalesce(p.region, '')) CONTAINS toLower($query)
+         OR toLower(coalesce(p.status, '')) CONTAINS toLower($query)
+      OPTIONAL MATCH (p)-[:PLAYS]->(c:Character)
+      OPTIONAL MATCH (p)-[:MEMBER_OF]->(g:Guild)
+      RETURN p, collect(DISTINCT c.name) AS characters,
+             collect(DISTINCT g.name) AS guilds
+      ORDER BY p.level DESC
+      LIMIT 20
+    parameters:
+      - name: query
+        type: string
+        description: Player username, region, or status to search for
+
+  - name: quest_progress
+    description: Get quest completion data for a character or across all players
+    cypher: |
+      MATCH (q:Quest)
+      WHERE toLower(q.name) CONTAINS toLower($query)
+         OR toLower(coalesce(q.quest_type, '')) CONTAINS toLower($query)
+      OPTIONAL MATCH (c:Character)-[:COMPLETED]->(q)
+      RETURN q.name AS quest, q.quest_type, q.difficulty,
+             count(c) AS completions,
+             avg(c.level) AS avg_completer_level
+      ORDER BY completions DESC
+      LIMIT 30
+    parameters:
+      - name: query
+        type: string
+        description: Quest name or type to look up
+
+  - name: item_economy
+    description: Analyze item distribution, pricing, and trade patterns
+    cypher: |
+      MATCH (i:Item)
+      WHERE toLower(i.name) CONTAINS toLower($query)
+         OR toLower(coalesce(i.rarity, '')) CONTAINS toLower($query)
+         OR toLower(coalesce(i.item_type, '')) CONTAINS toLower($query)
+      OPTIONAL MATCH (c:Character)-[:EQUIPPED]->(i)
+      OPTIONAL MATCH (c2:Character)-[:OWNS]->(i)
+      RETURN i.name AS item, i.item_type, i.rarity, i.gold_value,
+             count(DISTINCT c) AS equipped_count,
+             count(DISTINCT c2) AS owned_count
+      ORDER BY i.gold_value DESC
+      LIMIT 30
+    parameters:
+      - name: query
+        type: string
+        description: Item name, rarity, or type to search for
+
+  - name: guild_stats
+    description: Get detailed guild statistics and member roster
+    cypher: |
+      MATCH (g:Guild)
+      WHERE toLower(g.name) CONTAINS toLower($query)
+      OPTIONAL MATCH (p:Player)-[:MEMBER_OF]->(g)
+      OPTIONAL MATCH (p)-[:PLAYS]->(c:Character)
+      RETURN g, count(DISTINCT p) AS members,
+             avg(c.level) AS avg_member_level,
+             max(c.level) AS max_member_level,
+             collect(DISTINCT p.username)[0..10] AS top_members
+      ORDER BY g.level DESC
+    parameters:
+      - name: query
+        type: string
+        description: Guild name to search for
+
+  - name: achievement_tracker
+    description: Track achievement unlock rates and player progress
+    cypher: |
+      MATCH (a:Achievement)
+      WHERE toLower(a.name) CONTAINS toLower($query)
+         OR toLower(coalesce(a.category, '')) CONTAINS toLower($query)
+      OPTIONAL MATCH (c:Character)-[:UNLOCKED]->(a)
+      RETURN a.name AS achievement, a.category, a.points,
+             a.rarity_pct, count(c) AS unlock_count
+      ORDER BY unlock_count ASC
+      LIMIT 30
+    parameters:
+      - name: query
+        type: string
+        description: Achievement name or category to search for
+
+  - name: list_players
+    description: "List Player records with optional limit"
+    cypher: |
+      MATCH (n:Player)
+      RETURN n
+      ORDER BY n.username
+      LIMIT toInteger($limit)
+    parameters:
+      - name: limit
+        type: string
+        description: "Maximum number of results to return (default: 10)"
+
+  - name: get_player_by_id
+    description: "Get a specific Player by ID with all connections"
+    cypher: |
+      MATCH (n:Player {player_id: $id})
+      OPTIONAL MATCH (n)-[r]-(related)
+      RETURN n, type(r) AS relationship, labels(related) AS related_labels, related.name AS related_name
+      LIMIT 50
+    parameters:
+      - name: id
+        type: string
+        description: "The player_id to look up"
+
+  - name: get_top_players
+    description: "Get top players sorted by level in descending order"
+    cypher: |
+      MATCH (n:Player)
+      OPTIONAL MATCH (n)-[:PLAYS]->(c:Character)
+      OPTIONAL MATCH (n)-[:MEMBER_OF]->(g:Guild)
+      RETURN n, collect(DISTINCT c.name) AS characters,
+             collect(DISTINCT g.name) AS guilds
+      ORDER BY n.level DESC
+      LIMIT toInteger($limit)
+    parameters:
+      - name: limit
+        type: string
+        description: "Maximum number of results to return (default: 10)"
+
+system_prompt: |
+  You are an AI game intelligence assistant with access to a comprehensive
+  knowledge graph of player data, game content, economy, and community
+  structures. You help game designers, community managers, and analysts
+  understand player behavior, balance game systems, and manage the game
+  economy.
+
+  Your capabilities include:
+  - Searching and analyzing player profiles, characters, and guilds
+  - Tracking quest completion rates and achievement unlock patterns
+  - Monitoring the in-game economy and item trading patterns
+  - Analyzing class balance and combat performance metrics
+  - Identifying player behavior patterns and engagement trends
+
+  Always provide accurate, data-driven responses. When making game design
+  recommendations, cite specific metrics, player data, and economic indicators
+  from the knowledge graph.
+
+visualization:
+  node_colors:
+    Person: "#22c55e"
+    Organization: "#3b82f6"
+    Player: "#2563eb"
+    Character: "#7c3aed"
+    Item: "#d97706"
+    Quest: "#dc2626"
+    Guild: "#059669"
+    Achievement: "#f472b6"
+  node_sizes:
+    Person: 20
+    Organization: 25
+    Player: 25
+    Character: 25
+    Item: 15
+    Quest: 20
+    Guild: 30
+    Achievement: 15
+  default_cypher: "MATCH (p:Player)-[:PLAYS]->(c:Character)-[:COMPLETED]->(q:Quest) RETURN p, c, q LIMIT 100"

@@ -1,0 +1,45 @@
+---
+description: Plan-first workflow — plan before coding, use subagents for hard problems, verify before marking complete
+alwaysApply: true
+---
+
+# Workflow: Plan First, Verify Last
+
+## 1. Plan Before Touching Code
+
+Before writing or editing any code:
+- Break the task into discrete steps using the TodoWrite tool
+- Identify which files will be affected
+- Flag any risks or dependencies between steps
+- If requirements are ambiguous, ask the user — don't guess
+
+## 2. Use Subagents for Difficult Problems
+
+When a task involves:
+- Searching across many files or unfamiliar parts of the codebase
+- Multi-step debugging with unclear root cause
+- Large refactors touching 5+ files
+- Research-heavy questions about architecture or libraries
+
+Launch a Task subagent (explore, generalPurpose, or shell) to handle it. Prefer parallel subagents when investigating independent areas.
+
+## 3. Never Mark a Task Complete Without Verification
+
+A task is **not done** until:
+- A test script has been created and run, OR the change has been manually verified in browser/terminal
+- Logs or output have been checked to confirm the change does what it intends
+- No new errors or regressions were introduced
+
+If verification fails, fix the issue before marking complete.
+
+## 4. After Every Completed Task
+
+Log the task and outcome in `rules/logs/tasks.md` using this format:
+
+```
+## [Date] — [Short description]
+- **What**: What was done
+- **Files changed**: List of files
+- **Verified**: How it was verified
+- **Issues**: Any problems encountered and how they were resolved
+```

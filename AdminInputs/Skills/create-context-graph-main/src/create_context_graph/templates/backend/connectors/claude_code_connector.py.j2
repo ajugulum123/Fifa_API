@@ -1,0 +1,268 @@
+{% raw %}"""Claude Code session history connector.
+
+Imports session data from local Claude Code JSONL files
+(~/.claude/projects/) into the context graph.  No authentication
+required — all data is read from the local filesystem.
+"""
+
+from __future__ import annotations
+
+import hashlib
+import json
+import logging
+import os
+import re
+from pathlib import Path
+from typing import Any
+
+logger = logging.getLogger(__name__)
+
+# Tool categories for file tracking.
+_WRITE_TOOLS = {"Write", "Edit", "NotebookEdit"}
+_READ_TOOLS = {"Read", "Grep", "Glob"}
+
+
+class ClaudeCodeConnector:
+    """Import Claude Code session history from local JSONL files."""
+
+    service_name = "Claude Code"
+    service_description = "Import AI coding session history from local Claude Code JSONL files"
+
+    def __init__(self) -> None:
+        self._base_path: Path | None = None
+        self._scope: str = "current"
+        self._content_mode: str = "truncated"
+        self._max_content_len: int = 2000
+        self._since: str = ""
+        self._max_sessions: int = 0
+
+    def authenticate(self, credentials: dict[str, str]) -> None:
+        """Parse configuration from credentials dict."""
+        base = credentials.get("base_path", "")
+        self._base_path = Path(base).expanduser() if base else None
+        self._scope = credentials.get("scope", "current")
+        self._content_mode = credentials.get("content_mode", "truncated")
+        self._since = credentials.get("since", "")
+        self._max_sessions = int(credentials.get("max_sessions", "0"))
+
+    def fetch(self, **kwargs: Any) -> dict[str, Any]:
+        """Parse sessions and return entities, relationships, documents."""
+        base = self._base_path or Path.home() / ".claude" / "projects"
+        if not base.is_dir():
+            logger.warning("Claude Code projects dir not found: %s", base)
+            return {"entities": {}, "relationships": [], "documents": []}
+
+        entities: dict[str, list[dict]] = {}
+        relationships: list[dict] = []
+        documents: list[dict] = []
+        seen_files: dict[str, dict] = {}
+
+        for project_dir in sorted(base.iterdir()):
+            if not project_dir.is_dir():
+                continue
+
+            decoded_path = "/" + project_dir.name.lstrip("-").replace("-", "/")
+            sessions = list(project_dir.glob("*.jsonl"))
+            if not sessions:
+                continue
+
+            entities.setdefault("Project", []).append({
+                "name": decoded_path,
+                "sessionCount": len(sessions),
+            })
+
+            for jsonl_path in sorted(sessions, key=lambda p: p.stat().st_mtime, reverse=True):
+                session_id = jsonl_path.stem
+                messages, tool_calls, meta = self._parse_session(jsonl_path)
+
+                # Use session_id as the unique merge key to avoid collisions
+                # when multiple sessions share the same opening prompt.
+                session_name = f"Session:{session_id}"
+                first_prompt = meta.get("first_prompt", "")
+                entities.setdefault("Session", []).append({
+                    "name": session_name,
+                    "sessionId": session_id,
+                    "firstPrompt": first_prompt[:200] if first_prompt else "",
+                    "startedAt": meta.get("first_timestamp", ""),
+                    "endedAt": meta.get("last_timestamp", ""),
+                    "branch": meta.get("git_branch", ""),
+                    "messageCount": len(messages),
+                })
+
+                relationships.append({
+                    "type": "HAS_SESSION",
+                    "source_name": decoded_path,
+                    "source_label": "Project",
+                    "target_name": session_name,
+                    "target_label": "Session",
+                })
+
+                # Build message and tool call entities
+                for msg in messages:
+                    msg_name = f"msg-{msg['uuid'][:12]}"
+                    entities.setdefault("Message", []).append({
+                        "name": msg_name,
+                        "role": msg["role"],
+                        "content": msg["content"],
+                        "timestamp": msg["timestamp"],
+                    })
+                    relationships.append({
+                        "type": "HAS_MESSAGE",
+                        "source_name": session_name,
+                        "source_label": "Session",
+                        "target_name": msg_name,
+                        "target_label": "Message",
+                    })
+
+                for tc in tool_calls:
+                    summary = self._summarize_input(tc["tool_name"], tc.get("input", {}))
+                    tc_name = f"{tc['tool_name']}: {summary[:60]}" if summary else tc["tool_name"]
+                    entities.setdefault("ToolCall", []).append({
+                        "name": tc_name,
+                        "toolName": tc["tool_name"],
+                        "input": summary,
+                        "isError": tc.get("is_error", False),
+                        "timestamp": tc["timestamp"],
+                    })
+
+                    # File relationships
+                    file_path = tc.get("input", {}).get("file_path", "")
+                    if file_path:
+                        if file_path not in seen_files:
+                            ext = os.path.splitext(file_path)[1].lstrip(".")
+                            seen_files[file_path] = {
+                                "name": file_path,
+                                "path": file_path,
+                                "language": ext,
+                            }
+                        rel_type = "MODIFIED_FILE" if tc["tool_name"] in _WRITE_TOOLS else "READ_FILE"
+                        relationships.append({
+                            "type": rel_type,
+                            "source_name": tc_name,
+                            "source_label": "ToolCall",
+                            "target_name": file_path,
+                            "target_label": "File",
+                        })
+
+                # Session document for full-text search
+                doc_parts = [f"[{m['role']}] {m['content'][:300]}" for m in messages if m["content"]]
+                documents.append({
+                    "title": f"Claude Code Session: {session_name}",
+                    "content": "\n\n".join(doc_parts)[:10000],
+                })
+
+        entities["File"] = list(seen_files.values())
+
+        return {
+            "entities": entities,
+            "relationships": relationships,
+            "documents": documents,
+        }
+
+    def _parse_session(self, jsonl_path: Path) -> tuple[list[dict], list[dict], dict]:
+        """Parse a JSONL session file into messages, tool calls, and metadata."""
+        messages: list[dict] = []
+        tool_calls: list[dict] = []
+        tool_results: dict[str, dict] = {}
+        meta: dict[str, str] = {}
+
+        try:
+            with open(jsonl_path, encoding="utf-8") as f:
+                for raw_line in f:
+                    raw_line = raw_line.strip()
+                    if not raw_line:
+                        continue
+                    try:
+                        entry = json.loads(raw_line)
+                    except json.JSONDecodeError:
+                        continue
+
+                    entry_type = entry.get("type")
+                    if entry_type not in ("user", "assistant"):
+                        continue
+                    if entry.get("isMeta"):
+                        continue
+
+                    timestamp = entry.get("timestamp", "")
+                    if not meta.get("first_timestamp"):
+                        meta["first_timestamp"] = timestamp
+                    meta["last_timestamp"] = timestamp
+                    if not meta.get("git_branch") and entry.get("gitBranch"):
+                        meta["git_branch"] = entry["gitBranch"]
+
+                    msg = entry.get("message", {})
+                    text = self._extract_text(msg)
+
+                    # Content truncation
+                    stored = text
+                    if self._content_mode == "none":
+                        stored = ""
+                    elif self._content_mode == "truncated" and len(text) > self._max_content_len:
+                        stored = text[:self._max_content_len] + "..."
+
+                    messages.append({
+                        "uuid": entry.get("uuid", ""),
+                        "role": msg.get("role", ""),
+                        "content": stored,
+                        "timestamp": timestamp,
+                    })
+
+                    # First user prompt
+                    if entry_type == "user" and not meta.get("first_prompt") and len(text) > 5:
+                        meta["first_prompt"] = text[:200]
+
+                    # Extract tool_use / tool_result blocks
+                    content_blocks = msg.get("content", [])
+                    if isinstance(content_blocks, list):
+                        for block in content_blocks:
+                            if not isinstance(block, dict):
+                                continue
+                            if block.get("type") == "tool_use":
+                                tool_calls.append({
+                                    "tool_use_id": block.get("id", ""),
+                                    "tool_name": block.get("name", ""),
+                                    "input": block.get("input", {}),
+                                    "is_error": False,
+                                    "timestamp": timestamp,
+                                })
+                            elif block.get("type") == "tool_result":
+                                is_err = block.get("is_error", False)
+                                tool_results[block.get("tool_use_id", "")] = {"is_error": is_err}
+
+        except OSError as exc:
+            logger.warning("Could not read %s: %s", jsonl_path, exc)
+
+        # Match results to tool calls
+        for tc in tool_calls:
+            tr = tool_results.get(tc["tool_use_id"])
+            if tr:
+                tc["is_error"] = tr.get("is_error", False)
+
+        return messages, tool_calls, meta
+
+    @staticmethod
+    def _extract_text(msg: dict) -> str:
+        content = msg.get("content", "")
+        if isinstance(content, str):
+            return content
+        parts = []
+        if isinstance(content, list):
+            for block in content:
+                if isinstance(block, dict) and block.get("type") == "text":
+                    parts.append(block.get("text", ""))
+                elif isinstance(block, str):
+                    parts.append(block)
+        return "\n".join(parts)
+
+    @staticmethod
+    def _summarize_input(tool_name: str, tool_input: dict) -> str:
+        if tool_name in ("Read", "Write", "Edit", "NotebookEdit"):
+            return tool_input.get("file_path", "")
+        if tool_name == "Bash":
+            return tool_input.get("command", "")[:200]
+        if tool_name in ("Grep", "Glob"):
+            return tool_input.get("pattern", "")
+        if tool_name == "Agent":
+            return tool_input.get("description", "")[:200]
+        return json.dumps(tool_input, default=str)[:200]
+{% endraw %}

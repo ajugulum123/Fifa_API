@@ -1,0 +1,714 @@
+{% raw %}"""Google Workspace connector — imports Drive files, comment threads
+(as decision traces), revisions, activity, calendar, and Gmail metadata."""
+
+from __future__ import annotations
+
+import json
+import logging
+import re
+import time
+import urllib.error
+import urllib.parse
+import urllib.request
+from datetime import datetime, timedelta, timezone
+from typing import Any
+
+logger = logging.getLogger(__name__)
+
+DRIVE_FILES_URL = "https://www.googleapis.com/drive/v3/files"
+DRIVE_ACTIVITY_URL = "https://driveactivity.googleapis.com/v2/activity:query"
+CALENDAR_EVENTS_URL = "https://www.googleapis.com/calendar/v3/calendars/primary/events"
+GMAIL_THREADS_URL = "https://gmail.googleapis.com/gmail/v1/users/me/threads"
+
+GOOGLE_AUTH_URL = "https://accounts.google.com/o/oauth2/v2/auth"
+GOOGLE_TOKEN_URL = "https://oauth2.googleapis.com/token"
+
+MIME_FILTERS = {
+    "docs": "application/vnd.google-apps.document",
+    "sheets": "application/vnd.google-apps.spreadsheet",
+    "slides": "application/vnd.google-apps.presentation",
+    "pdf": "application/pdf",
+}
+
+COMMENTABLE_MIMES = {
+    "application/vnd.google-apps.document",
+    "application/vnd.google-apps.spreadsheet",
+    "application/vnd.google-apps.presentation",
+}
+
+ACTION_TYPE_MAP = {
+    "create": "Created", "edit": "Edited", "move": "Moved",
+    "rename": "Renamed", "delete": "Deleted", "restore": "Restored",
+    "permissionChange": "Permission changed", "comment": "Commented",
+    "suggestion": "Suggestion made",
+}
+
+LINEAR_REF_PATTERN = re.compile(r"\b([A-Z]{2,10}-\d+)\b")
+DRIVE_URL_PATTERN = re.compile(
+    r"https://docs\.google\.com/(?:document|spreadsheets|presentation)/d/([a-zA-Z0-9_-]+)"
+)
+
+
+class GoogleWorkspaceConnector:
+    """Import Drive files, comment threads, revisions, activity, calendar, and Gmail."""
+
+    def __init__(self):
+        self._access_token: str = ""
+        self._folder_id: str = ""
+        self._include_comments: bool = True
+        self._include_revisions: bool = True
+        self._include_activity: bool = True
+        self._include_calendar: bool = False
+        self._include_gmail: bool = False
+        self._since: str = ""
+        self._mime_types: list[str] = ["docs", "sheets", "slides"]
+        self._max_files: int = 500
+        self._request_count: int = 0
+        self._request_window_start: float = 0.0
+
+    def authenticate(self, credentials: dict[str, str]) -> None:
+        """Authenticate with Google Workspace APIs via OAuth2."""
+        self._folder_id = credentials.get("folder_id", "")
+        self._include_comments = credentials.get("include_comments", "true") != "false"
+        self._include_revisions = credentials.get("include_revisions", "true") != "false"
+        self._include_activity = credentials.get("include_activity", "true") != "false"
+        self._include_calendar = credentials.get("include_calendar", "false") == "true"
+        self._include_gmail = credentials.get("include_gmail", "false") == "true"
+        self._since = credentials.get("since", "")
+        self._max_files = int(credentials.get("max_files", "500"))
+
+        mime_str = credentials.get("mime_types", "")
+        if mime_str:
+            self._mime_types = [m.strip() for m in mime_str.split(",") if m.strip()]
+
+        client_id = credentials.get("client_id", "")
+        client_secret = credentials.get("client_secret", "")
+        if not client_id or not client_secret:
+            raise ValueError("Google OAuth2 Client ID and Secret are required.")
+
+        scopes = ["https://www.googleapis.com/auth/drive.readonly"]
+        if self._include_activity:
+            scopes.append("https://www.googleapis.com/auth/drive.activity.readonly")
+        if self._include_calendar:
+            scopes.append("https://www.googleapis.com/auth/calendar.readonly")
+        if self._include_gmail:
+            scopes.append("https://www.googleapis.com/auth/gmail.readonly")
+
+        # Use google-auth-oauthlib for OAuth flow
+        try:
+            from google_auth_oauthlib.flow import InstalledAppFlow
+            from google.oauth2.credentials import Credentials
+
+            flow = InstalledAppFlow.from_client_config(
+                {"installed": {
+                    "client_id": client_id,
+                    "client_secret": client_secret,
+                    "auth_uri": GOOGLE_AUTH_URL,
+                    "token_uri": GOOGLE_TOKEN_URL,
+                    "redirect_uris": ["http://localhost"],
+                }},
+                scopes=scopes,
+            )
+            creds = flow.run_local_server(port=0)
+            self._access_token = creds.token
+        except ImportError:
+            raise ImportError(
+                "google-auth-oauthlib is required. "
+                "Install with: pip install google-auth-oauthlib google-api-python-client"
+            )
+
+    def fetch(self, **kwargs: Any) -> dict:
+        """Fetch data and return dict with entities, relationships, documents, traces."""
+        if not self._access_token:
+            raise RuntimeError("Call authenticate() first")
+
+        entities: dict[str, list[dict]] = {
+            "Document": [], "Folder": [], "Person": [],
+            "DecisionThread": [], "Reply": [], "Revision": [], "Activity": [],
+        }
+        relationships: list[dict] = []
+        documents: list[dict] = []
+        traces: list[dict] = []
+        seen_persons: set[str] = set()
+
+        def _add_person(display_name, email):
+            if not email:
+                return None
+            if email not in seen_persons:
+                seen_persons.add(email)
+                entities["Person"].append({
+                    "name": display_name or email.split("@")[0],
+                    "emailAddress": email,
+                    "displayName": display_name or email.split("@")[0],
+                })
+            return display_name or email.split("@")[0]
+
+        # Fetch files
+        files = self._fetch_files()
+        for f in files:
+            name = f.get("name", "")
+            drive_id = f.get("id", "")
+            mime = f.get("mimeType", "")
+
+            if mime == "application/vnd.google-apps.folder":
+                entities["Folder"].append({"name": name, "driveId": drive_id})
+                continue
+
+            entities["Document"].append({
+                "name": name, "driveId": drive_id, "mimeType": mime,
+                "webViewLink": f.get("webViewLink", ""),
+                "createdTime": f.get("createdTime", ""),
+                "modifiedTime": f.get("modifiedTime", ""),
+            })
+
+            for owner in f.get("owners", []):
+                owner_name = _add_person(owner.get("displayName", ""), owner.get("emailAddress", ""))
+                if owner_name:
+                    relationships.append({
+                        "type": "CREATED_BY", "source_name": name, "source_label": "Document",
+                        "target_name": owner_name, "target_label": "Person",
+                    })
+
+            documents.append({
+                "title": name,
+                "content": f.get("description", "") or f"Google Workspace document",
+                "type": "google-workspace-file",
+                "metadata": {"driveId": drive_id, "mimeType": mime},
+            })
+
+        # Fetch comments
+        if self._include_comments:
+            for doc in entities["Document"]:
+                if doc.get("mimeType", "") in COMMENTABLE_MIMES:
+                    self._fetch_comments(doc["driveId"], doc["name"], _add_person, entities, relationships, traces)
+
+        # Fetch revisions
+        if self._include_revisions:
+            for doc in entities["Document"]:
+                self._fetch_revisions(doc["driveId"], doc["name"], _add_person, entities, relationships)
+
+        # Fetch Drive Activity
+        if self._include_activity:
+            self._fetch_activity(_add_person, entities, relationships)
+
+        # Fetch Calendar events (optional)
+        if self._include_calendar:
+            entities["Meeting"] = []
+            self._fetch_calendar_events(_add_person, entities, relationships, documents)
+
+        # Fetch Gmail threads (optional)
+        if self._include_gmail:
+            entities["EmailThread"] = []
+            self._fetch_gmail_threads(_add_person, entities, relationships, documents)
+
+        # Cross-connector linking
+        relationships.extend(self._build_cross_references(entities, documents))
+
+        return {
+            "entities": entities,
+            "relationships": relationships,
+            "documents": documents,
+            "traces": traces,
+        }
+
+    def _rate_limit_wait(self):
+        now = time.time()
+        if now - self._request_window_start > 100:
+            self._request_count = 0
+            self._request_window_start = now
+        self._request_count += 1
+        if self._request_count >= 950:
+            sleep_time = 100 - (now - self._request_window_start) + 1
+            if sleep_time > 0:
+                time.sleep(sleep_time)
+            self._request_count = 0
+            self._request_window_start = time.time()
+
+    def _api_request(self, url, params=None):
+        self._rate_limit_wait()
+        if params:
+            full_url = f"{url}?{urllib.parse.urlencode(params)}"
+        else:
+            full_url = url
+        headers = {"Authorization": f"Bearer {self._access_token}"}
+        for attempt in range(5):
+            req = urllib.request.Request(full_url, headers=headers)
+            try:
+                with urllib.request.urlopen(req, timeout=30) as resp:
+                    return json.loads(resp.read())
+            except urllib.error.HTTPError as e:
+                if e.code in (429, 403):
+                    time.sleep(min(2 ** attempt * 2, 60))
+                    continue
+                raise
+        raise RuntimeError(f"Rate limit exceeded: {url}")
+
+    def _api_post(self, url, body):
+        """Make authenticated POST request with rate limiting and exponential backoff."""
+        self._rate_limit_wait()
+        data = json.dumps(body).encode("utf-8")
+        headers = {
+            "Authorization": f"Bearer {self._access_token}",
+            "Content-Type": "application/json",
+        }
+        for attempt in range(5):
+            req = urllib.request.Request(url, data=data, headers=headers, method="POST")
+            try:
+                with urllib.request.urlopen(req, timeout=30) as resp:
+                    return json.loads(resp.read())
+            except urllib.error.HTTPError as e:
+                resp_body = ""
+                try:
+                    resp_body = e.read().decode("utf-8", errors="replace")
+                except Exception:
+                    pass
+                if e.code == 429 or (e.code == 403 and "rate" in resp_body.lower()):
+                    time.sleep(min(2 ** attempt * 2, 60))
+                    continue
+                raise
+        raise RuntimeError(f"Rate limit exceeded: {url}")
+
+    def _get_since_datetime(self):
+        if self._since:
+            return self._since
+        dt = datetime.now(timezone.utc) - timedelta(days=90)
+        return dt.strftime("%Y-%m-%dT%H:%M:%SZ")
+
+    def _fetch_files(self):
+        files = []
+        page_token = None
+        mime_clauses = ["mimeType = 'application/vnd.google-apps.folder'"]
+        for mt in self._mime_types:
+            if mt == "all":
+                mime_clauses = []
+                break
+            full_mime = MIME_FILTERS.get(mt, mt)
+            mime_clauses.append(f"mimeType = '{full_mime}'")
+
+        q_parts = []
+        if mime_clauses:
+            q_parts.append(f"({' or '.join(mime_clauses)})")
+        q_parts.append(f"modifiedTime > '{self._get_since_datetime()}'")
+        if self._folder_id:
+            q_parts.append(f"'{self._folder_id}' in parents")
+        q_parts.append("trashed = false")
+        query = " and ".join(q_parts)
+
+        while len(files) < self._max_files:
+            params = {
+                "q": query,
+                "fields": "nextPageToken,files(id,name,mimeType,webViewLink,createdTime,modifiedTime,description,owners,parents,permissions(type,emailAddress,displayName,role))",
+                "pageSize": str(min(100, self._max_files - len(files))),
+                "orderBy": "modifiedTime desc",
+            }
+            if page_token:
+                params["pageToken"] = page_token
+            result = self._api_request(DRIVE_FILES_URL, params)
+            batch = result.get("files", [])
+            files.extend(batch)
+            page_token = result.get("nextPageToken")
+            if not page_token or not batch:
+                break
+        return files[:self._max_files]
+
+    def _fetch_comments(self, file_id, file_name, add_person, entities, relationships, traces):
+        page_token = None
+        while True:
+            params = {"fields": "*", "includeDeleted": "false", "pageSize": "100"}
+            if page_token:
+                params["pageToken"] = page_token
+            try:
+                result = self._api_request(f"{DRIVE_FILES_URL}/{file_id}/comments", params)
+            except Exception:
+                return
+            for comment in result.get("comments", []):
+                self._process_comment(comment, file_name, add_person, entities, relationships, traces)
+            page_token = result.get("nextPageToken")
+            if not page_token:
+                break
+
+    def _process_comment(self, comment, file_name, add_person, entities, relationships, traces):
+        comment_id = comment.get("id", "")
+        content = comment.get("content", "")
+        resolved = comment.get("resolved", False)
+        author = comment.get("author", {})
+        replies = comment.get("replies", [])
+
+        author_name = add_person(author.get("displayName", ""), author.get("emailAddress", ""))
+        thread_name = f"Thread: {content[:80]}" if content else f"Thread {comment_id}"
+
+        resolution_text = ""
+        if resolved and replies:
+            for r in reversed(replies):
+                if r.get("content"):
+                    resolution_text = r["content"]
+                    break
+
+        entities["DecisionThread"].append({
+            "name": thread_name, "driveCommentId": comment_id,
+            "content": content, "resolved": resolved, "resolution": resolution_text,
+            "createdTime": comment.get("createdTime", ""),
+        })
+
+        relationships.append({
+            "type": "HAS_COMMENT_THREAD", "source_name": file_name,
+            "source_label": "Document", "target_name": thread_name, "target_label": "DecisionThread",
+        })
+        if author_name:
+            relationships.append({
+                "type": "AUTHORED_BY", "source_name": thread_name,
+                "source_label": "DecisionThread", "target_name": author_name, "target_label": "Person",
+            })
+
+        for i, reply in enumerate(replies):
+            if reply.get("action") == "resolve" and not reply.get("content"):
+                continue
+            reply_name = f"Reply {i + 1} on {thread_name}"
+            entities["Reply"].append({"name": reply_name, "content": reply.get("content", "")})
+            relationships.append({
+                "type": "HAS_REPLY", "source_name": thread_name,
+                "source_label": "DecisionThread", "target_name": reply_name, "target_label": "Reply",
+            })
+            r_author = add_person(reply.get("author", {}).get("displayName", ""), reply.get("author", {}).get("emailAddress", ""))
+            if r_author:
+                relationships.append({
+                    "type": "AUTHORED_BY", "source_name": reply_name,
+                    "source_label": "Reply", "target_name": r_author, "target_label": "Person",
+                })
+
+        if resolved:
+            trace = {
+                "id": f"trace-gdrive-{comment_id}",
+                "task": f"Decision on '{file_name}': {content[:100]}",
+                "outcome": f"Resolved: {resolution_text[:200]}" if resolution_text else "Resolved",
+                "steps": [{"thought": content[:200], "action": f"{author.get('displayName', 'Someone')} started discussion", "observation": f"Posted at {comment.get('createdTime', '')}"}],
+            }
+            for reply in replies:
+                r_content = reply.get("content", "")
+                if r_content:
+                    trace["steps"].append({"thought": r_content[:200], "action": f"{reply.get('author', {}).get('displayName', 'Someone')} replied", "observation": f"At {reply.get('createdTime', '')}"})
+            traces.append(trace)
+
+    def _fetch_revisions(self, file_id, file_name, add_person, entities, relationships):
+        try:
+            result = self._api_request(
+                f"{DRIVE_FILES_URL}/{file_id}/revisions",
+                {"fields": "revisions(id,modifiedTime,lastModifyingUser)", "pageSize": "200"},
+            )
+        except Exception:
+            return
+        for rev in result.get("revisions", []):
+            rev_name = f"Rev {rev.get('id', '')} of {file_name}"
+            entities["Revision"].append({"name": rev_name, "revisionId": rev.get("id", ""), "modifiedTime": rev.get("modifiedTime", "")})
+            relationships.append({"type": "HAS_REVISION", "source_name": file_name, "source_label": "Document", "target_name": rev_name, "target_label": "Revision"})
+            user = rev.get("lastModifyingUser", {})
+            if user:
+                person = add_person(user.get("displayName", ""), user.get("emailAddress", ""))
+                if person:
+                    relationships.append({"type": "REVISED_BY", "source_name": rev_name, "source_label": "Revision", "target_name": person, "target_label": "Person"})
+
+    def _fetch_activity(self, add_person, entities, relationships):
+        """Fetch actions from Drive Activity API v2."""
+        since = self._get_since_datetime()
+        body = {
+            "filter": f'time >= "{since}"',
+            "pageSize": 200,
+        }
+        if self._folder_id:
+            body["ancestorName"] = f"items/{self._folder_id}"
+
+        page_token = None
+        while True:
+            if page_token:
+                body["pageToken"] = page_token
+            try:
+                result = self._api_post(DRIVE_ACTIVITY_URL, body)
+            except Exception as e:
+                logger.debug("Failed to fetch Drive Activity: %s", e)
+                return
+            for activity in result.get("activities", []):
+                self._process_activity(activity, add_person, entities, relationships)
+            page_token = result.get("nextPageToken")
+            if not page_token:
+                break
+
+    def _process_activity(self, activity, add_person, entities, relationships):
+        """Process a single Drive Activity item."""
+        timestamp = activity.get("timestamp", "")
+        if not timestamp:
+            time_range = activity.get("timeRange", {})
+            timestamp = time_range.get("endTime", time_range.get("startTime", ""))
+
+        primary = activity.get("primaryActionDetail", {})
+        action_type = "unknown"
+        for key in ACTION_TYPE_MAP:
+            if key in primary:
+                action_type = key
+                break
+        action_label = ACTION_TYPE_MAP.get(action_type, "Unknown action")
+
+        actors = activity.get("actors", [])
+        actor_name = None
+        for actor in actors:
+            user = actor.get("user", {}).get("knownUser", {})
+            if user:
+                actor_email = user.get("emailAddress", "")
+                if actor_email:
+                    actor_name = add_person("", actor_email)
+
+        targets = activity.get("targets", [])
+        for target in targets:
+            drive_item = target.get("driveItem", {})
+            target_name = drive_item.get("title", drive_item.get("name", ""))
+            if not target_name:
+                continue
+
+            activity_name = f"{action_label}: {target_name} at {timestamp[:19]}"
+            entities["Activity"].append({
+                "name": activity_name,
+                "actionType": action_type,
+                "actionLabel": action_label,
+                "timestamp": timestamp,
+                "targetName": target_name,
+            })
+            relationships.append({
+                "type": "ACTIVITY_ON", "source_name": activity_name,
+                "source_label": "Activity", "target_name": target_name, "target_label": "Document",
+            })
+            if actor_name:
+                relationships.append({
+                    "type": "PERFORMED_BY", "source_name": activity_name,
+                    "source_label": "Activity", "target_name": actor_name, "target_label": "Person",
+                })
+
+    def _fetch_calendar_events(self, add_person, entities, relationships, documents):
+        """Fetch calendar events and link them to documents."""
+        since = self._get_since_datetime()
+        now = datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
+        page_token = None
+
+        doc_drive_ids = {}
+        for doc in entities.get("Document", []):
+            doc_drive_ids[doc.get("driveId", "")] = doc.get("name", "")
+
+        while True:
+            params = {
+                "timeMin": since,
+                "timeMax": now,
+                "maxResults": "250",
+                "singleEvents": "true",
+                "orderBy": "startTime",
+            }
+            if page_token:
+                params["pageToken"] = page_token
+            try:
+                result = self._api_request(CALENDAR_EVENTS_URL, params)
+            except Exception as e:
+                logger.debug("Failed to fetch calendar events: %s", e)
+                return
+            for event in result.get("items", []):
+                self._process_calendar_event(event, add_person, entities, relationships, documents, doc_drive_ids)
+            page_token = result.get("nextPageToken")
+            if not page_token:
+                break
+
+    def _process_calendar_event(self, event, add_person, entities, relationships, documents, doc_drive_ids):
+        """Process a single calendar event."""
+        summary = event.get("summary", "Untitled event")
+        event_id = event.get("id", "")
+        start = event.get("start", {})
+        end = event.get("end", {})
+        start_time = start.get("dateTime", start.get("date", ""))
+        end_time = end.get("dateTime", end.get("date", ""))
+        description = event.get("description", "")
+        location = event.get("location", "")
+        status = event.get("status", "")
+        attendees = event.get("attendees", [])
+
+        meeting_name = f"{summary} ({start_time[:10]})" if start_time else summary
+
+        entities["Meeting"].append({
+            "name": meeting_name, "eventId": event_id, "summary": summary,
+            "startTime": start_time, "endTime": end_time, "location": location,
+            "status": status, "description": description, "attendeeCount": len(attendees),
+        })
+
+        # Organizer
+        organizer = event.get("organizer", {})
+        if organizer.get("email"):
+            org_name = add_person(organizer.get("displayName", ""), organizer.get("email", ""))
+            if org_name:
+                relationships.append({
+                    "type": "ORGANIZED_BY", "source_name": meeting_name,
+                    "source_label": "Meeting", "target_name": org_name, "target_label": "Person",
+                })
+
+        # Attendees
+        for attendee in attendees:
+            if attendee.get("email"):
+                att_name = add_person(attendee.get("displayName", ""), attendee.get("email", ""))
+                if att_name:
+                    relationships.append({
+                        "type": "ATTENDEE_OF", "source_name": att_name,
+                        "source_label": "Person", "target_name": meeting_name, "target_label": "Meeting",
+                    })
+
+        # Document-Meeting linking: scan description for Drive URLs
+        if description:
+            for match in DRIVE_URL_PATTERN.finditer(description):
+                drive_id = match.group(1)
+                doc_name = doc_drive_ids.get(drive_id)
+                if doc_name:
+                    relationships.append({
+                        "type": "DISCUSSED_IN", "source_name": doc_name,
+                        "source_label": "Document", "target_name": meeting_name, "target_label": "Meeting",
+                    })
+
+        # Also check attachments
+        for attachment in event.get("attachments", []):
+            file_url = attachment.get("fileUrl", "")
+            for match in DRIVE_URL_PATTERN.finditer(file_url):
+                drive_id = match.group(1)
+                doc_name = doc_drive_ids.get(drive_id)
+                if doc_name:
+                    relationships.append({
+                        "type": "DISCUSSED_IN", "source_name": doc_name,
+                        "source_label": "Document", "target_name": meeting_name, "target_label": "Meeting",
+                    })
+
+        # Document entry for meeting
+        if description:
+            documents.append({
+                "title": meeting_name,
+                "content": description[:500],
+                "type": "google-workspace-meeting",
+                "metadata": {"eventId": event_id, "startTime": start_time, "endTime": end_time},
+            })
+
+    def _fetch_gmail_threads(self, add_person, entities, relationships, documents):
+        """Fetch Gmail thread metadata (no body text for privacy)."""
+        doc_drive_ids = {}
+        for doc in entities.get("Document", []):
+            doc_drive_ids[doc.get("driveId", "")] = doc.get("name", "")
+
+        params = {"q": "has:drive newer_than:90d", "maxResults": "100"}
+        try:
+            result = self._api_request(GMAIL_THREADS_URL, params)
+        except Exception as e:
+            logger.debug("Failed to fetch Gmail threads: %s", e)
+            return
+
+        for thread_summary in result.get("threads", []):
+            thread_id = thread_summary.get("id", "")
+            try:
+                thread = self._api_request(
+                    f"{GMAIL_THREADS_URL}/{thread_id}",
+                    {"format": "metadata", "metadataHeaders": "Subject,From,To,Cc,Date"},
+                )
+            except Exception:
+                continue
+            self._process_gmail_thread(thread, add_person, entities, relationships, documents, doc_drive_ids)
+
+    def _process_gmail_thread(self, thread, add_person, entities, relationships, documents, doc_drive_ids):
+        """Process a single Gmail thread (metadata only)."""
+        thread_id = thread.get("id", "")
+        messages = thread.get("messages", [])
+        if not messages:
+            return
+
+        subject = ""
+        participants = set()
+        last_date = ""
+
+        for msg in messages:
+            for header in msg.get("payload", {}).get("headers", []):
+                name = header.get("name", "").lower()
+                value = header.get("value", "")
+                if name == "subject" and not subject:
+                    subject = value
+                elif name in ("from", "to", "cc"):
+                    for part in value.split(","):
+                        part = part.strip()
+                        if "<" in part and ">" in part:
+                            email = part[part.index("<") + 1:part.index(">")]
+                        elif "@" in part:
+                            email = part
+                        else:
+                            continue
+                        participants.add(email.strip())
+                elif name == "date":
+                    last_date = value
+
+        thread_name = subject or f"Thread {thread_id[:8]}"
+
+        entities["EmailThread"].append({
+            "name": thread_name, "threadId": thread_id, "subject": subject,
+            "messageCount": len(messages), "lastMessageTime": last_date,
+            "participantEmails": list(participants),
+        })
+
+        # Participants
+        for email in participants:
+            person_name = add_person("", email)
+            if person_name:
+                relationships.append({
+                    "type": "PARTICIPANT_IN", "source_name": person_name,
+                    "source_label": "Person", "target_name": thread_name, "target_label": "EmailThread",
+                })
+
+        # Thread → Document linking (scan subject + snippets for Drive URLs)
+        all_text = subject
+        for msg in messages:
+            snippet = msg.get("snippet", "")
+            all_text += " " + snippet
+        for match in DRIVE_URL_PATTERN.finditer(all_text):
+            drive_id = match.group(1)
+            doc_name = doc_drive_ids.get(drive_id)
+            if doc_name:
+                relationships.append({
+                    "type": "THREAD_ABOUT", "source_name": thread_name,
+                    "source_label": "EmailThread", "target_name": doc_name, "target_label": "Document",
+                })
+
+        # Document entry (metadata only)
+        documents.append({
+            "title": thread_name,
+            "content": f"Email thread with {len(messages)} messages. Participants: {', '.join(sorted(participants))}",
+            "type": "google-workspace-email",
+            "metadata": {"threadId": thread_id, "messageCount": len(messages), "lastMessageTime": last_date},
+        })
+
+    def _build_cross_references(self, entities, documents):
+        """Scan text content for Linear issue references and create cross-links."""
+        cross_refs = []
+        seen = set()
+
+        def _scan_and_link(text, source_name, source_label):
+            for match in LINEAR_REF_PATTERN.finditer(text):
+                identifier = match.group(1)
+                key = (source_name, source_label, identifier)
+                if key not in seen:
+                    seen.add(key)
+                    cross_refs.append({
+                        "type": "RELATES_TO_ISSUE", "source_name": source_name,
+                        "source_label": source_label, "target_name": identifier, "target_label": "Issue",
+                    })
+
+        for dt in entities.get("DecisionThread", []):
+            if dt.get("content"):
+                _scan_and_link(dt["content"], dt["name"], "DecisionThread")
+        for reply in entities.get("Reply", []):
+            if reply.get("content"):
+                _scan_and_link(reply["content"], reply["name"], "Reply")
+        for doc in entities.get("Document", []):
+            if doc.get("name"):
+                _scan_and_link(doc["name"], doc["name"], "Document")
+        for thread in entities.get("EmailThread", []):
+            if thread.get("subject"):
+                _scan_and_link(thread["subject"], thread["name"], "EmailThread")
+        for meeting in entities.get("Meeting", []):
+            if meeting.get("description"):
+                _scan_and_link(meeting["description"], meeting["name"], "Meeting")
+
+        return cross_refs
+{% endraw %}

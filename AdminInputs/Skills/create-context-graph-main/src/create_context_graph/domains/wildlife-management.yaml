@@ -1,0 +1,515 @@
+inherits: _base
+
+domain:
+  id: wildlife-management
+  name: Wildlife Management
+  description: Wildlife tracking, conservation, habitat monitoring, and species management
+  tagline: "AI-powered Conservation Intelligence"
+  emoji: "\U0001F43B"
+
+entity_types:
+  - label: Species
+    pole_type: OBJECT
+    subtype: BIOLOGICAL_SPECIES
+    color: "#16a34a"
+    icon: leaf
+    properties:
+      - name: species_id
+        type: string
+        required: true
+        unique: true
+      - name: common_name
+        type: string
+        required: true
+      - name: scientific_name
+        type: string
+        required: true
+      - name: conservation_status
+        type: string
+        enum: [least_concern, near_threatened, vulnerable, endangered, critically_endangered, extinct_in_wild]
+      - name: population_estimate
+        type: integer
+      - name: diet_type
+        type: string
+        enum: [herbivore, carnivore, omnivore, insectivore]
+
+  - label: Individual
+    pole_type: OBJECT
+    subtype: TAGGED_ANIMAL
+    color: "#0d9488"
+    icon: fingerprint
+    properties:
+      - name: tag_id
+        type: string
+        required: true
+        unique: true
+      - name: name
+        type: string
+      - name: sex
+        type: string
+        enum: [male, female, unknown]
+      - name: age_class
+        type: string
+        enum: [juvenile, subadult, adult, senior]
+      - name: tag_date
+        type: date
+        required: true
+      - name: weight_kg
+        type: float
+      - name: status
+        type: string
+        enum: [active, deceased, missing, relocated]
+
+  - label: Sighting
+    pole_type: EVENT
+    subtype: OBSERVATION
+    color: "#f59e0b"
+    icon: eye
+    properties:
+      - name: sighting_id
+        type: string
+        required: true
+        unique: true
+      - name: date
+        type: datetime
+        required: true
+      - name: latitude
+        type: float
+        required: true
+      - name: longitude
+        type: float
+        required: true
+      - name: observation_method
+        type: string
+        enum: [visual, camera_trap, telemetry, acoustic, aerial_survey]
+      - name: count
+        type: integer
+      - name: behavior
+        type: string
+
+  - label: Habitat
+    pole_type: OBJECT
+    subtype: GEOGRAPHIC_AREA
+    color: "#65a30d"
+    icon: trees
+    properties:
+      - name: habitat_id
+        type: string
+        required: true
+        unique: true
+      - name: name
+        type: string
+        required: true
+      - name: habitat_type
+        type: string
+        enum: [forest, grassland, wetland, desert, marine, alpine, riverine, coastal]
+      - name: area_hectares
+        type: float
+      - name: protection_level
+        type: string
+        enum: [unprotected, partial, national_park, wildlife_reserve, world_heritage]
+      - name: health_status
+        type: string
+        enum: [pristine, good, degraded, critical]
+
+  - label: Camera
+    pole_type: OBJECT
+    subtype: MONITORING_DEVICE
+    color: "#6366f1"
+    icon: camera
+    properties:
+      - name: camera_id
+        type: string
+        required: true
+        unique: true
+      - name: model
+        type: string
+      - name: installation_date
+        type: date
+      - name: latitude
+        type: float
+      - name: longitude
+        type: float
+      - name: status
+        type: string
+        enum: [active, inactive, maintenance, lost]
+      - name: battery_level
+        type: float
+
+  - label: Threat
+    pole_type: OBJECT
+    subtype: RISK_FACTOR
+    color: "#dc2626"
+    icon: alert-triangle
+    properties:
+      - name: threat_id
+        type: string
+        required: true
+        unique: true
+      - name: name
+        type: string
+        required: true
+      - name: threat_type
+        type: string
+        enum: [poaching, habitat_loss, climate_change, disease, invasive_species, pollution, human_wildlife_conflict]
+      - name: severity
+        type: string
+        enum: [low, moderate, high, critical]
+      - name: date_identified
+        type: date
+      - name: description
+        type: string
+
+relationships:
+  - type: BELONGS_TO_SPECIES
+    source: Individual
+    target: Species
+  - type: SIGHTED_AT
+    source: Individual
+    target: Sighting
+  - type: CAPTURED_BY
+    source: Sighting
+    target: Camera
+  - type: INHABITS
+    source: Species
+    target: Habitat
+  - type: PREYS_ON
+    source: Species
+    target: Species
+  - type: MONITORS
+    source: Camera
+    target: Habitat
+  - type: THREATENS
+    source: Threat
+    target: Species
+  - type: OBSERVED_BY
+    source: Sighting
+    target: Person
+
+document_templates:
+  - id: field_report
+    name: Field Report
+    description: Daily field observation reports from rangers and researchers
+    count: 12
+    prompt_template: |
+      Write a field report from {{person.name}} documenting observations
+      in {{habitat.name}} on {{date}}. Include sightings of {{species.common_name}},
+      weather conditions, and any notable behaviors or threats observed.
+    required_entities: [Person, Species, Habitat, Sighting]
+
+  - id: camera_trap_summary
+    name: Camera Trap Summary
+    description: Monthly summaries of camera trap captures and findings
+    count: 8
+    prompt_template: |
+      Write a camera trap summary report for camera {{camera.camera_id}}
+      deployed in {{habitat.name}} covering the period {{date_range}}.
+      Include species detected, frequency of captures, and notable observations.
+    required_entities: [Camera, Habitat, Species, Sighting]
+
+  - id: conservation_assessment
+    name: Conservation Assessment
+    description: Species and habitat conservation status assessments
+    count: 6
+    prompt_template: |
+      Write a conservation assessment for {{species.common_name}}
+      ({{species.scientific_name}}) in {{habitat.name}}.
+      Current status: {{species.conservation_status}}.
+      Population estimate: {{species.population_estimate}}.
+      Include threat analysis and recommended interventions.
+    required_entities: [Species, Habitat, Threat]
+
+  - id: incident_report
+    name: Incident Report
+    description: Reports on poaching, human-wildlife conflict, or other incidents
+    count: 6
+    prompt_template: |
+      Write an incident report filed by {{person.name}} regarding
+      {{threat.threat_type}} affecting {{species.common_name}} in {{habitat.name}}
+      on {{date}}. Include details, severity assessment, and recommended response.
+    required_entities: [Person, Threat, Species, Habitat]
+
+  - id: meeting_notes
+    name: Meeting Notes
+    description: Notes from conservation team meetings and stakeholder sessions
+    count: 8
+    prompt_template: |
+      Write meeting notes from a conservation planning session attended by
+      {{person.name}} and colleagues on {{date}}. Topics: population trends
+      for {{species.common_name}}, habitat health in {{habitat.name}},
+      and resource allocation for monitoring equipment.
+    required_entities: [Person, Species, Habitat]
+
+decision_traces:
+  - id: species_intervention
+    task: "Evaluate whether to intervene for declining {{species.common_name}} population in {{habitat.name}}"
+    steps:
+      - thought: "Assess current population trends and recent sighting data"
+        action: "Query sighting records and population counts over the last 12 months"
+      - thought: "Identify primary threats affecting the species in this habitat"
+        action: "Review threat records and incident reports for the area"
+      - thought: "Evaluate available resources and intervention options"
+        action: "Check camera coverage, ranger capacity, and budget constraints"
+      - thought: "Consider ecological impact of proposed intervention"
+        action: "Analyze predator-prey relationships and habitat carrying capacity"
+    outcome_template: "Decision: {{decision}} intervention based on {{rationale}}"
+
+  - id: habitat_protection
+    task: "Determine protection priority level for {{habitat.name}}"
+    steps:
+      - thought: "Assess biodiversity richness and species of concern in the area"
+        action: "Query species diversity and conservation status of inhabitants"
+      - thought: "Evaluate current threat levels and trajectory"
+        action: "Review threats, incident history, and degradation trends"
+      - thought: "Compare with other habitats competing for protection resources"
+        action: "Rank habitats by biodiversity value and threat urgency"
+    outcome_template: "Protection priority: {{priority}} — {{rationale}}"
+
+  - id: camera_deployment
+    task: "Optimize camera trap placement in {{habitat.name}} for monitoring {{species.common_name}}"
+    steps:
+      - thought: "Analyze historical sighting locations and movement corridors"
+        action: "Map sighting coordinates and identify high-activity zones"
+      - thought: "Review current camera coverage and gaps"
+        action: "Query active cameras and their coverage areas"
+      - thought: "Consider terrain, accessibility, and equipment security"
+        action: "Evaluate candidate locations for feasibility"
+    outcome_template: "Deployment plan: {{plan}} with expected coverage improvement of {{improvement}}"
+
+  - id: anti_poaching_response
+    task: "Plan anti-poaching response for threat {{threat.name}} affecting {{species.common_name}} in {{habitat.name}}"
+    steps:
+      - thought: "Assess the scope and severity of the poaching threat"
+        action: "Query threat details and recent incident reports in the affected area"
+      - thought: "Map the most vulnerable populations and high-risk zones"
+        action: "Cross-reference sighting locations with threat proximity and habitat access points"
+      - thought: "Evaluate current patrol coverage and camera monitoring gaps"
+        action: "Query camera positions and ranger patrol routes in the affected habitat"
+      - thought: "Design targeted response plan with resource allocation"
+        action: "Plan patrol schedules, camera redeployment, and coordination with authorities"
+    outcome_template: "Response plan: {{plan}}. Resources deployed: {{resources}}. Risk reduction: {{reduction}}"
+
+  - id: translocation_assessment
+    task: "Assess feasibility of translocating {{species.common_name}} individuals to {{habitat.name}}"
+    steps:
+      - thought: "Evaluate source population health and surplus capacity"
+        action: "Query population estimates and recent sighting trends for the species"
+      - thought: "Assess destination habitat suitability and carrying capacity"
+        action: "Review habitat type, area, health status, and existing species composition"
+      - thought: "Identify potential ecological impacts at source and destination"
+        action: "Analyze predator-prey relationships and competitive species in both habitats"
+      - thought: "Evaluate logistics, costs, and regulatory requirements"
+        action: "Check protection levels at both sites and required permits"
+    outcome_template: "Feasibility: {{feasibility}}. Recommended individuals: {{count}}. Success probability: {{probability}}%"
+
+  - id: disease_outbreak_response
+    task: "Respond to disease threat {{threat.name}} detected in {{species.common_name}} population"
+    steps:
+      - thought: "Assess the spread and severity of the disease outbreak"
+        action: "Query recent sightings for behavioral anomalies and deceased individuals"
+      - thought: "Identify affected area and potential transmission pathways"
+        action: "Map sighting locations of affected individuals and species contacts"
+      - thought: "Evaluate quarantine and containment options"
+        action: "Determine habitat boundaries and movement corridors to establish containment zones"
+      - thought: "Coordinate with veterinary and research teams"
+        action: "Identify available sampling equipment, lab capacity, and expert contacts"
+    outcome_template: "Response: {{response}}. Containment zone: {{zone}}. Estimated affected: {{count}} individuals"
+
+  - id: corridor_connectivity
+    task: "Assess wildlife corridor connectivity between {{habitat_a}} and {{habitat_b}} for {{species.common_name}}"
+    steps:
+      - thought: "Map sighting locations between the two habitats"
+        action: "Query sightings with coordinates falling between habitat boundaries"
+      - thought: "Identify barriers and threats along potential corridors"
+        action: "Search threats and human infrastructure in the area between habitats"
+      - thought: "Analyze movement patterns of tagged individuals"
+        action: "Track individual sighting sequences to identify actual movement paths"
+      - thought: "Recommend corridor protection or restoration measures"
+        action: "Identify critical pinch points requiring protection or habitat restoration"
+    outcome_template: "Connectivity: {{status}}. Critical corridors: {{corridors}}. Priority actions: {{actions}}"
+
+  - id: population_viability
+    task: "Assess long-term population viability of {{species.common_name}} in {{habitat.name}}"
+    steps:
+      - thought: "Analyze current population size and trend"
+        action: "Query population estimates and sighting frequency trends over multiple years"
+      - thought: "Assess reproductive success indicators"
+        action: "Analyze age class distribution looking for juvenile recruitment rates"
+      - thought: "Evaluate cumulative threat impact on population growth"
+        action: "Query all threats affecting this species and model combined population impact"
+      - thought: "Determine minimum viable population and time to critical thresholds"
+        action: "Compare current population against minimum viable estimates for the species"
+    outcome_template: "Viability: {{status}}. Population trend: {{trend}}. Time to critical: {{years}} years"
+
+  - id: monitoring_budget_allocation
+    task: "Allocate monitoring budget across habitats to maximize conservation impact"
+    steps:
+      - thought: "Rank habitats by conservation priority based on species and threats"
+        action: "Query habitats with their species counts, conservation statuses, and active threats"
+      - thought: "Assess current monitoring coverage and equipment condition"
+        action: "Query cameras by habitat with status and battery levels"
+      - thought: "Identify habitats with the largest monitoring gaps"
+        action: "Compare camera density and sighting coverage against habitat area"
+      - thought: "Allocate budget proportional to priority and gap size"
+        action: "Model budget distribution scenarios maximizing coverage of high-priority habitats"
+    outcome_template: "Allocation: {{plan}}. Coverage improvement: {{improvement}}%. Priority habitats addressed: {{count}}"
+
+demo_scenarios:
+  - name: Population Monitoring
+    prompts:
+      - "Show me all recent sightings of endangered species in the Serengeti habitat"
+      - "What is the population trend for African elephants over the last year?"
+      - "Which habitats have the highest biodiversity?"
+
+  - name: Threat Response
+    prompts:
+      - "Are there any active poaching threats in protected areas?"
+      - "Show me all incidents reported in the last 30 days"
+      - "Which species are most affected by habitat loss?"
+
+  - name: Monitoring Operations
+    prompts:
+      - "Which camera traps need maintenance or battery replacement?"
+      - "Show me the coverage map for cameras in the wetland habitat"
+      - "What species have been detected by camera C-042 this month?"
+
+agent_tools:
+  - name: species_lookup
+    description: Search for species by common name, scientific name, or conservation status
+    cypher: |
+      MATCH (s:Species)
+      WHERE toLower(s.common_name) CONTAINS toLower($query)
+         OR toLower(s.scientific_name) CONTAINS toLower($query)
+         OR toLower(coalesce(s.conservation_status, '')) CONTAINS toLower($query)
+      OPTIONAL MATCH (s)<-[:BELONGS_TO_SPECIES]-(i:Individual)
+      RETURN s, count(i) AS tagged_individuals
+      ORDER BY s.common_name
+      LIMIT 20
+    parameters:
+      - name: query
+        type: string
+        description: Species name, scientific name, or conservation status to search for
+
+  - name: sightings_by_area
+    description: Get recent sightings within a specific habitat or geographic area
+    cypher: |
+      MATCH (sg:Sighting)<-[:SIGHTED_AT]-(i:Individual)-[:BELONGS_TO_SPECIES]->(s:Species)
+      OPTIONAL MATCH (sg)-[:CAPTURED_BY]->(c:Camera)-[:MONITORS]->(h:Habitat)
+      WHERE toLower(h.name) CONTAINS toLower($habitat_name)
+      RETURN sg, i.tag_id AS tag, s.common_name AS species, h.name AS habitat
+      ORDER BY sg.date DESC
+      LIMIT 50
+    parameters:
+      - name: habitat_name
+        type: string
+        description: Name of the habitat to search sightings in
+
+  - name: population_trends
+    description: Analyze population trends for a species based on sighting frequency
+    cypher: |
+      MATCH (s:Species {common_name: $species_name})<-[:BELONGS_TO_SPECIES]-(i:Individual)-[:SIGHTED_AT]->(sg:Sighting)
+      WITH s, sg.date.year AS year, sg.date.month AS month, count(DISTINCT i) AS unique_individuals
+      RETURN s.common_name AS species, year, month, unique_individuals
+      ORDER BY year DESC, month DESC
+      LIMIT 24
+    parameters:
+      - name: species_name
+        type: string
+        description: Common name of the species
+
+  - name: habitat_analysis
+    description: Analyze habitat health, species composition, and threat exposure
+    cypher: |
+      MATCH (h:Habitat)
+      WHERE toLower(h.name) CONTAINS toLower($query)
+      OPTIONAL MATCH (s:Species)-[:INHABITS]->(h)
+      OPTIONAL MATCH (t:Threat)-[:THREATENS]->(s)
+      OPTIONAL MATCH (c:Camera)-[:MONITORS]->(h)
+      RETURN h, collect(DISTINCT s.common_name) AS species,
+             collect(DISTINCT t.name) AS threats,
+             count(DISTINCT c) AS camera_count
+    parameters:
+      - name: query
+        type: string
+        description: Habitat name to analyze
+
+  - name: threat_assessment
+    description: Assess threats affecting species or habitats
+    cypher: |
+      MATCH (t:Threat)-[:THREATENS]->(s:Species)
+      WHERE t.severity IN $severity_levels
+      OPTIONAL MATCH (s)-[:INHABITS]->(h:Habitat)
+      RETURN t.name AS threat, t.threat_type, t.severity,
+             collect(DISTINCT s.common_name) AS affected_species,
+             collect(DISTINCT h.name) AS affected_habitats
+      ORDER BY CASE t.severity
+        WHEN 'critical' THEN 1
+        WHEN 'high' THEN 2
+        WHEN 'moderate' THEN 3
+        ELSE 4 END
+    parameters:
+      - name: severity_levels
+        type: list
+        description: List of severity levels to filter by (e.g., ['critical', 'high'])
+
+  - name: list_species
+    description: "List species records with optional limit"
+    cypher: |
+      MATCH (n:Species)
+      RETURN n
+      ORDER BY n.common_name
+      LIMIT toInteger($limit)
+    parameters:
+      - name: limit
+        type: string
+        description: "Maximum number of results to return (default: 10)"
+
+  - name: get_species_by_id
+    description: "Get a specific species by ID with all connections"
+    cypher: |
+      MATCH (n:Species {species_id: $id})
+      OPTIONAL MATCH (n)-[r]-(related)
+      RETURN n, type(r) AS relationship, labels(related) AS related_labels, related.name AS related_name
+      LIMIT 50
+    parameters:
+      - name: id
+        type: string
+        description: "The species_id to look up"
+
+system_prompt: |
+  You are an AI wildlife management assistant with access to a comprehensive
+  knowledge graph of species, habitats, sightings, and conservation data. You
+  help wildlife biologists, park rangers, and conservation managers track
+  populations, assess threats, and make informed management decisions.
+
+  Your capabilities include:
+  - Searching and analyzing species populations and sighting records
+  - Monitoring camera trap networks and habitat health
+  - Assessing threats and prioritizing conservation interventions
+  - Tracing individual animal movements and behaviors
+  - Analyzing predator-prey relationships and ecosystem dynamics
+
+  Always provide accurate, data-driven responses. When making conservation
+  recommendations, cite specific population data, sighting trends, and threat
+  assessments from the knowledge graph.
+
+visualization:
+  node_colors:
+    Person: "#22c55e"
+    Organization: "#3b82f6"
+    Species: "#16a34a"
+    Individual: "#0d9488"
+    Sighting: "#f59e0b"
+    Habitat: "#65a30d"
+    Camera: "#6366f1"
+    Threat: "#dc2626"
+  node_sizes:
+    Person: 20
+    Organization: 25
+    Species: 30
+    Individual: 20
+    Sighting: 15
+    Habitat: 30
+    Camera: 15
+    Threat: 25
+  default_cypher: "MATCH (s:Species)<-[:BELONGS_TO_SPECIES]-(i:Individual)-[:SIGHTED_AT]->(sg:Sighting) RETURN s, i, sg LIMIT 100"

@@ -1,0 +1,69 @@
+---
+title: OpenClaw Overview
+description: Give your OpenClaw agents structured, persistent memory with the Memori plugin — auto-recall and auto-capture across every session.
+---
+
+# OpenClaw Overview
+
+By default, OpenClaw agents forget everything between sessions. The Memori plugin fixes that. It watches conversations, extracts what matters, and brings it back when relevant — automatically.
+
+## The Problem with OpenClaw's Built-In Memory
+
+OpenClaw ships with a basic memory layer, but it has fundamental limitations that break down at scale:
+
+| Limitation | What happens |
+| --- | --- |
+| **Flat markdown files** | Memory lives in plain text files with no structure or relationships. The agent reads and writes large chunks of text with no way to index, query, or deduplicate facts. |
+| **Context compaction** | As sessions grow longer, important details begin to disappear. Memory gets lost when context is compressed to stay within token limits. |
+| **No relationship reasoning** | OpenClaw retrieves semantically similar text, but cannot understand relationships between facts or connect them to each other. |
+| **Cross-project noise** | When working across multiple projects, memories are not isolated. Searches return irrelevant results from other contexts, polluting the agent's responses. |
+| **No user isolation** | Users do not have their own isolated memories. Memories bleed across users and data is mixed, creating privacy and relevance issues. |
+
+## What Changes When You Add Memori?
+
+The Memori plugin replaces OpenClaw's flat-file memory workflow with managed, structured memory that is scoped by `entity_id`, `process_id`, and `session_id` and enriched automatically through OpenClaw's existing hooks.
+
+### 1. Structured memory storage
+
+Instead of raw markdown blobs, Memori stores conversations, facts, preferences, and knowledge-graph triples as structured records tied to an entity, process, and session. Facts are extracted as subject-predicate-object relationships, deduplicated over time, and connected into a graph so related memories stay queryable instead of being buried in text files.
+
+### 2. Advanced Augmentation
+
+After each conversation, Memori processes the user and assistant exchange asynchronously in the background, identifies facts, preferences, skills, and attributes, generates embeddings for semantic search, and updates the knowledge graph without blocking the agent's response path.
+
+### 3. Intelligent Recall
+
+Before the agent responds, Memori searches the current entity's stored facts and knowledge graph, ranks memories by semantic relevance and importance, and injects the most useful context into the prompt so durable knowledge survives context-window compression.
+
+### 4. Production-ready observability
+
+Memori Cloud gives you dashboard visibility into memory creation, recalls, cache hit rate, sessions, quota usage, top subjects, per-memory retrieval metrics, and knowledge-graph relationships, so you can inspect what was stored and how recall is behaving in production.
+
+> The plugin still remains drop-in: OpenClaw handles the agent loop, while Memori adds recall, augmentation, sanitization, and observability around it.
+
+
+## How It Works
+
+The plugin hooks into two points in OpenClaw's event lifecycle:
+
+### 1. `before_prompt_build` — Intelligent Recall
+
+When a user sends a message, the plugin:
+
+1. Intercepts the event and extracts the user's prompt
+2. Sanitizes the prompt (strips metadata, timestamps, system messages)
+3. Queries the Memori API for relevant memories
+4. Prepends matching memories to the agent's system context
+
+The agent then responds with full awareness of prior context.
+
+### 2. `agent_end` — Advanced Augmentation
+
+After the agent finishes responding, the plugin:
+
+1. Extracts the last user and assistant messages
+2. Sanitizes both (removes thinking blocks, metadata fences, timestamps)
+3. Sends the cleaned exchange to the Memori API
+4. Memori extracts durable facts, updates stale ones, and merges duplicates
+
+This runs asynchronously and never blocks the agent's response.

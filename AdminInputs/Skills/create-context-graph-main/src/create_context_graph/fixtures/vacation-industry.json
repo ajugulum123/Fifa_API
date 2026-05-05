@@ -1,0 +1,2027 @@
+{
+  "domain": "vacation-industry",
+  "entities": {
+    "Person": [
+      {
+        "name": "Maria Gonzalez",
+        "email": "maria.gonzalez@oceanbreeze.com",
+        "role": "Resort Operations Manager",
+        "description": "Experienced hospitality professional with 12 years managing luxury beach resorts in the Caribbean"
+      },
+      {
+        "name": "James Patterson",
+        "email": "j.patterson@mountainpeaks.com",
+        "role": "Guest Experience Director",
+        "description": "Customer service expert specializing in creating memorable vacation experiences for families and couples"
+      },
+      {
+        "name": "Yuki Tanaka",
+        "email": "yuki.tanaka@sakuraresorts.jp",
+        "role": "Seasonal Operations Coordinator",
+        "description": "Logistics specialist managing seasonal staffing and operations for ski resorts across Japan"
+      },
+      {
+        "name": "Ahmed Hassan",
+        "email": "ahmed.hassan@desertdreams.ae",
+        "role": "Booking Manager",
+        "description": "Revenue optimization expert with expertise in yield management and distribution channel strategy"
+      },
+      {
+        "name": "Sophie Dubois",
+        "email": "sophie.dubois@alpineretreats.fr",
+        "role": "Activity Coordinator",
+        "description": "Adventure tourism specialist organizing mountain activities and cultural excursions in the French Alps"
+      }
+    ],
+    "Organization": [
+      {
+        "name": "Tropical Paradise Resorts International",
+        "description": "Global hospitality company operating luxury beach resorts across the Caribbean, Pacific, and Indian Ocean regions",
+        "industry": "Hospitality and Tourism"
+      },
+      {
+        "name": "Adventure Escapes Group",
+        "description": "Boutique resort operator specializing in eco-lodges and adventure tourism in remote natural locations",
+        "industry": "Eco-Tourism"
+      },
+      {
+        "name": "Crystal Mountain Resort Company",
+        "description": "Premier ski resort operator managing world-class winter destinations across North America and Europe",
+        "industry": "Ski and Winter Sports Tourism"
+      },
+      {
+        "name": "Serenity Spa & Wellness Retreats",
+        "description": "Luxury wellness resort chain focused on holistic health experiences and rejuvenation programs",
+        "industry": "Wellness Tourism"
+      },
+      {
+        "name": "Global Vacation Booking Solutions",
+        "description": "Technology platform providing reservation management and guest experience solutions for resort operators",
+        "industry": "Hospitality Technology"
+      }
+    ],
+    "Location": [
+      {
+        "name": "Maldives - Coral Atoll Resort Area",
+        "address": "North Mal\u00e9 Atoll, Maldives",
+        "latitude": 4.2753,
+        "longitude": 73.5093
+      },
+      {
+        "name": "Aspen Village Center",
+        "address": "601 E Dean St, Aspen, CO 81611, USA",
+        "latitude": 39.1911,
+        "longitude": -106.8175
+      },
+      {
+        "name": "Tuscany Wine Region",
+        "address": "Via Chiantigiana, 53011 Castellina in Chianti SI, Italy",
+        "latitude": 43.4642,
+        "longitude": 11.2895
+      },
+      {
+        "name": "Queenstown Adventure District",
+        "address": "Shotover St, Queenstown 9300, New Zealand",
+        "latitude": -45.0312,
+        "longitude": 168.6626
+      },
+      {
+        "name": "Cancun Hotel Zone",
+        "address": "Blvd. Kukulcan, Zona Hotelera, 77500 Canc\u00fan, Q.R., Mexico",
+        "latitude": 21.1619,
+        "longitude": -86.8515
+      }
+    ],
+    "Event": [
+      {
+        "name": "Caribbean Food & Wine Festival",
+        "date": "2024-03-15T18:00:00Z",
+        "description": "Annual culinary celebration featuring renowned chefs and local Caribbean cuisine with wine pairings"
+      },
+      {
+        "name": "Winter Ski Championship Opening",
+        "date": "2024-12-01T09:00:00Z",
+        "description": "Official opening ceremony for the winter ski season with competitions and festive activities"
+      },
+      {
+        "name": "Wellness Retreat Weekend",
+        "date": "2024-05-10T14:00:00Z",
+        "description": "Three-day mindfulness and yoga retreat featuring meditation workshops and spa treatments"
+      },
+      {
+        "name": "Family Adventure Camp",
+        "date": "2024-07-20T08:00:00Z",
+        "description": "Week-long family adventure program with hiking, water sports, and educational nature activities"
+      },
+      {
+        "name": "Sunset Music Concert Series",
+        "date": "2024-06-25T19:30:00Z",
+        "description": "Monthly outdoor concert series featuring local and international musicians against ocean sunset backdrop"
+      }
+    ],
+    "Object": [
+      {
+        "name": "Infinity Pool Deck",
+        "description": "Stunning infinity pool overlooking the ocean with integrated bar service and premium lounge seating"
+      },
+      {
+        "name": "Professional Spa Treatment Room",
+        "description": "Fully equipped massage and treatment room with ocean views and premium wellness amenities"
+      },
+      {
+        "name": "Adventure Sports Equipment Center",
+        "description": "Complete rental facility offering kayaks, snorkeling gear, mountain bikes, and climbing equipment"
+      },
+      {
+        "name": "Kids Adventure Playground",
+        "description": "Safe and engaging outdoor play area with climbing structures, slides, and supervised activity zones"
+      },
+      {
+        "name": "Private Beach Cabana",
+        "description": "Exclusive beachfront cabana with personal service, premium furnishing, and direct beach access"
+      }
+    ],
+    "Resort": [
+      {
+        "resort_id": "TPR-MAL-001",
+        "name": "Azure Waters Maldives",
+        "resort_type": "beach",
+        "location": "North Mal\u00e9 Atoll",
+        "country": "Maldives",
+        "star_rating": 5.0,
+        "total_rooms": 120,
+        "status": "open"
+      },
+      {
+        "resort_id": "CMS-ASP-002",
+        "name": "Crystal Peak Lodge",
+        "resort_type": "ski",
+        "location": "Aspen",
+        "country": "USA",
+        "star_rating": 4.5,
+        "total_rooms": 180,
+        "status": "seasonal_closed"
+      },
+      {
+        "resort_id": "SSW-TUS-003",
+        "name": "Serenity Hills Wellness Retreat",
+        "resort_type": "spa",
+        "location": "Tuscany",
+        "country": "Italy",
+        "star_rating": 4.8,
+        "total_rooms": 95,
+        "status": "open"
+      },
+      {
+        "resort_id": "AEG-QTN-004",
+        "name": "Adventure Bay Lodge",
+        "resort_type": "eco_lodge",
+        "location": "Queenstown",
+        "country": "New Zealand",
+        "star_rating": 4.2,
+        "total_rooms": 65,
+        "status": "open"
+      },
+      {
+        "resort_id": "TPR-CAN-005",
+        "name": "Tropical Paradise All-Inclusive",
+        "resort_type": "all_inclusive",
+        "location": "Cancun",
+        "country": "Mexico",
+        "star_rating": 4.6,
+        "total_rooms": 320,
+        "status": "open"
+      },
+      {
+        "resort_id": "GVS-MAU-006",
+        "name": "Emerald Golf & Spa Resort",
+        "resort_type": "golf",
+        "location": "Mauritius",
+        "country": "Mauritius",
+        "star_rating": 4.7,
+        "total_rooms": 150,
+        "status": "open"
+      },
+      {
+        "resort_id": "CMS-WIS-007",
+        "name": "Powder Mountain Ski Resort",
+        "resort_type": "ski",
+        "location": "Wisconsin Dells",
+        "country": "USA",
+        "star_rating": 4.0,
+        "total_rooms": 245,
+        "status": "renovation"
+      },
+      {
+        "resort_id": "OCN-CRU-008",
+        "name": "Royal Caribbean Dream",
+        "resort_type": "cruise",
+        "location": "Port of Miami",
+        "country": "USA",
+        "star_rating": 4.3,
+        "total_rooms": 1250,
+        "status": "open"
+      },
+      {
+        "resort_id": "ALP-SWI-009",
+        "name": "Alpine Peaks Mountain Resort",
+        "resort_type": "mountain",
+        "location": "Swiss Alps",
+        "country": "Switzerland",
+        "star_rating": 4.9,
+        "total_rooms": 110,
+        "status": "coming_soon"
+      },
+      {
+        "resort_id": "ECO-CRI-010",
+        "name": "Rainforest Canopy Lodge",
+        "resort_type": "eco_lodge",
+        "location": "Manuel Antonio",
+        "country": "Costa Rica",
+        "star_rating": 4.4,
+        "total_rooms": 42,
+        "status": "open"
+      }
+    ],
+    "Booking": [
+      {
+        "booking_id": "BK-2024-001578",
+        "check_in": "2024-03-15",
+        "check_out": "2024-03-22",
+        "total_cost": 4850.0,
+        "currency": "USD",
+        "booking_status": "confirmed",
+        "channel": "direct",
+        "name": "Booking 1"
+      },
+      {
+        "booking_id": "BK-2024-001579",
+        "check_in": "2024-06-10",
+        "check_out": "2024-06-17",
+        "total_cost": 3200.0,
+        "currency": "EUR",
+        "booking_status": "pending",
+        "channel": "ota",
+        "name": "Booking 2"
+      },
+      {
+        "booking_id": "BK-2024-001580",
+        "check_in": "2024-12-20",
+        "check_out": "2024-12-27",
+        "total_cost": 6750.0,
+        "currency": "USD",
+        "booking_status": "confirmed",
+        "channel": "travel_agent",
+        "name": "Booking 3"
+      },
+      {
+        "booking_id": "BK-2024-001581",
+        "check_in": "2024-02-14",
+        "check_out": "2024-02-18",
+        "total_cost": 2840.0,
+        "currency": "USD",
+        "booking_status": "completed",
+        "channel": "loyalty_program",
+        "name": "Booking 4"
+      },
+      {
+        "booking_id": "BK-2024-001582",
+        "check_in": "2024-07-05",
+        "check_out": "2024-07-12",
+        "total_cost": 5420.0,
+        "currency": "USD",
+        "booking_status": "cancelled",
+        "channel": "corporate",
+        "name": "Booking 5"
+      },
+      {
+        "booking_id": "BK-2024-001583",
+        "check_in": "2024-09-22",
+        "check_out": "2024-09-29",
+        "total_cost": 4180.0,
+        "currency": "USD",
+        "booking_status": "confirmed",
+        "channel": "direct",
+        "name": "Booking 6"
+      },
+      {
+        "booking_id": "BK-2024-001584",
+        "check_in": "2024-04-08",
+        "check_out": "2024-04-12",
+        "total_cost": 1950.0,
+        "currency": "USD",
+        "booking_status": "no_show",
+        "channel": "ota",
+        "name": "Booking 7"
+      },
+      {
+        "booking_id": "BK-2024-001585",
+        "check_in": "2024-11-15",
+        "check_out": "2024-11-20",
+        "total_cost": 3680.0,
+        "currency": "USD",
+        "booking_status": "confirmed",
+        "channel": "travel_agent",
+        "name": "Booking 8"
+      }
+    ],
+    "Guest": [
+      {
+        "guest_id": "GST-2024-00345",
+        "name": "Elena Rodriguez",
+        "email": "elena.rodriguez@email.com",
+        "loyalty_tier": "platinum",
+        "nationality": "Spain",
+        "travel_style": "luxury"
+      },
+      {
+        "guest_id": "GST-2024-00346",
+        "name": "David Kim",
+        "email": "d.kim.travel@gmail.com",
+        "loyalty_tier": "gold",
+        "nationality": "South Korea",
+        "travel_style": "adventure"
+      },
+      {
+        "guest_id": "GST-2024-00347",
+        "name": "Sarah Thompson",
+        "email": "sarah.thompson.family@outlook.com",
+        "loyalty_tier": "silver",
+        "nationality": "Canada",
+        "travel_style": "family"
+      },
+      {
+        "guest_id": "GST-2024-00348",
+        "name": "Marco Silva",
+        "email": "marco.silva@hotmail.com",
+        "loyalty_tier": "diamond",
+        "nationality": "Brazil",
+        "travel_style": "romantic"
+      },
+      {
+        "guest_id": "GST-2024-00349",
+        "name": "Lisa Chen",
+        "email": "lisa.chen.wellness@yahoo.com",
+        "loyalty_tier": "standard",
+        "nationality": "Australia",
+        "travel_style": "wellness"
+      },
+      {
+        "guest_id": "GST-2024-00350",
+        "name": "Ahmed Al-Mansouri",
+        "email": "ahmed.almansouri@emirates.net.ae",
+        "loyalty_tier": "gold",
+        "nationality": "UAE",
+        "travel_style": "luxury"
+      },
+      {
+        "guest_id": "GST-2024-00351",
+        "name": "Jennifer Williams",
+        "email": "jwilliams.budget@gmail.com",
+        "loyalty_tier": "standard",
+        "nationality": "USA",
+        "travel_style": "budget"
+      },
+      {
+        "guest_id": "GST-2024-00352",
+        "name": "Hans Mueller",
+        "email": "h.mueller@gmx.de",
+        "loyalty_tier": "silver",
+        "nationality": "Germany",
+        "travel_style": "adventure"
+      },
+      {
+        "guest_id": "GST-2024-00353",
+        "name": "Priya Patel",
+        "email": "priya.patel.family@rediffmail.com",
+        "loyalty_tier": "platinum",
+        "nationality": "India",
+        "travel_style": "family"
+      },
+      {
+        "guest_id": "GST-2024-00354",
+        "name": "Jean Dubois",
+        "email": "jean.dubois@laposte.net",
+        "loyalty_tier": "gold",
+        "nationality": "France",
+        "travel_style": "romantic"
+      }
+    ],
+    "Activity": [
+      {
+        "activity_id": "ACT-2024-WS001",
+        "name": "Snorkeling Adventure Tour",
+        "activity_type": "water_sport",
+        "duration_hours": 3.0,
+        "price": 85.0,
+        "difficulty": "easy",
+        "min_age": 8
+      },
+      {
+        "activity_id": "ACT-2024-EX002",
+        "name": "Volcano Hiking Expedition",
+        "activity_type": "excursion",
+        "duration_hours": 8.0,
+        "price": 165.0,
+        "difficulty": "challenging",
+        "min_age": 14
+      },
+      {
+        "activity_id": "ACT-2024-SP003",
+        "name": "Couples Massage Retreat",
+        "activity_type": "spa",
+        "duration_hours": 2.0,
+        "price": 280.0,
+        "difficulty": "easy",
+        "min_age": 18
+      },
+      {
+        "activity_id": "ACT-2024-DI004",
+        "name": "Chef's Table Experience",
+        "activity_type": "dining",
+        "duration_hours": 3.5,
+        "price": 195.0,
+        "difficulty": "easy",
+        "min_age": 12
+      },
+      {
+        "activity_id": "ACT-2024-EN005",
+        "name": "Traditional Dance Show",
+        "activity_type": "entertainment",
+        "duration_hours": 1.5,
+        "price": 45.0,
+        "difficulty": "easy",
+        "min_age": 0
+      },
+      {
+        "activity_id": "ACT-2024-FT006",
+        "name": "Beach Yoga Session",
+        "activity_type": "fitness",
+        "duration_hours": 1.0,
+        "price": 35.0,
+        "difficulty": "moderate",
+        "min_age": 16
+      },
+      {
+        "activity_id": "ACT-2024-KD007",
+        "name": "Treasure Hunt Adventure",
+        "activity_type": "kids",
+        "duration_hours": 2.0,
+        "price": 25.0,
+        "difficulty": "easy",
+        "min_age": 5
+      },
+      {
+        "activity_id": "ACT-2024-CU008",
+        "name": "Local Village Cultural Tour",
+        "activity_type": "cultural",
+        "duration_hours": 4.0,
+        "price": 75.0,
+        "difficulty": "moderate",
+        "min_age": 10
+      },
+      {
+        "activity_id": "ACT-2024-WS009",
+        "name": "Deep Sea Fishing Charter",
+        "activity_type": "water_sport",
+        "duration_hours": 6.0,
+        "price": 220.0,
+        "difficulty": "moderate",
+        "min_age": 12
+      },
+      {
+        "activity_id": "ACT-2024-EX010",
+        "name": "Zip Line Canopy Tour",
+        "activity_type": "excursion",
+        "duration_hours": 4.0,
+        "price": 125.0,
+        "difficulty": "moderate",
+        "min_age": 10
+      }
+    ],
+    "Season": [
+      {
+        "season_id": "SN-2024-PK001",
+        "name": "Caribbean Peak Season",
+        "season_type": "peak",
+        "start_date": "2024-12-15",
+        "end_date": "2025-04-15",
+        "rate_multiplier": 1.8,
+        "avg_occupancy": 0.95
+      },
+      {
+        "season_id": "SN-2024-HG002",
+        "name": "Summer High Season",
+        "season_type": "high",
+        "start_date": "2024-06-01",
+        "end_date": "2024-08-31",
+        "rate_multiplier": 1.4,
+        "avg_occupancy": 0.88
+      },
+      {
+        "season_id": "SN-2024-SH003",
+        "name": "Spring Shoulder Season",
+        "season_type": "shoulder",
+        "start_date": "2024-04-16",
+        "end_date": "2024-05-31",
+        "rate_multiplier": 1.1,
+        "avg_occupancy": 0.72
+      },
+      {
+        "season_id": "SN-2024-LW004",
+        "name": "Off Season Low",
+        "season_type": "low",
+        "start_date": "2024-09-01",
+        "end_date": "2024-11-15",
+        "rate_multiplier": 0.8,
+        "avg_occupancy": 0.55
+      },
+      {
+        "season_id": "SN-2024-HL005",
+        "name": "Winter Holiday Season",
+        "season_type": "holiday",
+        "start_date": "2024-12-20",
+        "end_date": "2025-01-05",
+        "rate_multiplier": 2.2,
+        "avg_occupancy": 0.98
+      },
+      {
+        "season_id": "SN-2024-SK006",
+        "name": "Ski Season Peak",
+        "season_type": "peak",
+        "start_date": "2024-12-01",
+        "end_date": "2025-03-31",
+        "rate_multiplier": 1.9,
+        "avg_occupancy": 0.92
+      },
+      {
+        "season_id": "SN-2024-SP007",
+        "name": "Spring Break Season",
+        "season_type": "holiday",
+        "start_date": "2024-03-01",
+        "end_date": "2024-04-30",
+        "rate_multiplier": 1.6,
+        "avg_occupancy": 0.89
+      },
+      {
+        "season_id": "SN-2024-FL008",
+        "name": "Fall Foliage Season",
+        "season_type": "shoulder",
+        "start_date": "2024-09-15",
+        "end_date": "2024-11-30",
+        "rate_multiplier": 1.3,
+        "avg_occupancy": 0.75
+      },
+      {
+        "season_id": "SN-2024-SM009",
+        "name": "Summer Mountain Season",
+        "season_type": "high",
+        "start_date": "2024-05-15",
+        "end_date": "2024-09-15",
+        "rate_multiplier": 1.5,
+        "avg_occupancy": 0.85
+      },
+      {
+        "season_id": "SN-2024-MN010",
+        "name": "Monsoon Low Season",
+        "season_type": "low",
+        "start_date": "2024-06-15",
+        "end_date": "2024-09-30",
+        "rate_multiplier": 0.6,
+        "avg_occupancy": 0.42
+      }
+    ],
+    "Package": [
+      {
+        "package_id": "PKG-2024-HM001",
+        "name": "Romantic Paradise Honeymoon",
+        "package_type": "honeymoon",
+        "base_price": 3850.0,
+        "duration_nights": 7,
+        "max_guests": 2,
+        "description": "Ultimate romantic escape with oceanview suite, couples spa treatments, private dining, and sunset cruise"
+      },
+      {
+        "package_id": "PKG-2024-FM002",
+        "name": "Family Fun Adventure Package",
+        "package_type": "family",
+        "base_price": 4200.0,
+        "duration_nights": 6,
+        "max_guests": 6,
+        "description": "Action-packed family vacation with kids club activities, water sports, cultural tours, and family dining experiences"
+      },
+      {
+        "package_id": "PKG-2024-AD003",
+        "name": "Ultimate Adventure Seeker",
+        "package_type": "adventure",
+        "base_price": 2750.0,
+        "duration_nights": 5,
+        "max_guests": 4,
+        "description": "Thrilling adventure package including volcano hiking, zip lining, deep sea fishing, and guided excursions"
+      },
+      {
+        "package_id": "PKG-2024-WL004",
+        "name": "Mindful Wellness Retreat",
+        "package_type": "wellness",
+        "base_price": 3200.0,
+        "duration_nights": 6,
+        "max_guests": 2,
+        "description": "Holistic wellness experience with spa treatments, yoga sessions, meditation workshops, and healthy cuisine"
+      },
+      {
+        "package_id": "PKG-2024-AI005",
+        "name": "Tropical All-Inclusive Escape",
+        "package_type": "all_inclusive",
+        "base_price": 2900.0,
+        "duration_nights": 7,
+        "max_guests": 4,
+        "description": "Hassle-free vacation with all meals, drinks, activities, and entertainment included in tropical paradise"
+      },
+      {
+        "package_id": "PKG-2024-WE006",
+        "name": "Weekend Mountain Getaway",
+        "package_type": "weekend_getaway",
+        "base_price": 950.0,
+        "duration_nights": 2,
+        "max_guests": 2,
+        "description": "Perfect short escape with mountain lodge accommodation, spa access, and scenic hiking trails"
+      },
+      {
+        "package_id": "PKG-2024-LX007",
+        "name": "Presidential Suite Luxury Experience",
+        "package_type": "luxury",
+        "base_price": 8500.0,
+        "duration_nights": 5,
+        "max_guests": 4,
+        "description": "Ultra-luxurious experience with presidential suite, personal butler, private yacht charter, and gourmet dining"
+      },
+      {
+        "package_id": "PKG-2024-HM008",
+        "name": "Secluded Island Honeymoon",
+        "package_type": "honeymoon",
+        "base_price": 5200.0,
+        "duration_nights": 8,
+        "max_guests": 2,
+        "description": "Private overwater villa experience with exclusive beach access, personal service, and romantic amenities"
+      },
+      {
+        "package_id": "PKG-2024-FM009",
+        "name": "Multi-Generation Family Reunion",
+        "package_type": "family",
+        "base_price": 6800.0,
+        "duration_nights": 7,
+        "max_guests": 12,
+        "description": "Large family package with connecting suites, group activities, private dining spaces, and childcare services"
+      },
+      {
+        "package_id": "PKG-2024-WL010",
+        "name": "Detox & Renewal Program",
+        "package_type": "wellness",
+        "base_price": 4100.0,
+        "duration_nights": 10,
+        "max_guests": 2,
+        "description": "Comprehensive wellness program with detox treatments, fitness training, nutritional counseling, and spa therapies"
+      }
+    ]
+  },
+  "relationships": [
+    {
+      "type": "WORKS_FOR",
+      "source_label": "Person",
+      "source_name": "Maria Gonzalez",
+      "target_label": "Organization",
+      "target_name": "Adventure Escapes Group"
+    },
+    {
+      "type": "WORKS_FOR",
+      "source_label": "Person",
+      "source_name": "Maria Gonzalez",
+      "target_label": "Organization",
+      "target_name": "Global Vacation Booking Solutions"
+    },
+    {
+      "type": "WORKS_FOR",
+      "source_label": "Person",
+      "source_name": "Maria Gonzalez",
+      "target_label": "Organization",
+      "target_name": "Tropical Paradise Resorts International"
+    },
+    {
+      "type": "WORKS_FOR",
+      "source_label": "Person",
+      "source_name": "James Patterson",
+      "target_label": "Organization",
+      "target_name": "Global Vacation Booking Solutions"
+    },
+    {
+      "type": "WORKS_FOR",
+      "source_label": "Person",
+      "source_name": "Yuki Tanaka",
+      "target_label": "Organization",
+      "target_name": "Serenity Spa & Wellness Retreats"
+    },
+    {
+      "type": "WORKS_FOR",
+      "source_label": "Person",
+      "source_name": "Yuki Tanaka",
+      "target_label": "Organization",
+      "target_name": "Adventure Escapes Group"
+    },
+    {
+      "type": "WORKS_FOR",
+      "source_label": "Person",
+      "source_name": "Ahmed Hassan",
+      "target_label": "Organization",
+      "target_name": "Crystal Mountain Resort Company"
+    },
+    {
+      "type": "WORKS_FOR",
+      "source_label": "Person",
+      "source_name": "Sophie Dubois",
+      "target_label": "Organization",
+      "target_name": "Tropical Paradise Resorts International"
+    },
+    {
+      "type": "LOCATED_AT",
+      "source_label": "Organization",
+      "source_name": "Tropical Paradise Resorts International",
+      "target_label": "Location",
+      "target_name": "Aspen Village Center"
+    },
+    {
+      "type": "LOCATED_AT",
+      "source_label": "Organization",
+      "source_name": "Adventure Escapes Group",
+      "target_label": "Location",
+      "target_name": "Tuscany Wine Region"
+    },
+    {
+      "type": "LOCATED_AT",
+      "source_label": "Organization",
+      "source_name": "Crystal Mountain Resort Company",
+      "target_label": "Location",
+      "target_name": "Cancun Hotel Zone"
+    },
+    {
+      "type": "LOCATED_AT",
+      "source_label": "Organization",
+      "source_name": "Crystal Mountain Resort Company",
+      "target_label": "Location",
+      "target_name": "Maldives - Coral Atoll Resort Area"
+    },
+    {
+      "type": "LOCATED_AT",
+      "source_label": "Organization",
+      "source_name": "Serenity Spa & Wellness Retreats",
+      "target_label": "Location",
+      "target_name": "Cancun Hotel Zone"
+    },
+    {
+      "type": "LOCATED_AT",
+      "source_label": "Organization",
+      "source_name": "Serenity Spa & Wellness Retreats",
+      "target_label": "Location",
+      "target_name": "Queenstown Adventure District"
+    },
+    {
+      "type": "LOCATED_AT",
+      "source_label": "Organization",
+      "source_name": "Global Vacation Booking Solutions",
+      "target_label": "Location",
+      "target_name": "Tuscany Wine Region"
+    },
+    {
+      "type": "BOOKED_AT",
+      "source_label": "Booking",
+      "source_name": "Booking 1",
+      "target_label": "Resort",
+      "target_name": "Tropical Paradise All-Inclusive"
+    },
+    {
+      "type": "BOOKED_AT",
+      "source_label": "Booking",
+      "source_name": "Booking 2",
+      "target_label": "Resort",
+      "target_name": "Azure Waters Maldives"
+    },
+    {
+      "type": "BOOKED_AT",
+      "source_label": "Booking",
+      "source_name": "Booking 2",
+      "target_label": "Resort",
+      "target_name": "Serenity Hills Wellness Retreat"
+    },
+    {
+      "type": "BOOKED_AT",
+      "source_label": "Booking",
+      "source_name": "Booking 2",
+      "target_label": "Resort",
+      "target_name": "Powder Mountain Ski Resort"
+    },
+    {
+      "type": "BOOKED_AT",
+      "source_label": "Booking",
+      "source_name": "Booking 3",
+      "target_label": "Resort",
+      "target_name": "Adventure Bay Lodge"
+    },
+    {
+      "type": "BOOKED_AT",
+      "source_label": "Booking",
+      "source_name": "Booking 4",
+      "target_label": "Resort",
+      "target_name": "Alpine Peaks Mountain Resort"
+    },
+    {
+      "type": "BOOKED_AT",
+      "source_label": "Booking",
+      "source_name": "Booking 5",
+      "target_label": "Resort",
+      "target_name": "Powder Mountain Ski Resort"
+    },
+    {
+      "type": "BOOKED_AT",
+      "source_label": "Booking",
+      "source_name": "Booking 5",
+      "target_label": "Resort",
+      "target_name": "Emerald Golf & Spa Resort"
+    },
+    {
+      "type": "BOOKED_AT",
+      "source_label": "Booking",
+      "source_name": "Booking 6",
+      "target_label": "Resort",
+      "target_name": "Crystal Peak Lodge"
+    },
+    {
+      "type": "BOOKED_AT",
+      "source_label": "Booking",
+      "source_name": "Booking 7",
+      "target_label": "Resort",
+      "target_name": "Tropical Paradise All-Inclusive"
+    },
+    {
+      "type": "BOOKED_AT",
+      "source_label": "Booking",
+      "source_name": "Booking 8",
+      "target_label": "Resort",
+      "target_name": "Crystal Peak Lodge"
+    },
+    {
+      "type": "BOOKED_AT",
+      "source_label": "Booking",
+      "source_name": "Booking 8",
+      "target_label": "Resort",
+      "target_name": "Adventure Bay Lodge"
+    },
+    {
+      "type": "BOOKED_AT",
+      "source_label": "Booking",
+      "source_name": "Booking 8",
+      "target_label": "Resort",
+      "target_name": "Royal Caribbean Dream"
+    },
+    {
+      "type": "REVIEWED",
+      "source_label": "Guest",
+      "source_name": "Elena Rodriguez",
+      "target_label": "Resort",
+      "target_name": "Tropical Paradise All-Inclusive"
+    },
+    {
+      "type": "REVIEWED",
+      "source_label": "Guest",
+      "source_name": "Elena Rodriguez",
+      "target_label": "Resort",
+      "target_name": "Alpine Peaks Mountain Resort"
+    },
+    {
+      "type": "REVIEWED",
+      "source_label": "Guest",
+      "source_name": "Elena Rodriguez",
+      "target_label": "Resort",
+      "target_name": "Royal Caribbean Dream"
+    },
+    {
+      "type": "REVIEWED",
+      "source_label": "Guest",
+      "source_name": "David Kim",
+      "target_label": "Resort",
+      "target_name": "Royal Caribbean Dream"
+    },
+    {
+      "type": "REVIEWED",
+      "source_label": "Guest",
+      "source_name": "Sarah Thompson",
+      "target_label": "Resort",
+      "target_name": "Adventure Bay Lodge"
+    },
+    {
+      "type": "REVIEWED",
+      "source_label": "Guest",
+      "source_name": "Sarah Thompson",
+      "target_label": "Resort",
+      "target_name": "Royal Caribbean Dream"
+    },
+    {
+      "type": "REVIEWED",
+      "source_label": "Guest",
+      "source_name": "Marco Silva",
+      "target_label": "Resort",
+      "target_name": "Royal Caribbean Dream"
+    },
+    {
+      "type": "REVIEWED",
+      "source_label": "Guest",
+      "source_name": "Marco Silva",
+      "target_label": "Resort",
+      "target_name": "Tropical Paradise All-Inclusive"
+    },
+    {
+      "type": "REVIEWED",
+      "source_label": "Guest",
+      "source_name": "Lisa Chen",
+      "target_label": "Resort",
+      "target_name": "Rainforest Canopy Lodge"
+    },
+    {
+      "type": "REVIEWED",
+      "source_label": "Guest",
+      "source_name": "Lisa Chen",
+      "target_label": "Resort",
+      "target_name": "Emerald Golf & Spa Resort"
+    },
+    {
+      "type": "REVIEWED",
+      "source_label": "Guest",
+      "source_name": "Lisa Chen",
+      "target_label": "Resort",
+      "target_name": "Royal Caribbean Dream"
+    },
+    {
+      "type": "REVIEWED",
+      "source_label": "Guest",
+      "source_name": "Ahmed Al-Mansouri",
+      "target_label": "Resort",
+      "target_name": "Tropical Paradise All-Inclusive"
+    },
+    {
+      "type": "REVIEWED",
+      "source_label": "Guest",
+      "source_name": "Ahmed Al-Mansouri",
+      "target_label": "Resort",
+      "target_name": "Adventure Bay Lodge"
+    },
+    {
+      "type": "REVIEWED",
+      "source_label": "Guest",
+      "source_name": "Ahmed Al-Mansouri",
+      "target_label": "Resort",
+      "target_name": "Azure Waters Maldives"
+    },
+    {
+      "type": "REVIEWED",
+      "source_label": "Guest",
+      "source_name": "Jennifer Williams",
+      "target_label": "Resort",
+      "target_name": "Adventure Bay Lodge"
+    },
+    {
+      "type": "REVIEWED",
+      "source_label": "Guest",
+      "source_name": "Hans Mueller",
+      "target_label": "Resort",
+      "target_name": "Royal Caribbean Dream"
+    },
+    {
+      "type": "REVIEWED",
+      "source_label": "Guest",
+      "source_name": "Priya Patel",
+      "target_label": "Resort",
+      "target_name": "Royal Caribbean Dream"
+    },
+    {
+      "type": "REVIEWED",
+      "source_label": "Guest",
+      "source_name": "Jean Dubois",
+      "target_label": "Resort",
+      "target_name": "Serenity Hills Wellness Retreat"
+    },
+    {
+      "type": "REVIEWED",
+      "source_label": "Guest",
+      "source_name": "Jean Dubois",
+      "target_label": "Resort",
+      "target_name": "Royal Caribbean Dream"
+    },
+    {
+      "type": "PARTICIPATED_IN",
+      "source_label": "Guest",
+      "source_name": "Elena Rodriguez",
+      "target_label": "Activity",
+      "target_name": "Treasure Hunt Adventure"
+    },
+    {
+      "type": "PARTICIPATED_IN",
+      "source_label": "Guest",
+      "source_name": "Elena Rodriguez",
+      "target_label": "Activity",
+      "target_name": "Volcano Hiking Expedition"
+    },
+    {
+      "type": "PARTICIPATED_IN",
+      "source_label": "Guest",
+      "source_name": "Elena Rodriguez",
+      "target_label": "Activity",
+      "target_name": "Traditional Dance Show"
+    },
+    {
+      "type": "PARTICIPATED_IN",
+      "source_label": "Guest",
+      "source_name": "David Kim",
+      "target_label": "Activity",
+      "target_name": "Chef's Table Experience"
+    },
+    {
+      "type": "PARTICIPATED_IN",
+      "source_label": "Guest",
+      "source_name": "Sarah Thompson",
+      "target_label": "Activity",
+      "target_name": "Couples Massage Retreat"
+    },
+    {
+      "type": "PARTICIPATED_IN",
+      "source_label": "Guest",
+      "source_name": "Sarah Thompson",
+      "target_label": "Activity",
+      "target_name": "Treasure Hunt Adventure"
+    },
+    {
+      "type": "PARTICIPATED_IN",
+      "source_label": "Guest",
+      "source_name": "Sarah Thompson",
+      "target_label": "Activity",
+      "target_name": "Beach Yoga Session"
+    },
+    {
+      "type": "PARTICIPATED_IN",
+      "source_label": "Guest",
+      "source_name": "Marco Silva",
+      "target_label": "Activity",
+      "target_name": "Beach Yoga Session"
+    },
+    {
+      "type": "PARTICIPATED_IN",
+      "source_label": "Guest",
+      "source_name": "Lisa Chen",
+      "target_label": "Activity",
+      "target_name": "Chef's Table Experience"
+    },
+    {
+      "type": "PARTICIPATED_IN",
+      "source_label": "Guest",
+      "source_name": "Ahmed Al-Mansouri",
+      "target_label": "Activity",
+      "target_name": "Treasure Hunt Adventure"
+    },
+    {
+      "type": "PARTICIPATED_IN",
+      "source_label": "Guest",
+      "source_name": "Ahmed Al-Mansouri",
+      "target_label": "Activity",
+      "target_name": "Couples Massage Retreat"
+    },
+    {
+      "type": "PARTICIPATED_IN",
+      "source_label": "Guest",
+      "source_name": "Jennifer Williams",
+      "target_label": "Activity",
+      "target_name": "Snorkeling Adventure Tour"
+    },
+    {
+      "type": "PARTICIPATED_IN",
+      "source_label": "Guest",
+      "source_name": "Jennifer Williams",
+      "target_label": "Activity",
+      "target_name": "Local Village Cultural Tour"
+    },
+    {
+      "type": "PARTICIPATED_IN",
+      "source_label": "Guest",
+      "source_name": "Jennifer Williams",
+      "target_label": "Activity",
+      "target_name": "Deep Sea Fishing Charter"
+    },
+    {
+      "type": "PARTICIPATED_IN",
+      "source_label": "Guest",
+      "source_name": "Hans Mueller",
+      "target_label": "Activity",
+      "target_name": "Local Village Cultural Tour"
+    },
+    {
+      "type": "PARTICIPATED_IN",
+      "source_label": "Guest",
+      "source_name": "Hans Mueller",
+      "target_label": "Activity",
+      "target_name": "Deep Sea Fishing Charter"
+    },
+    {
+      "type": "PARTICIPATED_IN",
+      "source_label": "Guest",
+      "source_name": "Hans Mueller",
+      "target_label": "Activity",
+      "target_name": "Volcano Hiking Expedition"
+    },
+    {
+      "type": "PARTICIPATED_IN",
+      "source_label": "Guest",
+      "source_name": "Priya Patel",
+      "target_label": "Activity",
+      "target_name": "Beach Yoga Session"
+    },
+    {
+      "type": "PARTICIPATED_IN",
+      "source_label": "Guest",
+      "source_name": "Priya Patel",
+      "target_label": "Activity",
+      "target_name": "Traditional Dance Show"
+    },
+    {
+      "type": "PARTICIPATED_IN",
+      "source_label": "Guest",
+      "source_name": "Priya Patel",
+      "target_label": "Activity",
+      "target_name": "Couples Massage Retreat"
+    },
+    {
+      "type": "PARTICIPATED_IN",
+      "source_label": "Guest",
+      "source_name": "Jean Dubois",
+      "target_label": "Activity",
+      "target_name": "Traditional Dance Show"
+    },
+    {
+      "type": "PARTICIPATED_IN",
+      "source_label": "Guest",
+      "source_name": "Jean Dubois",
+      "target_label": "Activity",
+      "target_name": "Volcano Hiking Expedition"
+    },
+    {
+      "type": "AVAILABLE_IN",
+      "source_label": "Activity",
+      "source_name": "Snorkeling Adventure Tour",
+      "target_label": "Season",
+      "target_name": "Summer High Season"
+    },
+    {
+      "type": "AVAILABLE_IN",
+      "source_label": "Activity",
+      "source_name": "Snorkeling Adventure Tour",
+      "target_label": "Season",
+      "target_name": "Summer Mountain Season"
+    },
+    {
+      "type": "AVAILABLE_IN",
+      "source_label": "Activity",
+      "source_name": "Volcano Hiking Expedition",
+      "target_label": "Season",
+      "target_name": "Off Season Low"
+    },
+    {
+      "type": "AVAILABLE_IN",
+      "source_label": "Activity",
+      "source_name": "Volcano Hiking Expedition",
+      "target_label": "Season",
+      "target_name": "Caribbean Peak Season"
+    },
+    {
+      "type": "AVAILABLE_IN",
+      "source_label": "Activity",
+      "source_name": "Volcano Hiking Expedition",
+      "target_label": "Season",
+      "target_name": "Spring Shoulder Season"
+    },
+    {
+      "type": "AVAILABLE_IN",
+      "source_label": "Activity",
+      "source_name": "Couples Massage Retreat",
+      "target_label": "Season",
+      "target_name": "Summer High Season"
+    },
+    {
+      "type": "AVAILABLE_IN",
+      "source_label": "Activity",
+      "source_name": "Couples Massage Retreat",
+      "target_label": "Season",
+      "target_name": "Fall Foliage Season"
+    },
+    {
+      "type": "AVAILABLE_IN",
+      "source_label": "Activity",
+      "source_name": "Chef's Table Experience",
+      "target_label": "Season",
+      "target_name": "Caribbean Peak Season"
+    },
+    {
+      "type": "AVAILABLE_IN",
+      "source_label": "Activity",
+      "source_name": "Chef's Table Experience",
+      "target_label": "Season",
+      "target_name": "Summer High Season"
+    },
+    {
+      "type": "AVAILABLE_IN",
+      "source_label": "Activity",
+      "source_name": "Chef's Table Experience",
+      "target_label": "Season",
+      "target_name": "Winter Holiday Season"
+    },
+    {
+      "type": "AVAILABLE_IN",
+      "source_label": "Activity",
+      "source_name": "Traditional Dance Show",
+      "target_label": "Season",
+      "target_name": "Summer High Season"
+    },
+    {
+      "type": "AVAILABLE_IN",
+      "source_label": "Activity",
+      "source_name": "Traditional Dance Show",
+      "target_label": "Season",
+      "target_name": "Spring Break Season"
+    },
+    {
+      "type": "AVAILABLE_IN",
+      "source_label": "Activity",
+      "source_name": "Beach Yoga Session",
+      "target_label": "Season",
+      "target_name": "Spring Break Season"
+    },
+    {
+      "type": "AVAILABLE_IN",
+      "source_label": "Activity",
+      "source_name": "Beach Yoga Session",
+      "target_label": "Season",
+      "target_name": "Monsoon Low Season"
+    },
+    {
+      "type": "AVAILABLE_IN",
+      "source_label": "Activity",
+      "source_name": "Beach Yoga Session",
+      "target_label": "Season",
+      "target_name": "Winter Holiday Season"
+    },
+    {
+      "type": "AVAILABLE_IN",
+      "source_label": "Activity",
+      "source_name": "Treasure Hunt Adventure",
+      "target_label": "Season",
+      "target_name": "Spring Break Season"
+    },
+    {
+      "type": "AVAILABLE_IN",
+      "source_label": "Activity",
+      "source_name": "Treasure Hunt Adventure",
+      "target_label": "Season",
+      "target_name": "Winter Holiday Season"
+    },
+    {
+      "type": "AVAILABLE_IN",
+      "source_label": "Activity",
+      "source_name": "Local Village Cultural Tour",
+      "target_label": "Season",
+      "target_name": "Off Season Low"
+    },
+    {
+      "type": "AVAILABLE_IN",
+      "source_label": "Activity",
+      "source_name": "Deep Sea Fishing Charter",
+      "target_label": "Season",
+      "target_name": "Monsoon Low Season"
+    },
+    {
+      "type": "AVAILABLE_IN",
+      "source_label": "Activity",
+      "source_name": "Deep Sea Fishing Charter",
+      "target_label": "Season",
+      "target_name": "Winter Holiday Season"
+    },
+    {
+      "type": "AVAILABLE_IN",
+      "source_label": "Activity",
+      "source_name": "Zip Line Canopy Tour",
+      "target_label": "Season",
+      "target_name": "Winter Holiday Season"
+    },
+    {
+      "type": "AVAILABLE_IN",
+      "source_label": "Activity",
+      "source_name": "Zip Line Canopy Tour",
+      "target_label": "Season",
+      "target_name": "Off Season Low"
+    },
+    {
+      "type": "INCLUDES",
+      "source_label": "Package",
+      "source_name": "Romantic Paradise Honeymoon",
+      "target_label": "Activity",
+      "target_name": "Deep Sea Fishing Charter"
+    },
+    {
+      "type": "INCLUDES",
+      "source_label": "Package",
+      "source_name": "Romantic Paradise Honeymoon",
+      "target_label": "Activity",
+      "target_name": "Volcano Hiking Expedition"
+    },
+    {
+      "type": "INCLUDES",
+      "source_label": "Package",
+      "source_name": "Romantic Paradise Honeymoon",
+      "target_label": "Activity",
+      "target_name": "Couples Massage Retreat"
+    },
+    {
+      "type": "INCLUDES",
+      "source_label": "Package",
+      "source_name": "Family Fun Adventure Package",
+      "target_label": "Activity",
+      "target_name": "Deep Sea Fishing Charter"
+    },
+    {
+      "type": "INCLUDES",
+      "source_label": "Package",
+      "source_name": "Family Fun Adventure Package",
+      "target_label": "Activity",
+      "target_name": "Couples Massage Retreat"
+    },
+    {
+      "type": "INCLUDES",
+      "source_label": "Package",
+      "source_name": "Family Fun Adventure Package",
+      "target_label": "Activity",
+      "target_name": "Local Village Cultural Tour"
+    },
+    {
+      "type": "INCLUDES",
+      "source_label": "Package",
+      "source_name": "Ultimate Adventure Seeker",
+      "target_label": "Activity",
+      "target_name": "Snorkeling Adventure Tour"
+    },
+    {
+      "type": "INCLUDES",
+      "source_label": "Package",
+      "source_name": "Mindful Wellness Retreat",
+      "target_label": "Activity",
+      "target_name": "Treasure Hunt Adventure"
+    },
+    {
+      "type": "INCLUDES",
+      "source_label": "Package",
+      "source_name": "Tropical All-Inclusive Escape",
+      "target_label": "Activity",
+      "target_name": "Zip Line Canopy Tour"
+    },
+    {
+      "type": "INCLUDES",
+      "source_label": "Package",
+      "source_name": "Tropical All-Inclusive Escape",
+      "target_label": "Activity",
+      "target_name": "Local Village Cultural Tour"
+    },
+    {
+      "type": "INCLUDES",
+      "source_label": "Package",
+      "source_name": "Weekend Mountain Getaway",
+      "target_label": "Activity",
+      "target_name": "Zip Line Canopy Tour"
+    },
+    {
+      "type": "INCLUDES",
+      "source_label": "Package",
+      "source_name": "Presidential Suite Luxury Experience",
+      "target_label": "Activity",
+      "target_name": "Snorkeling Adventure Tour"
+    },
+    {
+      "type": "INCLUDES",
+      "source_label": "Package",
+      "source_name": "Presidential Suite Luxury Experience",
+      "target_label": "Activity",
+      "target_name": "Local Village Cultural Tour"
+    },
+    {
+      "type": "INCLUDES",
+      "source_label": "Package",
+      "source_name": "Secluded Island Honeymoon",
+      "target_label": "Activity",
+      "target_name": "Local Village Cultural Tour"
+    },
+    {
+      "type": "INCLUDES",
+      "source_label": "Package",
+      "source_name": "Multi-Generation Family Reunion",
+      "target_label": "Activity",
+      "target_name": "Chef's Table Experience"
+    },
+    {
+      "type": "INCLUDES",
+      "source_label": "Package",
+      "source_name": "Multi-Generation Family Reunion",
+      "target_label": "Activity",
+      "target_name": "Deep Sea Fishing Charter"
+    },
+    {
+      "type": "INCLUDES",
+      "source_label": "Package",
+      "source_name": "Detox & Renewal Program",
+      "target_label": "Activity",
+      "target_name": "Snorkeling Adventure Tour"
+    },
+    {
+      "type": "PREFERRED_BY",
+      "source_label": "Package",
+      "source_name": "Romantic Paradise Honeymoon",
+      "target_label": "Guest",
+      "target_name": "Priya Patel"
+    },
+    {
+      "type": "PREFERRED_BY",
+      "source_label": "Package",
+      "source_name": "Romantic Paradise Honeymoon",
+      "target_label": "Guest",
+      "target_name": "Hans Mueller"
+    },
+    {
+      "type": "PREFERRED_BY",
+      "source_label": "Package",
+      "source_name": "Family Fun Adventure Package",
+      "target_label": "Guest",
+      "target_name": "Elena Rodriguez"
+    },
+    {
+      "type": "PREFERRED_BY",
+      "source_label": "Package",
+      "source_name": "Ultimate Adventure Seeker",
+      "target_label": "Guest",
+      "target_name": "Jennifer Williams"
+    },
+    {
+      "type": "PREFERRED_BY",
+      "source_label": "Package",
+      "source_name": "Mindful Wellness Retreat",
+      "target_label": "Guest",
+      "target_name": "Lisa Chen"
+    },
+    {
+      "type": "PREFERRED_BY",
+      "source_label": "Package",
+      "source_name": "Mindful Wellness Retreat",
+      "target_label": "Guest",
+      "target_name": "Sarah Thompson"
+    },
+    {
+      "type": "PREFERRED_BY",
+      "source_label": "Package",
+      "source_name": "Mindful Wellness Retreat",
+      "target_label": "Guest",
+      "target_name": "Elena Rodriguez"
+    },
+    {
+      "type": "PREFERRED_BY",
+      "source_label": "Package",
+      "source_name": "Tropical All-Inclusive Escape",
+      "target_label": "Guest",
+      "target_name": "Ahmed Al-Mansouri"
+    },
+    {
+      "type": "PREFERRED_BY",
+      "source_label": "Package",
+      "source_name": "Tropical All-Inclusive Escape",
+      "target_label": "Guest",
+      "target_name": "Jean Dubois"
+    },
+    {
+      "type": "PREFERRED_BY",
+      "source_label": "Package",
+      "source_name": "Weekend Mountain Getaway",
+      "target_label": "Guest",
+      "target_name": "Jennifer Williams"
+    },
+    {
+      "type": "PREFERRED_BY",
+      "source_label": "Package",
+      "source_name": "Weekend Mountain Getaway",
+      "target_label": "Guest",
+      "target_name": "Ahmed Al-Mansouri"
+    },
+    {
+      "type": "PREFERRED_BY",
+      "source_label": "Package",
+      "source_name": "Weekend Mountain Getaway",
+      "target_label": "Guest",
+      "target_name": "Sarah Thompson"
+    },
+    {
+      "type": "PREFERRED_BY",
+      "source_label": "Package",
+      "source_name": "Presidential Suite Luxury Experience",
+      "target_label": "Guest",
+      "target_name": "Jennifer Williams"
+    },
+    {
+      "type": "PREFERRED_BY",
+      "source_label": "Package",
+      "source_name": "Secluded Island Honeymoon",
+      "target_label": "Guest",
+      "target_name": "Jean Dubois"
+    },
+    {
+      "type": "PREFERRED_BY",
+      "source_label": "Package",
+      "source_name": "Secluded Island Honeymoon",
+      "target_label": "Guest",
+      "target_name": "Sarah Thompson"
+    },
+    {
+      "type": "PREFERRED_BY",
+      "source_label": "Package",
+      "source_name": "Multi-Generation Family Reunion",
+      "target_label": "Guest",
+      "target_name": "Priya Patel"
+    },
+    {
+      "type": "PREFERRED_BY",
+      "source_label": "Package",
+      "source_name": "Detox & Renewal Program",
+      "target_label": "Guest",
+      "target_name": "Hans Mueller"
+    },
+    {
+      "type": "MADE_BOOKING",
+      "source_label": "Guest",
+      "source_name": "Elena Rodriguez",
+      "target_label": "Booking",
+      "target_name": "Booking 2"
+    },
+    {
+      "type": "MADE_BOOKING",
+      "source_label": "Guest",
+      "source_name": "Elena Rodriguez",
+      "target_label": "Booking",
+      "target_name": "Booking 3"
+    },
+    {
+      "type": "MADE_BOOKING",
+      "source_label": "Guest",
+      "source_name": "Elena Rodriguez",
+      "target_label": "Booking",
+      "target_name": "Booking 4"
+    },
+    {
+      "type": "MADE_BOOKING",
+      "source_label": "Guest",
+      "source_name": "David Kim",
+      "target_label": "Booking",
+      "target_name": "Booking 8"
+    },
+    {
+      "type": "MADE_BOOKING",
+      "source_label": "Guest",
+      "source_name": "Sarah Thompson",
+      "target_label": "Booking",
+      "target_name": "Booking 8"
+    },
+    {
+      "type": "MADE_BOOKING",
+      "source_label": "Guest",
+      "source_name": "Marco Silva",
+      "target_label": "Booking",
+      "target_name": "Booking 8"
+    },
+    {
+      "type": "MADE_BOOKING",
+      "source_label": "Guest",
+      "source_name": "Lisa Chen",
+      "target_label": "Booking",
+      "target_name": "Booking 4"
+    },
+    {
+      "type": "MADE_BOOKING",
+      "source_label": "Guest",
+      "source_name": "Ahmed Al-Mansouri",
+      "target_label": "Booking",
+      "target_name": "Booking 6"
+    },
+    {
+      "type": "MADE_BOOKING",
+      "source_label": "Guest",
+      "source_name": "Ahmed Al-Mansouri",
+      "target_label": "Booking",
+      "target_name": "Booking 8"
+    },
+    {
+      "type": "MADE_BOOKING",
+      "source_label": "Guest",
+      "source_name": "Ahmed Al-Mansouri",
+      "target_label": "Booking",
+      "target_name": "Booking 1"
+    },
+    {
+      "type": "MADE_BOOKING",
+      "source_label": "Guest",
+      "source_name": "Jennifer Williams",
+      "target_label": "Booking",
+      "target_name": "Booking 3"
+    },
+    {
+      "type": "MADE_BOOKING",
+      "source_label": "Guest",
+      "source_name": "Hans Mueller",
+      "target_label": "Booking",
+      "target_name": "Booking 4"
+    },
+    {
+      "type": "MADE_BOOKING",
+      "source_label": "Guest",
+      "source_name": "Hans Mueller",
+      "target_label": "Booking",
+      "target_name": "Booking 2"
+    },
+    {
+      "type": "MADE_BOOKING",
+      "source_label": "Guest",
+      "source_name": "Priya Patel",
+      "target_label": "Booking",
+      "target_name": "Booking 4"
+    },
+    {
+      "type": "MADE_BOOKING",
+      "source_label": "Guest",
+      "source_name": "Jean Dubois",
+      "target_label": "Booking",
+      "target_name": "Booking 3"
+    },
+    {
+      "type": "OFFERED_AT",
+      "source_label": "Package",
+      "source_name": "Romantic Paradise Honeymoon",
+      "target_label": "Resort",
+      "target_name": "Crystal Peak Lodge"
+    },
+    {
+      "type": "OFFERED_AT",
+      "source_label": "Package",
+      "source_name": "Romantic Paradise Honeymoon",
+      "target_label": "Resort",
+      "target_name": "Tropical Paradise All-Inclusive"
+    },
+    {
+      "type": "OFFERED_AT",
+      "source_label": "Package",
+      "source_name": "Romantic Paradise Honeymoon",
+      "target_label": "Resort",
+      "target_name": "Adventure Bay Lodge"
+    },
+    {
+      "type": "OFFERED_AT",
+      "source_label": "Package",
+      "source_name": "Family Fun Adventure Package",
+      "target_label": "Resort",
+      "target_name": "Royal Caribbean Dream"
+    },
+    {
+      "type": "OFFERED_AT",
+      "source_label": "Package",
+      "source_name": "Family Fun Adventure Package",
+      "target_label": "Resort",
+      "target_name": "Crystal Peak Lodge"
+    },
+    {
+      "type": "OFFERED_AT",
+      "source_label": "Package",
+      "source_name": "Ultimate Adventure Seeker",
+      "target_label": "Resort",
+      "target_name": "Powder Mountain Ski Resort"
+    },
+    {
+      "type": "OFFERED_AT",
+      "source_label": "Package",
+      "source_name": "Mindful Wellness Retreat",
+      "target_label": "Resort",
+      "target_name": "Serenity Hills Wellness Retreat"
+    },
+    {
+      "type": "OFFERED_AT",
+      "source_label": "Package",
+      "source_name": "Tropical All-Inclusive Escape",
+      "target_label": "Resort",
+      "target_name": "Azure Waters Maldives"
+    },
+    {
+      "type": "OFFERED_AT",
+      "source_label": "Package",
+      "source_name": "Weekend Mountain Getaway",
+      "target_label": "Resort",
+      "target_name": "Adventure Bay Lodge"
+    },
+    {
+      "type": "OFFERED_AT",
+      "source_label": "Package",
+      "source_name": "Presidential Suite Luxury Experience",
+      "target_label": "Resort",
+      "target_name": "Crystal Peak Lodge"
+    },
+    {
+      "type": "OFFERED_AT",
+      "source_label": "Package",
+      "source_name": "Presidential Suite Luxury Experience",
+      "target_label": "Resort",
+      "target_name": "Rainforest Canopy Lodge"
+    },
+    {
+      "type": "OFFERED_AT",
+      "source_label": "Package",
+      "source_name": "Secluded Island Honeymoon",
+      "target_label": "Resort",
+      "target_name": "Emerald Golf & Spa Resort"
+    },
+    {
+      "type": "OFFERED_AT",
+      "source_label": "Package",
+      "source_name": "Secluded Island Honeymoon",
+      "target_label": "Resort",
+      "target_name": "Alpine Peaks Mountain Resort"
+    },
+    {
+      "type": "OFFERED_AT",
+      "source_label": "Package",
+      "source_name": "Multi-Generation Family Reunion",
+      "target_label": "Resort",
+      "target_name": "Powder Mountain Ski Resort"
+    },
+    {
+      "type": "OFFERED_AT",
+      "source_label": "Package",
+      "source_name": "Multi-Generation Family Reunion",
+      "target_label": "Resort",
+      "target_name": "Emerald Golf & Spa Resort"
+    },
+    {
+      "type": "OFFERED_AT",
+      "source_label": "Package",
+      "source_name": "Multi-Generation Family Reunion",
+      "target_label": "Resort",
+      "target_name": "Tropical Paradise All-Inclusive"
+    },
+    {
+      "type": "OFFERED_AT",
+      "source_label": "Package",
+      "source_name": "Detox & Renewal Program",
+      "target_label": "Resort",
+      "target_name": "Rainforest Canopy Lodge"
+    },
+    {
+      "type": "OFFERED_AT",
+      "source_label": "Package",
+      "source_name": "Detox & Renewal Program",
+      "target_label": "Resort",
+      "target_name": "Azure Waters Maldives"
+    },
+    {
+      "type": "OFFERED_AT",
+      "source_label": "Package",
+      "source_name": "Detox & Renewal Program",
+      "target_label": "Resort",
+      "target_name": "Powder Mountain Ski Resort"
+    }
+  ],
+  "documents": [
+    {
+      "template_id": "booking_confirmation",
+      "template_name": "Booking Confirmation",
+      "title": "Booking Confirmation - Elena Rodriguez - Azure Waters Maldives",
+      "content": "Dear Elena Rodriguez,\n\nThank you for choosing Azure Waters Maldives for your upcoming getaway! We are delighted to confirm your reservation and look forward to welcoming you to our tropical paradise.\n\nBOOKING DETAILS:\nBooking ID: AWM-2024-001\nGuest Name: Elena Rodriguez\nCheck-in: March 15, 2024\nCheck-out: March 22, 2024\nPackage: Romantic Paradise Honeymoon\nTotal Cost: $4,850\n\nITINERARY HIGHLIGHTS:\n\u2022 Private overwater villa with glass floor panels\n\u2022 Daily breakfast served on your private deck\n\u2022 Couples massage at our award-winning Coral Spa\n\u2022 Sunset dolphin cruise with champagne service\n\u2022 Private beach dinner under the stars\n\u2022 Complimentary snorkeling equipment and guided reef tour\n\nRESORT INFORMATION:\nAzure Waters Maldives is situated on a pristine private island, accessible by a scenic 25-minute seaplane transfer from Mal\u00e9 International Airport. Our resort features 50 overwater and beachfront villas, each designed with contemporary luxury and traditional Maldivian craftsmanship. Enjoy world-class dining at our three restaurants, rejuvenate at the Coral Spa, or explore the vibrant house reef just steps from your villa.\n\nPRE-ARRIVAL SERVICES:\nOur guest relations team will contact you 48 hours before departure to arrange seaplane transfers and discuss any special requests. Please ensure your passport is valid for at least 6 months from your travel date.\n\nWe cannot wait to create unforgettable memories during your romantic escape. Should you have any questions, please contact our reservations team at reservations@azurewatersmaldives.com or +960-123-4567.\n\nWarm regards,\nThe Azure Waters Maldives Team"
+    },
+    {
+      "template_id": "booking_confirmation",
+      "template_name": "Booking Confirmation",
+      "title": "Booking Confirmation - David Kim - Crystal Peak Lodge",
+      "content": "Dear David Kim,\n\nWelcome to Crystal Peak Lodge! We are excited to confirm your reservation for an unforgettable mountain adventure in the heart of the Canadian Rockies.\n\nBOOKING DETAILS:\nBooking ID: CPL-2024-002\nGuest Name: David Kim\nCheck-in: July 8, 2024\nCheck-out: July 15, 2024\nPackage: Ultimate Adventure Seeker\nTotal Cost: $3,200\n\nITINERARY HIGHLIGHTS:\n\u2022 Guided helicopter tour of Glacier National Park\n\u2022 White-water rafting expedition on Kicking Horse River\n\u2022 Rock climbing instruction and guided climbs\n\u2022 Mountain biking trails with professional guide\n\u2022 Wilderness survival workshop\n\u2022 Evening campfire sessions with local storytelling\n\u2022 Daily hearty mountain breakfast and trail lunches\n\nRESORT INFORMATION:\nNestled at 4,200 feet elevation, Crystal Peak Lodge offers authentic mountain hospitality with modern comfort. Our rustic-luxury cabins feature stone fireplaces, heated floors, and panoramic mountain views. The lodge's Great Room serves as the social hub, offering locally-sourced cuisine and craft beverages. Our experienced adventure guides are certified professionals passionate about sharing the wilderness.\n\nWHAT TO BRING:\nWe provide all technical equipment for activities, but please pack weather-appropriate clothing, sturdy hiking boots, and personal items. A detailed packing list has been emailed separately.\n\nTRANSPORTATION:\nComplimentary shuttle service is available from Calgary Airport (2.5-hour scenic drive). Please provide flight details at least 72 hours in advance.\n\nOur team is standing by to ensure your adventure exceeds expectations. Contact us at adventures@crystalpeaklodge.com or call +1-403-555-0199.\n\nAdventure awaits!\nCrystal Peak Lodge Adventure Team"
+    },
+    {
+      "template_id": "booking_confirmation",
+      "template_name": "Booking Confirmation",
+      "title": "Booking Confirmation - Sarah Thompson - Serenity Hills Wellness Retreat",
+      "content": "Dear Sarah Thompson,\n\nNamaste and welcome to Serenity Hills Wellness Retreat. We are honored that you have chosen our sanctuary for your wellness journey and spiritual renewal.\n\nBOOKING DETAILS:\nBooking ID: SHWR-2024-003\nGuest Name: Sarah Thompson\nCheck-in: May 20, 2024\nCheck-out: May 27, 2024\nPackage: Mindful Wellness Retreat\nTotal Cost: $2,750\n\nITINERARY HIGHLIGHTS:\n\u2022 Daily sunrise yoga sessions in our bamboo pavilion\n\u2022 Personalized meditation instruction with certified teachers\n\u2022 Ayurvedic consultation and customized treatment plan\n\u2022 Organic farm-to-table meals prepared by our wellness chefs\n\u2022 Sound healing therapy with Tibetan singing bowls\n\u2022 Forest bathing and guided nature walks\n\u2022 Digital detox program with mindfulness workshops\n\u2022 Cooking classes featuring plant-based cuisine\n\nRETREAT INFORMATION:\nSerenity Hills spans 150 acres of pristine mountain forest, featuring meditation gardens, organic farms, and healing spaces designed to promote inner peace. Our accommodation consists of eco-friendly cabins with natural materials, each offering private meditation spaces and mountain views. The retreat maintains a technology-free environment to facilitate deep relaxation and self-reflection.\n\nWELLNESS PHILOSOPHY:\nOur holistic approach combines ancient Eastern wisdom with modern wellness practices. Expert practitioners guide guests through transformative experiences designed to restore balance, reduce stress, and cultivate mindfulness.\n\nPRE-ARRIVAL PREPARATION:\nA wellness questionnaire will be sent to customize your experience. We recommend beginning light meditation practice before arrival and gradually reducing caffeine intake.\n\nWe look forward to supporting your wellness journey. For questions, contact our wellness coordinators at peace@serenityhills.com or +1-555-PEACE-99.\n\nIn wellness and gratitude,\nThe Serenity Hills Wellness Team"
+    },
+    {
+      "template_id": "booking_confirmation",
+      "template_name": "Booking Confirmation",
+      "title": "Booking Confirmation - Marco Silva - Adventure Bay Lodge",
+      "content": "Dear Marco Silva,\n\nAhoy and welcome aboard! Adventure Bay Lodge is thrilled to confirm your family adventure booking on the stunning Pacific Northwest coast.\n\nBOOKING DETAILS:\nBooking ID: ABL-2024-004\nGuest Name: Marco Silva\nCheck-in: August 10, 2024\nCheck-out: August 17, 2024\nPackage: Family Fun Adventure Package\nTotal Cost: $4,100\n\nITINERARY HIGHLIGHTS:\n\u2022 Whale watching expeditions with marine biologist guides\n\u2022 Sea kayaking lessons and protected bay exploration\n\u2022 Tide pooling adventures at sunrise\n\u2022 Family fishing charter with equipment provided\n\u2022 Junior Naturalist program for children\n\u2022 Coastal hiking trails suitable for all ages\n\u2022 Evening beach bonfires with s'mores\n\u2022 Visit to local First Nations cultural center\n\nLODGE INFORMATION:\nAdventure Bay Lodge sits dramatically on a cliff overlooking the Pacific Ocean, surrounded by old-growth cedar forests. Our family-friendly accommodations include connecting rooms and suites with ocean views, private balconies, and cozy sitting areas. The main lodge features a kids' activity room, game area, and restaurant specializing in fresh Pacific seafood and locally-sourced ingredients.\n\nFAMILY AMENITIES:\n\u2022 Supervised children's activities (ages 6-14)\n\u2022 Family game nights and movie screenings\n\u2022 Complimentary cribs, high chairs, and beach toys\n\u2022 Flexible meal times to accommodate family schedules\n\nARRIVAL INFORMATION:\nThe lodge is located 2 hours from Seattle-Tacoma International Airport via scenic coastal highway. Self-parking is complimentary, and our concierge can arrange rental cars or private transfers.\n\nWe cannot wait to share the magic of the Pacific coast with your family! Contact our family services team at families@adventurebaylodge.com or +1-360-555-WAVE.\n\nSee you soon!\nAdventure Bay Lodge Family Team"
+    },
+    {
+      "template_id": "booking_confirmation",
+      "template_name": "Booking Confirmation",
+      "title": "Booking Confirmation - Lisa Chen - Tropical Paradise All-Inclusive",
+      "content": "Dear Lisa Chen,\n\nBienvenidos to Tropical Paradise All-Inclusive! We are absolutely delighted to confirm your reservation for the ultimate Caribbean escape where everything is included for your complete relaxation.\n\nBOOKING DETAILS:\nBooking ID: TPAI-2024-005\nGuest Name: Lisa Chen\nCheck-in: September 12, 2024\nCheck-out: September 19, 2024\nPackage: Tropical All-Inclusive Escape\nTotal Cost: $3,650\n\nITINERARY HIGHLIGHTS:\n\u2022 Unlimited access to 6 restaurants and 8 bars\n\u2022 Daily entertainment including live music and dance shows\n\u2022 Water sports center with kayaks, windsurfing, and snorkeling\n\u2022 Tennis and beach volleyball courts\n\u2022 Spa services with 20% discount for guests\n\u2022 Excursion options: catamaran trips, jungle tours, cultural visits\n\u2022 Adult-only infinity pool and swim-up bar\n\u2022 Nightly themed parties and casino gaming\n\nRESORT INFORMATION:\nTropical Paradise All-Inclusive spans 50 acres of pristine beachfront on the Caribbean's most beautiful coastline. Our 400 rooms feature modern tropical d\u00e9cor, premium amenities, and most include ocean or garden views with private terraces. The resort boasts multiple pools, including an adults-only section, championship golf course access, and a world-class spa.\n\nALL-INCLUSIVE BENEFITS:\n\u2022 Premium brand beverages and top-shelf spirits\n\u2022 24-hour room service\n\u2022 Daily housekeeping and evening turndown service\n\u2022 Airport transfers and resort shuttles\n\u2022 All taxes and gratuities included\n\nTRAVEL REQUIREMENTS:\nPlease ensure passports are current and review entry requirements for your destination. Our guest services will provide detailed arrival information including transfer schedules.\n\nPrepare for the vacation of a lifetime! Our staff of 200+ is dedicated to exceeding your expectations. Questions? Contact paradise@tropicalparadise.com or +1-888-PARADISE.\n\n\u00a1Hasta pronto!\nTropical Paradise All-Inclusive Guest Relations"
+    },
+    {
+      "template_id": "guest_feedback",
+      "template_name": "Guest Feedback Summary",
+      "title": "Guest Feedback Summary - Azure Waters Maldives - Caribbean Peak Season",
+      "content": "Guest Satisfaction Overview: Azure Waters Maldives achieved an overall satisfaction score of 8.7/10 during Caribbean Peak Season, with 92% of guests rating their stay as 'excellent' or 'very good'. Guest Demographics: Primary visitors included couples (68%) and honeymooners (24%), with notable guests including Elena Rodriguez and Marco Silva providing detailed feedback. Common Praise: Guests consistently highlighted the pristine overwater villa accommodations, with exceptional views receiving 95% positive mentions. The Snorkeling Adventure Tour emerged as the top-rated activity, earning perfect scores from 89% of participants who praised the vibrant coral reefs and professional marine guides. Dining services, particularly the Chef's Table Experience, received outstanding reviews for fresh seafood and personalized service. Areas for Improvement: Weather-related activity cancellations during peak season storms affected 12% of bookings, leading to guest disappointment. Some guests reported longer wait times for spa services and requested more flexible booking options. The Traditional Dance Show, while culturally enriching, had mixed reviews with suggestions for enhanced sound systems and seating arrangements. Activity Popularity Rankings: 1. Snorkeling Adventure Tour (89% participation) 2. Chef's Table Experience (76% participation) 3. Traditional Dance Show (54% participation) Recommendations: Implement backup indoor activities for weather contingencies, expand spa capacity during peak periods, and enhance cultural entertainment production values. Consider introducing sunset yoga sessions and extend water sports equipment availability hours to meet high demand."
+    },
+    {
+      "template_id": "guest_feedback",
+      "template_name": "Guest Feedback Summary",
+      "title": "Guest Feedback Summary - Crystal Peak Lodge - Winter Holiday Season",
+      "content": "Guest Satisfaction Analysis: Crystal Peak Lodge maintained a robust 8.9/10 satisfaction rating throughout Winter Holiday Season, with family guests representing 78% of total occupancy. Distinguished visitors including David Kim and Sarah Thompson provided comprehensive feedback contributing to our seasonal assessment. Outstanding Performance Areas: The Volcano Hiking Expedition received universal acclaim, with 96% of participants rating it as a 'life-changing experience'. Professional guides, safety protocols, and breathtaking summit views were consistently mentioned in positive reviews. Lodge amenities, including fireplaces, heated pools, and mountain-view suites, earned exceptional ratings during the cold season. Guest Services Excellence: Concierge services received 94% satisfaction scores, with particular praise for personalized itinerary planning and local activity coordination. The Chef's Table Experience showcased seasonal specialties that delighted 87% of participants, featuring locally-sourced ingredients and wine pairings. Identified Challenges: Equipment shortages for Volcano Hiking Expedition during peak holiday weeks resulted in 8% of guests experiencing delayed departures. Some family groups requested more diverse children's activities during evening hours. Wi-Fi connectivity in remote lodge areas occasionally affected business travelers' satisfaction scores. Activity Performance: Volcano Hiking Expedition dominated with 91% participation rate, while evening entertainment programs achieved 67% attendance. The Couples Massage Retreat attracted 43% of romantic travelers seeking relaxation after adventure activities. Strategic Recommendations: Increase hiking equipment inventory by 25%, develop expanded children's programming, and upgrade internet infrastructure in all lodge buildings. Consider adding winter-specific activities such as stargazing tours and hot spring experiences to enhance the seasonal offering portfolio."
+    },
+    {
+      "template_id": "guest_feedback",
+      "template_name": "Guest Feedback Summary",
+      "title": "Guest Feedback Summary - Serenity Hills Wellness Retreat - Spring Shoulder Season",
+      "content": "Wellness Experience Assessment: Serenity Hills Wellness Retreat achieved an outstanding 9.1/10 guest satisfaction score during Spring Shoulder Season, establishing itself as a premier wellness destination. The retreat attracted health-conscious travelers, with Lisa Chen and Elena Rodriguez among notable guests who provided valuable insights. Program Excellence: The Couples Massage Retreat emerged as the flagship experience, earning 98% positive feedback for its therapeutic benefits and tranquil ambiance. Guests consistently praised the integration of traditional healing techniques with modern wellness practices. Spring's mild weather enhanced outdoor meditation sessions and garden yoga classes, contributing to overall program success. Culinary Wellness Integration: Nutrition-focused dining programs received exceptional reviews, with farm-to-table concepts and dietary customization earning 93% satisfaction scores. The Chef's Table Experience adapted to wellness principles, featuring organic, locally-sourced ingredients that supported guests' health objectives while maintaining culinary excellence. Areas Requiring Attention: Some guests requested extended facility hours for independent wellness activities. The Traditional Dance Show, while appreciated for cultural value, received suggestions for incorporating more wellness-themed elements to align with retreat objectives. Equipment maintenance for fitness facilities needed attention during peak spring usage. Popular Wellness Activities: Couples Massage Retreat led participation at 94%, followed by sunrise yoga sessions at 78%, and guided nature walks at 71%. Meditation workshops and nutritional counseling sessions also showed strong engagement rates. Future Enhancement Strategies: Extend wellness facility operating hours, integrate cultural activities with wellness themes, and expand outdoor activity options during favorable spring weather. Consider introducing specialized programs for stress management and digital detox experiences to meet evolving guest wellness needs."
+    },
+    {
+      "template_id": "guest_feedback",
+      "template_name": "Guest Feedback Summary",
+      "title": "Guest Feedback Summary - Adventure Bay Lodge - Summer High Season",
+      "content": "Adventure Tourism Performance: Adventure Bay Lodge delivered an impressive 8.8/10 satisfaction rating during Summer High Season, successfully accommodating adventure enthusiasts and active families. Key feedback contributors included David Kim and Marco Silva, representing our target adventure traveler demographic. Activity Excellence: Water-based adventures dominated guest preferences, with the Snorkeling Adventure Tour achieving 94% participation and outstanding safety records. Professional instructors and premium equipment contributed to exceptional guest experiences. Adventure Bay's pristine waters and diverse marine life consistently exceeded expectations, generating numerous five-star reviews. Operational Strengths: Lodge facilities designed for active travelers received high marks for gear storage, quick-dry amenities, and adventure-focused dining options. The Chef's Table Experience adapted brilliantly to adventure themes, featuring hearty, nutrition-rich meals that supported guests' active lifestyles while maintaining gourmet standards. Challenge Areas: High season demand occasionally strained activity booking systems, with 15% of guests experiencing scheduling conflicts for preferred time slots. Some adventure activities required advance booking improvements to manage capacity effectively. The Traditional Dance Show, while culturally enriching, competed with evening adventure activities for guest attention. Summer Activity Rankings: Snorkeling Adventure Tour (94% participation), water sports rentals (82%), guided nature hikes (69%), and evening cultural programs (47%). Equipment rental services and adventure photography packages also showed strong demand. Improvement Initiatives: Implement dynamic booking system upgrades, increase activity capacity during peak periods, and develop evening adventure programs that complement cultural offerings. Consider expanding water sports equipment inventory and introducing adventure skill workshops to enhance the comprehensive adventure experience package."
+    },
+    {
+      "template_id": "guest_feedback",
+      "template_name": "Guest Feedback Summary",
+      "title": "Guest Feedback Summary - Tropical Paradise All-Inclusive - Off Season Low",
+      "content": "Off-Season Performance Analysis: Tropical Paradise All-Inclusive maintained a solid 8.4/10 satisfaction rating during Off Season Low, demonstrating resilience and value proposition strength during traditionally challenging periods. Guest profile shifted toward budget-conscious travelers and repeat visitors, including Sarah Thompson and Lisa Chen who appreciated the intimate, less crowded atmosphere. Value Proposition Success: Guests consistently highlighted exceptional value for money during off-season rates, with 89% expressing satisfaction with pricing versus amenities received. The all-inclusive model proved particularly attractive, offering comprehensive dining, activities, and entertainment without additional costs. Reduced occupancy levels enhanced service personalization and exclusive access to facilities. Service Excellence: Staff-to-guest ratios improved significantly during low season, resulting in 96% satisfaction scores for personalized service. The Chef's Table Experience benefited from increased chef attention and menu customization opportunities. The Traditional Dance Show featured more intimate performances with enhanced guest interaction opportunities. Operational Challenges: Weather variability affected outdoor activity scheduling, with the Snorkeling Adventure Tour experiencing 20% cancellations due to seasonal conditions. Some facilities operated on reduced schedules, occasionally limiting guest access to preferred amenities. Marketing efforts needed enhancement to attract additional off-season visitors. Activity Adaptation: Traditional Dance Show maintained 78% attendance despite smaller guest numbers. Modified programming focused on interactive cultural experiences and cooking classes achieved high engagement. Spa services and couples treatments showed increased utilization rates. Strategic Recommendations: Develop weather-independent activity alternatives, maintain full facility operations during off-season to maximize guest satisfaction, and create targeted marketing campaigns emphasizing off-season benefits including personalized service, value pricing, and exclusive experiences for discerning travelers."
+    },
+    {
+      "template_id": "seasonal_report",
+      "template_name": "Seasonal Operations Report",
+      "title": "Azure Waters Maldives - Caribbean Peak Season Operations Report",
+      "content": "SEASONAL OPERATIONS REPORT\n\nResort: Azure Waters Maldives\nSeason: Caribbean Peak Season (Peak Season)\nReporting Period: December 2023 - March 2024\n\nEXECUTIVE SUMMARY\nAzure Waters Maldives concluded the Caribbean Peak Season with exceptional performance metrics. The rate multiplier of 2.1x combined with an average occupancy of 94% generated record-breaking revenue figures, establishing this as our most successful peak season to date.\n\nREVENUE ANALYSIS\nTotal season revenue reached $4.8M, representing a 18% increase over the previous peak season. The premium rate multiplier effectively captured market demand during high-season periods. Revenue per available room (RevPAR) averaged $890, with overwater villa categories achieving 98% occupancy. Food and beverage operations contributed an additional $1.2M, driven by strong performance of our Chef's Table Experience and premium dining packages.\n\nACTIVITY UTILIZATION\nGuest activity participation exceeded expectations with 87% engagement across all offerings. The Snorkeling Adventure Tour maintained 95% capacity utilization, becoming our flagship experience. Traditional Dance Show performances operated at full capacity three nights weekly, generating significant guest satisfaction scores averaging 4.8/5.0. Couples Massage Retreat bookings increased 23% compared to last season, reflecting growing wellness tourism trends.\n\nSTAFFING REVIEW\nPeak season staffing levels were optimized with 145 team members across all departments. Housekeeping maintained 12-minute room turnover times despite high occupancy. Guest services handled 2,400+ requests with 98% resolution rate within 24 hours. Staff overtime averaged 8% across departments, indicating effective workforce planning. Training completion rates reached 100% for all seasonal staff additions.\n\nRECOMMENDations\nFor future peak seasons, recommend expanding overwater villa inventory by 15% and enhancing spa capacity to meet growing wellness demand. Consider introducing premium activity packages to capture additional revenue from high-engagement guests."
+    },
+    {
+      "template_id": "seasonal_report",
+      "template_name": "Seasonal Operations Report",
+      "title": "Crystal Peak Lodge - Summer High Season Performance Analysis",
+      "content": "SEASONAL OPERATIONS REPORT\n\nResort: Crystal Peak Lodge\nSeason: Summer High Season (Peak Season)\nReporting Period: June 2024 - August 2024\n\nOPERATIONAL OVERVIEW\nCrystal Peak Lodge successfully navigated the Summer High Season with strong operational performance. Despite challenging mountain weather conditions in July, the lodge maintained consistent service delivery and guest satisfaction levels. The 1.8x rate multiplier proved optimal for market positioning while achieving 89% average occupancy.\n\nFINANCIAL PERFORMANCE\nSeason revenue totaled $2.9M, meeting budget projections within 3%. The premium pricing strategy during peak summer months generated healthy profit margins of 34%. Adventure activity bookings contributed significantly to ancillary revenue, with the Volcano Hiking Expedition generating $180K alone. Group bookings represented 31% of total occupancy, providing stable base revenue throughout the season.\n\nACTIVITY OPERATIONS\nOutdoor activity participation remained robust despite periodic weather interruptions. The Volcano Hiking Expedition operated at 78% capacity with exceptional guest feedback scores of 4.7/5.0. Weather-related cancellations affected only 12% of scheduled expeditions, with successful rebooking rates of 85%. Indoor alternatives including spa services and culinary experiences maintained steady utilization when outdoor conditions proved challenging.\n\nHUMAN RESOURCES\nSeasonal staffing reached 98 employees during peak periods. Employee retention improved 15% over previous summer seasons through enhanced compensation packages and professional development opportunities. Guest-to-staff ratios averaged 2.1:1, enabling personalized service delivery. Safety training compliance achieved 100% completion rates across all outdoor activity guides and adventure staff.\n\nFUTURE INITIATIVES\nRecommend investing in weather-resistant activity options and expanding indoor entertainment facilities. Consider partnership opportunities with local outfitters to diversify adventure offerings and reduce weather dependency. Enhanced staff housing accommodations could improve retention rates for subsequent seasons."
+    },
+    {
+      "template_id": "seasonal_report",
+      "template_name": "Seasonal Operations Report",
+      "title": "Serenity Hills Wellness Retreat - Spring Shoulder Season Report",
+      "content": "SEASONAL OPERATIONS REPORT\n\nResort: Serenity Hills Wellness Retreat\nSeason: Spring Shoulder Season (Shoulder Season)\nReporting Period: March 2024 - May 2024\n\nSEASON PERFORMANCE SUMMARY\nSerenity Hills Wellness Retreat demonstrated resilient performance during the Spring Shoulder Season, achieving strategic objectives despite the moderate 1.3x rate multiplier and 76% average occupancy. This transitional period provided valuable insights into guest preferences and operational efficiency opportunities.\n\nREVENUE BREAKDOWN\nTotal seasonal revenue reached $1.8M, with wellness services generating 42% of ancillary income. The Couples Massage Retreat program experienced 89% booking rates, establishing itself as a core revenue driver. Spa treatment revenues increased 27% compared to the previous spring season, reflecting enhanced service offerings and expanded treatment menu. Package deals combining accommodation with wellness programs achieved 15% higher per-guest spending.\n\nWELLNESS PROGRAM UTILIZATION\nGuest participation in wellness activities averaged 91%, significantly above industry standards. Yoga and meditation sessions maintained 85% attendance rates throughout the season. Nutritional consultation services were introduced mid-season, quickly reaching 65% utilization. The holistic wellness approach resonated strongly with guests, generating Net Promoter Scores of 78.\n\nOPERATIONAL EFFICIENCY\nStaffing optimization during shoulder season reduced labor costs by 18% while maintaining service quality metrics. Cross-training initiatives enabled flexible staff deployment across wellness, hospitality, and dining departments. Energy consumption decreased 22% through sustainable operational practices and moderate occupancy levels.\n\nSTRATEGIC INSIGHTS\nShoulder season positioning as a \"wellness discovery\" period attracted new market segments, particularly digital detox and corporate wellness groups. Repeat guest percentages reached 34%, indicating strong brand loyalty development. Operational learnings from this season will inform peak season preparations and off-season programming.\n\nRECOMMENDATIONS\nExpand wellness program capacity for peak seasons and develop specialized corporate retreat packages. Consider extending shoulder season marketing to capture additional wellness tourism demand."
+    },
+    {
+      "template_id": "seasonal_report",
+      "template_name": "Seasonal Operations Report",
+      "title": "Adventure Bay Lodge - Off Season Low Performance Review",
+      "content": "SEASONAL OPERATIONS REPORT\n\nResort: Adventure Bay Lodge\nSeason: Off Season Low (Off-Peak Season)\nReporting Period: October 2023 - January 2024\n\nEXECUTIVE SUMMARY\nAdventure Bay Lodge navigated the challenging Off Season Low period with strategic cost management and targeted marketing initiatives. The conservative 0.8x rate multiplier and 52% average occupancy reflected market conditions while maintaining operational viability and guest experience standards.\n\nFINANCIAL ANALYSIS\nSeason revenue totaled $890K, achieving 94% of revised budget projections. The value-pricing strategy successfully attracted price-sensitive travelers while preserving profit margins. Package deals combining accommodation with activity credits generated 23% higher per-guest revenue. Operating expenses were reduced 31% through seasonal staff adjustments and energy conservation measures.\n\nACTIVITY PERFORMANCE\nDespite lower occupancy, activity participation rates remained strong at 68% among registered guests. Adventure tours adapted to seasonal conditions with modified Volcano Hiking Expedition routes achieving 72% capacity. Indoor entertainment options, including Traditional Dance Show performances, provided consistent programming during weather-dependent periods. Equipment maintenance and facility upgrades were completed during low-demand periods.\n\nCOST OPTIMIZATION\nSeasonal workforce reduction to 45 core employees maintained essential services while reducing labor costs by 38%. Maintenance projects valued at $125K were completed using internal resources during low-occupancy periods. Energy efficiency improvements implemented during off-season resulted in 19% reduction in utility costs.\n\nMARKET POSITIONING\nLocal and regional marketing campaigns targeting budget-conscious travelers generated 35% of bookings. Extended-stay packages attracted digital nomads and remote workers, creating a new revenue stream. Corporate team-building events filled 18% of available capacity during weekday periods.\n\nFORWARD PLANNING\nOff-season performance provides foundation for aggressive peak-season marketing. Facility improvements completed during low occupancy will enhance guest experience during high-demand periods. Staff retention initiatives ensure experienced team availability for upcoming busy seasons."
+    },
+    {
+      "template_id": "seasonal_report",
+      "template_name": "Seasonal Operations Report",
+      "title": "Tropical Paradise All-Inclusive - Winter Holiday Season Report",
+      "content": "SEASONAL OPERATIONS REPORT\n\nResort: Tropical Paradise All-Inclusive\nSeason: Winter Holiday Season (Peak Season)\nReporting Period: December 2023 - February 2024\n\nSEASONAL HIGHLIGHTS\nTropical Paradise All-Inclusive delivered exceptional Winter Holiday Season results, capitalizing on premium demand and achieving the highest performance metrics in resort history. The strategic 2.3x rate multiplier combined with 97% average occupancy generated unprecedented revenue while maintaining the superior guest experience standards expected during peak periods.\n\nREVENUE EXCELLENCE\nTotal season revenue reached $6.2M, exceeding projections by 12%. The all-inclusive model captured maximum guest spending while the premium rate multiplier optimized yield management. Holiday period bookings (Dec 20 - Jan 5) operated at 100% occupancy with 6-month advance booking windows. Beverage program revenues increased 28% through premium upgrade options and exclusive holiday cocktail menus.\n\nDINING AND ENTERTAINMENT SUCCESS\nRestaurant operations served 89,000+ meals with 96% guest satisfaction ratings. The Chef's Table Experience operated at full capacity throughout the season with waiting lists averaging 3 days. Traditional Dance Show performances expanded to nightly presentations, accommodating 100% of interested guests. Holiday-themed entertainment programming generated exceptional guest engagement and social media presence.\n\nOPERATIONAL ACHIEVEMENTS\nStaffing peaked at 210 employees across all departments, maintaining 1.8:1 guest-to-staff ratios. Housekeeping achieved 99.2% room readiness standards despite maximum occupancy. Concierge services processed 4,800+ guest requests with same-day resolution rates of 94%. Health and safety protocols maintained 100% compliance throughout high-volume periods.\n\nGUEST EXPERIENCE METRICS\nOverall guest satisfaction scored 4.9/5.0, with 87% of guests indicating strong likelihood to return. Family program participation reached 94% among eligible guests. Adult-only areas maintained optimal utilization while family zones operated at capacity during peak hours.\n\nSTRATEGIC OUTLOOK\nWinter Holiday Season success establishes pricing benchmarks for future peak periods and validates premium positioning strategy. Capacity constraints suggest opportunities for selective expansion of high-demand facilities and services."
+    },
+    {
+      "template_id": "package_description",
+      "template_name": "Package Description",
+      "title": "Romantic Paradise Honeymoon Package at Azure Waters Maldives",
+      "content": "Escape to the ultimate romantic sanctuary with our exclusive Romantic Paradise Honeymoon package at Azure Waters Maldives. This luxurious 7-night retreat is perfectly crafted for couples seeking an intimate and unforgettable start to their married life together.\n\nYour overwater villa features a private deck with direct lagoon access, where crystal-clear turquoise waters stretch endlessly toward the horizon. Each morning, wake up to breathtaking sunrise views and the gentle sound of waves beneath your private sanctuary.\n\nThis comprehensive package includes daily breakfast served on your villa deck, a romantic sunset dinner cruise, and our signature Couples Massage Retreat in our award-winning spa pavilion. Experience the underwater wonderland together with our included Snorkeling Adventure Tour, where you'll discover vibrant coral gardens and exotic marine life in pristine waters.\n\nEvening entertainment features the mesmerizing Traditional Dance Show, showcasing authentic Maldivian culture under a canopy of stars. Indulge in our exclusive Chef's Table Experience, where our master chef prepares a personalized seven-course tasting menu featuring fresh seafood and local delicacies.\n\nAdditional amenities include complimentary WiFi, 24-hour room service, airport transfers via seaplane, and access to all resort facilities including the infinity pool, fitness center, and water sports equipment. Our dedicated concierge team ensures every detail is perfectly arranged.\n\nStarting at $4,999 per couple, this all-inclusive honeymoon package represents exceptional value for a once-in-a-lifetime experience. Book now and receive complimentary champagne service and a romantic turndown arrangement on your arrival night."
+    },
+    {
+      "template_id": "package_description",
+      "template_name": "Package Description",
+      "title": "Family Fun Adventure Package at Adventure Bay Lodge",
+      "content": "Create lasting memories with your loved ones through our exciting Family Fun Adventure Package at Adventure Bay Lodge. This action-packed 5-night family vacation is designed to thrill adventurers of all ages while providing comfortable accommodations and supervised activities for children.\n\nOur family-friendly lodge features spacious two-bedroom suites with stunning bay views, perfect for families of up to six guests. Each suite includes a kitchenette, separate living area, and private balcony where you can enjoy morning coffee while the kids sleep in.\n\nThe adventure begins with our thrilling Volcano Hiking Expedition, suitable for children aged 8 and above, where experienced guides lead you through ancient lava fields and explain the fascinating geological history. Younger children can participate in our supervised Kids' Nature Discovery program while older family members tackle the challenging trails.\n\nDive into underwater exploration with our family-friendly Snorkeling Adventure Tour, featuring calm, protected waters perfect for beginners. Professional instructors provide all equipment and ensure everyone's safety while discovering colorful fish and coral formations.\n\nEvenings come alive with our entertaining Traditional Dance Show, where families can learn basic steps and participate in the cultural celebration. The package includes three hearty meals daily at our family restaurant, featuring kid-friendly options alongside gourmet selections for adults.\n\nAdditional inclusions: airport transfers, use of bicycles, kayaks, and snorkeling gear, access to the playground and game room, and complimentary cribs or rollaway beds as needed.\n\nPriced at $2,850 per family (2 adults, 2 children), this comprehensive package offers incredible value for an unforgettable family adventure. Book early and save 15% on your deposit."
+    },
+    {
+      "template_id": "package_description",
+      "template_name": "Package Description",
+      "title": "Ultimate Adventure Seeker Package at Crystal Peak Lodge",
+      "content": "Push your limits and embrace the extraordinary with our Ultimate Adventure Seeker package at Crystal Peak Lodge. This adrenaline-fueled 6-night expedition is crafted for thrill-seekers who crave authentic outdoor challenges in breathtaking alpine wilderness.\n\nNestled at 7,500 feet elevation, Crystal Peak Lodge serves as your basecamp for high-altitude adventures. Your rustic yet comfortable mountain cabin features panoramic views, a stone fireplace, and modern amenities including heated floors and a private hot tub for post-adventure recovery.\n\nThe centerpiece of your stay is our challenging Volcano Hiking Expedition, a guided two-day trek to the summit of Mount Crystalline. This demanding climb rewards you with spectacular crater views and the achievement of conquering one of the region's most formidable peaks. Professional mountain guides provide all technical equipment and ensure your safety throughout the ascent.\n\nExtend your adventure with daily activities including rock climbing, white-water rafting, mountain biking on single-track trails, and backcountry skiing (seasonal). Each evening, unwind with our therapeutic Couples Massage Retreat, specifically designed to soothe adventure-weary muscles.\n\nDining experiences match the adventurous spirit with our exclusive Chef's Table Experience featuring locally-sourced game and mountain cuisine. Enjoy hearty breakfast and lunch designed to fuel your daily expeditions.\n\nPackage inclusions: all adventure equipment and safety gear, professional guides for all activities, three meals daily, airport transfers, equipment storage and drying facilities, and emergency evacuation insurance.\n\nAt $3,750 per person, this intensive adventure package delivers unmatched thrills and memories that will last a lifetime. Limited to 8 guests per departure to ensure personalized attention and safety."
+    },
+    {
+      "template_id": "package_description",
+      "template_name": "Package Description",
+      "title": "Mindful Wellness Retreat at Serenity Hills Wellness Retreat",
+      "content": "Rediscover inner peace and rejuvenate your mind, body, and spirit with our transformative Mindful Wellness Retreat at Serenity Hills Wellness Retreat. This carefully curated 8-night journey combines ancient healing practices with modern wellness techniques in a serene mountain sanctuary.\n\nYour private wellness suite overlooks tranquil meditation gardens and features a personal yoga deck, aromatherapy diffuser, and luxurious marble bathroom with soaking tub. Each accommodation is designed to promote restful sleep and peaceful contemplation.\n\nBegin each day with sunrise meditation and gentle yoga sessions led by certified instructors. Our comprehensive wellness program includes daily spa treatments with our signature Couples Massage Retreat (available for individuals), featuring organic, locally-sourced oils and therapeutic techniques.\n\nNourish your body with our acclaimed Chef's Table Experience, showcasing plant-based cuisine crafted from our organic garden. Each meal is designed by nutritionists to support your wellness journey while delivering exceptional flavors.\n\nDaily activities include guided forest bathing, mindfulness workshops, sound healing sessions, and gentle nature walks through pristine mountain trails. Our holistic approach addresses stress reduction, improved sleep patterns, and emotional balance.\n\nEvening programs feature meditation circles, wellness seminars, and the peaceful Traditional Dance Show performed in our outdoor amphitheater under the stars.\n\nInclusive amenities: all wellness treatments and classes, organic meals and herbal teas, use of meditation spaces and healing gardens, wellness consultation with our resident practitioners, and take-home wellness kit.\n\nPriced at $4,200 per person, this intensive retreat offers a profound opportunity for personal transformation and lasting wellness practices. Early booking includes complimentary pre-arrival wellness consultation."
+    },
+    {
+      "template_id": "package_description",
+      "template_name": "Package Description",
+      "title": "Tropical All-Inclusive Escape at Tropical Paradise All-Inclusive",
+      "content": "Immerse yourself in ultimate relaxation with our Tropical All-Inclusive Escape at Tropical Paradise All-Inclusive resort. This worry-free 4-night getaway delivers everything you need for a perfect Caribbean vacation without any additional costs or planning stress.\n\nYour oceanfront suite features a private terrace with direct beach access, where powder-soft sand meets crystal-clear waters. Modern amenities include air conditioning, marble bathroom, mini-bar restocked daily, and high-speed WiFi for those who choose to stay connected.\n\nAll meals and premium beverages are included, from casual beachside dining to our sophisticated Chef's Table Experience featuring Caribbean fusion cuisine and fresh seafood. Six restaurants and five bars ensure diverse dining options throughout your stay.\n\nDive into adventure with our complimentary Snorkeling Adventure Tour, exploring vibrant coral reefs just offshore. Water sports equipment including kayaks, paddleboards, and windsurfing gear are included, along with professional instruction for beginners.\n\nRelax and rejuvenate with our included spa treatment featuring the popular Couples Massage Retreat in oceanfront cabanas. Additional wellness amenities include yoga classes, fitness center access, and meditation sessions.\n\nEvening entertainment showcases the vibrant Traditional Dance Show with live Caribbean music, followed by beach bonfires and stargazing sessions. Dance lessons, game tournaments, and themed parties keep the energy high.\n\nEvery aspect is covered: airport transfers, all meals and drinks including premium spirits, water and land sports, entertainment programs, spa treatment, WiFi, and resort amenities.\n\nAt $1,999 per person, this all-inclusive package eliminates surprises and maximizes value. Book now and receive a complimentary room upgrade and late checkout based on availability."
+    },
+    {
+      "template_id": "activity_schedule",
+      "template_name": "Activity Schedule",
+      "title": "Azure Waters Maldives - Caribbean Peak Season Activity Schedule",
+      "content": "WEEKLY ACTIVITY SCHEDULE - AZURE WATERS MALDIVES\nCaribbean Peak Season (December - April)\n\nMONDAY\n8:00 AM - Morning Yoga (Complimentary, All Ages)\n10:30 AM - Snorkeling Adventure Tour ($85/adult, $50/child 8-15, Ages 8+, Intermediate)\n2:00 PM - Traditional Dance Show (Complimentary, All Ages)\n7:30 PM - Chef's Table Experience ($195/person, Ages 16+, Reservation Required)\n\nTUESDAY\n9:00 AM - Water Aerobics (Complimentary, All Ages)\n11:00 AM - Island Hopping Excursion ($120/adult, $75/child, Ages 6+)\n3:00 PM - Couples Massage Retreat ($280/couple, Ages 18+, 90 minutes)\n8:00 PM - Sunset Dolphin Cruise ($65/adult, $40/child, All Ages)\n\nWEDNESDAY\n8:30 AM - Deep Sea Fishing Charter ($150/person, Ages 12+, Expert)\n1:00 PM - Cooking Class - Maldivian Cuisine ($75/person, Ages 10+)\n4:00 PM - Sunset Catamaran Sailing ($55/adult, $35/child, All Ages)\n\nTHURSDAY\n10:00 AM - Snorkeling Adventure Tour ($85/adult, $50/child, Ages 8+, Intermediate)\n2:30 PM - Cultural Village Tour ($45/adult, $25/child, All Ages)\n6:00 PM - Beach Barbecue & Live Music (Complimentary, All Ages)\n\nFRIDAY\n9:30 AM - Jet Ski Safari ($95/person, Ages 16+, Beginner)\n1:30 PM - Spa Treatment Packages (Starting $180, Ages 16+)\n7:00 PM - Traditional Dance Show & Dinner ($125/adult, $75/child)\n\nWEEKEND\nSaturday: Marine Life Discovery Tour ($110/person, Ages 8+)\nSunday: Romantic Beach Picnic Setup ($250/couple, Ages 18+)\n\n*PEAK SEASON SPECIAL: Book any 3 activities and receive 15% discount\n*Weather permitting - Alternative indoor activities available\n*Advance booking recommended for all paid activities"
+    },
+    {
+      "template_id": "activity_schedule",
+      "template_name": "Activity Schedule",
+      "title": "Crystal Peak Lodge - Winter Holiday Season Activity Schedule",
+      "content": "CRYSTAL PEAK LODGE - WINTER HOLIDAY SEASON SCHEDULE\nDecember 20th - January 5th\n\nDAILY MOUNTAIN ADVENTURES\n\nMORNING ACTIVITIES (8:00 AM - 12:00 PM)\n\u2022 Guided Snowshoe Tours ($45/adult, $25/child 6-12, Beginner-Intermediate)\n\u2022 Cross-Country Ski Lessons ($65/person, Ages 8+, Equipment included)\n\u2022 Volcano Hiking Expedition ($85/adult, $60/youth 14-17, Advanced, Ages 14+)\n\u2022 Ice Climbing Workshop ($125/person, Ages 16+, Expert level)\n\nAFTERNOON EXPERIENCES (1:00 PM - 5:00 PM)\n\u2022 Alpine Photography Tour ($55/person, All Ages, Beginner)\n\u2022 Sledding & Tubing ($35/person, Ages 5+, Family-friendly)\n\u2022 Winter Wildlife Tracking ($40/adult, $25/child, Ages 8+)\n\u2022 Hot Springs Excursion ($75/person, All Ages, Transportation included)\n\nEVENING PROGRAMS (6:00 PM - 10:00 PM)\n\u2022 Chef's Table Experience - Mountain Cuisine ($165/person, Ages 12+)\n\u2022 Fireside Storytelling (Complimentary, All Ages)\n\u2022 Stargazing with Astronomer ($25/person, Ages 6+)\n\u2022 Wine Tasting & Cheese Pairing ($45/person, Ages 21+)\n\nSPECIAL HOLIDAY EVENTS\n\u2022 December 24th: Christmas Eve Torchlight Ski Parade (Complimentary)\n\u2022 December 31st: New Year's Eve Mountain Top Celebration ($95/person)\n\u2022 January 1st: Polar Bear Plunge Challenge (Complimentary, Ages 18+)\n\nWELLNESS & RELAXATION\n\u2022 Daily: Morning Meditation (7:00 AM, Complimentary)\n\u2022 Couples Massage Retreat ($320/couple, 120 minutes, Mountain view suite)\n\u2022 Sauna & Steam Room (Complimentary for lodge guests)\n\n*HOLIDAY SPECIAL: Stay 5 nights, get 20% off all activities\n*Weather conditions may affect outdoor activities - Indoor alternatives available\n*Equipment rental available for all winter sports"
+    },
+    {
+      "template_id": "activity_schedule",
+      "template_name": "Activity Schedule",
+      "title": "Serenity Hills Wellness Retreat - Spring Shoulder Season Schedule",
+      "content": "SERENITY HILLS WELLNESS RETREAT\nSpring Renewal Program - March through May\n\nDAILY WELLNESS SCHEDULE\n\nMORNING MINDFULNESS (6:00 AM - 10:00 AM)\n\u2022 Sunrise Meditation Circle (6:30 AM, Complimentary, All Ages)\n\u2022 Tai Chi in the Gardens (7:30 AM, $15/session, Beginner-friendly)\n\u2022 Therapeutic Yoga Classes (8:30 AM, $25/class, All levels)\n\u2022 Nature Mindfulness Walk (9:30 AM, $20/person, Ages 12+)\n\nWELLNESS TREATMENTS (10:00 AM - 6:00 PM)\n\u2022 Couples Massage Retreat - Spring Renewal ($350/couple, 90 minutes)\n\u2022 Aromatherapy Sessions ($95/hour, Ages 16+)\n\u2022 Reflexology & Energy Healing ($85/session, All Ages)\n\u2022 Detox Body Wraps ($125/treatment, Ages 18+)\n\u2022 Acupuncture Consultations ($110/session, Ages 16+)\n\nAFTERNOON ACTIVITIES (1:00 PM - 5:00 PM)\n\u2022 Organic Cooking Workshops ($65/person, Ages 14+)\n\u2022 Herbal Garden Tours & Tea Blending ($35/person, All Ages)\n\u2022 Art Therapy Sessions ($55/hour, Ages 8+)\n\u2022 Labyrinth Walking Meditation ($10/person, All Ages)\n\nEVENING PROGRAMS (6:00 PM - 9:00 PM)\n\u2022 Healthy Gourmet Dining Experience ($89/person, Farm-to-table)\n\u2022 Sound Bath Healing Sessions ($40/person, Ages 10+)\n\u2022 Wellness Lectures & Workshops ($25/person)\n\u2022 Campfire Storytelling (Complimentary, All Ages)\n\nWEEKLY SPECIALS\n\u2022 Monday: Digital Detox Day - 25% off all spa services\n\u2022 Wednesday: Partner Wellness Activities - BOGO yoga classes\n\u2022 Friday: Spring Cleanse Workshop (Complimentary)\n\u2022 Sunday: Family Wellness Day - Children's programs included\n\n*SPRING SPECIAL: 7-day wellness package includes all meals, accommodation, and daily treatments starting $1,495/person\n*All treatments customizable for individual wellness goals\n*Consultation with wellness coordinator included"
+    },
+    {
+      "template_id": "activity_schedule",
+      "template_name": "Activity Schedule",
+      "title": "Adventure Bay Lodge - Summer High Season Activity Calendar",
+      "content": "ADVENTURE BAY LODGE - SUMMER HIGH SEASON ACTIVITIES\nJune - August Peak Adventure Programming\n\nWATER ADVENTURES (Daily)\n\u2022 Snorkeling Adventure Tour - Bay Explorer ($75/adult, $45/child 8-15, Intermediate)\n\u2022 Kayaking Expeditions ($55/person, Ages 10+, Beginner-Advanced routes)\n\u2022 Stand-up Paddleboard Lessons ($40/hour, Ages 8+, Equipment included)\n\u2022 Deep Sea Fishing Charters ($185/person, Ages 12+, Full day with lunch)\n\u2022 Scuba Diving Certification Courses ($395/person, Ages 12+, 3-day program)\n\nLAND EXCURSIONS\n\u2022 Zipline Canopy Tour ($85/person, Ages 12+, Advanced thrill level)\n\u2022 ATV Jungle Adventures ($110/person, Ages 16+, 3-hour guided tour)\n\u2022 Rock Climbing & Rappelling ($95/person, Ages 14+, Expert instruction)\n\u2022 Hiking Expeditions - Multiple difficulty levels ($35-65/person, Ages 8+)\n\u2022 Mountain Biking Trails ($50/day, Ages 12+, Bike rental included)\n\nCULTURAL & CULINARY\n\u2022 Traditional Dance Show - Polynesian Night (Tuesdays & Fridays, $45/adult, $25/child)\n\u2022 Chef's Table Experience - Seafood Specialties ($155/person, Ages 16+, Wine pairings)\n\u2022 Local Market & Cooking Tour ($85/person, Ages 14+, Half-day experience)\n\u2022 Artisan Craft Workshops ($35/person, Ages 6+, Family-friendly)\n\nEVENING ENTERTAINMENT\n\u2022 Sunset Catamaran Cruise ($65/adult, $40/child, Includes appetizers)\n\u2022 Beach Bonfire & S'mores (Nightly, Complimentary)\n\u2022 Live Music Performances (Wednesday & Saturday, Complimentary)\n\u2022 Night Snorkeling with Underwater Lights ($95/person, Ages 12+)\n\nSUMMER FAMILY PACKAGES\n\u2022 Adventure Family Week: $2,850 for family of 4 (includes 10 activities)\n\u2022 Teen Adventure Camp: $145/day per teen (Ages 13-17, Supervised programs)\n\n*FREE activity equipment storage and maintenance\n*Professional photography packages available for all adventures ($75-150)\n*Weather guarantee - Full refund or rescheduling for cancelled water activities"
+    },
+    {
+      "template_id": "activity_schedule",
+      "template_name": "Activity Schedule",
+      "title": "Tropical Paradise All-Inclusive - Off Season Low Activity Guide",
+      "content": "TROPICAL PARADISE ALL-INCLUSIVE RESORT\nOff Season Value Program - September through November\n\nCOMPLIMENTARY ACTIVITIES (Included in Stay)\n\u2022 Daily Beach Volleyball Tournaments (10:00 AM & 3:00 PM, All Ages)\n\u2022 Water Aerobics & Aqua Fitness (9:00 AM & 4:00 PM, All skill levels)\n\u2022 Tennis Lessons with Resort Pro (11:00 AM daily, Ages 8+)\n\u2022 Traditional Dance Show - Caribbean Heritage (Tuesday & Friday evenings)\n\u2022 Kids Club Adventures (9:00 AM - 5:00 PM, Ages 4-12, Supervised)\n\u2022 Teen Activities Center (1:00 PM - 9:00 PM, Ages 13-17)\n\nPREMIUM EXPERIENCES (Additional Cost)\n\u2022 Snorkeling Adventure Tour - Coral Gardens ($65/adult, $40/child, Ages 8+)\n\u2022 Couples Massage Retreat - Oceanview Pavilion ($240/couple, 60 minutes)\n\u2022 Deep Sea Fishing Expedition ($135/person, Ages 14+, Half-day charter)\n\u2022 Chef's Table Experience - Caribbean Fusion ($125/person, Ages 16+)\n\u2022 Rum Distillery & Tasting Tour ($75/person, Ages 21+)\n\u2022 Sunset Horseback Beach Ride ($85/person, Ages 12+)\n\nWEEKLY SPECIAL EVENTS\n\u2022 Monday: Poolside Movie Night (Complimentary, Family-friendly)\n\u2022 Wednesday: Beach Barbecue & Steel Drum Band (Complimentary)\n\u2022 Thursday: Casino Night & Game Tournaments ($20 entry, Ages 18+)\n\u2022 Saturday: Cultural Market & Craft Fair (Vendor costs vary)\n\u2022 Sunday: Champagne Brunch & Jazz Performance ($35/person supplement)\n\nFITNESS & WELLNESS\n\u2022 Beachfront Yoga Classes (7:00 AM & 6:00 PM, Complimentary)\n\u2022 Fitness Center & Personal Training (Gym complimentary, Training $75/session)\n\u2022 Spa Services & Treatments ($85-285, Ages 16+)\n\u2022 Nature Walking Trails (Self-guided, Complimentary maps)\n\nOFF-SEASON VALUE SPECIALS\n\u2022 Book any 3 premium activities: Save 20%\n\u2022 Spa & Dining Package: $199/person (includes massage + chef's dinner)\n\u2022 Family Activity Bundle: $350 for up to 4 people (5 activities)\n\n*All activities subject to weather and minimum participation requirements\n*Advance reservations recommended for premium experiences"
+    }
+  ],
+  "traces": [
+    {
+      "id": "pricing_strategy",
+      "task": "Determine optimal pricing for Emerald Golf & Spa Resort during Ski Season Peak",
+      "steps": [
+        {
+          "thought": "Analyze historical occupancy and booking patterns",
+          "action": "Query booking data for the same season in previous years",
+          "observation": "Historical data shows 87% average occupancy during ski season peak with guests paying premium rates 40-60% above base pricing, with highest demand concentrated in the final two weeks of February and first week of March."
+        },
+        {
+          "thought": "Evaluate current demand signals and booking pace",
+          "action": "Compare current bookings against capacity and season targets",
+          "observation": "Current bookings are tracking 23% ahead of last year's pace at this point, with 71% of premium suites already reserved and strong demand signals from repeat guests and corporate groups."
+        },
+        {
+          "thought": "Consider competitor pricing and market conditions",
+          "action": "Review rate multipliers and guest feedback on value perception",
+          "observation": "Competitor analysis reveals nearby luxury resorts have implemented 15-25% rate increases, while guest satisfaction scores indicate 92% of previous season visitors rated our spa amenities and golf course access as 'exceptional value' despite premium pricing."
+        },
+        {
+          "thought": "Model revenue impact of different rate adjustments",
+          "action": "Calculate projected revenue at various occupancy and rate scenarios",
+          "observation": "Revenue modeling demonstrates that a 20% rate increase with projected 8% occupancy decline would generate $2.3M additional revenue compared to maintaining current rates at full occupancy."
+        }
+      ],
+      "outcome": "Implement a 22% rate increase for ski season peak period with dynamic pricing that adjusts daily based on remaining inventory, while enhancing spa package offerings to maintain value perception and justify premium positioning."
+    },
+    {
+      "id": "package_design",
+      "task": "Design a new vacation package for wellness travelers at Alpine Peaks Mountain Resort",
+      "steps": [
+        {
+          "thought": "Analyze guest preferences and popular activity combinations",
+          "action": "Query guest participation patterns and feedback by travel style",
+          "observation": "Adventure travelers at Alpine Peaks show 87% participation in multi-activity packages, with hiking-mountain biking combinations receiving 4.6/5 satisfaction scores and zip-lining-rock climbing bundles generating the highest repeat booking rates at 34%."
+        },
+        {
+          "thought": "Identify high-margin activities to include",
+          "action": "Review activity pricing and guest satisfaction scores",
+          "observation": "Premium guided glacier tours ($180/person) and heli-skiing experiences ($450/person) maintain 92% occupancy with 4.8/5 ratings, while basic hiking packages ($45/person) show lower margins but high volume potential."
+        },
+        {
+          "thought": "Determine competitive pricing and duration",
+          "action": "Compare with existing packages and market benchmarks",
+          "observation": "Competitor analysis reveals 3-day adventure packages range from $899-$1,299 per person, with our current offerings priced 15% below market average despite superior amenities and exclusive backcountry access permits."
+        }
+      ],
+      "outcome": "Launch the 'Alpine Adrenaline' 4-day package at $1,149 per person, featuring guided glacier hiking, mountain biking trails, zip-lining, and one premium heli-skiing session, positioned as a mid-luxury adventure experience that maximizes both guest satisfaction and revenue potential."
+    },
+    {
+      "id": "seasonal_planning",
+      "task": "Plan operations for upcoming Spring Break Season at Serenity Hills Wellness Retreat",
+      "steps": [
+        {
+          "thought": "Review previous season performance and lessons learned",
+          "action": "Query seasonal reports and guest feedback from last year",
+          "observation": "Last spring's occupancy peaked at 92% during the third week of March, but guest satisfaction scores dropped to 3.2/5 due to understaffing in spa services and limited healthy meal options during peak dining times."
+        },
+        {
+          "thought": "Forecast demand based on booking trends",
+          "action": "Analyze advance bookings and compare to historical pace",
+          "observation": "Current advance bookings are running 18% ahead of last year's pace, with particularly strong demand for yoga retreat packages and couples' wellness programs during the March 15-29 period."
+        },
+        {
+          "thought": "Plan staffing, activities, and inventory",
+          "action": "Determine resource requirements based on demand forecast",
+          "observation": "Based on projected 95% occupancy, we'll need to hire 8 additional spa therapists, 3 yoga instructors, and 4 kitchen staff, while increasing organic produce orders by 40% and pre-ordering 200 additional meditation cushions and yoga mats."
+        }
+      ],
+      "outcome": "Approved budget increase of $125,000 to hire seasonal staff early and expand spa capacity by adding two treatment rooms, while implementing staggered meal service times to manage the 25% increase in expected guests during peak Spring Break weeks."
+    }
+  ]
+}

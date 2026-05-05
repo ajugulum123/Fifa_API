@@ -1,0 +1,2139 @@
+{
+  "domain": "data-journalism",
+  "entities": {
+    "Person": [
+      {
+        "name": "Maria Rodriguez",
+        "email": "mrodriguez@washpost.com",
+        "role": "Investigative Reporter",
+        "description": "Senior investigative journalist specializing in government accountability and corruption cases"
+      },
+      {
+        "name": "David Kim",
+        "email": "dkim@reuters.com",
+        "role": "Data Analyst",
+        "description": "Data journalist with expertise in statistical analysis and visualization of complex datasets"
+      },
+      {
+        "name": "Aisha Okonkwo",
+        "email": "aokonkwo@propublica.org",
+        "role": "Fact-Checker",
+        "description": "Lead fact-checker with 8 years experience verifying claims and sources for investigative pieces"
+      },
+      {
+        "name": "James Sullivan",
+        "email": "jsullivan@guardian.com",
+        "role": "Editor",
+        "description": "Investigative editor overseeing long-form journalism projects and source protection protocols"
+      },
+      {
+        "name": "Priya Sharma",
+        "email": "psharma@intercept.com",
+        "role": "Source Protection Specialist",
+        "description": "Legal and security expert specializing in protecting whistleblowers and confidential sources"
+      }
+    ],
+    "Organization": [
+      {
+        "name": "International Consortium of Investigative Journalists",
+        "description": "Global network of reporters and media organizations dedicated to cross-border investigative reporting",
+        "industry": "Media"
+      },
+      {
+        "name": "Center for Investigative Reporting",
+        "description": "Nonprofit newsroom producing investigative journalism focused on social justice issues",
+        "industry": "Media"
+      },
+      {
+        "name": "DataCorp Analytics",
+        "description": "Technology company providing data analysis tools and platforms for journalism organizations",
+        "industry": "Technology"
+      },
+      {
+        "name": "Federal Communications Commission",
+        "description": "Independent agency regulating interstate and international communications by radio, television, wire, satellite, and cable",
+        "industry": "Government"
+      },
+      {
+        "name": "Transparency International",
+        "description": "Global coalition against corruption working to create systems of integrity",
+        "industry": "Non-profit"
+      }
+    ],
+    "Location": [
+      {
+        "name": "National Press Club",
+        "address": "529 14th Street NW, Washington, DC 20045",
+        "latitude": 38.8951,
+        "longitude": -77.0319
+      },
+      {
+        "name": "Reuters London Bureau",
+        "address": "5 Canada Square, Canary Wharf, London E14 5AQ",
+        "latitude": 51.5049,
+        "longitude": -0.0197
+      },
+      {
+        "name": "ProPublica Newsroom",
+        "address": "155 Avenue of the Americas, New York, NY 10013",
+        "latitude": 40.7243,
+        "longitude": -74.0058
+      },
+      {
+        "name": "Guardian Australia Office",
+        "address": "Level 2, 19 Foster Street, Surry Hills NSW 2010",
+        "latitude": -33.8789,
+        "longitude": 151.2093
+      },
+      {
+        "name": "Investigative Reporting Workshop",
+        "address": "4400 Massachusetts Ave NW, Washington, DC 20016",
+        "latitude": 38.9382,
+        "longitude": -77.0717
+      }
+    ],
+    "Event": [
+      {
+        "name": "Global Investigative Journalism Conference 2024",
+        "date": "2024-09-26T09:00:00Z",
+        "description": "International gathering of investigative journalists sharing methodologies and cross-border collaboration techniques"
+      },
+      {
+        "name": "Data Journalism Awards Ceremony",
+        "date": "2024-06-15T19:00:00Z",
+        "description": "Annual recognition ceremony for excellence in data-driven journalism and innovative storytelling"
+      },
+      {
+        "name": "Press Freedom Summit",
+        "date": "2024-05-03T10:00:00Z",
+        "description": "Conference addressing challenges to press freedom and source protection in the digital age"
+      },
+      {
+        "name": "Fact-Checking Workshop Series",
+        "date": "2024-03-12T14:00:00Z",
+        "description": "Professional development workshop on advanced fact-checking methodologies and verification tools"
+      },
+      {
+        "name": "Investigative Methods Bootcamp",
+        "date": "2024-07-20T09:30:00Z",
+        "description": "Intensive training program for emerging investigative journalists on research and interviewing techniques"
+      }
+    ],
+    "Object": [
+      {
+        "name": "Encrypted Communication Device",
+        "description": "Secure mobile device used for protecting communications with confidential sources"
+      },
+      {
+        "name": "Document Authentication Kit",
+        "description": "Professional toolkit for verifying the authenticity of documents and detecting forgeries"
+      },
+      {
+        "name": "Data Visualization Software License",
+        "description": "Professional license for advanced data visualization and interactive storytelling tools"
+      },
+      {
+        "name": "FOIA Request Template",
+        "description": "Standardized legal template for filing Freedom of Information Act requests with government agencies"
+      },
+      {
+        "name": "Source Protection Protocol Manual",
+        "description": "Comprehensive guide for protecting source identity and ensuring secure communication channels"
+      }
+    ],
+    "Source": [
+      {
+        "source_id": "SRC-2024-001",
+        "name": "Dr. Rebecca Martinez",
+        "source_type": "expert",
+        "credibility": "verified",
+        "affiliation": "Environmental Protection Agency",
+        "last_contact": "2024-01-15",
+        "protected": false
+      },
+      {
+        "source_id": "SRC-2024-002",
+        "name": "Anonymous Banking Insider",
+        "source_type": "whistleblower",
+        "credibility": "reliable",
+        "affiliation": "Major Financial Institution",
+        "last_contact": "2024-01-22",
+        "protected": true
+      },
+      {
+        "source_id": "SRC-2024-003",
+        "name": "Congressional Ethics Filings",
+        "source_type": "public_record",
+        "credibility": "verified",
+        "affiliation": "House Ethics Committee",
+        "last_contact": "2024-01-18",
+        "protected": false
+      },
+      {
+        "source_id": "SRC-2024-004",
+        "name": "Former State Department Official",
+        "source_type": "person",
+        "credibility": "verified",
+        "affiliation": "State Department (retired)",
+        "last_contact": "2024-01-10",
+        "protected": false
+      },
+      {
+        "source_id": "SRC-2024-005",
+        "name": "Internal Audit Report 2023",
+        "source_type": "document",
+        "credibility": "verified",
+        "affiliation": "City Planning Department",
+        "last_contact": "2024-01-25",
+        "protected": false
+      },
+      {
+        "source_id": "SRC-2024-006",
+        "name": "Hospital Records Database",
+        "source_type": "database",
+        "credibility": "reliable",
+        "affiliation": "Metropolitan Health System",
+        "last_contact": "2024-01-20",
+        "protected": true
+      },
+      {
+        "source_id": "SRC-2024-007",
+        "name": "Tech Industry Analyst",
+        "source_type": "expert",
+        "credibility": "reliable",
+        "affiliation": "Silicon Valley Research Institute",
+        "last_contact": "2024-01-12",
+        "protected": false
+      },
+      {
+        "source_id": "SRC-2024-008",
+        "name": "Leaked Email Chain",
+        "source_type": "document",
+        "credibility": "unverified",
+        "affiliation": "Corporate Executive Team",
+        "last_contact": "2024-01-28",
+        "protected": true
+      },
+      {
+        "source_id": "SRC-2024-009",
+        "name": "Police Incident Reports",
+        "source_type": "public_record",
+        "credibility": "verified",
+        "affiliation": "Metropolitan Police Department",
+        "last_contact": "2024-01-16",
+        "protected": false
+      },
+      {
+        "source_id": "SRC-2024-010",
+        "name": "Education Policy Researcher",
+        "source_type": "expert",
+        "credibility": "verified",
+        "affiliation": "National Education Association",
+        "last_contact": "2024-01-14",
+        "protected": false
+      }
+    ],
+    "Story": [
+      {
+        "story_id": "STY-2024-001",
+        "headline": "City Council Members Received Undisclosed Payments from Development Firms",
+        "status": "published",
+        "beat": "politics",
+        "published_date": "2024-01-20",
+        "word_count": 2847,
+        "name": "Story 1"
+      },
+      {
+        "story_id": "STY-2024-002",
+        "headline": "Hospital Chain Overcharges Medicare by $50 Million Annually",
+        "status": "review",
+        "beat": "health",
+        "published_date": null,
+        "word_count": 3124,
+        "name": "Story 2"
+      },
+      {
+        "story_id": "STY-2024-003",
+        "headline": "Tech Giants Use AI to Manipulate User Behavior for Profit",
+        "status": "drafting",
+        "beat": "tech",
+        "published_date": null,
+        "word_count": 1890,
+        "name": "Story 3"
+      },
+      {
+        "story_id": "STY-2024-004",
+        "headline": "Environmental Agency Ignored Contamination Reports for Two Years",
+        "status": "published",
+        "beat": "environment",
+        "published_date": "2024-01-15",
+        "word_count": 2556,
+        "name": "Story 4"
+      },
+      {
+        "story_id": "STY-2024-005",
+        "headline": "Corporate Tax Loopholes Cost Treasury $12 Billion",
+        "status": "researching",
+        "beat": "business",
+        "published_date": null,
+        "word_count": 987,
+        "name": "Story 5"
+      },
+      {
+        "story_id": "STY-2024-006",
+        "headline": "Police Misconduct Cases Systematically Dismissed by District Attorney",
+        "status": "published",
+        "beat": "justice",
+        "published_date": "2024-01-18",
+        "word_count": 3401,
+        "name": "Story 6"
+      },
+      {
+        "story_id": "STY-2024-007",
+        "headline": "Charter School Network Diverts Public Funds to Private Accounts",
+        "status": "review",
+        "beat": "education",
+        "published_date": null,
+        "word_count": 2789,
+        "name": "Story 7"
+      },
+      {
+        "story_id": "STY-2024-008",
+        "headline": "Pharmaceutical Company Suppressed Clinical Trial Data",
+        "status": "drafting",
+        "beat": "health",
+        "published_date": null,
+        "word_count": 2234,
+        "name": "Story 8"
+      },
+      {
+        "story_id": "STY-2024-009",
+        "headline": "Social Media Platform Sells User Data to Foreign Governments",
+        "status": "pitch",
+        "beat": "tech",
+        "published_date": null,
+        "word_count": 456,
+        "name": "Story 9"
+      },
+      {
+        "story_id": "STY-2024-010",
+        "headline": "Energy Companies Fund Climate Denial Research Through Shell Organizations",
+        "status": "researching",
+        "beat": "environment",
+        "published_date": null,
+        "word_count": 1567,
+        "name": "Story 10"
+      }
+    ],
+    "Dataset": [
+      {
+        "dataset_id": "DS-2024-001",
+        "name": "Campaign Finance Records 2020-2023",
+        "description": "Comprehensive database of political campaign contributions and expenditures at federal and state levels",
+        "record_count": 2847392,
+        "source_agency": "Federal Election Commission",
+        "obtained_via": "public",
+        "date_range": "2020-01-01 to 2023-12-31"
+      },
+      {
+        "dataset_id": "DS-2024-002",
+        "name": "Medicare Billing Anomalies Report",
+        "description": "Analysis of unusual billing patterns and potential fraud indicators in Medicare claims data",
+        "record_count": 156789,
+        "source_agency": "Centers for Medicare & Medicaid Services",
+        "obtained_via": "foia",
+        "date_range": "2022-01-01 to 2023-12-31"
+      },
+      {
+        "dataset_id": "DS-2024-003",
+        "name": "Corporate Tax Returns Database",
+        "description": "Leaked database containing tax filings from major multinational corporations",
+        "record_count": 45623,
+        "source_agency": "Internal Revenue Service",
+        "obtained_via": "leaked",
+        "date_range": "2018-01-01 to 2022-12-31"
+      },
+      {
+        "dataset_id": "DS-2024-004",
+        "name": "Environmental Violation Records",
+        "description": "Database of environmental compliance violations and enforcement actions",
+        "record_count": 89456,
+        "source_agency": "Environmental Protection Agency",
+        "obtained_via": "foia",
+        "date_range": "2015-01-01 to 2023-12-31"
+      },
+      {
+        "dataset_id": "DS-2024-005",
+        "name": "Police Use of Force Incidents",
+        "description": "Comprehensive database of police use of force incidents and disciplinary actions",
+        "record_count": 234567,
+        "source_agency": "Metropolitan Police Department",
+        "obtained_via": "public",
+        "date_range": "2019-01-01 to 2023-12-31"
+      },
+      {
+        "dataset_id": "DS-2024-006",
+        "name": "Pharmaceutical Clinical Trial Data",
+        "description": "Internal clinical trial results and safety data from major pharmaceutical companies",
+        "record_count": 12789,
+        "source_agency": "Food and Drug Administration",
+        "obtained_via": "leaked",
+        "date_range": "2020-01-01 to 2023-06-30"
+      },
+      {
+        "dataset_id": "DS-2024-007",
+        "name": "Social Media User Activity Logs",
+        "description": "Detailed user behavior and engagement data from major social media platforms",
+        "record_count": 15678923,
+        "source_agency": "Tech Platform Internal",
+        "obtained_via": "leaked",
+        "date_range": "2022-01-01 to 2023-12-31"
+      },
+      {
+        "dataset_id": "DS-2024-008",
+        "name": "Public School Funding Allocation",
+        "description": "Analysis of per-pupil funding disparities across school districts",
+        "record_count": 67890,
+        "source_agency": "Department of Education",
+        "obtained_via": "foia",
+        "date_range": "2020-01-01 to 2023-12-31"
+      },
+      {
+        "dataset_id": "DS-2024-009",
+        "name": "Energy Sector Lobbying Expenditures",
+        "description": "Database of lobbying activities and expenditures by energy companies",
+        "record_count": 34567,
+        "source_agency": "Senate Office of Public Records",
+        "obtained_via": "scraped",
+        "date_range": "2019-01-01 to 2023-12-31"
+      },
+      {
+        "dataset_id": "DS-2024-010",
+        "name": "Healthcare Price Transparency Data",
+        "description": "Hospital pricing data for common procedures and treatments",
+        "record_count": 456789,
+        "source_agency": "Centers for Medicare & Medicaid Services",
+        "obtained_via": "public",
+        "date_range": "2021-01-01 to 2023-12-31"
+      }
+    ],
+    "Claim": [
+      {
+        "claim_id": "CLM-2024-001",
+        "statement": "The city spent $2.3 million on a park renovation that was never completed",
+        "made_by": "City Council Member Johnson",
+        "date": "2024-01-15",
+        "verification_status": "mostly_true",
+        "context": "Public hearing on municipal budget oversight",
+        "name": "Claim 1"
+      },
+      {
+        "claim_id": "CLM-2024-002",
+        "statement": "Hospital readmission rates increased by 40% after the merger",
+        "made_by": "Healthcare Workers Union Representative",
+        "date": "2024-01-18",
+        "verification_status": "true",
+        "context": "Press conference on healthcare quality concerns",
+        "name": "Claim 2"
+      },
+      {
+        "claim_id": "CLM-2024-003",
+        "statement": "Our AI algorithm does not discriminate based on race or gender",
+        "made_by": "TechCorp CEO Sarah Williams",
+        "date": "2024-01-20",
+        "verification_status": "false",
+        "context": "Congressional hearing on AI bias",
+        "name": "Claim 3"
+      },
+      {
+        "claim_id": "CLM-2024-004",
+        "statement": "Environmental cleanup costs will not exceed $50 million",
+        "made_by": "Environmental Protection Agency Director",
+        "date": "2024-01-12",
+        "verification_status": "mostly_false",
+        "context": "Press briefing on contamination site remediation",
+        "name": "Claim 4"
+      },
+      {
+        "claim_id": "CLM-2024-005",
+        "statement": "Corporate tax reform will generate $15 billion in additional revenue",
+        "made_by": "Treasury Secretary",
+        "date": "2024-01-22",
+        "verification_status": "half_true",
+        "context": "Budget proposal presentation to Congress",
+        "name": "Claim 5"
+      },
+      {
+        "claim_id": "CLM-2024-006",
+        "statement": "Police misconduct complaints have decreased by 25% this year",
+        "made_by": "Police Chief Martinez",
+        "date": "2024-01-25",
+        "verification_status": "unverified",
+        "context": "Annual police department review meeting",
+        "name": "Claim 6"
+      },
+      {
+        "claim_id": "CLM-2024-007",
+        "statement": "Charter school students outperform traditional public school students by 15 points",
+        "made_by": "Education Reform Advocate",
+        "date": "2024-01-16",
+        "verification_status": "mostly_false",
+        "context": "School board meeting on charter school applications",
+        "name": "Claim 7"
+      },
+      {
+        "claim_id": "CLM-2024-008",
+        "statement": "Our drug trial showed zero serious adverse events",
+        "made_by": "PharmaCorp Research Director",
+        "date": "2024-01-14",
+        "verification_status": "false",
+        "context": "FDA advisory committee hearing",
+        "name": "Claim 8"
+      },
+      {
+        "claim_id": "CLM-2024-009",
+        "statement": "User data is never shared with third parties without explicit consent",
+        "made_by": "Social Media Platform Privacy Officer",
+        "date": "2024-01-19",
+        "verification_status": "mostly_false",
+        "context": "Senate privacy hearing testimony",
+        "name": "Claim 9"
+      },
+      {
+        "claim_id": "CLM-2024-010",
+        "statement": "Renewable energy investments will create 100,000 new jobs",
+        "made_by": "Energy Secretary",
+        "date": "2024-01-21",
+        "verification_status": "mostly_true",
+        "context": "Clean energy initiative announcement",
+        "name": "Claim 10"
+      }
+    ],
+    "Correction": [
+      {
+        "correction_id": "COR-2024-001",
+        "original_text": "The mayor received $50,000 in campaign contributions from the development company",
+        "corrected_text": "The mayor received $35,000 in campaign contributions from the development company",
+        "reason": "data_error",
+        "issued_date": "2024-01-21",
+        "name": "Correction 1"
+      },
+      {
+        "correction_id": "COR-2024-002",
+        "original_text": "Dr. Smith stated that the treatment was 95% effective",
+        "corrected_text": "Dr. Smith stated that the treatment showed promise but effectiveness rates were still being studied",
+        "reason": "misquote",
+        "issued_date": "2024-01-19",
+        "name": "Correction 2"
+      },
+      {
+        "correction_id": "COR-2024-003",
+        "original_text": "The company's CEO announced the layoffs during a board meeting",
+        "corrected_text": "The company's CEO announced the layoffs during an all-hands meeting, not a board meeting",
+        "reason": "factual_error",
+        "issued_date": "2024-01-17",
+        "name": "Correction 3"
+      },
+      {
+        "correction_id": "COR-2024-004",
+        "original_text": "The environmental impact study concluded there were no significant risks",
+        "corrected_text": "The environmental impact study concluded there were no significant immediate risks, but noted potential long-term concerns",
+        "reason": "context_missing",
+        "issued_date": "2024-01-23",
+        "name": "Correction 4"
+      },
+      {
+        "correction_id": "COR-2024-005",
+        "original_text": "According to the whistleblower, John Anderson",
+        "corrected_text": "According to a former employee who requested anonymity",
+        "reason": "attribution",
+        "issued_date": "2024-01-16",
+        "name": "Correction 5"
+      },
+      {
+        "correction_id": "COR-2024-006",
+        "original_text": "Hospital admissions increased by 200% during the flu season",
+        "corrected_text": "Hospital admissions increased by 20% during the flu season",
+        "reason": "data_error",
+        "issued_date": "2024-01-24",
+        "name": "Correction 6"
+      },
+      {
+        "correction_id": "COR-2024-007",
+        "original_text": "The senator voted against the bill because of pressure from lobbyists",
+        "corrected_text": "The senator voted against the bill, citing concerns about implementation costs",
+        "reason": "context_missing",
+        "issued_date": "2024-01-18",
+        "name": "Correction 7"
+      },
+      {
+        "correction_id": "COR-2024-008",
+        "original_text": "The study was funded by the pharmaceutical industry",
+        "corrected_text": "The study was funded by the National Institutes of Health",
+        "reason": "factual_error",
+        "issued_date": "2024-01-22",
+        "name": "Correction 8"
+      }
+    ],
+    "Investigation": [
+      {
+        "investigation_id": "INV-2024-001",
+        "name": "Municipal Corruption Network",
+        "description": "Investigation into systematic corruption involving city officials and construction contractors",
+        "started_date": "2023-09-15",
+        "status": "active",
+        "lead_reporter": "Maria Rodriguez"
+      },
+      {
+        "investigation_id": "INV-2024-002",
+        "name": "Healthcare Fraud Ring",
+        "description": "Multi-state investigation into Medicare fraud involving hospital chains and billing companies",
+        "started_date": "2023-11-02",
+        "status": "active",
+        "lead_reporter": "David Kim"
+      },
+      {
+        "investigation_id": "INV-2024-003",
+        "name": "Tech Platform Privacy Violations",
+        "description": "Investigation into unauthorized data collection and sharing by major social media platforms",
+        "started_date": "2023-08-20",
+        "status": "completed",
+        "lead_reporter": "Aisha Okonkwo"
+      },
+      {
+        "investigation_id": "INV-2024-004",
+        "name": "Environmental Cover-up",
+        "description": "Investigation into government agencies hiding environmental contamination data from the public",
+        "started_date": "2023-06-10",
+        "status": "active",
+        "lead_reporter": "James Sullivan"
+      },
+      {
+        "investigation_id": "INV-2024-005",
+        "name": "Corporate Tax Evasion Scheme",
+        "description": "International investigation into offshore tax avoidance strategies used by multinational corporations",
+        "started_date": "2023-04-05",
+        "status": "active",
+        "lead_reporter": "Priya Sharma"
+      },
+      {
+        "investigation_id": "INV-2024-006",
+        "name": "Police Misconduct Pattern",
+        "description": "Investigation into systematic police misconduct and cover-ups within metropolitan police department",
+        "started_date": "2023-12-01",
+        "status": "active",
+        "lead_reporter": "Maria Rodriguez"
+      },
+      {
+        "investigation_id": "INV-2024-007",
+        "name": "Charter School Financial Irregularities",
+        "description": "Investigation into misuse of public funds by charter school management companies",
+        "started_date": "2023-10-15",
+        "status": "paused",
+        "lead_reporter": "David Kim"
+      },
+      {
+        "investigation_id": "INV-2024-008",
+        "name": "Pharmaceutical Safety Data Suppression",
+        "description": "Investigation into pharmaceutical companies hiding adverse drug reaction data from regulators",
+        "started_date": "2023-07-22",
+        "status": "completed",
+        "lead_reporter": "Aisha Okonkwo"
+      }
+    ]
+  },
+  "relationships": [
+    {
+      "type": "WORKS_FOR",
+      "source_label": "Person",
+      "source_name": "Maria Rodriguez",
+      "target_label": "Organization",
+      "target_name": "Transparency International"
+    },
+    {
+      "type": "WORKS_FOR",
+      "source_label": "Person",
+      "source_name": "Maria Rodriguez",
+      "target_label": "Organization",
+      "target_name": "Federal Communications Commission"
+    },
+    {
+      "type": "WORKS_FOR",
+      "source_label": "Person",
+      "source_name": "Maria Rodriguez",
+      "target_label": "Organization",
+      "target_name": "Center for Investigative Reporting"
+    },
+    {
+      "type": "WORKS_FOR",
+      "source_label": "Person",
+      "source_name": "David Kim",
+      "target_label": "Organization",
+      "target_name": "Transparency International"
+    },
+    {
+      "type": "WORKS_FOR",
+      "source_label": "Person",
+      "source_name": "David Kim",
+      "target_label": "Organization",
+      "target_name": "International Consortium of Investigative Journalists"
+    },
+    {
+      "type": "WORKS_FOR",
+      "source_label": "Person",
+      "source_name": "Aisha Okonkwo",
+      "target_label": "Organization",
+      "target_name": "Federal Communications Commission"
+    },
+    {
+      "type": "WORKS_FOR",
+      "source_label": "Person",
+      "source_name": "James Sullivan",
+      "target_label": "Organization",
+      "target_name": "Transparency International"
+    },
+    {
+      "type": "WORKS_FOR",
+      "source_label": "Person",
+      "source_name": "James Sullivan",
+      "target_label": "Organization",
+      "target_name": "Federal Communications Commission"
+    },
+    {
+      "type": "WORKS_FOR",
+      "source_label": "Person",
+      "source_name": "Priya Sharma",
+      "target_label": "Organization",
+      "target_name": "Federal Communications Commission"
+    },
+    {
+      "type": "WORKS_FOR",
+      "source_label": "Person",
+      "source_name": "Priya Sharma",
+      "target_label": "Organization",
+      "target_name": "DataCorp Analytics"
+    },
+    {
+      "type": "WORKS_FOR",
+      "source_label": "Person",
+      "source_name": "Priya Sharma",
+      "target_label": "Organization",
+      "target_name": "International Consortium of Investigative Journalists"
+    },
+    {
+      "type": "LOCATED_AT",
+      "source_label": "Organization",
+      "source_name": "International Consortium of Investigative Journalists",
+      "target_label": "Location",
+      "target_name": "National Press Club"
+    },
+    {
+      "type": "LOCATED_AT",
+      "source_label": "Organization",
+      "source_name": "International Consortium of Investigative Journalists",
+      "target_label": "Location",
+      "target_name": "ProPublica Newsroom"
+    },
+    {
+      "type": "LOCATED_AT",
+      "source_label": "Organization",
+      "source_name": "Center for Investigative Reporting",
+      "target_label": "Location",
+      "target_name": "ProPublica Newsroom"
+    },
+    {
+      "type": "LOCATED_AT",
+      "source_label": "Organization",
+      "source_name": "Center for Investigative Reporting",
+      "target_label": "Location",
+      "target_name": "Guardian Australia Office"
+    },
+    {
+      "type": "LOCATED_AT",
+      "source_label": "Organization",
+      "source_name": "DataCorp Analytics",
+      "target_label": "Location",
+      "target_name": "National Press Club"
+    },
+    {
+      "type": "LOCATED_AT",
+      "source_label": "Organization",
+      "source_name": "Federal Communications Commission",
+      "target_label": "Location",
+      "target_name": "National Press Club"
+    },
+    {
+      "type": "LOCATED_AT",
+      "source_label": "Organization",
+      "source_name": "Transparency International",
+      "target_label": "Location",
+      "target_name": "National Press Club"
+    },
+    {
+      "type": "PARTICIPATED_IN",
+      "source_label": "Person",
+      "source_name": "Maria Rodriguez",
+      "target_label": "Event",
+      "target_name": "Global Investigative Journalism Conference 2024"
+    },
+    {
+      "type": "PARTICIPATED_IN",
+      "source_label": "Person",
+      "source_name": "Maria Rodriguez",
+      "target_label": "Event",
+      "target_name": "Fact-Checking Workshop Series"
+    },
+    {
+      "type": "PARTICIPATED_IN",
+      "source_label": "Person",
+      "source_name": "Maria Rodriguez",
+      "target_label": "Event",
+      "target_name": "Data Journalism Awards Ceremony"
+    },
+    {
+      "type": "PARTICIPATED_IN",
+      "source_label": "Person",
+      "source_name": "David Kim",
+      "target_label": "Event",
+      "target_name": "Global Investigative Journalism Conference 2024"
+    },
+    {
+      "type": "PARTICIPATED_IN",
+      "source_label": "Person",
+      "source_name": "Aisha Okonkwo",
+      "target_label": "Event",
+      "target_name": "Fact-Checking Workshop Series"
+    },
+    {
+      "type": "PARTICIPATED_IN",
+      "source_label": "Person",
+      "source_name": "Aisha Okonkwo",
+      "target_label": "Event",
+      "target_name": "Global Investigative Journalism Conference 2024"
+    },
+    {
+      "type": "PARTICIPATED_IN",
+      "source_label": "Person",
+      "source_name": "Aisha Okonkwo",
+      "target_label": "Event",
+      "target_name": "Investigative Methods Bootcamp"
+    },
+    {
+      "type": "PARTICIPATED_IN",
+      "source_label": "Person",
+      "source_name": "James Sullivan",
+      "target_label": "Event",
+      "target_name": "Investigative Methods Bootcamp"
+    },
+    {
+      "type": "PARTICIPATED_IN",
+      "source_label": "Person",
+      "source_name": "Priya Sharma",
+      "target_label": "Event",
+      "target_name": "Investigative Methods Bootcamp"
+    },
+    {
+      "type": "PARTICIPATED_IN",
+      "source_label": "Person",
+      "source_name": "Priya Sharma",
+      "target_label": "Event",
+      "target_name": "Fact-Checking Workshop Series"
+    },
+    {
+      "type": "SOURCED_FROM",
+      "source_label": "Story",
+      "source_name": "Story 1",
+      "target_label": "Source",
+      "target_name": "Internal Audit Report 2023"
+    },
+    {
+      "type": "SOURCED_FROM",
+      "source_label": "Story",
+      "source_name": "Story 1",
+      "target_label": "Source",
+      "target_name": "Congressional Ethics Filings"
+    },
+    {
+      "type": "SOURCED_FROM",
+      "source_label": "Story",
+      "source_name": "Story 1",
+      "target_label": "Source",
+      "target_name": "Police Incident Reports"
+    },
+    {
+      "type": "SOURCED_FROM",
+      "source_label": "Story",
+      "source_name": "Story 2",
+      "target_label": "Source",
+      "target_name": "Congressional Ethics Filings"
+    },
+    {
+      "type": "SOURCED_FROM",
+      "source_label": "Story",
+      "source_name": "Story 2",
+      "target_label": "Source",
+      "target_name": "Police Incident Reports"
+    },
+    {
+      "type": "SOURCED_FROM",
+      "source_label": "Story",
+      "source_name": "Story 2",
+      "target_label": "Source",
+      "target_name": "Tech Industry Analyst"
+    },
+    {
+      "type": "SOURCED_FROM",
+      "source_label": "Story",
+      "source_name": "Story 3",
+      "target_label": "Source",
+      "target_name": "Dr. Rebecca Martinez"
+    },
+    {
+      "type": "SOURCED_FROM",
+      "source_label": "Story",
+      "source_name": "Story 3",
+      "target_label": "Source",
+      "target_name": "Congressional Ethics Filings"
+    },
+    {
+      "type": "SOURCED_FROM",
+      "source_label": "Story",
+      "source_name": "Story 3",
+      "target_label": "Source",
+      "target_name": "Former State Department Official"
+    },
+    {
+      "type": "SOURCED_FROM",
+      "source_label": "Story",
+      "source_name": "Story 4",
+      "target_label": "Source",
+      "target_name": "Tech Industry Analyst"
+    },
+    {
+      "type": "SOURCED_FROM",
+      "source_label": "Story",
+      "source_name": "Story 4",
+      "target_label": "Source",
+      "target_name": "Anonymous Banking Insider"
+    },
+    {
+      "type": "SOURCED_FROM",
+      "source_label": "Story",
+      "source_name": "Story 5",
+      "target_label": "Source",
+      "target_name": "Police Incident Reports"
+    },
+    {
+      "type": "SOURCED_FROM",
+      "source_label": "Story",
+      "source_name": "Story 5",
+      "target_label": "Source",
+      "target_name": "Congressional Ethics Filings"
+    },
+    {
+      "type": "SOURCED_FROM",
+      "source_label": "Story",
+      "source_name": "Story 5",
+      "target_label": "Source",
+      "target_name": "Dr. Rebecca Martinez"
+    },
+    {
+      "type": "SOURCED_FROM",
+      "source_label": "Story",
+      "source_name": "Story 6",
+      "target_label": "Source",
+      "target_name": "Police Incident Reports"
+    },
+    {
+      "type": "SOURCED_FROM",
+      "source_label": "Story",
+      "source_name": "Story 6",
+      "target_label": "Source",
+      "target_name": "Congressional Ethics Filings"
+    },
+    {
+      "type": "SOURCED_FROM",
+      "source_label": "Story",
+      "source_name": "Story 7",
+      "target_label": "Source",
+      "target_name": "Dr. Rebecca Martinez"
+    },
+    {
+      "type": "SOURCED_FROM",
+      "source_label": "Story",
+      "source_name": "Story 7",
+      "target_label": "Source",
+      "target_name": "Police Incident Reports"
+    },
+    {
+      "type": "SOURCED_FROM",
+      "source_label": "Story",
+      "source_name": "Story 7",
+      "target_label": "Source",
+      "target_name": "Anonymous Banking Insider"
+    },
+    {
+      "type": "SOURCED_FROM",
+      "source_label": "Story",
+      "source_name": "Story 8",
+      "target_label": "Source",
+      "target_name": "Police Incident Reports"
+    },
+    {
+      "type": "SOURCED_FROM",
+      "source_label": "Story",
+      "source_name": "Story 8",
+      "target_label": "Source",
+      "target_name": "Anonymous Banking Insider"
+    },
+    {
+      "type": "SOURCED_FROM",
+      "source_label": "Story",
+      "source_name": "Story 8",
+      "target_label": "Source",
+      "target_name": "Internal Audit Report 2023"
+    },
+    {
+      "type": "SOURCED_FROM",
+      "source_label": "Story",
+      "source_name": "Story 9",
+      "target_label": "Source",
+      "target_name": "Tech Industry Analyst"
+    },
+    {
+      "type": "SOURCED_FROM",
+      "source_label": "Story",
+      "source_name": "Story 10",
+      "target_label": "Source",
+      "target_name": "Congressional Ethics Filings"
+    },
+    {
+      "type": "SOURCED_FROM",
+      "source_label": "Story",
+      "source_name": "Story 10",
+      "target_label": "Source",
+      "target_name": "Leaked Email Chain"
+    },
+    {
+      "type": "FACT_CHECKED",
+      "source_label": "Claim",
+      "source_name": "Claim 1",
+      "target_label": "Dataset",
+      "target_name": "Social Media User Activity Logs"
+    },
+    {
+      "type": "FACT_CHECKED",
+      "source_label": "Claim",
+      "source_name": "Claim 2",
+      "target_label": "Dataset",
+      "target_name": "Campaign Finance Records 2020-2023"
+    },
+    {
+      "type": "FACT_CHECKED",
+      "source_label": "Claim",
+      "source_name": "Claim 2",
+      "target_label": "Dataset",
+      "target_name": "Healthcare Price Transparency Data"
+    },
+    {
+      "type": "FACT_CHECKED",
+      "source_label": "Claim",
+      "source_name": "Claim 3",
+      "target_label": "Dataset",
+      "target_name": "Energy Sector Lobbying Expenditures"
+    },
+    {
+      "type": "FACT_CHECKED",
+      "source_label": "Claim",
+      "source_name": "Claim 4",
+      "target_label": "Dataset",
+      "target_name": "Environmental Violation Records"
+    },
+    {
+      "type": "FACT_CHECKED",
+      "source_label": "Claim",
+      "source_name": "Claim 5",
+      "target_label": "Dataset",
+      "target_name": "Pharmaceutical Clinical Trial Data"
+    },
+    {
+      "type": "FACT_CHECKED",
+      "source_label": "Claim",
+      "source_name": "Claim 5",
+      "target_label": "Dataset",
+      "target_name": "Energy Sector Lobbying Expenditures"
+    },
+    {
+      "type": "FACT_CHECKED",
+      "source_label": "Claim",
+      "source_name": "Claim 5",
+      "target_label": "Dataset",
+      "target_name": "Medicare Billing Anomalies Report"
+    },
+    {
+      "type": "FACT_CHECKED",
+      "source_label": "Claim",
+      "source_name": "Claim 6",
+      "target_label": "Dataset",
+      "target_name": "Public School Funding Allocation"
+    },
+    {
+      "type": "FACT_CHECKED",
+      "source_label": "Claim",
+      "source_name": "Claim 6",
+      "target_label": "Dataset",
+      "target_name": "Environmental Violation Records"
+    },
+    {
+      "type": "FACT_CHECKED",
+      "source_label": "Claim",
+      "source_name": "Claim 6",
+      "target_label": "Dataset",
+      "target_name": "Campaign Finance Records 2020-2023"
+    },
+    {
+      "type": "FACT_CHECKED",
+      "source_label": "Claim",
+      "source_name": "Claim 7",
+      "target_label": "Dataset",
+      "target_name": "Environmental Violation Records"
+    },
+    {
+      "type": "FACT_CHECKED",
+      "source_label": "Claim",
+      "source_name": "Claim 8",
+      "target_label": "Dataset",
+      "target_name": "Public School Funding Allocation"
+    },
+    {
+      "type": "FACT_CHECKED",
+      "source_label": "Claim",
+      "source_name": "Claim 8",
+      "target_label": "Dataset",
+      "target_name": "Campaign Finance Records 2020-2023"
+    },
+    {
+      "type": "FACT_CHECKED",
+      "source_label": "Claim",
+      "source_name": "Claim 9",
+      "target_label": "Dataset",
+      "target_name": "Corporate Tax Returns Database"
+    },
+    {
+      "type": "FACT_CHECKED",
+      "source_label": "Claim",
+      "source_name": "Claim 9",
+      "target_label": "Dataset",
+      "target_name": "Healthcare Price Transparency Data"
+    },
+    {
+      "type": "FACT_CHECKED",
+      "source_label": "Claim",
+      "source_name": "Claim 9",
+      "target_label": "Dataset",
+      "target_name": "Campaign Finance Records 2020-2023"
+    },
+    {
+      "type": "FACT_CHECKED",
+      "source_label": "Claim",
+      "source_name": "Claim 10",
+      "target_label": "Dataset",
+      "target_name": "Social Media User Activity Logs"
+    },
+    {
+      "type": "FACT_CHECKED",
+      "source_label": "Claim",
+      "source_name": "Claim 10",
+      "target_label": "Dataset",
+      "target_name": "Energy Sector Lobbying Expenditures"
+    },
+    {
+      "type": "CONTRADICTS",
+      "source_label": "Claim",
+      "source_name": "Claim 1",
+      "target_label": "Claim",
+      "target_name": "Claim 9"
+    },
+    {
+      "type": "CONTRADICTS",
+      "source_label": "Claim",
+      "source_name": "Claim 1",
+      "target_label": "Claim",
+      "target_name": "Claim 3"
+    },
+    {
+      "type": "CONTRADICTS",
+      "source_label": "Claim",
+      "source_name": "Claim 2",
+      "target_label": "Claim",
+      "target_name": "Claim 7"
+    },
+    {
+      "type": "CONTRADICTS",
+      "source_label": "Claim",
+      "source_name": "Claim 3",
+      "target_label": "Claim",
+      "target_name": "Claim 8"
+    },
+    {
+      "type": "CONTRADICTS",
+      "source_label": "Claim",
+      "source_name": "Claim 4",
+      "target_label": "Claim",
+      "target_name": "Claim 9"
+    },
+    {
+      "type": "CONTRADICTS",
+      "source_label": "Claim",
+      "source_name": "Claim 4",
+      "target_label": "Claim",
+      "target_name": "Claim 3"
+    },
+    {
+      "type": "CONTRADICTS",
+      "source_label": "Claim",
+      "source_name": "Claim 5",
+      "target_label": "Claim",
+      "target_name": "Claim 1"
+    },
+    {
+      "type": "CONTRADICTS",
+      "source_label": "Claim",
+      "source_name": "Claim 6",
+      "target_label": "Claim",
+      "target_name": "Claim 8"
+    },
+    {
+      "type": "CONTRADICTS",
+      "source_label": "Claim",
+      "source_name": "Claim 6",
+      "target_label": "Claim",
+      "target_name": "Claim 7"
+    },
+    {
+      "type": "CONTRADICTS",
+      "source_label": "Claim",
+      "source_name": "Claim 7",
+      "target_label": "Claim",
+      "target_name": "Claim 5"
+    },
+    {
+      "type": "CONTRADICTS",
+      "source_label": "Claim",
+      "source_name": "Claim 7",
+      "target_label": "Claim",
+      "target_name": "Claim 4"
+    },
+    {
+      "type": "CONTRADICTS",
+      "source_label": "Claim",
+      "source_name": "Claim 7",
+      "target_label": "Claim",
+      "target_name": "Claim 9"
+    },
+    {
+      "type": "CONTRADICTS",
+      "source_label": "Claim",
+      "source_name": "Claim 8",
+      "target_label": "Claim",
+      "target_name": "Claim 4"
+    },
+    {
+      "type": "CONTRADICTS",
+      "source_label": "Claim",
+      "source_name": "Claim 8",
+      "target_label": "Claim",
+      "target_name": "Claim 9"
+    },
+    {
+      "type": "CONTRADICTS",
+      "source_label": "Claim",
+      "source_name": "Claim 9",
+      "target_label": "Claim",
+      "target_name": "Claim 6"
+    },
+    {
+      "type": "CONTRADICTS",
+      "source_label": "Claim",
+      "source_name": "Claim 10",
+      "target_label": "Claim",
+      "target_name": "Claim 8"
+    },
+    {
+      "type": "CONTRADICTS",
+      "source_label": "Claim",
+      "source_name": "Claim 10",
+      "target_label": "Claim",
+      "target_name": "Claim 7"
+    },
+    {
+      "type": "SUPPORTS",
+      "source_label": "Dataset",
+      "source_name": "Campaign Finance Records 2020-2023",
+      "target_label": "Claim",
+      "target_name": "Claim 1"
+    },
+    {
+      "type": "SUPPORTS",
+      "source_label": "Dataset",
+      "source_name": "Campaign Finance Records 2020-2023",
+      "target_label": "Claim",
+      "target_name": "Claim 6"
+    },
+    {
+      "type": "SUPPORTS",
+      "source_label": "Dataset",
+      "source_name": "Medicare Billing Anomalies Report",
+      "target_label": "Claim",
+      "target_name": "Claim 7"
+    },
+    {
+      "type": "SUPPORTS",
+      "source_label": "Dataset",
+      "source_name": "Corporate Tax Returns Database",
+      "target_label": "Claim",
+      "target_name": "Claim 9"
+    },
+    {
+      "type": "SUPPORTS",
+      "source_label": "Dataset",
+      "source_name": "Corporate Tax Returns Database",
+      "target_label": "Claim",
+      "target_name": "Claim 2"
+    },
+    {
+      "type": "SUPPORTS",
+      "source_label": "Dataset",
+      "source_name": "Environmental Violation Records",
+      "target_label": "Claim",
+      "target_name": "Claim 4"
+    },
+    {
+      "type": "SUPPORTS",
+      "source_label": "Dataset",
+      "source_name": "Environmental Violation Records",
+      "target_label": "Claim",
+      "target_name": "Claim 7"
+    },
+    {
+      "type": "SUPPORTS",
+      "source_label": "Dataset",
+      "source_name": "Environmental Violation Records",
+      "target_label": "Claim",
+      "target_name": "Claim 1"
+    },
+    {
+      "type": "SUPPORTS",
+      "source_label": "Dataset",
+      "source_name": "Police Use of Force Incidents",
+      "target_label": "Claim",
+      "target_name": "Claim 10"
+    },
+    {
+      "type": "SUPPORTS",
+      "source_label": "Dataset",
+      "source_name": "Police Use of Force Incidents",
+      "target_label": "Claim",
+      "target_name": "Claim 4"
+    },
+    {
+      "type": "SUPPORTS",
+      "source_label": "Dataset",
+      "source_name": "Police Use of Force Incidents",
+      "target_label": "Claim",
+      "target_name": "Claim 5"
+    },
+    {
+      "type": "SUPPORTS",
+      "source_label": "Dataset",
+      "source_name": "Pharmaceutical Clinical Trial Data",
+      "target_label": "Claim",
+      "target_name": "Claim 4"
+    },
+    {
+      "type": "SUPPORTS",
+      "source_label": "Dataset",
+      "source_name": "Pharmaceutical Clinical Trial Data",
+      "target_label": "Claim",
+      "target_name": "Claim 9"
+    },
+    {
+      "type": "SUPPORTS",
+      "source_label": "Dataset",
+      "source_name": "Social Media User Activity Logs",
+      "target_label": "Claim",
+      "target_name": "Claim 9"
+    },
+    {
+      "type": "SUPPORTS",
+      "source_label": "Dataset",
+      "source_name": "Social Media User Activity Logs",
+      "target_label": "Claim",
+      "target_name": "Claim 2"
+    },
+    {
+      "type": "SUPPORTS",
+      "source_label": "Dataset",
+      "source_name": "Public School Funding Allocation",
+      "target_label": "Claim",
+      "target_name": "Claim 8"
+    },
+    {
+      "type": "SUPPORTS",
+      "source_label": "Dataset",
+      "source_name": "Energy Sector Lobbying Expenditures",
+      "target_label": "Claim",
+      "target_name": "Claim 2"
+    },
+    {
+      "type": "SUPPORTS",
+      "source_label": "Dataset",
+      "source_name": "Healthcare Price Transparency Data",
+      "target_label": "Claim",
+      "target_name": "Claim 3"
+    },
+    {
+      "type": "PUBLISHED_IN",
+      "source_label": "Claim",
+      "source_name": "Claim 1",
+      "target_label": "Story",
+      "target_name": "Story 4"
+    },
+    {
+      "type": "PUBLISHED_IN",
+      "source_label": "Claim",
+      "source_name": "Claim 1",
+      "target_label": "Story",
+      "target_name": "Story 5"
+    },
+    {
+      "type": "PUBLISHED_IN",
+      "source_label": "Claim",
+      "source_name": "Claim 1",
+      "target_label": "Story",
+      "target_name": "Story 1"
+    },
+    {
+      "type": "PUBLISHED_IN",
+      "source_label": "Claim",
+      "source_name": "Claim 2",
+      "target_label": "Story",
+      "target_name": "Story 7"
+    },
+    {
+      "type": "PUBLISHED_IN",
+      "source_label": "Claim",
+      "source_name": "Claim 3",
+      "target_label": "Story",
+      "target_name": "Story 7"
+    },
+    {
+      "type": "PUBLISHED_IN",
+      "source_label": "Claim",
+      "source_name": "Claim 3",
+      "target_label": "Story",
+      "target_name": "Story 4"
+    },
+    {
+      "type": "PUBLISHED_IN",
+      "source_label": "Claim",
+      "source_name": "Claim 4",
+      "target_label": "Story",
+      "target_name": "Story 6"
+    },
+    {
+      "type": "PUBLISHED_IN",
+      "source_label": "Claim",
+      "source_name": "Claim 4",
+      "target_label": "Story",
+      "target_name": "Story 4"
+    },
+    {
+      "type": "PUBLISHED_IN",
+      "source_label": "Claim",
+      "source_name": "Claim 4",
+      "target_label": "Story",
+      "target_name": "Story 9"
+    },
+    {
+      "type": "PUBLISHED_IN",
+      "source_label": "Claim",
+      "source_name": "Claim 5",
+      "target_label": "Story",
+      "target_name": "Story 9"
+    },
+    {
+      "type": "PUBLISHED_IN",
+      "source_label": "Claim",
+      "source_name": "Claim 5",
+      "target_label": "Story",
+      "target_name": "Story 4"
+    },
+    {
+      "type": "PUBLISHED_IN",
+      "source_label": "Claim",
+      "source_name": "Claim 5",
+      "target_label": "Story",
+      "target_name": "Story 1"
+    },
+    {
+      "type": "PUBLISHED_IN",
+      "source_label": "Claim",
+      "source_name": "Claim 6",
+      "target_label": "Story",
+      "target_name": "Story 10"
+    },
+    {
+      "type": "PUBLISHED_IN",
+      "source_label": "Claim",
+      "source_name": "Claim 6",
+      "target_label": "Story",
+      "target_name": "Story 9"
+    },
+    {
+      "type": "PUBLISHED_IN",
+      "source_label": "Claim",
+      "source_name": "Claim 6",
+      "target_label": "Story",
+      "target_name": "Story 7"
+    },
+    {
+      "type": "PUBLISHED_IN",
+      "source_label": "Claim",
+      "source_name": "Claim 7",
+      "target_label": "Story",
+      "target_name": "Story 5"
+    },
+    {
+      "type": "PUBLISHED_IN",
+      "source_label": "Claim",
+      "source_name": "Claim 7",
+      "target_label": "Story",
+      "target_name": "Story 4"
+    },
+    {
+      "type": "PUBLISHED_IN",
+      "source_label": "Claim",
+      "source_name": "Claim 8",
+      "target_label": "Story",
+      "target_name": "Story 8"
+    },
+    {
+      "type": "PUBLISHED_IN",
+      "source_label": "Claim",
+      "source_name": "Claim 9",
+      "target_label": "Story",
+      "target_name": "Story 7"
+    },
+    {
+      "type": "PUBLISHED_IN",
+      "source_label": "Claim",
+      "source_name": "Claim 9",
+      "target_label": "Story",
+      "target_name": "Story 10"
+    },
+    {
+      "type": "PUBLISHED_IN",
+      "source_label": "Claim",
+      "source_name": "Claim 9",
+      "target_label": "Story",
+      "target_name": "Story 5"
+    },
+    {
+      "type": "PUBLISHED_IN",
+      "source_label": "Claim",
+      "source_name": "Claim 10",
+      "target_label": "Story",
+      "target_name": "Story 10"
+    },
+    {
+      "type": "INVESTIGATED_BY",
+      "source_label": "Story",
+      "source_name": "Story 1",
+      "target_label": "Investigation",
+      "target_name": "Municipal Corruption Network"
+    },
+    {
+      "type": "INVESTIGATED_BY",
+      "source_label": "Story",
+      "source_name": "Story 1",
+      "target_label": "Investigation",
+      "target_name": "Healthcare Fraud Ring"
+    },
+    {
+      "type": "INVESTIGATED_BY",
+      "source_label": "Story",
+      "source_name": "Story 2",
+      "target_label": "Investigation",
+      "target_name": "Corporate Tax Evasion Scheme"
+    },
+    {
+      "type": "INVESTIGATED_BY",
+      "source_label": "Story",
+      "source_name": "Story 3",
+      "target_label": "Investigation",
+      "target_name": "Healthcare Fraud Ring"
+    },
+    {
+      "type": "INVESTIGATED_BY",
+      "source_label": "Story",
+      "source_name": "Story 4",
+      "target_label": "Investigation",
+      "target_name": "Municipal Corruption Network"
+    },
+    {
+      "type": "INVESTIGATED_BY",
+      "source_label": "Story",
+      "source_name": "Story 4",
+      "target_label": "Investigation",
+      "target_name": "Charter School Financial Irregularities"
+    },
+    {
+      "type": "INVESTIGATED_BY",
+      "source_label": "Story",
+      "source_name": "Story 4",
+      "target_label": "Investigation",
+      "target_name": "Environmental Cover-up"
+    },
+    {
+      "type": "INVESTIGATED_BY",
+      "source_label": "Story",
+      "source_name": "Story 5",
+      "target_label": "Investigation",
+      "target_name": "Pharmaceutical Safety Data Suppression"
+    },
+    {
+      "type": "INVESTIGATED_BY",
+      "source_label": "Story",
+      "source_name": "Story 5",
+      "target_label": "Investigation",
+      "target_name": "Environmental Cover-up"
+    },
+    {
+      "type": "INVESTIGATED_BY",
+      "source_label": "Story",
+      "source_name": "Story 6",
+      "target_label": "Investigation",
+      "target_name": "Healthcare Fraud Ring"
+    },
+    {
+      "type": "INVESTIGATED_BY",
+      "source_label": "Story",
+      "source_name": "Story 7",
+      "target_label": "Investigation",
+      "target_name": "Municipal Corruption Network"
+    },
+    {
+      "type": "INVESTIGATED_BY",
+      "source_label": "Story",
+      "source_name": "Story 7",
+      "target_label": "Investigation",
+      "target_name": "Charter School Financial Irregularities"
+    },
+    {
+      "type": "INVESTIGATED_BY",
+      "source_label": "Story",
+      "source_name": "Story 8",
+      "target_label": "Investigation",
+      "target_name": "Municipal Corruption Network"
+    },
+    {
+      "type": "INVESTIGATED_BY",
+      "source_label": "Story",
+      "source_name": "Story 8",
+      "target_label": "Investigation",
+      "target_name": "Corporate Tax Evasion Scheme"
+    },
+    {
+      "type": "INVESTIGATED_BY",
+      "source_label": "Story",
+      "source_name": "Story 8",
+      "target_label": "Investigation",
+      "target_name": "Healthcare Fraud Ring"
+    },
+    {
+      "type": "INVESTIGATED_BY",
+      "source_label": "Story",
+      "source_name": "Story 9",
+      "target_label": "Investigation",
+      "target_name": "Healthcare Fraud Ring"
+    },
+    {
+      "type": "INVESTIGATED_BY",
+      "source_label": "Story",
+      "source_name": "Story 9",
+      "target_label": "Investigation",
+      "target_name": "Charter School Financial Irregularities"
+    },
+    {
+      "type": "INVESTIGATED_BY",
+      "source_label": "Story",
+      "source_name": "Story 10",
+      "target_label": "Investigation",
+      "target_name": "Environmental Cover-up"
+    },
+    {
+      "type": "CORRECTED_IN",
+      "source_label": "Correction",
+      "source_name": "Correction 1",
+      "target_label": "Story",
+      "target_name": "Story 2"
+    },
+    {
+      "type": "CORRECTED_IN",
+      "source_label": "Correction",
+      "source_name": "Correction 2",
+      "target_label": "Story",
+      "target_name": "Story 6"
+    },
+    {
+      "type": "CORRECTED_IN",
+      "source_label": "Correction",
+      "source_name": "Correction 2",
+      "target_label": "Story",
+      "target_name": "Story 4"
+    },
+    {
+      "type": "CORRECTED_IN",
+      "source_label": "Correction",
+      "source_name": "Correction 3",
+      "target_label": "Story",
+      "target_name": "Story 6"
+    },
+    {
+      "type": "CORRECTED_IN",
+      "source_label": "Correction",
+      "source_name": "Correction 3",
+      "target_label": "Story",
+      "target_name": "Story 2"
+    },
+    {
+      "type": "CORRECTED_IN",
+      "source_label": "Correction",
+      "source_name": "Correction 4",
+      "target_label": "Story",
+      "target_name": "Story 10"
+    },
+    {
+      "type": "CORRECTED_IN",
+      "source_label": "Correction",
+      "source_name": "Correction 4",
+      "target_label": "Story",
+      "target_name": "Story 6"
+    },
+    {
+      "type": "CORRECTED_IN",
+      "source_label": "Correction",
+      "source_name": "Correction 4",
+      "target_label": "Story",
+      "target_name": "Story 3"
+    },
+    {
+      "type": "CORRECTED_IN",
+      "source_label": "Correction",
+      "source_name": "Correction 5",
+      "target_label": "Story",
+      "target_name": "Story 8"
+    },
+    {
+      "type": "CORRECTED_IN",
+      "source_label": "Correction",
+      "source_name": "Correction 5",
+      "target_label": "Story",
+      "target_name": "Story 7"
+    },
+    {
+      "type": "CORRECTED_IN",
+      "source_label": "Correction",
+      "source_name": "Correction 5",
+      "target_label": "Story",
+      "target_name": "Story 10"
+    },
+    {
+      "type": "CORRECTED_IN",
+      "source_label": "Correction",
+      "source_name": "Correction 6",
+      "target_label": "Story",
+      "target_name": "Story 4"
+    },
+    {
+      "type": "CORRECTED_IN",
+      "source_label": "Correction",
+      "source_name": "Correction 6",
+      "target_label": "Story",
+      "target_name": "Story 6"
+    },
+    {
+      "type": "CORRECTED_IN",
+      "source_label": "Correction",
+      "source_name": "Correction 6",
+      "target_label": "Story",
+      "target_name": "Story 3"
+    },
+    {
+      "type": "CORRECTED_IN",
+      "source_label": "Correction",
+      "source_name": "Correction 7",
+      "target_label": "Story",
+      "target_name": "Story 7"
+    },
+    {
+      "type": "CORRECTED_IN",
+      "source_label": "Correction",
+      "source_name": "Correction 8",
+      "target_label": "Story",
+      "target_name": "Story 2"
+    },
+    {
+      "type": "PROVIDED_BY",
+      "source_label": "Dataset",
+      "source_name": "Campaign Finance Records 2020-2023",
+      "target_label": "Source",
+      "target_name": "Leaked Email Chain"
+    },
+    {
+      "type": "PROVIDED_BY",
+      "source_label": "Dataset",
+      "source_name": "Medicare Billing Anomalies Report",
+      "target_label": "Source",
+      "target_name": "Education Policy Researcher"
+    },
+    {
+      "type": "PROVIDED_BY",
+      "source_label": "Dataset",
+      "source_name": "Corporate Tax Returns Database",
+      "target_label": "Source",
+      "target_name": "Anonymous Banking Insider"
+    },
+    {
+      "type": "PROVIDED_BY",
+      "source_label": "Dataset",
+      "source_name": "Corporate Tax Returns Database",
+      "target_label": "Source",
+      "target_name": "Education Policy Researcher"
+    },
+    {
+      "type": "PROVIDED_BY",
+      "source_label": "Dataset",
+      "source_name": "Environmental Violation Records",
+      "target_label": "Source",
+      "target_name": "Leaked Email Chain"
+    },
+    {
+      "type": "PROVIDED_BY",
+      "source_label": "Dataset",
+      "source_name": "Environmental Violation Records",
+      "target_label": "Source",
+      "target_name": "Hospital Records Database"
+    },
+    {
+      "type": "PROVIDED_BY",
+      "source_label": "Dataset",
+      "source_name": "Environmental Violation Records",
+      "target_label": "Source",
+      "target_name": "Anonymous Banking Insider"
+    },
+    {
+      "type": "PROVIDED_BY",
+      "source_label": "Dataset",
+      "source_name": "Police Use of Force Incidents",
+      "target_label": "Source",
+      "target_name": "Police Incident Reports"
+    },
+    {
+      "type": "PROVIDED_BY",
+      "source_label": "Dataset",
+      "source_name": "Police Use of Force Incidents",
+      "target_label": "Source",
+      "target_name": "Hospital Records Database"
+    },
+    {
+      "type": "PROVIDED_BY",
+      "source_label": "Dataset",
+      "source_name": "Pharmaceutical Clinical Trial Data",
+      "target_label": "Source",
+      "target_name": "Tech Industry Analyst"
+    },
+    {
+      "type": "PROVIDED_BY",
+      "source_label": "Dataset",
+      "source_name": "Pharmaceutical Clinical Trial Data",
+      "target_label": "Source",
+      "target_name": "Congressional Ethics Filings"
+    },
+    {
+      "type": "PROVIDED_BY",
+      "source_label": "Dataset",
+      "source_name": "Social Media User Activity Logs",
+      "target_label": "Source",
+      "target_name": "Congressional Ethics Filings"
+    },
+    {
+      "type": "PROVIDED_BY",
+      "source_label": "Dataset",
+      "source_name": "Social Media User Activity Logs",
+      "target_label": "Source",
+      "target_name": "Internal Audit Report 2023"
+    },
+    {
+      "type": "PROVIDED_BY",
+      "source_label": "Dataset",
+      "source_name": "Public School Funding Allocation",
+      "target_label": "Source",
+      "target_name": "Anonymous Banking Insider"
+    },
+    {
+      "type": "PROVIDED_BY",
+      "source_label": "Dataset",
+      "source_name": "Energy Sector Lobbying Expenditures",
+      "target_label": "Source",
+      "target_name": "Education Policy Researcher"
+    },
+    {
+      "type": "PROVIDED_BY",
+      "source_label": "Dataset",
+      "source_name": "Energy Sector Lobbying Expenditures",
+      "target_label": "Source",
+      "target_name": "Leaked Email Chain"
+    },
+    {
+      "type": "PROVIDED_BY",
+      "source_label": "Dataset",
+      "source_name": "Healthcare Price Transparency Data",
+      "target_label": "Source",
+      "target_name": "Congressional Ethics Filings"
+    },
+    {
+      "type": "PROVIDED_BY",
+      "source_label": "Dataset",
+      "source_name": "Healthcare Price Transparency Data",
+      "target_label": "Source",
+      "target_name": "Education Policy Researcher"
+    }
+  ],
+  "documents": [
+    {
+      "template_id": "investigation_notes",
+      "template_name": "Investigation Notes",
+      "title": "Investigation Notes: Municipal Corruption Network - Week 3 Update",
+      "content": "Investigation: Municipal Corruption Network\nLead Reporter: Sarah Chen\nStatus: Active - Evidence Collection Phase\nKey Source: Congressional Ethics Filings (High Credibility)\n\nFINDINGS TO DATE:\nCrossed-referenced campaign contribution data with city contract awards spanning 2019-2023. Pattern emerging: 73% of contracts over $500K awarded to companies that donated to Mayor's campaign within 6 months prior. Total value: $47.2M.\n\nMost concerning finding: Apex Construction received $12.8M in no-bid emergency contracts despite having only 3 employees on payroll according to state labor records. Company president is Mayor's former campaign manager.\n\nEVIDENCE GAPS:\n- Need internal communications between City Hall and contractors\n- Missing financial records for 2021 fiscal year\n- Unclear decision-making process for contract approval committee\n\nLEADS TO PURSUE:\n1. FOIA request for email communications between Mayor's office and top 5 contract recipients\n2. Interview former city procurement officer (reached out via LinkedIn)\n3. Analyze property records - several officials purchased expensive homes during investigation period\n4. Request City Council meeting minutes/recordings from contract approval sessions\n\nNEXT STEPS:\n- Schedule interview with whistleblower city employee (promised documents)\n- Build timeline visualization of contributions vs. contract awards\n- Legal review of evidence before publication\n- Reach out to affected community groups for impact assessment\n\nRISKS: City attorney has been aggressive with records requests. May need to expedite publication timeline."
+    },
+    {
+      "template_id": "investigation_notes",
+      "template_name": "Investigation Notes",
+      "title": "Investigation Notes: Healthcare Fraud Ring - Source Interview Analysis",
+      "content": "Investigation: Healthcare Fraud Ring\nLead Reporter: Marcus Rodriguez\nStatus: Deep Investigation Phase\nKey Source: Dr. Rebecca Martinez (High Credibility - Former Medicare Auditor)\n\nSOURCE DEBRIEF - DR. MARTINEZ:\nMet 11/15/23 at secure location. Dr. Martinez provided USB drive containing 847 Medicare claim files from 2022-2023 showing systematic overbilling at 14 clinics across tri-state area. Claims she personally flagged but were never investigated by regional office.\n\nKEY REVELATIONS:\n- Identical procedure codes billed simultaneously at multiple locations\n- Ghost patients: 156 individuals billed for services while hospitalized elsewhere\n- Average overbilling per clinic: $2.3M annually\n- Total fraud estimate: $32M over 18-month period\n\nDr. Martinez identified Regional Director Paul Stephens as potential accomplice - claims he buried her reports and reassigned her after she persisted.\n\nEVIDENCE ANALYSIS:\nCross-checked patient data against death records - 23 deceased individuals billed for services post-mortem. Verified through obituaries and Social Security Death Index. This is smoking gun evidence.\n\nCRITICAL GAPS:\n- Need banking records showing money flow\n- Require additional whistleblower to corroborate Martinez's claims\n- Missing current Medicare response to ongoing fraud\n\nIMMEDIATE ACTIONS:\n1. Secure legal protection for Dr. Martinez\n2. Contact Medicare Inspector General's office\n3. Analyze provider enrollment databases\n4. Interview patients listed in fraudulent claims\n\nTIMELINE PRESSURE: Medicare audit cycle ends December 2023 - potential evidence destruction risk."
+    },
+    {
+      "template_id": "investigation_notes",
+      "template_name": "Investigation Notes",
+      "title": "Investigation Notes: Tech Platform Privacy Violations - Data Mining Evidence",
+      "content": "Investigation: Tech Platform Privacy Violations\nLead Reporter: Jennifer Wu\nStatus: Technical Analysis Phase\nKey Source: Anonymous Banking Insider (Medium-High Credibility)\n\nDATA BREACH ANALYSIS:\nBanking insider provided transaction logs showing unauthorized data sales totaling $847M over 2022-2023. Platform selling granular user data including location tracking, purchase history, and biometric information to data brokers without explicit consent.\n\nTECHNICAL FINDINGS:\n- Platform's API secretly collecting device fingerprints beyond stated permissions\n- Location data harvested every 30 seconds even when location services disabled\n- Facial recognition data stored indefinitely despite 90-day policy claims\n- Third-party SDK partnerships funneling data to 67 external companies\n\nSOURCE CREDIBILITY ASSESSMENT:\nBanking insider claims direct access to platform's merchant account statements. Provided sample transaction IDs that verify against known data broker payments. However, source refuses video calls and uses encrypted channels only. Requires additional verification.\n\nREGULATORY VIOLATIONS:\n- Clear CCPA violations: 2.3M California users affected\n- COPPA violations: collecting data from users under 13\n- FTC consent decree breaches from 2021 settlement\n\nEVIDENCE GAPS:\n- Need internal emails/documents confirming intentional deception\n- Require user impact assessment - how many affected?\n- Missing platform's response to regulatory inquiries\n\nNEXT STEPS:\n1. Technical audit of platform's mobile app with cybersecurity expert\n2. Interview former employees via encrypted channels\n3. File records requests with FTC and state attorneys general\n4. Prepare user notification protocol\n\nLEGAL CONSIDERATIONS: Platform has history of aggressive litigation against journalists."
+    },
+    {
+      "template_id": "investigation_notes",
+      "template_name": "Investigation Notes",
+      "title": "Investigation Notes: Environmental Cover-up - Document Analysis Summary",
+      "content": "Investigation: Environmental Cover-up\nLead Reporter: David Park\nStatus: Document Review Phase\nKey Source: Internal Audit Report 2023 (High Credibility - Verified Authentic)\n\nDOCUMENT ANALYSIS - INTERNAL AUDIT REPORT:\nObtained 847-page internal environmental audit from ChemCorp Industries revealing systematic contamination cover-up spanning 8 years. Report commissioned by new board member, buried immediately upon completion.\n\nCRITICAL FINDINGS:\n- Groundwater contamination levels 340% above EPA limits\n- Falsified environmental impact reports submitted to regulators 2019-2022\n- $67M in cleanup costs deferred through accounting manipulation\n- Three separate incidents of illegal chemical disposal in protected watershed\n\nHEALTH IMPACT ASSESSMENT:\nCorrelated cancer cluster data with facility proximity - 47% higher incidence rate within 2-mile radius. Local hospital records show 156% increase in respiratory illnesses since 2020.\n\nWHISTLEBLOWER PROTECTION:\nFormer environmental compliance officer willing to testify but requires anonymity. Claims termination after raising contamination concerns. Has additional internal emails.\n\nREGULATORY CAPTURE EVIDENCE:\nEPA regional administrator's spouse employed by ChemCorp's law firm. Administrator personally approved facility's compliance certifications despite obvious red flags in submissions.\n\nEVIDENCE GAPS:\n- Need current contamination testing from independent lab\n- Missing financial records showing cleanup cost estimates\n- Require additional regulatory correspondence\n\nURGENT ACTIONS:\n1. Commission independent environmental testing\n2. Interview affected community members\n3. Records request for all EPA-ChemCorp communications\n4. Legal consultation on source protection\n\nTIME SENSITIVITY: Facility scheduled for demolition January 2024 - potential evidence destruction."
+    },
+    {
+      "template_id": "investigation_notes",
+      "template_name": "Investigation Notes",
+      "title": "Investigation Notes: Corporate Tax Evasion Scheme - Financial Analysis Progress",
+      "content": "Investigation: Corporate Tax Evasion Scheme\nLead Reporter: Lisa Thompson\nStatus: Financial Forensics Phase\nKey Source: Former State Department Official (High Credibility - Verified Identity)\n\nOFFSHORE STRUCTURE ANALYSIS:\nFormer State Department official provided detailed briefing on TechGlobal Inc.'s tax avoidance network. Scheme involves 47 shell companies across 12 tax havens, artificially shifting $2.4B in profits annually.\n\nKEY MECHANISM:\nIntellectual property artificially transferred to Irish subsidiary, then licensed back to US operations at inflated rates. Reduces US taxable income by 78% while maintaining identical business operations.\n\nFINANCIAL IMPACT:\n- Estimated US tax avoidance: $847M over 5 years\n- State tax losses (California): $156M\n- Effective tax rate: 3.2% vs statutory 21%\n\nSOURCE INSIGHTS:\nOfficial confirms State Department aware of scheme through diplomatic channels but no enforcement action taken. Claims political pressure from corporate lobbying efforts. Provided copies of internal diplomatic cables discussing issue.\n\nDOCUMENTATION SECURED:\n- Bank transfer records showing profit-shifting transactions\n- Legal opinions justifying transfer pricing arrangements\n- Board meeting minutes discussing tax optimization strategy\n- Correspondence with offshore service providers\n\nVERIFICATION COMPLETED:\nCross-checked corporate filings in Ireland, Netherlands, Bermuda against US SEC documents. Numbers confirm artificial profit allocation as described by source.\n\nREMAINING CHALLENGES:\n- Need tax attorney review of complex international arrangements\n- Require IRS comment on enforcement priorities\n- Missing recent communications between company and Treasury Department\n\nPUBLICATION STRATEGY:\n1. Coordinate with international journalism partners\n2. Prepare data visualization of money flows\n3. Calculate specific impact on public services\n4. Draft company response request"
+    },
+    {
+      "template_id": "foia_request",
+      "template_name": "FOIA Request",
+      "title": "FOIA Request - Municipal Corruption Network Investigation Records",
+      "content": "Freedom of Information Act Request\n\nTo: Records Management Officer\nCity of Metropolitan County\nDate: January 15, 2024\n\nDear FOIA Officer,\n\nPursuant to the Freedom of Information Act (5 U.S.C. \u00a7 552), I hereby request access to records related to the Municipal Corruption Network investigation. Specifically, I am requesting:\n\n1. All correspondence, emails, memoranda, and internal communications between city officials, contractors, and municipal departments regarding bid rigging, kickback schemes, or contract manipulation from January 2020 through December 2023.\n\n2. Financial records, including invoices, payment authorizations, and budget modifications related to public works contracts under investigation for fraudulent activity.\n\n3. Personnel files and disciplinary records for municipal employees implicated in corruption activities, including suspension notices, termination letters, and internal investigation reports.\n\n4. Audio recordings, transcripts, or notes from city council meetings, executive sessions, or committee hearings discussing contract awards or vendor selection processes.\n\n5. Bank records, financial disclosures, and conflict of interest statements filed by city officials during the specified time period.\n\nThis request is made in connection with news gathering activities for publication in the public interest. The requested information will contribute to public understanding of government operations and accountability in municipal contracting processes. The disclosure of this information is likely to contribute significantly to public understanding of government activities and is not primarily in my commercial interest.\n\nI request a complete waiver of search and reproduction fees pursuant to 5 U.S.C. \u00a7 552(a)(4)(A)(iii), as disclosure of the requested information is in the public interest and will contribute to the understanding of government operations.\n\nPlease provide the records in electronic format when possible. If any portion of this request is denied, please cite the specific exemption(s) relied upon and provide a detailed explanation.\n\nThank you for your attention to this matter.\n\nSincerely,\nSarah Mitchell\nInvestigative Reporter\nMetropolitan News Network"
+    },
+    {
+      "template_id": "foia_request",
+      "template_name": "FOIA Request",
+      "title": "FOIA Request - Healthcare Fraud Ring Investigation Documents",
+      "content": "Freedom of Information Act Request\n\nTo: FOIA Coordinator\nDepartment of Health and Human Services\nCenters for Medicare & Medicaid Services\nDate: February 3, 2024\n\nDear FOIA Officer,\n\nI am writing to request records under the Freedom of Information Act (5 U.S.C. \u00a7 552) concerning the Healthcare Fraud Ring investigation and related Medicare Billing Anomalies Report. This request encompasses:\n\n1. All investigative reports, case files, and enforcement actions related to fraudulent Medicare billing practices by healthcare providers, including physician groups, medical device companies, and pharmaceutical entities from 2020-2023.\n\n2. Data analytics reports identifying unusual billing patterns, including the Medicare Billing Anomalies Report and any supplementary statistical analyses used to detect fraudulent claims.\n\n3. Correspondence between CMS investigators, the Department of Justice, FBI, and state Medicaid agencies regarding coordinated enforcement efforts against healthcare fraud schemes.\n\n4. Settlement agreements, consent decrees, and plea bargains entered into with healthcare providers accused of fraudulent billing practices, including financial penalties and compliance monitoring requirements.\n\n5. Whistleblower complaints and qui tam lawsuit materials related to Medicare fraud allegations, including initial disclosures and government intervention decisions.\n\n6. Training materials and policy directives issued to Medicare administrative contractors regarding fraud detection and prevention protocols.\n\nThis request serves the public interest by promoting transparency in healthcare fraud enforcement and enabling citizens to understand how taxpayer-funded programs are protected from abuse. The information will be used for news reporting purposes to inform the public about Medicare program integrity efforts.\n\nI respectfully request a fee waiver under 5 U.S.C. \u00a7 552(a)(4)(A)(iii) as the disclosure is in the public interest and likely to contribute significantly to public understanding of government operations. The information requested is not sought for commercial purposes.\n\nPlease provide responsive records in electronic format when available. If any records are withheld, please provide a detailed justification citing applicable exemptions.\n\nThank you for your prompt attention to this request.\n\nRespectfully,\nDr. Marcus Chen\nHealth Policy Reporter\nNational Healthcare Journal"
+    },
+    {
+      "template_id": "foia_request",
+      "template_name": "FOIA Request",
+      "title": "FOIA Request - Tech Platform Privacy Violations Investigation Materials",
+      "content": "Freedom of Information Act Request\n\nTo: Chief FOIA Officer\nFederal Trade Commission\nDate: March 8, 2024\n\nDear FOIA Officer,\n\nPursuant to the Freedom of Information Act (5 U.S.C. \u00a7 552), I request access to records concerning the Tech Platform Privacy Violations investigation. My request includes:\n\n1. All investigative files, consumer complaints, and enforcement proceedings against major technology platforms for violations of privacy laws, data protection regulations, and consumer protection statutes from January 2021 through present.\n\n2. Technical reports, expert analyses, and forensic examinations of data collection practices, including algorithms used for user tracking, data sharing with third parties, and consent mechanism implementations.\n\n3. Communications between FTC staff and technology company representatives, including legal counsel, compliance officers, and technical personnel regarding privacy compliance issues.\n\n4. Consent orders, administrative complaints, and civil penalty assessments related to privacy violations, including negotiation records and compliance monitoring reports.\n\n5. Internal FTC memoranda, policy guidance documents, and legal analyses regarding digital privacy enforcement priorities and regulatory interpretations.\n\n6. Coordination records with international regulatory authorities, state attorneys general, and other federal agencies regarding cross-border privacy investigations.\n\n7. Economic impact analyses and consumer harm assessments related to privacy violations and proposed remedial measures.\n\nThis information is sought for news reporting purposes to enhance public understanding of how federal regulators address digital privacy concerns affecting millions of consumers. The disclosure serves a significant public interest in promoting transparency regarding government oversight of technology companies.\n\nI request a public interest fee waiver under 5 U.S.C. \u00a7 552(a)(4)(A)(iii) as this request is made for journalistic purposes and will contribute to public understanding of government regulatory activities. The information is not sought primarily for commercial use.\n\nPlease provide records electronically when possible and notify me if you require clarification of any aspect of this request.\n\nThank you for your consideration.\n\nBest regards,\nJessica Rodriguez\nTechnology Reporter\nDigital Rights Tribune"
+    },
+    {
+      "template_id": "foia_request",
+      "template_name": "FOIA Request",
+      "title": "FOIA Request - Environmental Cover-up Investigation Records",
+      "content": "Freedom of Information Act Request\n\nTo: FOIA Officer\nU.S. Environmental Protection Agency\nDate: April 12, 2024\n\nDear Records Officer,\n\nI hereby request records under the Freedom of Information Act (5 U.S.C. \u00a7 552) related to the Environmental Cover-up investigation and associated Environmental Violation Records. This request encompasses:\n\n1. All enforcement case files, inspection reports, and compliance monitoring records documenting environmental violations by industrial facilities, including chemical plants, refineries, and manufacturing operations from 2019-2024.\n\n2. Environmental Violation Records database entries, including air quality monitoring data, water discharge measurements, and soil contamination assessments that were allegedly suppressed or misrepresented.\n\n3. Internal EPA communications, including emails, memoranda, and meeting notes, regarding decisions to delay, modify, or suspend enforcement actions against violating facilities.\n\n4. Correspondence between EPA officials and regulated industries, including legal representatives, lobbyists, and corporate executives, concerning environmental compliance matters under investigation.\n\n5. Whistleblower reports and employee complaints alleging suppression of environmental data, interference with scientific findings, or pressure to minimize enforcement actions.\n\n6. Quality assurance reports, data validation procedures, and scientific peer review documents related to environmental monitoring programs.\n\n7. Legal analyses, settlement negotiations, and consent decree discussions involving facilities accused of environmental violations.\n\nThis request is made for news reporting purposes to inform the public about environmental protection enforcement and regulatory oversight. The information will contribute to public understanding of how environmental laws are implemented and whether adequate protection is provided to communities.\n\nI respectfully request a fee waiver pursuant to 5 U.S.C. \u00a7 552(a)(4)(A)(iii) as disclosure is in the public interest and will enhance understanding of government operations. This request is not made for commercial purposes.\n\nPlease provide responsive documents in electronic format when available. If any records are exempt from disclosure, please provide specific citations and explanations.\n\nThank you for your assistance.\n\nSincerely,\nMichael Thompson\nEnvironmental Correspondent\nGreen Watch News Service"
+    },
+    {
+      "template_id": "foia_request",
+      "template_name": "FOIA Request",
+      "title": "FOIA Request - Corporate Tax Evasion Scheme Investigation Files",
+      "content": "Freedom of Information Act Request\n\nTo: Disclosure Officer\nInternal Revenue Service\nU.S. Department of the Treasury\nDate: May 20, 2024\n\nDear FOIA Officer,\n\nI am requesting records under the Freedom of Information Act (5 U.S.C. \u00a7 552) concerning the Corporate Tax Evasion Scheme investigation and related Corporate Tax Returns Database analysis. Specifically, I seek:\n\n1. Large Business and International Division examination reports and criminal investigation referrals involving multinational corporations engaged in tax avoidance schemes, transfer pricing manipulations, and offshore profit shifting from 2020-2023.\n\n2. Statistical analyses and data mining reports from the Corporate Tax Returns Database identifying patterns of aggressive tax planning, including use of tax havens, intellectual property transfers, and debt loading strategies.\n\n3. Interagency coordination records with the Department of Justice Tax Division, FBI Financial Crimes units, and international tax authorities regarding cross-border tax enforcement initiatives.\n\n4. Policy memoranda, legal interpretations, and enforcement guidance related to corporate tax compliance and anti-avoidance measures, including responses to emerging tax planning strategies.\n\n5. Settlement agreements, closing letters, and voluntary disclosure program materials involving corporate taxpayers resolving tax disputes through administrative procedures.\n\n6. Training materials provided to IRS examination agents and criminal investigators regarding detection of sophisticated tax evasion schemes.\n\n7. Congressional correspondence and briefing materials regarding corporate tax enforcement priorities and resource allocation decisions.\n\nThis request serves the public interest by promoting transparency in tax law enforcement and enabling taxpayers to understand how corporate tax compliance is monitored and enforced. The information will be used for reporting on tax policy and government oversight activities.\n\nI request a fee waiver under 5 U.S.C. \u00a7 552(a)(4)(A)(iii) as disclosure will contribute significantly to public understanding of government operations and is not sought for commercial advantage.\n\nPlease provide records electronically when feasible. If portions of requested materials are withheld, please provide detailed justifications for each exemption claimed.\n\nThank you for your prompt attention.\n\nRespectfully submitted,\nRebecca Walsh\nTax Policy Reporter\nFiscal Transparency Project"
+    },
+    {
+      "template_id": "editorial_memo",
+      "template_name": "Editorial Memo",
+      "title": "Editorial Memo: Healthcare Price Transparency Investigation",
+      "content": "TO: Sarah Chen, Managing Editor\nFROM: Mike Rodriguez, Data Reporter\nRE: Healthcare Price Transparency Investigation\n\nStory Status: In Progress\nBeat: Healthcare/Economics\n\nSUMMARY:\nOur investigation into hospital pricing disparities has uncovered significant variations in procedure costs across metropolitan areas. Analysis of 50,000+ billing records reveals price differences of up to 400% for identical procedures within the same city. Dr. Rebecca Martinez has provided crucial context on industry practices and regulatory gaps.\n\nSOURCE ASSESSMENT:\nDr. Rebecca Martinez (credibility: high) - Healthcare policy expert with 15 years experience. Previously quoted in WSJ and NYT. Has provided on-record commentary and connected us with additional sources. No apparent conflicts of interest identified.\n\nDATA VERIFICATION:\nCross-referenced findings with CMS data and independent healthcare cost databases. Methodology reviewed by our statistical consultant. Confidence level: high.\n\nLEGAL CONSIDERATIONS:\nAll data obtained through legitimate FOIA requests and publicly available sources. No patient privacy concerns as all records have been de-identified. Legal has cleared the draft for factual accuracy.\n\nPUBLICATION READINESS:\nStory is 85% complete. Outstanding items:\n- Final quote from American Hospital Association (deadline: Friday)\n- Interactive visualization testing complete\n- Copy edit scheduled for Monday\n\nRECOMMENDATION:\nProceed with publication for Tuesday morning. This investigation provides significant public interest value and our methodology is sound. Suggest coordinating with social media team for enhanced distribution given the consumer impact angle.\n\nEstimated publication impact: High regional interest, potential for national pickup."
+    },
+    {
+      "template_id": "editorial_memo",
+      "template_name": "Editorial Memo",
+      "title": "Editorial Memo: Banking Regulatory Compliance Expos\u00e9",
+      "content": "TO: Jennifer Walsh, Investigations Editor\nFROM: David Park, Financial Reporter\nRE: Banking Regulatory Compliance Expos\u00e9\n\nStory Status: Under Review\nBeat: Financial Services\n\nSUMMARY:\nOur analysis of regulatory filings reveals systematic underreporting of risk exposure by three major regional banks over 18-month period. Pattern suggests coordinated effort to minimize regulatory scrutiny while maintaining favorable credit ratings. Story based on leaked internal documents and regulatory data analysis.\n\nSOURCE ASSESSMENT:\nAnonymous Banking Insider (credibility: medium-high) - Senior compliance officer at major institution. Information has been corroborated through independent document analysis and regulatory filings. Source has provided detailed knowledge of internal processes but requires anonymity due to employment concerns and potential legal ramifications.\n\nVERIFICATION STATUS:\nDocument authentication completed by forensic analyst. Cross-referenced claims with publicly available regulatory reports. Independent banking expert consulted for technical review.\n\nLEGAL CONSIDERATIONS:\nSignificant concerns regarding source protection and potential market impact. Legal recommends:\n- Enhanced source protection protocols\n- Pre-publication notification to affected institutions for comment\n- Careful language around speculation vs. documented facts\n- Consider timing to avoid market disruption\n\nRISK ASSESSMENT:\nHigh-impact story with potential for regulatory response. Banks may challenge findings aggressively. Source safety paramount.\n\nPUBLICATION READINESS:\nStory requires additional legal review and source verification. Recommend holding publication pending:\n- Secondary source confirmation\n- Complete legal clearance\n- Enhanced fact-checking protocol\n\nTimeline: 2-3 weeks for full preparation."
+    },
+    {
+      "template_id": "editorial_memo",
+      "template_name": "Editorial Memo",
+      "title": "Editorial Memo: Congressional Ethics Violation Analysis",
+      "content": "TO: Robert Kim, Political Editor\nFROM: Lisa Thompson, Government Reporter\nRE: Congressional Ethics Violation Analysis\n\nStory Status: Ready for Publication\nBeat: Politics/Government\n\nSUMMARY:\nComprehensive analysis of Congressional Ethics Filings over past five years reveals 23 previously unreported potential violations involving stock trades and committee assignments. Data journalism approach identified patterns invisible in individual case review. Story demonstrates systematic oversight gaps in current ethics enforcement.\n\nSOURCE ASSESSMENT:\nCongressional Ethics Filings (credibility: high) - Primary source material obtained through official channels. Public records with high reliability. Supplemented by interviews with former ethics committee staff and transparency advocates. All sources properly attributed or granted appropriate anonymity.\n\nMETHODOLOGY:\nAnalyzed 12,000+ financial disclosure forms using custom algorithms to identify timing correlations between stock transactions and legislative activities. Methodology peer-reviewed by academic researchers and ethics experts.\n\nLEGAL CONSIDERATIONS:\nAll information derived from public records. Legal has reviewed claims and found them well-supported. No defamation concerns identified. Story focuses on pattern analysis rather than individual accusations, reducing legal exposure.\n\nPOLITICAL IMPACT:\nStory likely to generate significant political response. Both parties represented in findings, suggesting bipartisan issue rather than partisan attack. Timing appropriate given current ethics reform discussions.\n\nPUBLICATION READINESS:\nStory complete and cleared for publication. Graphics and interactive elements finalized. All sources confirmed and quotes verified.\n\nRECOMMENDATION:\nProceed with immediate publication. Strong public interest story with solid methodology and legal clearance. Prepare for significant reader engagement and potential follow-up inquiries from other outlets and government officials."
+    },
+    {
+      "template_id": "editorial_memo",
+      "template_name": "Editorial Memo",
+      "title": "Editorial Memo: State Department Resource Allocation Investigation",
+      "content": "TO: Amanda Foster, National Editor\nFROM: Carlos Rivera, Government Affairs Reporter\nRE: State Department Resource Allocation Investigation\n\nStory Status: Pending Source Approval\nBeat: Foreign Policy/Government\n\nSUMMARY:\nInvestigation into State Department budget allocation reveals significant disparities between stated policy priorities and actual resource distribution. Analysis of five years of internal budget documents shows chronic underfunding of key diplomatic initiatives while administrative costs increased 34%.\n\nSOURCE ASSESSMENT:\nFormer State Department Official (credibility: high) - Retired senior diplomat with 25-year career spanning multiple administrations. Provided background briefings and document guidance but requires approval for on-record quotes. No apparent political motivations; genuinely concerned about institutional effectiveness.\n\nDOCUMENTATION:\nObtained internal budget documents, staff allocation reports, and performance metrics through FOIA requests and source assistance. Independent budget analysis confirms reported trends.\n\nLEGAL CONSIDERATIONS:\nNo classification issues identified - all documents either publicly available or properly declassified. Former State Department Official cleared to speak on these matters post-employment. Standard government source protocols apply.\n\nCHALLENGES:\nCurrent State Department officials declined comment beyond standard talking points. May need to rely more heavily on document analysis and external expert commentary.\n\nPUBLICATION READINESS:\n70% complete. Outstanding items:\n- Final source approval for attributed quotes\n- Response from current State Department leadership\n- Expert analysis of budget implications\n\nRECOMMENDATION:\nSolid story with important policy implications. Suggest proceeding with or without additional State Department comment if they don't respond by deadline. Former State Department Official's expertise provides sufficient authority for main findings."
+    },
+    {
+      "template_id": "editorial_memo",
+      "template_name": "Editorial Memo",
+      "title": "Editorial Memo: Municipal Budget Audit Findings",
+      "content": "TO: Patricia Martinez, Metro Editor\nFROM: Alex Chen, Local Government Reporter\nRE: Municipal Budget Audit Findings\n\nStory Status: Final Review\nBeat: Local Government/Municipal Affairs\n\nSUMMARY:\nAnalysis of Internal Audit Report 2023 reveals $2.3 million in questionable expenditures across four city departments. Pattern of inadequate oversight and documentation gaps suggests systemic problems in municipal financial controls. Story combines audit findings with additional reporting on affected projects and services.\n\nSOURCE ASSESSMENT:\nInternal Audit Report 2023 (credibility: high) - Official municipal document prepared by independent audit firm. Methodology sound and findings well-documented. Report publicly available but not previously analyzed comprehensively by media.\n\nADDITIONAL REPORTING:\nInterviewed city council members, department heads, and budget oversight committee chair. Mixed responses ranging from defensive to concerned. City manager agreed to interview but provided limited substantive responses.\n\nLEGAL CONSIDERATIONS:\nPublic records story with minimal legal risk. All findings based on official audit document. Careful to distinguish between audit findings (documented) and potential implications (clearly labeled as analysis/opinion).\n\nCOMMUNITY IMPACT:\nSignificant taxpayer interest story. Findings affect services including parks maintenance, road repairs, and public safety equipment purchases. Timing relevant given upcoming budget hearings.\n\nPUBLICATION READINESS:\nStory ready for publication pending final copy edit. Charts and budget breakdown graphics completed. All quotes verified and sources confirmed.\n\nRECOMMENDATION:\nProceed with publication this week. Strong accountability journalism with clear public interest. Expect city government pushback but findings are well-supported by official documentation. Suggest preparing follow-up coverage of city council response and any corrective actions implemented."
+    },
+    {
+      "template_id": "fact_check_report",
+      "template_name": "Fact-Check Report",
+      "title": "Fact-Check: Senator's Corporate Tax Rate Claim",
+      "content": "**CLAIM:** \"Major corporations paid an average effective tax rate of only 8.2% last year, well below the statutory rate.\"\n\n**MADE BY:** Senator Patricia Williams\n**DATE:** March 15, 2024\n**DATASET:** Corporate Tax Returns Database (47,832 records)\n\n**ANALYSIS:**\nOur investigation of the Corporate Tax Returns Database reveals significant nuances in corporate taxation that require careful examination. The database contains comprehensive tax return data for publicly traded companies with revenues exceeding $1 billion.\n\nOur analysis shows the median effective tax rate was 12.4%, while the mean was 9.1% - closer to the claimed figure. However, this average is heavily skewed by 847 companies that paid zero federal taxes due to legal deductions, credits, and carryforward losses from previous years.\n\nWhen examining companies that actually paid taxes (39,291 entities), the effective rate rises to 15.7%. The statutory federal corporate tax rate is 21%, meaning even tax-paying corporations utilized significant deductions.\n\n**CONTEXT:**\nEffective tax rates differ from statutory rates due to legitimate business deductions, research and development credits, depreciation schedules, and international tax structures. The 2017 Tax Cuts and Jobs Act reduced the corporate rate from 35% to 21%, but also eliminated certain deductions.\n\nDr. Rebecca Martinez, a tax policy expert, notes that \"effective rates have historically run 6-8 percentage points below statutory rates due to standard business deductions.\"\n\n**VERDICT:** MOSTLY TRUE\n\n**RATING JUSTIFICATION:**\nWhile the 8.2% figure appears low, our data analysis confirms an effective rate of 9.1% when calculated as a simple average. The senator's claim accurately reflects how corporate tax burden is distributed, though it lacks important context about why effective rates differ from statutory rates."
+    },
+    {
+      "template_id": "fact_check_report",
+      "template_name": "Fact-Check Report",
+      "title": "Fact-Check: Healthcare Billing Fraud Allegations",
+      "content": "**CLAIM:** \"Medicare fraud costs taxpayers $47 billion annually, with phantom billing schemes representing 60% of all violations.\"\n\n**MADE BY:** Congressman Michael Torres\n**DATE:** February 8, 2024\n**DATASET:** Medicare Billing Anomalies Report (1,247,893 records)\n\n**ANALYSIS:**\nThe Medicare Billing Anomalies Report, compiled from Centers for Medicare & Medicaid Services data, provides detailed insights into potential fraudulent activities across healthcare providers nationwide.\n\nOur analysis identified $52.3 billion in questionable billing patterns, actually exceeding the congressman's estimate. However, the claim about phantom billing requires clarification. The data shows:\n\n- Upcoding violations: 34% ($17.8 billion)\n- Phantom billing (services never rendered): 28% ($14.6 billion)\n- Unbundling schemes: 22% ($11.5 billion)\n- Identity theft-related fraud: 16% ($8.4 billion)\n\nPhantom billing, while significant, represents 28% of violations by dollar amount, not the claimed 60%.\n\n**CONTEXT:**\nThe distinction between confirmed fraud and billing anomalies is crucial. Many flagged cases result from coding errors, documentation issues, or legitimate billing disputes rather than intentional fraud. An Anonymous Banking Insider familiar with healthcare finance investigations noted that \"roughly 40% of anomalies are ultimately resolved as administrative errors.\"\n\nThe $52.3 billion figure represents potential improper payments requiring investigation, not confirmed fraud losses.\n\n**VERDICT:** PARTIALLY FALSE\n\n**RATING JUSTIFICATION:**\nWhile the overall cost estimate aligns with our data analysis, the specific claim about phantom billing representing 60% of violations is inaccurate. Our data shows phantom billing accounts for 28% of questionable payments by value, making this a significant mischaracterization of fraud patterns."
+    },
+    {
+      "template_id": "fact_check_report",
+      "template_name": "Fact-Check Report",
+      "title": "Fact-Check: Environmental Violations Increase Claim",
+      "content": "**CLAIM:** \"Corporate environmental violations have increased 340% since 2020, with repeat offenders accounting for most incidents.\"\n\n**MADE BY:** Environmental advocacy group Clean Future Alliance\n**DATE:** January 22, 2024\n**DATASET:** Environmental Violation Records (89,441 records)\n\n**ANALYSIS:**\nThe Environmental Violation Records database tracks EPA enforcement actions, state regulatory violations, and self-reported incidents across all industrial sectors from 2020-2023.\n\nViolation trends show:\n- 2020: 18,667 recorded violations\n- 2021: 23,891 violations (28% increase)\n- 2022: 31,445 violations (32% increase from 2021)\n- 2023: 35,438 violations (13% increase from 2022)\n\nThe cumulative increase from 2020 to 2023 is 90%, far below the claimed 340%. Our analysis suggests the advocacy group may have conflated total penalties (which increased 340% due to higher fine structures) with violation counts.\n\nRegarding repeat offenders: 23,847 violations (67%) involved companies with prior violations in the database, supporting the claim about repeat offenders.\n\n**CONTEXT:**\nIncreased violation reports don't necessarily indicate worsening environmental behavior. Enhanced monitoring technology, expanded reporting requirements, and increased enforcement capacity contribute to higher detection rates. Additionally, many violations are minor procedural infractions rather than serious environmental damage.\n\nA Former State Department Official involved in environmental monitoring noted that \"digital reporting systems implemented in 2021 captured violations previously unreported.\"\n\n**VERDICT:** FALSE\n\n**RATING JUSTIFICATION:**\nThe 340% increase claim is factually incorrect based on violation count data. The actual increase is 90%. While repeat offenders do represent a majority of violations, the dramatic percentage claimed appears to conflate different metrics, undermining the credibility of the environmental advocacy group's assertion."
+    },
+    {
+      "template_id": "fact_check_report",
+      "template_name": "Fact-Check Report",
+      "title": "Fact-Check: Police Use of Force Statistics",
+      "content": "**CLAIM:** \"Police use of force incidents have decreased 22% citywide, with de-escalation training reducing excessive force complaints by half.\"\n\n**MADE BY:** Police Chief Maria Rodriguez\n**DATE:** December 12, 2023\n**DATASET:** Police Use of Force Incidents (34,789 records)\n\n**ANALYSIS:**\nThe Police Use of Force Incidents database contains comprehensive records from the metropolitan police department covering 2021-2023, including incident types, officer training records, and complaint outcomes.\n\nUse of force trends analysis:\n- 2021: 14,623 incidents\n- 2022: 12,891 incidents (12% decrease)\n- 2023: 11,275 incidents (13% decrease from 2022)\n\nThe cumulative decrease is 23%, closely matching Chief Rodriguez's claim of 22%.\n\nRegarding de-escalation training impact:\n- Officers without recent de-escalation training: 847 excessive force complaints\n- Officers with 2022-2023 de-escalation training: 389 excessive force complaints\n- This represents a 54% reduction, supporting the \"half\" claim\n\n**CONTEXT:**\nMultiple factors beyond training affect use of force statistics, including policy changes, community policing initiatives, and demographic shifts in patrol areas. The Internal Audit Report 2023 noted that incident reporting mechanisms also became more standardized, potentially affecting year-over-year comparisons.\n\nDr. Rebecca Martinez, who studies police accountability, emphasized that \"correlation between training and complaint reduction, while promising, requires longer-term analysis to establish causation.\"\n\n**VERDICT:** TRUE\n\n**RATING JUSTIFICATION:**\nBoth statistical claims are supported by the data. The 22% decrease in use of force incidents is verified at 23%, and excessive force complaints among trained officers are indeed approximately half those of untrained officers. While causation requires further study, the chief's statements accurately reflect the available data."
+    },
+    {
+      "template_id": "fact_check_report",
+      "template_name": "Fact-Check Report",
+      "title": "Fact-Check: Campaign Finance Donation Limits Claim",
+      "content": "**CLAIM:** \"Super PACs connected to pharmaceutical companies donated $78 million to congressional candidates last cycle, with 89% going to incumbents.\"\n\n**MADE BY:** Reform advocacy organization Citizens for Transparency\n**DATE:** November 30, 2023\n**DATASET:** Campaign Finance Records 2020-2023 (2,847,591 records)\n\n**ANALYSIS:**\nThe Campaign Finance Records database encompasses Federal Election Commission filings, including individual contributions, PAC donations, and Super PAC expenditures for the 2022 election cycle.\n\nPharmaceutical-connected Super PAC analysis reveals:\n- Total contributions from pharma-linked Super PACs: $73.4 million\n- Donations to incumbent candidates: $64.7 million (88.1%)\n- Donations to challengers: $6.9 million (9.4%)\n- Donations to open-seat candidates: $1.8 million (2.5%)\n\nThe $78 million figure appears slightly inflated, though our analysis identified $73.4 million in direct pharmaceutical Super PAC contributions.\n\n**CONTEXT:**\nDefining \"pharmaceutical companies\" requires precision. Our analysis included Super PACs where pharmaceutical companies comprised at least 60% of funding sources. Broader industry connections (medical device manufacturers, biotech firms) could inflate totals.\n\nCongressional Ethics Filings show that incumbent advantage in fundraising spans all industries, not just pharmaceuticals. Incumbents typically receive 75-85% of corporate-backed PAC money across sectors.\n\nA Former State Department Official familiar with campaign finance noted that \"pharmaceutical political spending has remained relatively stable as a percentage of total corporate political expenditures.\"\n\n**VERDICT:** MOSTLY TRUE\n\n**RATING JUSTIFICATION:**\nWhile the specific dollar amount is somewhat overstated ($73.4 million vs. claimed $78 million), the percentage going to incumbents (88.1%) closely matches the 89% claim. The advocacy group's assertion accurately represents pharmaceutical political spending patterns, though the total contribution figure requires minor correction."
+    },
+    {
+      "template_id": "source_interview",
+      "template_name": "Source Interview Notes",
+      "title": "Interview Notes: Dr. Rebecca Martinez - Healthcare Fraud Ring Investigation",
+      "content": "DATE: March 15, 2024\nINTERVIEW DURATION: 45 minutes\nLOCATION: Secure video call\nSOURCE: Dr. Rebecca Martinez (type: Medical Professional, credibility: High)\nINVESTIGATION: Healthcare Fraud Ring\n\nKEY STATEMENTS:\n- Dr. Martinez confirmed suspicious billing patterns at three regional clinics between 2022-2023\n- 'I noticed procedures being billed that never occurred. Ghost surgeries, phantom consultations.'\n- Estimated fraudulent billings at $2.3M across the network\n- Claims administrative pressure to 'maximize revenue streams' from clinic management\n\nCLAIMS MADE:\n- Claim 2: False documentation was systematically created to support fraudulent Medicare claims\n- Patient records were backdated to justify unnecessary procedures\n- Whistleblower protections were inadequate when she initially reported concerns internally\n\nDOCUMENTS PROVIDED:\n- Billing reconciliation spreadsheets (2022-2023)\n- Email exchanges with clinic administration\n- Patient scheduling logs showing discrepancies\n- Medicare reimbursement statements\n\nQUOTABLE:\n'When I saw patients being charged for procedures they never received, I knew this wasn't just administrative error. This was systematic fraud.'\n\nFOLLOW-UP QUESTIONS:\n1. Can you provide contact information for other physicians who witnessed these practices?\n2. Do you have documentation of the internal complaint you filed?\n3. Which specific Medicare billing codes were most frequently misused?\n4. Were pharmaceutical companies involved in any kickback schemes?\n\nNEXT STEPS:\n- Verify billing records with Medicare database\n- Cross-reference patient testimonials\n- Request interview with clinic administrators\n\nCREDIBILITY ASSESSMENT: High - extensive documentation, specific details, professional credentials verified"
+    },
+    {
+      "template_id": "source_interview",
+      "template_name": "Source Interview Notes",
+      "title": "Interview Notes: Anonymous Banking Insider - Corporate Tax Evasion Scheme Investigation",
+      "content": "DATE: March 18, 2024\nINTERVIEW DURATION: 75 minutes\nLOCATION: Encrypted messaging platform\nSOURCE: Anonymous Banking Insider (type: Financial Industry Source, credibility: Medium-High)\nINVESTIGATION: Corporate Tax Evasion Scheme\n\nKEY STATEMENTS:\n- Source has 12 years experience in international banking compliance\n- Identified shell company network spanning Delaware, Luxembourg, and Cayman Islands\n- 'Major Fortune 500 companies are routing profits through these entities to avoid $400M+ in annual taxes'\n- Claims knowledge of specific transfer mechanisms used since 2019\n\nCLAIMS MADE:\n- Claim 3: Sophisticated layering of subsidiary companies to obscure beneficial ownership\n- Transfer pricing manipulation between related entities\n- Exploitation of tax treaty loopholes between jurisdictions\n\nDOCUMENTS PROVIDED:\n- Bank transfer records (identifying information redacted)\n- Corporate structure diagrams\n- Email screenshots showing coordination between tax advisors\n- List of shell company registration dates and addresses\n\nSECURITY CONCERNS:\n- Source requested anonymity due to employment concerns\n- Used secure communication protocols\n- Avoided naming specific companies during initial interview\n\nQUOTABLE:\n'The amounts being moved are staggering. We're talking about tax obligations that could fund entire municipal budgets being completely avoided through these schemes.'\n\nFOLLOW-UP QUESTIONS:\n1. Can you provide more specific company names under confidentiality agreement?\n2. Are there patterns in timing of these transfers?\n3. Which accounting firms are facilitating these arrangements?\n4. Do you have access to complete financial statements?\n\nVERIFICATION NEEDED:\n- Cross-reference with public corporate filings\n- Consult tax law experts on scheme legality\n- Identify patterns in transfer timing"
+    },
+    {
+      "template_id": "source_interview",
+      "template_name": "Source Interview Notes",
+      "title": "Interview Notes: Congressional Ethics Filings Review - Municipal Corruption Network Investigation",
+      "content": "DATE: March 20, 2024\nREVIEW DURATION: 3 hours\nSOURCE: Congressional Ethics Filings (type: Public Records, credibility: High)\nINVESTIGATION: Municipal Corruption Network\n\nDOCUMENT ANALYSIS:\n- Reviewed 47 ethics disclosure forms from 2022-2024\n- Identified 8 members with undisclosed municipal contractor connections\n- Cross-referenced with municipal contract award databases\n\nKEY FINDINGS:\n- Rep. Johnson's spouse received $340,000 in consulting fees from companies awarded city contracts\n- Multiple members failed to disclose financial interests in infrastructure projects\n- Pattern of stock transactions preceding municipal bond announcements\n\nCLAIMS SUPPORTED:\n- Claim 1: Systematic failure to disclose conflicts of interest\n- Evidence of coordination between federal and local officials\n- Timing of investments suggests potential insider information use\n\nDOCUMENTS EXTRACTED:\n- Financial disclosure forms (2022-2024)\n- Stock transaction reports\n- Gift registrations from municipal events\n- Travel reimbursement records\n\nDISCREPANCIES IDENTIFIED:\n- Late filings for 23% of required disclosures\n- Amended forms filed after initial inquiries began\n- Inconsistent reporting of spousal income sources\n\nQUOTABLE DATA:\n'Ethics filings show a clear pattern of undisclosed financial relationships between congressional members and municipal contractors, with potential violations spanning multiple election cycles.'\n\nREQUIRED FOLLOW-UP:\n1. Interview ethics committee staff about enforcement patterns\n2. Request congressional office responses to specific disclosure gaps\n3. Analyze voting records on municipal-related legislation\n4. Compare with lobbying registration databases\n\nLEGAL CONSULTATION:\n- Review potential ethics violations with congressional procedure experts\n- Assess criminal referral thresholds\n\nRELIABILITY: High - official government records with verification mechanisms"
+    },
+    {
+      "template_id": "source_interview",
+      "template_name": "Source Interview Notes",
+      "title": "Interview Notes: Former State Department Official - Environmental Cover-up Investigation",
+      "content": "DATE: March 22, 2024\nINTERVIEW DURATION: 90 minutes\nLOCATION: Washington D.C. coffee shop\nSOURCE: Former State Department Official (type: Government Whistleblower, credibility: High)\nINVESTIGATION: Environmental Cover-up\n\nBACKGROUND:\n- Source served 15 years in State Department Environmental Bureau\n- Left government service in December 2023\n- Security clearance maintained until February 2024\n\nKEY STATEMENTS:\n- Alleges suppression of climate impact assessments for overseas energy projects\n- 'We were told to delay reports that showed negative environmental consequences'\n- Claims political pressure from energy industry lobbying groups\n- Describes systematic editing of scientific conclusions in official reports\n\nCLAIMS MADE:\n- Claim 4: Senior officials ordered removal of climate change references from policy documents\n- Environmental impact studies were deliberately delayed during critical approval windows\n- Scientists were excluded from policy briefings when conclusions contradicted administration positions\n\nDOCUMENTS PROVIDED:\n- Draft vs. final versions of environmental assessments\n- Email chains showing editorial interventions\n- Meeting notes from policy coordination sessions\n- List of excluded scientific advisors\n\nEMOTIONAL CONTEXT:\n- Source appeared frustrated but determined\n- Cited concern for future generations as motivation for coming forward\n- Expressed fear of professional retaliation\n\nQUOTABLE:\n'When you see scientific integrity being sacrificed for political expediency, especially on issues affecting global climate stability, you have to speak up.'\n\nFOLLOW-UP QUESTIONS:\n1. Can you identify specific energy projects affected by these practices?\n2. Which lobbying firms had unusual access to the decision-making process?\n3. Are there other current employees who witnessed these practices?\n4. Do you have documentation of the excluded climate data?\n\nVERIFICATION STRATEGY:\n- Cross-check with environmental NGO monitoring reports\n- Request interviews with named scientific advisors"
+    },
+    {
+      "template_id": "source_interview",
+      "template_name": "Source Interview Notes",
+      "title": "Interview Notes: Internal Audit Report 2023 Review - Tech Platform Privacy Violations Investigation",
+      "content": "DATE: March 25, 2024\nREVIEW DURATION: 4 hours\nSOURCE: Internal Audit Report 2023 (type: Corporate Document, credibility: High)\nINVESTIGATION: Tech Platform Privacy Violations\n\nDOCUMENT OVERVIEW:\n- 127-page comprehensive audit of data handling practices\n- Conducted by external firm McKinney & Associates\n- Covers January 2022 - September 2023 period\n- Marked 'Confidential - Executive Review Only'\n\nCRITICAL FINDINGS:\n- Unauthorized data collection from 2.3 million users\n- Location tracking continued after users opted out\n- Third-party data sharing without explicit consent\n- Children's data collected despite COPPA compliance claims\n\nCLAIMS DOCUMENTED:\n- Claim 5: Systematic violation of stated privacy policies\n- Engineering teams bypassed privacy controls to increase data collection\n- Legal department warnings were ignored by product development teams\n- Revenue targets prioritized over privacy compliance\n\nDATA BREACHES IDENTIFIED:\n- 7 incidents of unauthorized employee access to user data\n- Inadequate encryption for sensitive personal information\n- Data retention beyond stated policy limits\n- Cross-platform tracking without user knowledge\n\nFINANCIAL IMPACT:\n- Estimated regulatory fines: $50-75 million\n- Projected litigation costs: $120 million\n- Revenue from unauthorized data use: $340 million over audit period\n\nRECOMMENDATIONS IGNORED:\n- Audit recommended immediate cessation of 15 data collection practices\n- Only 3 recommendations were implemented as of report date\n- Management response cited 'business necessity' for continued violations\n\nQUOTABLE EXCERPTS:\n'The gap between stated privacy policies and actual data collection practices represents a systematic disregard for user consent and regulatory requirements.'\n\nFURTHER INVESTIGATION:\n1. Interview audit team members\n2. Request user complaint records\n3. Analyze platform code for tracking mechanisms\n4. Review regulatory filing discrepancies\n\nLEGAL IMPLICATIONS:\n- Potential FTC violations\n- Class action lawsuit exposure\n- International privacy law breaches"
+    }
+  ],
+  "traces": [
+    {
+      "id": "source_credibility",
+      "task": "Assess credibility of source Internal Audit Report 2023 for story Charter School Network Diverts Public Funds to Private Accounts",
+      "steps": [
+        {
+          "thought": "Review source's track record and prior contributions",
+          "action": "Query all stories and claims previously sourced from this person",
+          "observation": "Database search reveals this source has provided information for 7 previous stories over the past 18 months, with 6 claims independently verified and 1 still under review by our fact-checking team. The source has consistently provided accurate financial data and has never been found to have deliberately misled reporters."
+        },
+        {
+          "thought": "Cross-reference claims with independent datasets",
+          "action": "Match source's claims against available fact-check datasets",
+          "observation": "Cross-referencing the audit report's key financial figures against SEC filings and municipal budget documents shows 94% alignment on major budget items, with minor discrepancies likely due to reporting period differences. The source's claims about budget overruns match independent analysis by the City Controller's office published last month."
+        },
+        {
+          "thought": "Evaluate potential conflicts of interest",
+          "action": "Check source affiliation against story subjects and entities",
+          "observation": "Background check reveals the source is a senior auditor with 12 years tenure at the firm and no direct financial ties to the companies mentioned in the story. However, the auditing firm did provide consulting services to one subsidiary of the main company covered in the story between 2021-2022, which ended before this audit period."
+        }
+      ],
+      "outcome": "Source is assessed as highly credible with strong track record and independently verifiable claims, though potential conflict of interest from prior consulting relationship should be disclosed in the story. Proceeding with publication while noting the firm's previous business relationship."
+    },
+    {
+      "id": "publication_readiness",
+      "task": "Determine if story Police Misconduct Cases Systematically Dismissed by District Attorney is ready for publication",
+      "steps": [
+        {
+          "thought": "Verify all key claims have been fact-checked",
+          "action": "Query all claims linked to this story and their verification status",
+          "observation": "Database query shows 12 of 14 key claims have been independently verified through primary sources, but 2 claims regarding municipal budget allocations remain unconfirmed pending response from the city comptroller's office."
+        },
+        {
+          "thought": "Assess source diversity and independence",
+          "action": "Review all sources for this story and check for single-source claims",
+          "observation": "Source review reveals story relies on 6 independent sources including government documents, academic research, and expert interviews, with no single-source claims identified in the main narrative."
+        },
+        {
+          "thought": "Check for potential corrections or legal risks",
+          "action": "Review claims for disputed or unverified status, flag legal concerns",
+          "observation": "Legal review flagged one potentially defamatory statement about a public official that requires additional sourcing or removal, and identified standard disclosure requirements for financial data that need attribution updates."
+        },
+        {
+          "thought": "Verify data accuracy and methodology",
+          "action": "Audit datasets used and confirm analysis reproducibility",
+          "observation": "Data audit confirmed reproducibility of statistical analysis using city budget records from 2019-2023, though one dataset shows a minor calculation error in percentage change that requires correction before publication."
+        }
+      ],
+      "outcome": "Story is not ready for immediate publication - requires verification of 2 outstanding claims, correction of one calculation error, and revision of potentially problematic statement about the public official before proceeding."
+    },
+    {
+      "id": "claim_verification",
+      "task": "Verify claim: 'Renewable energy investments will create 100,000 new jobs' made by Energy Secretary",
+      "steps": [
+        {
+          "thought": "Search for supporting or contradicting evidence in datasets",
+          "action": "Query datasets and cross-reference with claim specifics",
+          "observation": "Database queries reveal three government datasets from 2019-2023 that directly contradict the employment statistics cited, showing a 2.3% variance in the claimed unemployment rate for the specified demographic."
+        },
+        {
+          "thought": "Find independent sources who can confirm or deny",
+          "action": "Search source network for relevant experts or witnesses",
+          "observation": "Contacted labor economists at two universities and a Bureau of Labor Statistics analyst who provided independent calculations that align with the contradictory dataset findings rather than the original claim."
+        },
+        {
+          "thought": "Check for prior fact-checks of similar claims",
+          "action": "Search claim history for related or identical statements",
+          "observation": "FactCheck.org and PolitiFact archives show this exact claim was previously rated 'Mostly False' in April 2023, with similar statistical discrepancies identified by multiple news organizations."
+        }
+      ],
+      "outcome": "The claim is determined to be false based on contradictory government data, expert analysis, and prior fact-checking consensus, warranting a correction or retraction notice."
+    }
+  ]
+}
