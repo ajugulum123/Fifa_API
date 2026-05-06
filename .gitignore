@@ -2,6 +2,10 @@ node_modules/
 dist/
 .env
 
+# Local-only project context (kept on disk, not shared)
+.cursor/
+AdminInputs/
+
 # TLS private keys - NEVER commit
 certs/*.key
 certs/*.crt
