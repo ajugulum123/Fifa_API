@@ -20,6 +20,8 @@ import express from 'express';
 import cors from 'cors';
 import helmet from 'helmet';
 import rateLimit from 'express-rate-limit';
+import promBundle from 'express-prom-bundle';
+import client from 'prom-client';
 import { ApolloServer } from '@apollo/server';
 // expressMiddleware types conflict with the project's @types/express version;
 // casting via unknown sidesteps the duplicate declaration without affecting runtime.
@@ -40,6 +42,13 @@ import { findUserById, seedAdminUser, type PublicUser } from './auth/userStore';
 
 const IS_PROD = process.env.NODE_ENV === 'production';
 
+// When DISABLE_INLINE_TLS=true the app listens on plain HTTP on PORT (default 4000) and
+// skips loading TLS certs. Use this when running behind an Ingress / load balancer that
+// terminates TLS upstream (Kubernetes deployments). The local dev story (npm run dev)
+// keeps in-app TLS so https://localhost:4443 still works.
+const DISABLE_INLINE_TLS = process.env.DISABLE_INLINE_TLS === 'true';
+const PORT = parseInt(process.env.PORT ?? '4000', 10);
+
 const HTTPS_PORT = parseInt(process.env.HTTPS_PORT ?? '4443', 10);
 const HTTP_PORT = parseInt(process.env.HTTP_PORT ?? '4080', 10);
 const TLS_KEY_PATH = process.env.TLS_KEY_PATH ?? './certs/server.key';
@@ -50,7 +59,7 @@ const RATE_WINDOW_MS = parseInt(process.env.RATE_LIMIT_WINDOW_MS ?? '60000', 10)
 const RATE_MAX = parseInt(process.env.RATE_LIMIT_MAX ?? '100', 10);
 const MAX_DEPTH = parseInt(process.env.GRAPHQL_MAX_DEPTH ?? '6', 10);
 const DISABLE_INTROSPECTION = process.env.DISABLE_INTROSPECTION === 'true';
-const CSV_PATH = process.env.CSV_PATH ?? './srcData/player_stats.csv';
+const CSV_PATH = process.env.CSV_PATH ?? './dataset/player_stats.csv';
 
 //
 // 2. TLS options
@@ -117,6 +126,29 @@ function loadTlsOptions(): https.ServerOptions {
 function buildExpressApp(): express.Application {
   const app = express();
   app.set('trust proxy', 1); // required when behind a reverse proxy
+
+  // 3.0. Prometheus metrics. /metrics is wired before any auth or rate limiting
+  // so a scrape never gets a 429. Register node default metrics (event loop lag,
+  // GC, heap, fd count) plus per-request histograms with route+status labels.
+  client.collectDefaultMetrics({ prefix: 'fifa_api_' });
+  app.use(
+    promBundle({
+      includeMethod: true,
+      includePath: true,
+      includeStatusCode: true,
+      // Histogram buckets in seconds. Tuned for an in-memory GraphQL API.
+      buckets: [0.005, 0.01, 0.025, 0.05, 0.1, 0.25, 0.5, 1, 2.5, 5],
+      promClient: { collectDefaultMetrics: {} },
+      // Drop the /metrics endpoint from its own histogram so scrapes are not
+      // counted as user traffic.
+      autoregister: true,
+      metricsPath: '/metrics',
+      // Strip the high-cardinality query-string portion of paths.
+      normalizePath: [
+        ['^/graphql/.*', '/graphql'],
+      ],
+    })
+  );
 
   // 3a. Helmet - sets security-critical HTTP response headers
   app.use(
@@ -287,9 +319,15 @@ async function bootstrap(): Promise<void> {
     })
   );
 
-  // Health check - returns 200 over HTTPS so load balancers can verify TLS
+  // Health check. Returns 200 so a Kubernetes readiness/liveness probe or external load
+  // balancer can verify the process is up. The "tls" field reflects whether the app is
+  // serving TLS itself, not whether the request reached over HTTPS (TLS may terminate upstream).
   app.get('/health', (_req, res) => {
-    res.json({ status: 'ok', tls: true, timestamp: new Date().toISOString() });
+    res.json({
+      status: 'ok',
+      tls: !DISABLE_INLINE_TLS,
+      timestamp: new Date().toISOString(),
+    });
   });
 
   // 404 for everything else
@@ -297,30 +335,53 @@ async function bootstrap(): Promise<void> {
     res.status(404).json({ error: 'Not found. GraphQL endpoint is /graphql' });
   });
 
-  // Start HTTPS server
-  const tlsOptions = loadTlsOptions();
-  const httpsServer = https.createServer(tlsOptions, app);
+  // Two transport modes:
+  //
+  // 1. DISABLE_INLINE_TLS=true (Kubernetes deployment, TLS at Ingress):
+  //    listen on PORT (default 4000) over plain HTTP. No HTTP redirect server.
+  //    The Ingress handles HTTPS and the http->https redirect.
+  //
+  // 2. Default (local dev): listen on HTTPS_PORT with in-app TLS plus an HTTP
+  //    redirect server on HTTP_PORT. Same behavior the project shipped with.
 
-  httpsServer.listen(HTTPS_PORT, () => {
-    console.log(`\nGraphQL API ready`);
-    console.log(`  HTTPS   : https://localhost:${HTTPS_PORT}/graphql`);
-    console.log(`  TLS     : ${TLS_MIN_VERSION}+ enforced`);
-    console.log(`  Depth   : queries > ${MAX_DEPTH} levels rejected`);
-    console.log(`  Rate    : ${RATE_MAX} req / ${RATE_WINDOW_MS / 1000}s per IP`);
-    if (!IS_PROD) console.log(`  Sandbox : https://localhost:${HTTPS_PORT}/graphql\n`);
-  });
+  let listener: http.Server | https.Server;
 
-  // Start HTTP redirect server
-  startRedirectServer();
+  if (DISABLE_INLINE_TLS) {
+    listener = http.createServer(app);
+    listener.listen(PORT, () => {
+      console.log(`\nGraphQL API ready`);
+      console.log(`  HTTP    : http://0.0.0.0:${PORT}/graphql (TLS terminates upstream)`);
+      console.log(`  Depth   : queries > ${MAX_DEPTH} levels rejected`);
+      console.log(`  Rate    : ${RATE_MAX} req / ${RATE_WINDOW_MS / 1000}s per IP`);
+    });
+  } else {
+    const tlsOptions = loadTlsOptions();
+    listener = https.createServer(tlsOptions, app);
+    listener.listen(HTTPS_PORT, () => {
+      console.log(`\nGraphQL API ready`);
+      console.log(`  HTTPS   : https://localhost:${HTTPS_PORT}/graphql`);
+      console.log(`  TLS     : ${TLS_MIN_VERSION}+ enforced`);
+      console.log(`  Depth   : queries > ${MAX_DEPTH} levels rejected`);
+      console.log(`  Rate    : ${RATE_MAX} req / ${RATE_WINDOW_MS / 1000}s per IP`);
+      if (!IS_PROD) console.log(`  Sandbox : https://localhost:${HTTPS_PORT}/graphql\n`);
+    });
 
-  // Graceful shutdown
+    startRedirectServer();
+  }
+
+  // Graceful shutdown. SIGTERM is what Kubernetes sends on pod stop. We give Apollo
+  // and the HTTP listener a chance to drain in-flight requests.
   const shutdown = async (signal: string) => {
-    console.log(`\n${signal} received - shutting down gracefully...`);
+    console.log(`\n${signal} received. Shutting down gracefully.`);
     await server.stop();
-    httpsServer.close(() => {
-      console.log('HTTPS server closed.');
+    listener.close(() => {
+      console.log('Listener closed.');
       process.exit(0);
     });
+    setTimeout(() => {
+      console.error('Shutdown timeout, forcing exit.');
+      process.exit(1);
+    }, 10_000).unref();
   };
 
   process.on('SIGTERM', () => shutdown('SIGTERM'));

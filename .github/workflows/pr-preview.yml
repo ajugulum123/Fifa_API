@@ -1,0 +1,186 @@
+name: PR preview environment
+
+# On every PR open or push, build the PR's image, create or update a per-PR namespace
+# myapp-pr-{number}, deploy, and post the preview URL as a PR comment.
+# The cleanup workflow (pr-preview-cleanup.yml) tears the namespace down on PR close.
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+    branches: [main]
+
+concurrency:
+  group: pr-preview-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+  packages: write
+  pull-requests: write
+
+env:
+  IMAGE_REF: ghcr.io/${{ github.repository_owner }}/fifa-api
+  PLATFORM_REPO: ajugulum123/KubernetesDeploymentFifaAPI
+
+jobs:
+  build:
+    name: build-and-push
+    runs-on: fifa-runners
+    timeout-minutes: 20
+    outputs:
+      image_tag: ${{ steps.tag.outputs.tag }}
+    env:
+      BUILDKIT_HOST: tcp://buildkitd.buildkit.svc.cluster.local:1234
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+
+      - name: Compute tag
+        id: tag
+        run: |
+          set -euo pipefail
+          PR="${{ github.event.pull_request.number }}"
+          SHA="${GITHUB_SHA::12}"
+          echo "tag=pr-${PR}-${SHA}" >> "$GITHUB_OUTPUT"
+
+      - name: Build GHCR auth
+        run: |
+          mkdir -p "$HOME/.docker"
+          AUTH=$(printf '%s:%s' "${{ github.actor }}" "${{ secrets.GITHUB_TOKEN }}" | base64 -w 0)
+          cat > "$HOME/.docker/config.json" <<EOF
+          {"auths":{"ghcr.io":{"auth":"${AUTH}"}}}
+          EOF
+
+      - name: Build and push
+        run: |
+          set -euo pipefail
+          buildctl --addr "${BUILDKIT_HOST}" build \
+            --frontend=dockerfile.v0 \
+            --local context=. \
+            --local dockerfile=. \
+            --opt platform=linux/amd64 \
+            --output "type=image,name=${IMAGE_REF}:${{ steps.tag.outputs.tag }},push=true" \
+            --import-cache "type=registry,ref=${IMAGE_REF}:cache"
+
+  deploy:
+    name: deploy-preview
+    runs-on: fifa-runners
+    timeout-minutes: 10
+    needs: build
+    env:
+      PR_NUMBER: ${{ github.event.pull_request.number }}
+      IMAGE_TAG: ${{ needs.build.outputs.image_tag }}
+    steps:
+      - name: Checkout platform repo
+        uses: actions/checkout@v4
+        with:
+          repository: ${{ env.PLATFORM_REPO }}
+          ref: main
+          path: platform
+
+      - name: Compute namespace and host
+        id: vars
+        run: |
+          NS="myapp-pr-${PR_NUMBER}"
+          HOST="fifa-api-pr-${PR_NUMBER}.dev.local"
+          echo "namespace=${NS}" >> "$GITHUB_OUTPUT"
+          echo "host=${HOST}" >> "$GITHUB_OUTPUT"
+          echo "url=https://${HOST}:8443" >> "$GITHUB_OUTPUT"
+
+      - name: Render preview manifests via kustomize
+        env:
+          NS: ${{ steps.vars.outputs.namespace }}
+          HOST: ${{ steps.vars.outputs.host }}
+          IMAGE: ${{ env.IMAGE_REF }}:${{ env.IMAGE_TAG }}
+        run: |
+          set -euo pipefail
+          mkdir -p preview
+          # Reuse myapp-dev as the base. Override namespace, image, and Ingress host.
+          cat > preview/kustomization.yaml <<EOF
+          apiVersion: kustomize.config.k8s.io/v1beta1
+          kind: Kustomization
+          namespace: ${NS}
+          resources:
+            - ../platform/kubernetes/app/myapp-dev
+          images:
+            - name: ghcr.io/ajugulum123/fifa-api
+              newName: ${IMAGE%:*}
+              newTag: ${IMAGE##*:}
+          patches:
+            - target:
+                kind: Namespace
+                name: myapp-dev
+              patch: |-
+                - op: replace
+                  path: /metadata/name
+                  value: ${NS}
+            - target:
+                kind: Ingress
+                name: fifa-api
+              patch: |-
+                - op: replace
+                  path: /spec/rules/0/host
+                  value: ${HOST}
+                - op: replace
+                  path: /spec/tls/0/hosts/0
+                  value: ${HOST}
+          EOF
+
+      - name: Apply preview namespace and manifests
+        run: |
+          set -euo pipefail
+          # Render and apply
+          kubectl apply -k preview
+
+          # Create the Secret with throwaway credentials. Previews are not exposed to
+          # real users, so we generate fresh secrets per preview.
+          kubectl -n "${{ steps.vars.outputs.namespace }}" create secret generic fifa-api-secrets \
+            --from-literal=JWT_ACCESS_SECRET="$(openssl rand -hex 64)" \
+            --from-literal=JWT_REFRESH_SECRET="$(openssl rand -hex 64)" \
+            --from-literal=ADMIN_USERNAME=admin \
+            --from-literal=ADMIN_PASSWORD="$(openssl rand -base64 24)" \
+            --dry-run=client -o yaml | kubectl apply -f -
+
+          kubectl rollout status deployment/fifa-api -n "${{ steps.vars.outputs.namespace }}" --timeout=180s
+
+      - name: Comment preview URL on PR
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const url = "${{ steps.vars.outputs.url }}";
+            const ns = "${{ steps.vars.outputs.namespace }}";
+            const tag = "${{ env.IMAGE_TAG }}";
+            const body = [
+              "### Preview deployed",
+              "",
+              `- URL: ${url}`,
+              `- Namespace: \`${ns}\``,
+              `- Image: \`${{ env.IMAGE_REF }}:${tag}\``,
+              "",
+              "_The namespace will be torn down automatically when this PR is closed or merged._",
+            ].join("\n");
+
+            // Find existing comment by header marker so we update instead of spamming
+            const marker = "### Preview deployed";
+            const { data: comments } = await github.rest.issues.listComments({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.issue.number,
+            });
+            const existing = comments.find(c => c.user?.type === "Bot" && c.body?.startsWith(marker));
+            if (existing) {
+              await github.rest.issues.updateComment({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                comment_id: existing.id,
+                body,
+              });
+            } else {
+              await github.rest.issues.createComment({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: context.issue.number,
+                body,
+              });
+            }

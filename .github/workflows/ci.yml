@@ -1,0 +1,114 @@
+name: CI
+
+# Runs on every PR. Gates merge: typecheck, tests, image build all must pass.
+# Image is NOT pushed on PRs. The CD workflow handles push on main.
+on:
+  pull_request:
+    branches: [main]
+  push:
+    branches: [main]
+    paths-ignore:
+      - "README.md"
+      - "docs/**"
+      - ".gitignore"
+
+# A single PR run cancels older runs of itself.
+concurrency:
+  group: ci-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+  pull-requests: write
+
+jobs:
+  secret-scan:
+    name: gitleaks
+    runs-on: fifa-runners
+    timeout-minutes: 5
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Run gitleaks
+        uses: gitleaks/gitleaks-action@v2
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        # Fails the job on any secret found. Tune via .gitleaks.toml at repo root.
+
+  test:
+    name: typecheck-and-test
+    runs-on: fifa-runners
+    timeout-minutes: 10
+    needs: secret-scan
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Cache npm
+        uses: actions/cache@v4
+        with:
+          path: ~/.npm
+          key: npm-${{ runner.os }}-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            npm-${{ runner.os }}-
+
+      - name: Install dependencies
+        run: npm ci --no-audit --no-fund
+
+      - name: Typecheck
+        run: npm run typecheck
+
+      - name: Run tests
+        run: npm test
+
+  build-image:
+    name: build-image-and-scan
+    runs-on: fifa-runners
+    timeout-minutes: 20
+    needs: test
+    env:
+      BUILDKIT_HOST: tcp://buildkitd.buildkit.svc.cluster.local:1234
+      IMAGE_REF: ghcr.io/${{ github.repository_owner }}/fifa-api
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Verify BuildKit reachable
+        run: buildctl --addr "${BUILDKIT_HOST}" debug workers
+
+      - name: Build image as a tarball for scanning (no push)
+        run: |
+          set -euo pipefail
+          SHA="${GITHUB_SHA::12}"
+          mkdir -p out
+          buildctl --addr "${BUILDKIT_HOST}" build \
+            --frontend=dockerfile.v0 \
+            --local context=. \
+            --local dockerfile=. \
+            --opt platform=linux/amd64 \
+            --output "type=docker,name=${IMAGE_REF}:pr-${SHA},dest=out/image.tar" \
+            --import-cache "type=registry,ref=${IMAGE_REF}:cache"
+          ls -la out/
+
+      - name: Scan image with Trivy (fail on critical CVEs)
+        uses: aquasecurity/trivy-action@0.28.0
+        with:
+          input: out/image.tar
+          format: table
+          severity: CRITICAL,HIGH
+          exit-code: "1"
+          ignore-unfixed: true
+          vuln-type: os,library
+
+      - name: Scan filesystem and config with Trivy (warn on misconfig)
+        uses: aquasecurity/trivy-action@0.28.0
+        with:
+          scan-type: fs
+          scan-ref: .
+          format: table
+          severity: HIGH,CRITICAL
+          exit-code: "0"
+          skip-dirs: node_modules,dist,certs

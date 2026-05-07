@@ -1,0 +1,192 @@
+name: CD
+
+# Push to main triggers a full deploy:
+#   1. typecheck + test (gate)
+#   2. build image, push to GHCR with SHA tag and 'latest'
+#   3. kubectl set image, kubectl rollout status
+#
+# The runner pod runs under the 'app-deployer' ServiceAccount in arc-runners,
+# which has a RoleBinding granting deploy verbs in myapp-dev (see
+# kubernetes/rbac/ and kubernetes/app/myapp-dev/rbac.yaml in the platform repo).
+on:
+  push:
+    branches: [main]
+    paths-ignore:
+      - "README.md"
+      - "docs/**"
+      - "tests/**"
+
+concurrency:
+  group: cd-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: false
+
+permissions:
+  contents: read
+  packages: write
+
+env:
+  IMAGE_REF: ghcr.io/${{ github.repository_owner }}/fifa-api
+  PLATFORM_REPO: ajugulum123/KubernetesDeploymentFifaAPI
+
+jobs:
+  test:
+    name: gate-typecheck-and-test
+    runs-on: fifa-runners
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/cache@v4
+        with:
+          path: ~/.npm
+          key: npm-${{ runner.os }}-${{ hashFiles('**/package-lock.json') }}
+      - run: npm ci --no-audit --no-fund
+      - run: npm run typecheck
+      - run: npm test
+
+  build-and-push:
+    name: build-and-push
+    runs-on: fifa-runners
+    timeout-minutes: 20
+    needs: test
+    outputs:
+      image_tag: ${{ steps.tag.outputs.tag }}
+    env:
+      BUILDKIT_HOST: tcp://buildkitd.buildkit.svc.cluster.local:1234
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Compute image tag
+        id: tag
+        run: |
+          set -euo pipefail
+          SHA="${GITHUB_SHA::12}"
+          echo "tag=${SHA}" >> "$GITHUB_OUTPUT"
+          echo "Image will be ${IMAGE_REF}:${SHA}"
+
+      - name: Build a Docker config for GHCR auth (BuildKit reads from ~/.docker/config.json)
+        run: |
+          set -euo pipefail
+          mkdir -p "$HOME/.docker"
+          AUTH=$(printf '%s:%s' "${{ github.actor }}" "${{ secrets.GITHUB_TOKEN }}" | base64 -w 0)
+          cat > "$HOME/.docker/config.json" <<EOF
+          {
+            "auths": {
+              "ghcr.io": { "auth": "${AUTH}" }
+            }
+          }
+          EOF
+
+      - name: Build and push
+        run: |
+          set -euo pipefail
+          SHA="${{ steps.tag.outputs.tag }}"
+          buildctl --addr "${BUILDKIT_HOST}" build \
+            --frontend=dockerfile.v0 \
+            --local context=. \
+            --local dockerfile=. \
+            --opt platform=linux/amd64 \
+            --output "type=image,\"name=${IMAGE_REF}:${SHA},${IMAGE_REF}:latest\",push=true" \
+            --export-cache "type=registry,ref=${IMAGE_REF}:cache,mode=max" \
+            --import-cache "type=registry,ref=${IMAGE_REF}:cache"
+          echo "Pushed ${IMAGE_REF}:${SHA} and :latest"
+
+  deploy-dev:
+    name: deploy-dev
+    runs-on: fifa-runners
+    timeout-minutes: 10
+    needs: build-and-push
+    environment:
+      name: dev
+      url: https://fifa-api.dev.local:8443
+    env:
+      NAMESPACE: myapp-dev
+      IMAGE_TAG: ${{ needs.build-and-push.outputs.image_tag }}
+    steps:
+      - name: Checkout platform repo (manifests)
+        uses: actions/checkout@v4
+        with:
+          repository: ${{ env.PLATFORM_REPO }}
+          ref: main
+          path: platform
+          # If the platform repo is private, replace with a token that has read access:
+          # token: ${{ secrets.PLATFORM_REPO_TOKEN }}
+
+      - name: Show kubectl identity
+        run: |
+          kubectl auth whoami || kubectl auth can-i get deployments -n "${NAMESPACE}"
+          kubectl version --client=true
+
+      - name: Apply manifests (idempotent)
+        run: |
+          set -euo pipefail
+          kubectl apply -k platform/kubernetes/app/${NAMESPACE}
+
+      - name: Set image to the SHA we just built
+        run: |
+          set -euo pipefail
+          kubectl set image deployment/fifa-api \
+            fifa-api="${IMAGE_REF}:${IMAGE_TAG}" \
+            --namespace "${NAMESPACE}"
+
+      - name: Wait for rollout
+        run: |
+          set -euo pipefail
+          kubectl rollout status deployment/fifa-api \
+            --namespace "${NAMESPACE}" \
+            --timeout=180s
+
+      - name: Smoke test from inside the cluster
+        run: |
+          set -euo pipefail
+          # Spin up a curl pod that targets the Service and asserts /health
+          kubectl run smoke-${{ env.IMAGE_TAG }} \
+            --namespace "${NAMESPACE}" \
+            --restart=Never \
+            --image=curlimages/curl:8.10.1 \
+            --rm -i --quiet \
+            --command -- curl -fsS --retry 5 --retry-connrefused \
+              "http://fifa-api.${NAMESPACE}.svc.cluster.local/health"
+
+      - name: Deploy summary
+        run: |
+          echo "## Deploy summary" >> "$GITHUB_STEP_SUMMARY"
+          echo "- Image: \`${IMAGE_REF}:${IMAGE_TAG}\`" >> "$GITHUB_STEP_SUMMARY"
+          echo "- Namespace: \`${NAMESPACE}\`" >> "$GITHUB_STEP_SUMMARY"
+          echo "- Rollout: success" >> "$GITHUB_STEP_SUMMARY"
+
+  deploy-prod:
+    name: deploy-prod
+    runs-on: fifa-runners
+    timeout-minutes: 10
+    needs: deploy-dev
+    # The 'production' GitHub Environment carries the required-reviewer protection rule.
+    # See .github/workflows/README.md and the platform repo's docs for setup.
+    environment:
+      name: production
+      url: https://fifa-api.example.com
+    env:
+      NAMESPACE: myapp-prod
+      IMAGE_TAG: ${{ needs.build-and-push.outputs.image_tag }}
+    steps:
+      - name: Checkout platform repo (manifests)
+        uses: actions/checkout@v4
+        with:
+          repository: ${{ env.PLATFORM_REPO }}
+          ref: main
+          path: platform
+
+      - name: Apply prod manifests
+        run: kubectl apply -k platform/kubernetes/app/${NAMESPACE}
+
+      - name: Set prod image
+        run: |
+          kubectl set image deployment/fifa-api \
+            fifa-api="${IMAGE_REF}:${IMAGE_TAG}" \
+            --namespace "${NAMESPACE}"
+
+      - name: Wait for prod rollout
+        run: |
+          kubectl rollout status deployment/fifa-api \
+            --namespace "${NAMESPACE}" \
+            --timeout=300s
