@@ -148,14 +148,11 @@ jobs:
       - name: Smoke test from inside the cluster
         run: |
           set -euo pipefail
-          # Spin up a curl pod that targets the Service and asserts /health
-          kubectl run smoke-${{ env.IMAGE_TAG }} \
-            --namespace "${NAMESPACE}" \
-            --restart=Never \
-            --image=curlimages/curl:8.10.1 \
-            --rm -i --quiet \
-            --command -- curl -fsS --retry 5 --retry-connrefused \
-              "http://fifa-api.${NAMESPACE}.svc.cluster.local/health"
+          # The runner is already inside the cluster. Curl the Service directly
+          # rather than creating a temporary pod; the deploy ServiceAccount is
+          # intentionally not allowed to create arbitrary pods.
+          curl -fsS --retry 5 --retry-connrefused \
+            "http://fifa-api.${NAMESPACE}.svc.cluster.local/health"
 
       - name: Deploy summary
         run: |
