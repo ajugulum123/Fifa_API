@@ -120,7 +120,16 @@ jobs:
       - name: Apply manifests (idempotent)
         run: |
           set -euo pipefail
-          kubectl apply -k platform/kubernetes/app/${NAMESPACE}
+          # The runner ServiceAccount is namespace-scoped on purpose. It should
+          # not be able to manage Namespace, Role or RoleBinding objects. Those
+          # are cluster bootstrap concerns handled by the platform repo.
+          APP_DIR="platform/kubernetes/app/${NAMESPACE}"
+          kubectl apply \
+            -f "${APP_DIR}/serviceaccount.yaml" \
+            -f "${APP_DIR}/configmap.yaml" \
+            -f "${APP_DIR}/deployment.yaml" \
+            -f "${APP_DIR}/service.yaml" \
+            -f "${APP_DIR}/ingress.yaml"
 
       - name: Set image to the SHA we just built
         run: |
@@ -177,7 +186,15 @@ jobs:
           path: platform
 
       - name: Apply prod manifests
-        run: kubectl apply -k platform/kubernetes/app/${NAMESPACE}
+        run: |
+          set -euo pipefail
+          APP_DIR="platform/kubernetes/app/${NAMESPACE}"
+          kubectl apply \
+            -f "${APP_DIR}/serviceaccount.yaml" \
+            -f "${APP_DIR}/configmap.yaml" \
+            -f "${APP_DIR}/deployment.yaml" \
+            -f "${APP_DIR}/service.yaml" \
+            -f "${APP_DIR}/ingress.yaml"
 
       - name: Set prod image
         run: |

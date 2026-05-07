@@ -94,7 +94,7 @@ jobs:
           ls -la out/
 
       - name: Scan image with Trivy (fail on critical CVEs)
-        uses: aquasecurity/trivy-action@0.28.0
+        uses: aquasecurity/trivy-action@v0.36.0
         with:
           input: out/image.tar
           format: table
@@ -104,7 +104,7 @@ jobs:
           vuln-type: os,library
 
       - name: Scan filesystem and config with Trivy (warn on misconfig)
-        uses: aquasecurity/trivy-action@0.28.0
+        uses: aquasecurity/trivy-action@v0.36.0
         with:
           scan-type: fs
           scan-ref: .
