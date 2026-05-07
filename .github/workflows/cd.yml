@@ -165,7 +165,7 @@ jobs:
     name: deploy-prod
     runs-on: fifa-runners
     timeout-minutes: 10
-    needs: deploy-dev
+    needs: [build-and-push, deploy-dev]
     # The 'production' GitHub Environment carries the required-reviewer protection rule.
     # See .github/workflows/README.md and the platform repo's docs for setup.
     environment:
